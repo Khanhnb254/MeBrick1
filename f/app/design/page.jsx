@@ -751,8 +751,7 @@ function DesignPageInner() {
       return;
     }
     try {
-      const dataUrl = await exportImage(designAreaRef.current);
-      const a = document.createElement("a");
+      const dataUrl = await exportImage(designAreaRef.current, selectedBackground);
       a.href = dataUrl;
       a.download = `lego-design-${Date.now()}.png`;
       document.body.appendChild(a);
@@ -796,7 +795,7 @@ function DesignPageInner() {
       const pricing = calcPricing();
 
       // 2) export preview
-      const dataUrl = await exportImage(designAreaRef.current);
+      const dataUrl = await exportImage(designAreaRef.current, selectedBackground);
 
       const product_name =
         searchParams.get("name") ||
