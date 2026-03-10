@@ -3218,14 +3218,7 @@
     width: 100% !important;
   }
 
-  /* Canvas adjustments */
-  .lego-canvas,
-  .lego-stageCard {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 400px;
-  }
-
+  /* Canvas adjustments – sizing handled by JS (transform: scale), do not override */
   /* Panel cards */
   .panel-card {
     padding: 12px;
