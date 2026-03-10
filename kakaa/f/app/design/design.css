@@ -2112,6 +2112,17 @@
 
 /* Small phones (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
+  .photo-frame-studio {
+    margin: 0;
+    padding: 0;
+    aspect-ratio: auto;
+    background: transparent;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .lego-header {
     padding: 10px 16px;
   }
