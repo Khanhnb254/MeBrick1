@@ -166,7 +166,28 @@ export default function CheckoutPage() {
     } catch (e) {
       const bodyText = typeof e?.body === "string" ? e.body : "";
       const msg = e?.message || "Tạo đơn thất bại";
-      setErr(bodyText || msg);
+      const errMsg = bodyText || msg;
+
+      // Tự động xóa sản phẩm không tồn tại khỏi giỏ hàng
+      const missingMatch = errMsg.match(/Các sản phẩm không tồn tại:\s*([\d,\s]+)/);
+      if (missingMatch) {
+        const missingIds = missingMatch[1].split(",").map((s) => Number(s.trim())).filter(Boolean);
+        if (missingIds.length > 0) {
+          const { getCart, setCart } = await import("../../lib/cart");
+          const currentCart = getCart();
+          currentCart.items = currentCart.items.filter(
+            (it) => !missingIds.includes(Number(it.product_id))
+          );
+          setCart(currentCart);
+          loadCart();
+          setErr(
+            `Một số sản phẩm trong giỏ hàng không còn tồn tại (ID: ${missingIds.join(", ")}) và đã được xóa khỏi giỏ. Vui lòng kiểm tra lại giỏ hàng.`
+          );
+          return;
+        }
+      }
+
+      setErr(errMsg);
       console.error("Order creation error:", e);
     } finally {
       setLoading(false);
