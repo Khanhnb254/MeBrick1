@@ -14,11 +14,28 @@ export default function Header() {
   const [cartCount, setCartCount] = useState(0);
   const [musicOn, setMusicOn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [designHref, setDesignHref] = useState("/collections");
   const audioRef = useRef(null);
+
+  // Lấy sản phẩm đầu tiên từ API để tạo link thiết kế đúng
+  useEffect(() => {
+    const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+    fetch(`${BASE_URL}/api/products?limit=1`)
+      .then((r) => r.json())
+      .then((data) => {
+        const first = Array.isArray(data) ? data[0] : data?.data?.[0];
+        if (first?.id) {
+          const name = encodeURIComponent(first.name || "");
+          const img = encodeURIComponent(first.image_url || first.image || "");
+          setDesignHref(`/design?product=${first.id}&name=${name}&image=${img}`);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const navItems = [
     { name: "Trang chủ", href: "/" },
-    { name: "Thiết kế", href: "/collections" },
+    { name: "Thiết kế", href: designHref },
     { name: "Bộ sưu tập", href: "/collections" },
     { name: "Doanh nghiệp", href: "#" },
     { name: "Tra cứu", href: "/tra-cuu" },
