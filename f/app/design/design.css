@@ -2012,7 +2012,7 @@
     width: 100%;
     height: fit-content;
     min-height: unset;
-    padding: 0;
+    padding: 0 12px;
     margin: 0;
     overflow-y: visible;
     display: flex;
@@ -2021,6 +2021,7 @@
     justify-content: center;
     background: transparent;
     border-radius: 0;
+    box-sizing: border-box;
   }
 
   .stage-wrap {
@@ -2177,7 +2178,7 @@
     width: 100%;
     height: fit-content;
     min-height: unset;
-    padding: 0;
+    padding: 0 16px;
     overflow-y: visible;
     display: flex;
     flex-direction: column;
@@ -2185,6 +2186,7 @@
     justify-content: center;
     background: transparent;
     border-radius: 0;
+    box-sizing: border-box;
   }
 
   .stage-wrap {

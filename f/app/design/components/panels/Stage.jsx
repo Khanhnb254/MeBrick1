@@ -392,11 +392,7 @@ export default function Stage({
   useEffect(() => {
     if (!canvasSize?.width) return;
     const compute = () => {
-      const isMobileScreen = window.innerWidth < 1024;
-      // Trên mobile dùng window.innerWidth để canvas fill full màn hình
-      const containerW = isMobileScreen
-        ? window.innerWidth
-        : (stageWrapRef.current?.getBoundingClientRect().width ?? window.innerWidth);
+      const containerW = stageWrapRef.current?.getBoundingClientRect().width ?? window.innerWidth;
       setCanvasScale(containerW > 0 && containerW < canvasSize.width ? containerW / canvasSize.width : 1);
     };
     const raf = requestAnimationFrame(compute);

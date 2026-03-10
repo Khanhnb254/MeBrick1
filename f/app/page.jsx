@@ -11,7 +11,7 @@ import BubbleButton from "./components/BubbleButton";
 import { getProducts } from "../lib/api/products";
 import styles from "./page.module.css";
 
-export default function LovenStorePage() {
+export default function MeBrickPage() {
   const [currentImage, setCurrentImage] = useState(0);
   const [imageErrors, setImageErrors] = useState({});
   const [heroReady, setHeroReady] = useState(false);
@@ -48,7 +48,7 @@ export default function LovenStorePage() {
     {
       icon: "🧩",
       title: "LEGO Độc quyền",
-      description: "Những bộ LEGO độc đáo chỉ có tại MÊ Brick",
+      description: "Những bộ LEGO độc đáo chỉ có tại MÊ BRICK",
     },
     {
       icon: "🎨",
@@ -578,7 +578,7 @@ export default function LovenStorePage() {
               textShadow: "3px 4px 10px rgba(0,0,0,0.3)",
               color: "#ffffff",
             }}>
-            Vì sao chọn Mê Brick?
+            Vì sao chọn MÊ BRICK?
           </h2>
 
           <div
