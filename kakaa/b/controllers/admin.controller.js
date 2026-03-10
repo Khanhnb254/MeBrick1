@@ -24,11 +24,11 @@ exports.getStats = async (req, res) => {
       return res.status(500).json({ message: "Get admin stats failed" });
     }
 
-    // revenue = sum(total_amount) where status != 'cancelled'
+    // revenue = sum(total_amount) chỉ những đơn đã xác nhận thanh toán
     const { data: revenueRows, error: e3 } = await db
       .from("orders")
       .select("total_amount")
-      .neq("status", "cancelled");
+      .eq("payment_status", "paid");
 
     if (e3) {
       console.error(e3);
