@@ -44,8 +44,9 @@ export default function TraCuuPage() {
     try {
       setLoading(true);
 
+      const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
       const res = await fetch(
-        `http://localhost:5000/api/orders/search/by-phone?phone=${encodeURIComponent(cleanPhone)}`
+        `${BASE_URL}/api/orders/search/by-phone?phone=${encodeURIComponent(cleanPhone)}`
       );
 
       const data = await res.json();
