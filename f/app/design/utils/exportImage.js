@@ -4,11 +4,12 @@ import html2canvas from "html2canvas";
  * Export design as PNG.
  * Strategy:
  *  1. Draw background directly onto an offscreen canvas (avoids html2canvas CORS issues with background-image)
- *  2. Strip background CSS from .lego-canvas temporarily
- *  3. Use html2canvas to capture DOM elements only (lego, stickers, text) with transparent bg
- *  4. Composite DOM layer on top of background
+ *  2. Draw slot images directly onto canvas at full quality (avoid html2canvas downscale)
+ *  3. Strip background + slot img CSS from DOM temporarily
+ *  4. Use html2canvas to capture DOM elements only (lego, stickers, text) with transparent bg
+ *  5. Composite DOM layer on top
  */
-export async function exportImage(designAreaEl, selectedBackground) {
+export async function exportImage(designAreaEl, selectedBackground, slotImages) {
   if (!designAreaEl) return null;
 
   const legoCanvas = designAreaEl.querySelector(".lego-canvas") || designAreaEl;
@@ -16,7 +17,7 @@ export async function exportImage(designAreaEl, selectedBackground) {
   const logicalWidth = parseInt(legoCanvas.style.width) || legoCanvas.offsetWidth;
   const logicalHeight = parseInt(legoCanvas.style.height) || legoCanvas.offsetHeight;
 
-  const SCALE = 2; // 2x → 1100×1100px, sharp and not too heavy
+  const SCALE = 2; // 2x → 1100×1100px
 
   // === Step 1: Create output canvas ===
   const output = document.createElement("canvas");
@@ -36,7 +37,6 @@ export async function exportImage(designAreaEl, selectedBackground) {
       ctx.fillRect(0, 0, output.width, output.height);
 
     } else if (type === "gradient") {
-      // Render gradient via a temp div
       const tmp = document.createElement("div");
       tmp.style.cssText = `position:fixed;left:-9999px;top:0;width:${logicalWidth}px;height:${logicalHeight}px;background:${value};`;
       document.body.appendChild(tmp);
@@ -74,9 +74,46 @@ export async function exportImage(designAreaEl, selectedBackground) {
         });
       }
     }
+
+    // === Step 3: Draw slot images directly at full quality ===
+    if (slotImages && selectedBackground.slots?.length) {
+      for (const slot of selectedBackground.slots) {
+        const key = `${selectedBackground.id}_${slot.id}`;
+        const src = slotImages[key];
+        if (!src) continue;
+
+        await new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            ctx.save();
+            // Translate to slot center, rotate, draw
+            const cx = (slot.x + slot.w / 2) * SCALE;
+            const cy = (slot.y + slot.h / 2) * SCALE;
+            const dw = slot.w * SCALE;
+            const dh = slot.h * SCALE;
+            ctx.translate(cx, cy);
+            ctx.rotate(((slot.rotate || 0) * Math.PI) / 180);
+            // cover fit
+            const scale = Math.max(dw / img.width, dh / img.height);
+            const sw = img.width * scale;
+            const sh = img.height * scale;
+            ctx.rect(-dw / 2, -dh / 2, dw, dh);
+            ctx.clip();
+            ctx.drawImage(img, -sw / 2, -sh / 2, sw, sh);
+            ctx.restore();
+            resolve();
+          };
+          img.onerror = resolve;
+          img.src = src;
+        });
+      }
+    }
   }
 
-  // === Step 3: Strip background from DOM, capture elements only ===
+  // === Step 4: Hide slot-zone imgs in DOM so html2canvas doesn't double-draw them ===
+  const slotZoneImgs = legoCanvas.querySelectorAll(".slot-zone img");
+  slotZoneImgs.forEach((el) => (el.style.visibility = "hidden"));
+
   const saved = {
     backgroundImage: legoCanvas.style.backgroundImage,
     backgroundColor: legoCanvas.style.backgroundColor,
@@ -102,10 +139,11 @@ export async function exportImage(designAreaEl, selectedBackground) {
     height: logicalHeight,
   });
 
-  // Restore original styles
+  // Restore
   Object.assign(legoCanvas.style, saved);
+  slotZoneImgs.forEach((el) => (el.style.visibility = ""));
 
-  // === Step 4: Composite DOM on top of background ===
+  // === Step 5: Composite DOM on top ===
   ctx.drawImage(domCanvas, 0, 0);
 
   return output.toDataURL("image/png");
