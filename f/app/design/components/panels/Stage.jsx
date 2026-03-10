@@ -522,7 +522,13 @@ export default function Stage({
                     <div
                       key={slot.id}
                       className="slot-zone"
-                      onPointerDown={(e) => e.stopPropagation()}
+                      onPointerDown={(e) => {
+                        // Nếu tại vị trí này có sticker → cho event bubble lên canvas để chọn/drag sticker
+                        const pt = getCanvasPoint(e);
+                        const hits = hitTestAll(pt);
+                        if (hits.length > 0) return; // có sticker → không chặn
+                        e.stopPropagation();
+                      }}
                       onTouchEnd={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
@@ -530,6 +536,8 @@ export default function Stage({
                         else setSelectedSlotId(selectedSlotId === slot.id ? null : slot.id);
                       }}
                       onClick={(e) => {
+                        // Nếu đang drag hoặc có sticker tại điểm này → bỏ qua click slot
+                        if (selectedId) return;
                         e.stopPropagation();
                         if (!imgSrc) openSlotFilePicker(slot.id);
                         else setSelectedSlotId(selectedSlotId === slot.id ? null : slot.id);
@@ -557,7 +565,8 @@ export default function Stage({
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        pointerEvents: "auto",
+                        // Khi đang có sticker/layer được chọn → nhường pointer cho sticker
+                        pointerEvents: selectedId ? "none" : "auto",
                       }}>
                       {imgSrc ? (
                         <>
