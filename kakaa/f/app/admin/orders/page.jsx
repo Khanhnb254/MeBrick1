@@ -591,7 +591,7 @@ export default function AdminOrders() {
                       <div style={{ fontSize: "0.85rem", color: "#000", marginBottom: 4 }}>
                         Ảnh khách upload ({uploadedImages.length}):
                       </div>
-                      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 4 }}>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 6 }}>
                         {uploadedImages.map((url, i) => (
                           <img
                             key={url}
@@ -599,9 +599,9 @@ export default function AdminOrders() {
                             alt={`uploaded-${i}`}
                             style={{
                               width: "100%",
-                              height: "50px",
+                              height: "90px",
                               objectFit: "cover",
-                              borderRadius: 4,
+                              borderRadius: 6,
                               cursor: "pointer",
                               border: "1px solid #eee"
                             }}
