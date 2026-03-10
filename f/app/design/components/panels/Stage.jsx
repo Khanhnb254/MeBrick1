@@ -332,7 +332,7 @@ export default function Stage({
     return (
       <div
         key={s.id}
-        className={`free-layer ${isSel ? "is-selected" : ""}`}
+        className={`free-layer ${s.type === "text" ? "text-layer" : "image-layer"} ${isSel ? "is-selected" : ""}`}
         style={{
           position: "absolute",
           left: x,

@@ -3,13 +3,65 @@ import html2canvas from "html2canvas";
 /**
  * Export design as PNG.
  * Strategy:
- *  1. Draw background directly onto an offscreen canvas (avoids html2canvas CORS issues with background-image)
- *  2. Draw slot images directly onto canvas at full quality (avoid html2canvas downscale)
- *  3. Strip background + slot img CSS from DOM temporarily
- *  4. Use html2canvas to capture DOM elements only (lego, stickers, text) with transparent bg
- *  5. Composite DOM layer on top
+ *  1. Draw background directly (avoids html2canvas CORS issues with background-image)
+ *  2. Draw slot images directly at full quality
+ *  3. Draw all image stickers + lego parts directly at full quality (avoids html2canvas downscale)
+ *  4. Hide drawn elements in DOM
+ *  5. Use html2canvas to capture text layers only with transparent bg
+ *  6. Composite text on top
  */
-export async function exportImage(designAreaEl, selectedBackground, slotImages) {
+/**
+ * Draw one image layer directly onto ctx.
+ * @param {CanvasRenderingContext2D} ctx
+ * @param {string} src
+ * @param {number} x  - logical x
+ * @param {number} y  - logical y
+ * @param {number} w  - logical width
+ * @param {number} h  - logical height
+ * @param {number} rotation - degrees
+ * @param {string} fit  - "cover" | "contain"
+ * @param {boolean} isCircle
+ * @param {number} scale - SCALE factor
+ */
+async function drawImageLayer(ctx, src, x, y, w, h, rotation, fit = "cover", isCircle = false, scale = 2) {
+  await new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      ctx.save();
+      const cx = (x + w / 2) * scale;
+      const cy = (y + h / 2) * scale;
+      const dw = w * scale;
+      const dh = h * scale;
+      ctx.translate(cx, cy);
+      if (rotation) ctx.rotate((rotation * Math.PI) / 180);
+      ctx.beginPath();
+      if (isCircle) {
+        ctx.arc(0, 0, Math.min(dw, dh) / 2, 0, Math.PI * 2);
+      } else {
+        ctx.rect(-dw / 2, -dh / 2, dw, dh);
+      }
+      ctx.clip();
+      if (fit === "contain") {
+        const s = Math.min(dw / img.width, dh / img.height);
+        const sw = img.width * s;
+        const sh = img.height * s;
+        ctx.drawImage(img, -sw / 2, -sh / 2, sw, sh);
+      } else {
+        const s = Math.max(dw / img.width, dh / img.height);
+        const sw = img.width * s;
+        const sh = img.height * s;
+        ctx.drawImage(img, -sw / 2, -sh / 2, sw, sh);
+      }
+      ctx.restore();
+      resolve();
+    };
+    img.onerror = resolve;
+    img.src = src;
+  });
+}
+
+export async function exportImage(designAreaEl, selectedBackground, slotImages, stickers = []) {
   if (!designAreaEl) return null;
 
   const legoCanvas = designAreaEl.querySelector(".lego-canvas") || designAreaEl;
@@ -110,9 +162,29 @@ export async function exportImage(designAreaEl, selectedBackground, slotImages) 
     }
   }
 
-  // === Step 4: Hide slot-zone imgs in DOM so html2canvas doesn't double-draw them ===
+  // === Step 4: Draw all image-type stickers + lego parts directly at full quality ===
+  // Sort by zIndex so layering is correct
+  const imageLayers = stickers
+    .filter((s) => s.src && s.type !== "text")
+    .sort((a, b) => (a.zIndex || 0) - (b.zIndex || 0));
+
+  for (const s of imageLayers) {
+    const x = Number(s.x) || 0;
+    const y = Number(s.y) || 0;
+    const w = Number(s.width) || 120;
+    const h = Number(s.height) || 60;
+    const rotation = Number(s.rotation || s.rotate || 0);
+    const fit = s.characterId ? "contain" : (s.isCircle ? "cover" : "cover");
+    await drawImageLayer(ctx, s.src, x, y, w, h, rotation, fit, !!s.isCircle, SCALE);
+  }
+
+  // === Step 5: Hide image layers + slot-zone imgs so html2canvas doesn't double-draw them ===
   const slotZoneImgs = legoCanvas.querySelectorAll(".slot-zone img");
   slotZoneImgs.forEach((el) => (el.style.visibility = "hidden"));
+
+  // Hide all image-type free-layers and lego parts (keep text layers visible for html2canvas)
+  const imageLayerDivs = legoCanvas.querySelectorAll(".lego-wrapper, .lego-part, .free-layer:not(.text-layer)");
+  imageLayerDivs.forEach((el) => (el.style.visibility = "hidden"));
 
   const saved = {
     backgroundImage: legoCanvas.style.backgroundImage,
@@ -142,8 +214,9 @@ export async function exportImage(designAreaEl, selectedBackground, slotImages) 
   // Restore
   Object.assign(legoCanvas.style, saved);
   slotZoneImgs.forEach((el) => (el.style.visibility = ""));
+  imageLayerDivs.forEach((el) => (el.style.visibility = ""));
 
-  // === Step 5: Composite DOM on top ===
+  // === Step 6: Composite text/DOM layers on top ===
   ctx.drawImage(domCanvas, 0, 0);
 
   return output.toDataURL("image/png");
