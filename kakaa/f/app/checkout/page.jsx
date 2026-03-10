@@ -236,17 +236,6 @@ export default function CheckoutPage() {
                   />
                   <span>Chuyển khoản (VietQR)</span>
                 </label>
-
-                <label className="checkout-radio" style={styles.radioRow}>
-                  <input
-                    type="radio"
-                    name="payment_method"
-                    value="cod"
-                    checked={form.payment_method === "cod"}
-                    onChange={onChangeText("payment_method")}
-                  />
-                  <span>Thanh toán khi nhận hàng (COD)</span>
-                </label>
               </div>
             </div>
           </div>
@@ -317,9 +306,7 @@ export default function CheckoutPage() {
               </div>
 
               <div style={{ fontSize: 12, color: "#666", marginTop: 6 }}>
-                {paymentMethod === "cod"
-                  ? "Bạn sẽ thanh toán khi nhận hàng."
-                  : "Bạn sẽ được chuyển tới trang VietQR để thanh toán chuyển khoản."}
+                Bạn sẽ được chuyển tới trang VietQR để thanh toán chuyển khoản.
               </div>
             </div>
           </div>
