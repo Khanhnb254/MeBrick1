@@ -278,6 +278,27 @@ export default function Stage({
     if (!picked) {
       pointerDownRef.current = false;
       handleDesignAreaClick?.(); // clear
+
+      // Kiểm tra click có trúng slot-zone không (sticker đã được ưu tiên trước)
+      if (selectedBackground) {
+        const slots = selectedBackground.slots || [];
+        const hitSlot = slots.find((slot) => {
+          // Slot không rotate → check thẳng; nếu có rotate bỏ qua (xấp xỉ)
+          return (
+            pt.x >= slot.x && pt.x <= slot.x + slot.w &&
+            pt.y >= slot.y && pt.y <= slot.y + slot.h
+          );
+        });
+        if (hitSlot) {
+          const key = `${selectedBackground.id}_${hitSlot.id}`;
+          const imgSrc = slotImages?.[key];
+          e.preventDefault();
+          if (!imgSrc) openSlotFilePicker(hitSlot.id);
+          else setSelectedSlotId(selectedSlotId === hitSlot.id ? null : hitSlot.id);
+          return;
+        }
+      }
+
       setSelectedSlotId(null);
       return;
     }
@@ -522,26 +543,6 @@ export default function Stage({
                     <div
                       key={slot.id}
                       className="slot-zone"
-                      onPointerDown={(e) => {
-                        // Nếu tại vị trí này có sticker → cho event bubble lên canvas để chọn/drag sticker
-                        const pt = getCanvasPoint(e);
-                        const hits = hitTestAll(pt);
-                        if (hits.length > 0) return; // có sticker → không chặn
-                        e.stopPropagation();
-                      }}
-                      onTouchEnd={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if (!imgSrc) openSlotFilePicker(slot.id);
-                        else setSelectedSlotId(selectedSlotId === slot.id ? null : slot.id);
-                      }}
-                      onClick={(e) => {
-                        // Nếu đang drag hoặc có sticker tại điểm này → bỏ qua click slot
-                        if (selectedId) return;
-                        e.stopPropagation();
-                        if (!imgSrc) openSlotFilePicker(slot.id);
-                        else setSelectedSlotId(selectedSlotId === slot.id ? null : slot.id);
-                      }}
                       onDragOver={(e) => e.preventDefault()}
                       onDrop={(e) => {
                         e.preventDefault();
@@ -565,8 +566,7 @@ export default function Stage({
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        // Khi đang có sticker/layer được chọn → nhường pointer cho sticker
-                        pointerEvents: selectedId ? "none" : "auto",
+                        pointerEvents: "none", // sticker luôn ưu tiên, click xử lý qua handleCanvasPointerDown
                       }}>
                       {imgSrc ? (
                         <>
