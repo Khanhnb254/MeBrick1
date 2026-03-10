@@ -3,33 +3,38 @@ import html2canvas from "html2canvas";
 export async function exportImage(designAreaEl) {
   if (!designAreaEl) return null;
 
-  // 🔹 Lưu lại style cũ
-  const oldTransform = designAreaEl.style.transform;
-  const oldWidth = designAreaEl.style.width;
-  const oldHeight = designAreaEl.style.height;
+  // Lấy canvas thật bên trong (lego-canvas) để tránh bị ảnh hưởng bởi scale transform
+  const legoCanvas = designAreaEl.querySelector(".lego-canvas") || designAreaEl;
 
-  // 🔹 Lấy kích thước thật (không bị scale)
-  const rect = designAreaEl.getBoundingClientRect();
-  const realWidth = designAreaEl.offsetWidth;
-  const realHeight = designAreaEl.offsetHeight;
+  // Lưu lại style cũ
+  const oldTransform = legoCanvas.style.transform;
+  const oldPosition = legoCanvas.style.position;
+  const oldLeft = legoCanvas.style.left;
+  const oldTop = legoCanvas.style.top;
 
-  // 🔹 Tắt transform để html2canvas render full size thật
-  designAreaEl.style.transform = "scale(1)";
-  designAreaEl.style.width = realWidth + "px";
-  designAreaEl.style.height = realHeight + "px";
+  // Kích thước logic gốc (không bị scale)
+  const logicalWidth = parseInt(legoCanvas.style.width) || legoCanvas.offsetWidth;
+  const logicalHeight = parseInt(legoCanvas.style.height) || legoCanvas.offsetHeight;
 
-  const canvas = await html2canvas(designAreaEl, {
+  // Tắt transform để html2canvas render đúng kích thước logic
+  legoCanvas.style.transform = "scale(1)";
+  legoCanvas.style.transformOrigin = "top left";
+
+  const canvas = await html2canvas(legoCanvas, {
     backgroundColor: "#ffffff",
-    scale: 6, // 🔥 chất lượng cao
+    scale: 6,
     useCORS: true,
     allowTaint: false,
     logging: false,
+    width: logicalWidth,
+    height: logicalHeight,
   });
 
-  // 🔹 Trả lại trạng thái ban đầu
-  designAreaEl.style.transform = oldTransform;
-  designAreaEl.style.width = oldWidth;
-  designAreaEl.style.height = oldHeight;
+  // Trả lại trạng thái ban đầu
+  legoCanvas.style.transform = oldTransform;
+  legoCanvas.style.position = oldPosition;
+  legoCanvas.style.left = oldLeft;
+  legoCanvas.style.top = oldTop;
 
   return canvas.toDataURL("image/png");
 }
