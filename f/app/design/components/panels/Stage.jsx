@@ -598,6 +598,7 @@ export default function Stage({
                               textAlign: "center",
                               cursor: "pointer",
                               padding: 0,
+                              pointerEvents: "auto",
                             }}>
                             ×
                           </button>
