@@ -752,6 +752,7 @@ function DesignPageInner() {
     }
     try {
       const dataUrl = await exportImage(designAreaRef.current, selectedBackground);
+      const a = document.createElement("a");
       a.href = dataUrl;
       a.download = `lego-design-${Date.now()}.png`;
       document.body.appendChild(a);
