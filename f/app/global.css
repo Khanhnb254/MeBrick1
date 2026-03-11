@@ -111,6 +111,7 @@ img {
 button {
   min-height: 44px; /* iOS recommended tap target size */
   min-width: 44px;
+  font-family: inherit; /* đồng bộ font với body (Poppins) */
 }
 
 /* Utility Classes - THAY THẾ TAILWIND */
