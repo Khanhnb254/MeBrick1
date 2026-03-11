@@ -48,6 +48,8 @@ export default function Stage({
   slotImages,
   onSetSlotImage,
   onClearSlotImage,
+  bgTextValues,
+  onSetBgTextValue,
 }) {
   // Auto show outfit selector khi user thêm nhân vật — đã chuyển sang hook
   const prevLegoCountRef = useRef(null);
@@ -613,6 +615,45 @@ export default function Stage({
 
                 {/* Free layers: sticker/text/image */}
                 {freeLayers.map(renderFreeLayer)}
+
+                {/* Background text fields (e.g. Happy Birthday Name/Level/Hobby) */}
+                {selectedBackground?.textFields?.length > 0 && step > 1 &&
+                  selectedBackground.textFields.map((tf) => {
+                    const key = `${selectedBackground.id}_${tf.id}`;
+                    const val = bgTextValues?.[key] ?? "";
+                    return (
+                      <input
+                        key={tf.id}
+                        type="text"
+                        className="bg-text-field"
+                        value={val}
+                        placeholder={tf.placeholder}
+                        onChange={(e) => onSetBgTextValue?.(selectedBackground.id, tf.id, e.target.value)}
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                          position: "absolute",
+                          left: tf.x,
+                          top: tf.y,
+                          width: tf.w,
+                          height: tf.h,
+                          zIndex: 200,
+                          background: "transparent",
+                          border: "none",
+                          borderBottom: "1.5px solid rgba(0,0,0,0.25)",
+                          fontSize: 13,
+                          fontFamily: "inherit",
+                          fontWeight: 500,
+                          color: "#111",
+                          outline: "none",
+                          padding: "0 4px",
+                          boxSizing: "border-box",
+                          pointerEvents: "auto",
+                        }}
+                      />
+                    );
+                  })
+                }
 
                 {step !== 4 && selectedSticker && (
                   <ImageTransformLayer

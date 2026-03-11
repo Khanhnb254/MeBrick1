@@ -61,7 +61,7 @@ async function drawImageLayer(ctx, src, x, y, w, h, rotation, fit = "cover", isC
   });
 }
 
-export async function exportImage(designAreaEl, selectedBackground, slotImages, stickers = []) {
+export async function exportImage(designAreaEl, selectedBackground, slotImages, stickers = [], bgTextValues = {}) {
   if (!designAreaEl) return null;
 
   const legoCanvas = designAreaEl.querySelector(".lego-canvas") || designAreaEl;
@@ -160,9 +160,23 @@ export async function exportImage(designAreaEl, selectedBackground, slotImages, 
         });
       }
     }
+    // === Step 3b: Draw background text field values ===
+    if (bgTextValues && selectedBackground?.textFields?.length) {
+      for (const tf of selectedBackground.textFields) {
+        const key = `${selectedBackground.id}_${tf.id}`;
+        const text = bgTextValues[key];
+        if (!text) continue;
+        ctx.save();
+        ctx.font = `500 ${13 * SCALE}px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif`;
+        ctx.fillStyle = "#111111";
+        ctx.textBaseline = "middle";
+        const textX = tf.x * SCALE + 4 * SCALE;
+        const textY = (tf.y + tf.h / 2) * SCALE;
+        ctx.fillText(text, textX, textY, (tf.w - 8) * SCALE);
+        ctx.restore();
+      }
+    }
   }
-
-  // === Step 4: Draw all image-type stickers + lego parts directly at full quality ===
   // Sort by zIndex so layering is correct
   const imageLayers = stickers
     .filter((s) => s.src && s.type !== "text")
@@ -185,6 +199,10 @@ export async function exportImage(designAreaEl, selectedBackground, slotImages, 
   // Hide all image-type free-layers and lego parts (keep text layers visible for html2canvas)
   const imageLayerDivs = legoCanvas.querySelectorAll(".lego-wrapper, .lego-part, .free-layer:not(.text-layer)");
   imageLayerDivs.forEach((el) => (el.style.visibility = "hidden"));
+
+  // Hide bg-text-fields (already drawn directly on canvas)
+  const bgTextInputs = legoCanvas.querySelectorAll(".bg-text-field");
+  bgTextInputs.forEach((el) => (el.style.visibility = "hidden"));
 
   const saved = {
     backgroundImage: legoCanvas.style.backgroundImage,
@@ -215,6 +233,7 @@ export async function exportImage(designAreaEl, selectedBackground, slotImages, 
   Object.assign(legoCanvas.style, saved);
   slotZoneImgs.forEach((el) => (el.style.visibility = ""));
   imageLayerDivs.forEach((el) => (el.style.visibility = ""));
+  bgTextInputs.forEach((el) => (el.style.visibility = ""));
 
   // === Step 6: Composite text/DOM layers on top ===
   ctx.drawImage(domCanvas, 0, 0);

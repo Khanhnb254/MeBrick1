@@ -227,6 +227,7 @@ function DesignPageInner() {
     setSelectedBackground(null);
     setSelectedSize(null);
     setSlotImages({});
+    setBgTextValues({});
     setSavedImages([]);
     setStep(STEPS.FRAME);
     try { localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
@@ -263,6 +264,11 @@ function DesignPageInner() {
       return next;
     });
 
+  // Text fields (ô chữ trong background mẫu, vd Happy Birthday)
+  const [bgTextValues, setBgTextValues] = useState({}); // { "bgId_fieldId": value }
+  const handleSetBgTextValue = (bgId, fieldId, value) =>
+    setBgTextValues((prev) => ({ ...prev, [`${bgId}_${fieldId}`]: value }));
+
   // STEPPER
   const STEPS = { FRAME: 1, BG: 2, LEGO: 3, CHECKOUT: 4 };
   const [step, setStep] = useState(STEPS.FRAME);
@@ -290,6 +296,7 @@ function DesignPageInner() {
       if (draft.quantity) setQuantity(draft.quantity);
       if (draft.savedImages?.length) setSavedImages(draft.savedImages);
       if (draft.slotImages && Object.keys(draft.slotImages).length) setSlotImages(draft.slotImages);
+      if (draft.bgTextValues && Object.keys(draft.bgTextValues).length) setBgTextValues(draft.bgTextValues);
       if (draft.step) setStep(draft.step);
     } catch { /* ignore */ }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -306,6 +313,7 @@ function DesignPageInner() {
           selectedBackground,
           savedImages,
           slotImages,
+          bgTextValues,
           quantity,
           step,
           savedAt: Date.now(),
@@ -325,6 +333,7 @@ function DesignPageInner() {
             selectedBackground,
             savedImages,
             slotImages,
+            bgTextValues,
             quantity,
             step,
             savedAt: Date.now(),
@@ -334,7 +343,7 @@ function DesignPageInner() {
       }
     }, 500);
     return () => clearTimeout(timer);
-  }, [stickers, legoCharacters, selectedFrame, selectedBackground, savedImages, slotImages, quantity, step]);
+  }, [stickers, legoCharacters, selectedFrame, selectedBackground, savedImages, slotImages, bgTextValues, quantity, step]);
 
   // ✅ auto open text panel when click text layer
   useEffect(() => {
@@ -751,7 +760,7 @@ function DesignPageInner() {
       return;
     }
     try {
-      const dataUrl = await exportImage(designAreaRef.current, selectedBackground, slotImages, stickers);
+      const dataUrl = await exportImage(designAreaRef.current, selectedBackground, slotImages, stickers, bgTextValues);
       const a = document.createElement("a");
       a.href = dataUrl;
       a.download = `lego-design-${Date.now()}.png`;
@@ -796,7 +805,7 @@ function DesignPageInner() {
       const pricing = calcPricing();
 
       // 2) export preview
-      const dataUrl = await exportImage(designAreaRef.current, selectedBackground, slotImages, stickers);
+      const dataUrl = await exportImage(designAreaRef.current, selectedBackground, slotImages, stickers, bgTextValues);
 
       const product_name =
         searchParams.get("name") ||
@@ -980,6 +989,8 @@ function DesignPageInner() {
                   slotImages={slotImages}
                   onSetSlotImage={handleSetSlotImage}
                   onClearSlotImage={handleClearSlotImage}
+                  bgTextValues={bgTextValues}
+                  onSetBgTextValue={handleSetBgTextValue}
                 />
               </div>
 

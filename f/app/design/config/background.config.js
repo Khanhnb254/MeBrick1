@@ -2,6 +2,10 @@ export const BACKGROUND_OPTIONS = [
 
   { id: "bg-light-gray", name: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY.png", backgroundSize: "cover", slots: [
     { id: "s1", x: 53,  y: 387, w: 177, h: 102 },
+  ], textFields: [
+    { id: "tf-name",  x: 308, y: 143, w: 185, h: 26, placeholder: "Nhập tên..." },
+    { id: "tf-level", x: 363, y: 180, w: 130, h: 26, placeholder: "Nhập tuổi..." },
+    { id: "tf-hobby", x: 381, y: 214, w: 112, h: 26, placeholder: "Nhập sở thích..." },
   ] },
   { id: "bg-sunset", name: "Happy Together", type: "pattern", value: "url('/images/hero/products/HAPPYTOGETHER.png')", thumbnail: "/images/hero/products/HAPPYTOGETHER.png", backgroundSize: "cover", slots: [
     { id: "s4", x: 42,  y: 385, w: 82,  h: 50 },
