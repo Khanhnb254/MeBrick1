@@ -29,7 +29,7 @@ export default function SampleGallery({
             className="selected-product-thumb"
             onClick={() => handleImageClick(selectedProductImage)}
             title={productName}>
-            <img src={selectedProductImage} />
+            <img src={selectedProductImage} draggable={false} onContextMenu={(e) => e.preventDefault()} />
           </button>
         </div>
       )}
@@ -52,7 +52,7 @@ export default function SampleGallery({
                   key={i}
                   className="sample-thumb"
                   onClick={() => handleImageClick(src)}>
-                  <img src={src} />
+                  <img src={src} draggable={false} onContextMenu={(e) => e.preventDefault()} />
                 </button>
               ))}
             </div>

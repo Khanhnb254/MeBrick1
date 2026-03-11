@@ -199,6 +199,8 @@ export default function ProductCard({ product, showAdminControls = false }) {
         <img
           src={product.image}
           alt={product.name}
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
           style={{
             ...styles.image,
             ...(isHovered ? styles.imageHovered : {}),

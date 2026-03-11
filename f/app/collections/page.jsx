@@ -202,6 +202,8 @@ export default function CollectionsPage() {
                         src={imgSrc}
                         alt={p?.name || "product"}
                         style={styles.img}
+                        draggable={false}
+                        onContextMenu={(e) => e.preventDefault()}
                         onError={(e) => {
                           e.currentTarget.src =
                             "/images/hero/products/product1.png";

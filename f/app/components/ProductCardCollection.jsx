@@ -26,6 +26,8 @@ export default function ProductCardCollection({ product }) {
           src={getProductImage(product.imageIndex)}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
           onError={(e) => {
             e.target.src = getFallbackImage(product.imageIndex);
           }}
