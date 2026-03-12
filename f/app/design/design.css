@@ -897,6 +897,37 @@
   margin-bottom: 12px;
 }
 
+/* FRAME COLOR OPTIONS */
+.frame-color-options {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.frame-color-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.frame-color-btn:hover {
+  border-color: #0b2d72;
+  color: #0b2d72;
+}
+
+.frame-color-btn.is-selected {
+  border-color: #0b2d72;
+  background: rgba(11, 45, 114, 0.06);
+  color: #0b2d72;
+}
+
 /* BASE INCLUDES */
 .base-includes {
   background: #f0f4ff;

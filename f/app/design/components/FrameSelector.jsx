@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { SIZE_OPTIONS, FRAME_TYPES } from "../config/size.config";
+
+const FRAME_COLORS = [
+  { id: "white", label: "Khung trắng" },
+  { id: "wood",  label: "Khung gỗ" },
+];
 
 export default function FrameSelector({ selectedFrame, setSelectedFrame }) {
   const frame = { id: 1, name: "Khung ảnh", price: 0 };
   const fixedSize = SIZE_OPTIONS[0]; // 23x23cm
+  const [selectedColor, setSelectedColor] = useState(null);
 
   const handleSelectFrameType = (frameType) => {
     setSelectedFrame({
@@ -13,6 +20,7 @@ export default function FrameSelector({ selectedFrame, setSelectedFrame }) {
       frameTypeName: frameType.name,
       frameTypePrice: frameType.price,
       frameTypeDescription: frameType.description,
+      frameColor: selectedColor,
       size: {
         id: fixedSize.id,
         name: fixedSize.name,
@@ -53,6 +61,19 @@ export default function FrameSelector({ selectedFrame, setSelectedFrame }) {
             </button>
           );
         })}
+      </div>
+
+      {/* FRAME COLOR OPTIONS */}
+      <div className="frame-color-options">
+        {FRAME_COLORS.map((color) => (
+          <button
+            key={color.id}
+            type="button"
+            className={`frame-color-btn ${selectedColor === color.id ? "is-selected" : ""}`}
+            onClick={() => setSelectedColor(color.id)}>
+            {color.label}
+          </button>
+        ))}
       </div>
 
       {/* BASE PRICE INCLUDES */}
