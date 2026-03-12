@@ -897,6 +897,37 @@
   margin-bottom: 12px;
 }
 
+/* BASE INCLUDES */
+.base-includes {
+  background: #f0f4ff;
+  border: 1px solid #c7d4f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 4px;
+}
+
+.base-includes-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: #0b2d72;
+  margin: 0 0 8px 0;
+}
+
+.base-includes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.base-includes-list li {
+  font-size: 12.5px;
+  color: #334155;
+  line-height: 1.4;
+}
+
 .frame-type-btn {
   border-radius: 10px;
   border: 2px solid #e2e8f0;
