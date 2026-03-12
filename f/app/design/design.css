@@ -1303,7 +1303,7 @@
 /* Sticky action buttons at bottom of panel */
 .mb-panel__actions {
   padding: 12px 28px 20px;
-  background: #fff;
+  background: transparent;
   border-top: 1px solid rgba(10, 37, 64, 0.08);
   flex-shrink: 0;
 }
