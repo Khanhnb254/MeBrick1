@@ -24,7 +24,7 @@
   /* Navy theme */
   --color-primary: #0A2540;
   --color-secondary: #3B82F6;
-  --color-accent: #F59E0B;
+  --color-accent: #3B82F6;
   --color-bg: #dcebfa;
   --color-text: #1E293B;
 
@@ -93,8 +93,8 @@ html {
 }
 .lego-step:hover:not(:disabled) {
   background: rgba(245,158,11,0.15);
-  border-color: #F59E0B;
-  color: #F59E0B;
+  border-color: #3B82F6;
+  color: #3B82F6;
   transform: translateY(-1px);
 }
 .lego-step .dot {
@@ -137,7 +137,7 @@ html {
 .lego-step-total .price {
   font-size: var(--text-sm);
   font-weight: 900;
-  color: #F59E0B;
+  color: #3B82F6;
 }
 
 /* ===== Layout (Mobile-first: 1 column → 2 columns on desktop) ===== */
@@ -941,13 +941,13 @@ html {
 }
 
 .frame-color-options .frame-color-btn:hover {
-  background-color: #F59E0B;
+  background-color: #3B82F6;
   box-shadow: 0 0 0 5px rgba(245,158,11,0.25);
   color: #0A2540;
 }
 
 .frame-color-options .frame-color-btn.is-selected {
-  background-color: #F59E0B;
+  background-color: #3B82F6;
   box-shadow: 0 0 0 5px rgba(245,158,11,0.25);
   color: #0A2540;
   font-weight: 800;
@@ -1051,7 +1051,7 @@ html {
 .frame-type-price {
   font-size: 16px;
   font-weight: 800;
-  color: #F59E0B;
+  color: #3B82F6;
   margin-top: 4px;
   padding-top: 4px;
   border-top: 1px solid #e2e8f0;
@@ -1502,14 +1502,14 @@ html {
 }
 .mb-btn--next {
   border-color: transparent;
-  background: #F59E0B;
+  background: #3B82F6;
   color: #0A2540;
   font-weight: 800;
   box-shadow: 0 6px 20px rgba(245,158,11,0.35);
   transition: all 0.2s ease;
 }
 .mb-btn--next:hover:not(:disabled) {
-  background: #e08e00;
+  background: #2563eb;
   box-shadow: 0 8px 24px rgba(245,158,11,0.5);
   transform: translateY(-1px);
 }
@@ -3274,15 +3274,15 @@ html {
 
 /* ===== Step active ===== */
 .lego-step.active {
-  border-color: #F59E0B !important;
+  border-color: #3B82F6 !important;
   background: transparent !important;
-  color: #F59E0B !important;
+  color: #3B82F6 !important;
   box-shadow: none !important;
 }
 .lego-step.active .dot {
-  background: #F59E0B !important;
+  background: #3B82F6 !important;
   color: #fff !important;
-  border-color: #F59E0B !important;
+  border-color: #3B82F6 !important;
 }
 
 /* ===== Step done ===== */
@@ -3301,7 +3301,7 @@ html {
 .option-price,
 .total-value,
 .mb-total__value {
-  color: #F59E0B !important;
+  color: #3B82F6 !important;
   font-weight: 800;
 }
 
@@ -3726,3 +3726,4 @@ html {
     image-rendering: crisp-edges;
   }
 }
+
