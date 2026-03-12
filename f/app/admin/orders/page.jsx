@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import "./orders.css";
 // ===== Simple Toast Notification =====
 function showToast(message, duration = 3000) {
   let toast = document.getElementById("admin-toast");
@@ -332,156 +333,201 @@ export default function AdminOrders() {
 
   // ===== UI =====
   return (
-    <div>
-      <h1>Orders</h1>
+    <div className="ao-page">
+      {/* SIDEBAR */}
+      <aside className="ao-sidebar">
+        <div className="ao-sidebar__logo">🧱 Mê Bricks</div>
+        <nav className="ao-sidebar__nav">
+          <a href="/admin-khanh-2026" className="ao-nav-item">📊 Dashboard</a>
+          <a href="/admin-khanh-2026/products" className="ao-nav-item">📦 Sản phẩm</a>
+          <a href="/admin-khanh-2026/orders" className="ao-nav-item ao-nav-item--active">🛒 Đơn hàng</a>
+        </nav>
+        <div className="ao-sidebar__footer">
+          <div className="ao-avatar">A</div>
+          <span>Admin</span>
+        </div>
+      </aside>
 
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 12 }}>
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search..."
-          style={{ padding: 8, minWidth: 220 }}
-        />
+      {/* MAIN */}
+      <main className="ao-main">
+        <h1 className="ao-main__title">🛒 Quản lý đơn hàng</h1>
 
-        <select value={status} onChange={(e) => setStatus(e.target.value)} style={{ padding: 8 }}>
-          {STATUS.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
+        {/* STATS */}
+        <div className="ao-stats">
+          <div className="ao-stat-card">
+            <div className="ao-stat-icon">📋</div>
+            <div className="ao-stat-value">{raw.length}</div>
+            <div className="ao-stat-label">Tổng đơn</div>
+          </div>
+          <div className="ao-stat-card">
+            <div className="ao-stat-icon">⏳</div>
+            <div className="ao-stat-value">{raw.filter(o => (o.status || "pending") === "pending").length}</div>
+            <div className="ao-stat-label">Chờ xử lý</div>
+          </div>
+          <div className="ao-stat-card">
+            <div className="ao-stat-icon">✅</div>
+            <div className="ao-stat-value">{raw.filter(o => payText(o) === "transferred" || payText(o) === "paid").length}</div>
+            <div className="ao-stat-label">Đã thanh toán</div>
+          </div>
+          <div className="ao-stat-card">
+            <div className="ao-stat-icon">💰</div>
+            <div className="ao-stat-value">{toMoneyVND(raw.reduce((s, o) => s + (o.total_amount || 0), 0))}</div>
+            <div className="ao-stat-label">Doanh thu</div>
+          </div>
+        </div>
 
-        <select value={sort} onChange={(e) => setSort(e.target.value)} style={{ padding: 8 }}>
-          {SORT.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
+        {/* FILTERS */}
+        <div className="ao-filters">
+          <input
+            className="ao-search"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="🔍 Tìm kiếm đơn hàng..."
+          />
+          <select className="ao-select" value={status} onChange={(e) => setStatus(e.target.value)}>
+            {STATUS.map((s) => <option key={s} value={s}>{s}</option>)}
+          </select>
+          <select className="ao-select" value={sort} onChange={(e) => setSort(e.target.value)}>
+            {SORT.map((s) => <option key={s} value={s}>{s}</option>)}
+          </select>
+          <button
+            className="ao-btn ao-btn--outline"
+            onClick={() => {
+              try { exportOrdersToCSV(filtered); } catch { alert("Export CSV thất bại"); }
+            }}
+          >
+            📥 Export CSV
+          </button>
+          <button
+            className="ao-btn ao-btn--ghost"
+            onClick={() => { setQ(""); setStatus("all"); setSort("newest"); }}
+          >
+            ✕ Xoá filter
+          </button>
+          {loading && <span style={{ color: "#64748b", fontSize: 13 }}>⏳ Loading…</span>}
+        </div>
 
-        <button
-          onClick={() => {
-            try {
-              exportOrdersToCSV(filtered);
-            } catch {
-              alert("Export CSV thất bại");
-            }
-          }}
-        >
-          Export CSV
-        </button>
-
-        {loading ? <span style={{ color: "#000" }}>Loading…</span> : null}
-      </div>
-
-      <DataTable
-        columns={[
-          {
-            key: "_check",
-            label: (
-              <input
-                type="checkbox"
-                checked={allSelected}
-                onChange={toggleSelectAll}
-                title="Chọn tất cả trang này"
-              />
-            ),
-            render: (r) => (
-              <input
-                type="checkbox"
-                checked={selectedIds.has(r.id)}
-                onChange={() => toggleSelect(r.id)}
-                onClick={(e) => e.stopPropagation()}
-              />
-            ),
-          },
-          { key: "id", label: "ID" },
-          { key: "customer_name", label: "Customer" },
-          { key: "phone", label: "Phone" },
-          {
-            key: "total_amount",
-            label: "Total",
-            render: (r) => <b>{toMoneyVND(r.total_amount)}</b>,
-          },
-          { key: "status", label: "Status" },
-          { key: "payment_status", label: "Payment", render: (r) => <b>{payText(r)}</b> },
-        ]}
-        rows={pageRows}
-        rowKey={(r) => r.id}
-        actions={(r) => (
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-            <button onClick={() => openDetail(r)}>Detail</button>
-            <button onClick={() => markPaid(r)} disabled={payText(r) === "paid"}>
-              Mark Paid
-            </button>
-            <select value={r.status} onChange={(e) => changeStatus(r, e.target.value)}>
+        {/* BULK BAR */}
+        {selectedIds.size > 0 && (
+          <div className="ao-bulk-bar">
+            <span style={{ fontWeight: 700 }}>Đã chọn {selectedIds.size} đơn</span>
+            <select
+              value={bulkStatus}
+              onChange={(e) => setBulkStatus(e.target.value)}
+            >
               {STATUS.filter((s) => s !== "all").map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
+                <option key={s} value={s}>{s}</option>
               ))}
             </select>
-            <button onClick={() => askDelete(r)}>Delete</button>
+            <button className="ao-btn ao-btn--primary ao-btn--sm" onClick={bulkChangeStatus}>
+              Cập nhật trạng thái
+            </button>
+            <button className="ao-btn ao-btn--danger ao-btn--sm" onClick={() => setConfirmBulkDelete(true)}>
+              Xoá {selectedIds.size} đơn
+            </button>
+            <button className="ao-btn ao-btn--ghost ao-btn--sm" onClick={() => setSelectedIds(new Set())}>
+              Bỏ chọn
+            </button>
           </div>
         )}
-      />
 
-      {/* ✅ BULK ACTION TOOLBAR */}
-      {selectedIds.size > 0 && (
-        <div style={{
-          position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)",
-          background: "#1e293b", color: "#fff", borderRadius: 14, padding: "12px 20px",
-          display: "flex", alignItems: "center", gap: 12, zIndex: 9000,
-          boxShadow: "0 8px 32px rgba(0,0,0,0.25)", flexWrap: "wrap",
-        }}>
-          <span style={{ fontWeight: 700 }}>Đã chọn {selectedIds.size} đơn</span>
-
-          <select
-            value={bulkStatus}
-            onChange={(e) => setBulkStatus(e.target.value)}
-            style={{ padding: "6px 10px", borderRadius: 8, border: "none", fontSize: 13 }}
-          >
-            {STATUS.filter((s) => s !== "all").map((s) => (
-              <option key={s} value={s}>{s}</option>
-            ))}
-          </select>
-
-          <button
-            onClick={bulkChangeStatus}
-            style={{
-              background: "#3b82f6", color: "#fff", border: "none",
-              borderRadius: 8, padding: "6px 14px", cursor: "pointer", fontWeight: 600,
-            }}
-          >
-            Cập nhật trạng thái
-          </button>
-
-          <button
-            onClick={() => setConfirmBulkDelete(true)}
-            style={{
-              background: "#ef4444", color: "#fff", border: "none",
-              borderRadius: 8, padding: "6px 14px", cursor: "pointer", fontWeight: 600,
-            }}
-          >
-            Xoá {selectedIds.size} đơn
-          </button>
-
-          <button
-            onClick={() => setSelectedIds(new Set())}
-            style={{
-              background: "transparent", color: "#94a3b8", border: "1px solid #475569",
-              borderRadius: 8, padding: "6px 14px", cursor: "pointer",
-            }}
-          >
-            Bỏ chọn
-          </button>
+        {/* TABLE */}
+        <div className="ao-table-wrap">
+          <table className="ao-table">
+            <thead>
+              <tr>
+                <th>
+                  <input
+                    type="checkbox"
+                    checked={allSelected}
+                    onChange={toggleSelectAll}
+                    title="Chọn tất cả trang này"
+                  />
+                </th>
+                <th>ID</th>
+                <th>Khách hàng</th>
+                <th>SĐT</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Thanh toán</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pageRows.map((r) => (
+                <tr key={r.id} onClick={() => openDetail(r)}>
+                  <td onClick={(e) => e.stopPropagation()}>
+                    <input
+                      type="checkbox"
+                      checked={selectedIds.has(r.id)}
+                      onChange={() => toggleSelect(r.id)}
+                    />
+                  </td>
+                  <td>#{r.id}</td>
+                  <td>{r.customer_name}</td>
+                  <td>{r.phone}</td>
+                  <td><b>{toMoneyVND(r.total_amount)}</b></td>
+                  <td>
+                    <span className={`ao-badge ao-badge--${r.status || "pending"}`}>
+                      {r.status || "pending"}
+                    </span>
+                  </td>
+                  <td>
+                    <span className={`ao-pay-badge ao-pay-badge--${payText(r)}`}>
+                      {payText(r)}
+                    </span>
+                  </td>
+                  <td onClick={(e) => e.stopPropagation()}>
+                    <div className="ao-actions">
+                      <button className="ao-btn ao-btn--primary ao-btn--sm" onClick={() => openDetail(r)}>
+                        Chi tiết
+                      </button>
+                      <button
+                        className="ao-btn ao-btn--success ao-btn--sm"
+                        onClick={() => markPaid(r)}
+                        disabled={payText(r) === "paid"}
+                      >
+                        Mark Paid
+                      </button>
+                      <select
+                        value={r.status}
+                        onChange={(e) => changeStatus(r, e.target.value)}
+                      >
+                        {STATUS.filter((s) => s !== "all").map((s) => (
+                          <option key={s} value={s}>{s}</option>
+                        ))}
+                      </select>
+                      <button className="ao-btn ao-btn--danger ao-btn--sm" onClick={() => askDelete(r)}>
+                        Xoá
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      )}
 
-      <Pagination page={page} pageSize={pageSize} total={filtered.length} onPageChange={setPage} />
+        {/* PAGINATION */}
+        <div className="ao-pagination-bar">
+          <div className="ao-page-size-wrap">
+            <span>Hiển thị</span>
+            <select
+              className="ao-select"
+              value={pageSize}
+              onChange={(e) => setPageSize(Number(e.target.value))}
+            >
+              {[10, 20, 50, 100].map((n) => (
+                <option key={n} value={n}>{n}</option>
+              ))}
+            </select>
+            <span>/ {filtered.length} đơn</span>
+          </div>
+          <Pagination page={page} pageSize={pageSize} total={filtered.length} onPageChange={setPage} />
+        </div>
 
-      
-      
+      </main>
+
       {/* ===== SLIDE OVER DETAIL ===== */}
 {detail && (
   <div className="order-drawer-overlay" onClick={() => setDetail(null)}>
