@@ -17,6 +17,8 @@ export default function FrameSelector({ selectedFrame, setSelectedFrame }) {
       setSelectedFrame({ ...selectedFrame, frameColor: colorId });
     }
   };
+
+  const handleSelectFrameType = (frameType) => {
     setSelectedFrame({
       frameId: frame.id,
       frameName: frame.name,
