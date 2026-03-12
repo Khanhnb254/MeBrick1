@@ -906,26 +906,27 @@
 
 .frame-color-btn {
   flex: 1;
-  padding: 8px 12px;
+  background-color: #f3f7fe;
+  color: #3b82f6;
+  border: none;
+  cursor: pointer;
   border-radius: 8px;
-  border: 2px solid #e2e8f0;
-  background: #ffffff;
+  height: 45px;
   font-size: 13px;
   font-weight: 600;
-  color: #334155;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.3s;
 }
 
 .frame-color-btn:hover {
-  border-color: #0b2d72;
-  color: #0b2d72;
+  background-color: #3b82f6;
+  box-shadow: 0 0 0 5px #3b83f65f;
+  color: #fff;
 }
 
 .frame-color-btn.is-selected {
-  border-color: #0b2d72;
-  background: rgba(11, 45, 114, 0.06);
-  color: #0b2d72;
+  background-color: #3b82f6;
+  box-shadow: 0 0 0 5px #3b83f65f;
+  color: #fff;
 }
 
 /* BASE INCLUDES */
