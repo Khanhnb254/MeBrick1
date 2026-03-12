@@ -24,14 +24,14 @@
 
 /* ===== Header ===== */
 .lego-header {
-  background: rgba(255, 255, 255, 0.85);
+  background: #0A2540;
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--lego-border);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   padding: var(--space-sm) var(--space-md);
   position: sticky;
   top: 0;
   z-index: 20;
-  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(10, 37, 64, 0.4);
 }
 
 .lego-header__inner {
@@ -60,21 +60,23 @@
   gap: var(--space-xs);
   padding: clamp(0.4rem, 2vw, 0.6rem) clamp(0.6rem, 3vw, 1rem);
   border-radius: 599px;
-  border: 2px solid rgba(17, 24, 39, 0.25);
-  background: #ffffff;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
   cursor: pointer;
   font-weight: 800;
   font-size: var(--text-xs);
   transition: all 0.2s ease;
 }
 .lego-step:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 .lego-step:hover:not(:disabled) {
-  background: #f9fafb;
+  background: rgba(245,158,11,0.15);
+  border-color: #F59E0B;
+  color: #F59E0B;
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 .lego-step .dot {
   width: clamp(1.25rem, 8vw, 1.5rem);
@@ -84,15 +86,16 @@
   align-items: center;
   justify-content: center;
   font-size: var(--text-xs);
-  border: 1px solid rgba(17, 24, 39, 0.12);
-  background: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
   flex-shrink: 0;
 }
 
 .lego-step-line {
   width: clamp(1rem, 5vw, 1.5rem);
   height: 2px;
-  background: rgba(17, 24, 39, 0.12);
+  background: rgba(255,255,255,0.15);
   border-radius: 999px;
   flex-shrink: 0;
 }
@@ -101,21 +104,21 @@
   margin-left: auto;
   padding: var(--space-xs) var(--space-sm);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(17, 24, 39, 0.12);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
   line-height: 1.1;
   font-size: var(--text-xs);
 }
 
 .lego-step-total .muted {
   font-size: clamp(0.7rem, 2vw, 0.8rem);
-  color: var(--lego-muted);
+  color: rgba(255,255,255,0.5);
 }
 
 .lego-step-total .price {
   font-size: var(--text-sm);
   font-weight: 900;
-  color: var(--lego-text);
+  color: #F59E0B;
 }
 
 /* ===== Layout (Mobile-first: 1 column → 2 columns on desktop) ===== */
@@ -154,8 +157,8 @@
 /* ===== Stage card ===== */
 .lego-stageCard {
   border-radius: var(--r-lg);
-  box-shadow: var(--shadow-strong);
-  background: linear-gradient(180deg, #ffffff 0%, #fbfbff 100%);
+  box-shadow: 0 8px 40px rgba(10, 37, 64, 0.18);
+  background: linear-gradient(160deg, #0A2540 0%, #1E3A5F 100%);
 }
 
 /* workspace container (vùng bao canvas) */
@@ -685,10 +688,10 @@
 }
 
 .stage-card {
-  background: var(--color-white);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #F8FAFC;
+  border: 1px solid rgba(10, 37, 64, 0.1);
   border-radius: clamp(1.25rem, 4vw, 1.75rem);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 14px 40px rgba(10, 37, 64, 0.1);
   padding: var(--space-md);
   width: 100%;
   height: 100%;
@@ -883,7 +886,7 @@
 .frame-section .section-title {
   font-weight: 900;
   font-size: 14px;
-  color: #0b2d72;
+  color: #0A2540;
   margin-bottom: 16px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -967,35 +970,44 @@
   background: #ffffff;
   padding: 9px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: auto;
+  position: relative;
+  overflow: hidden;
 }
 
 .frame-type-btn:hover {
-  border-color: #0b2d72;
-  box-shadow: 0 6px 20px rgba(11, 45, 114, 0.15);
-  transform: translateY(-2px);
+  border-color: #0A2540;
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.18);
+  transform: scale(1.02);
 }
 
 .frame-type-btn.is-selected {
-  border-color: #0b2d72;
-  background: rgba(11, 45, 114, 0.06);
-  box-shadow: 0 6px 20px rgba(11, 45, 114, 0.2);
+  border-color: #0A2540;
+  border-width: 2px;
+  background: rgba(10, 37, 64, 0.04);
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.2);
 }
 
-.frame-type-icon {
-  font-size: 21.6px;
-  margin-bottom: 4px;
+.frame-type-btn.is-selected::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #F59E0B;
+  border-radius: 10px 10px 0 0;
 }
 
 .frame-type-name {
   font-weight: 700;
   font-size: 15px;
-  color: #0b2d72;
+  color: #0A2540;
   margin-bottom: 2px;
   line-height: 1.2;
 }
@@ -1003,7 +1015,7 @@
 .frame-type-desc {
   font-size: 12px;
   font-weight: 400;
-  color: #0b2d72;
+  color: #1E293B;
   margin-bottom: 4px;
   line-height: 1.2;
 }
@@ -1019,17 +1031,17 @@
 .feature-item {
   font-size: 12px;
   font-weight: 400;
-  color: #0b2d72;
+  color: #1E293B;
   line-height: 1.1;
 }
 
 .frame-type-price {
   font-size: 16px;
   font-weight: 800;
-  color: #0b2d72;
+  color: #F59E0B;
   margin-top: 4px;
   padding-top: 4px;
-  border-top: 1px solid #c7d3eb;
+  border-top: 1px solid #e2e8f0;
   width: 100%;
 }
 
@@ -1413,22 +1425,25 @@
 }
 
 .mb-btn--primary {
-  border-color: rgb(179, 255, 251);
-  background: linear-gradient(
-    180deg,
-    var(--mb-primary-strong),
-    var(--mb-primary)
-  );
+  border-color: transparent;
+  background: linear-gradient(135deg, #0A2540, #3B82F6);
   color: #fff;
-  box-shadow: 0 16px 30px rgba(244, 114, 182, 0.18);
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.3);
+  transition: all 0.2s ease;
 }
 .mb-btn--soft {
-  border-color: rgba(244, 114, 182, 0.2);
-  background: var(--mb-soft);
-  color: var(--mb-primary-strong);
+  border-color: rgba(10, 37, 64, 0.15);
+  background: rgba(10, 37, 64, 0.05);
+  color: #0A2540;
 }
 .mb-btn--outline {
   background: #fff;
+  border-color: #0A2540;
+  color: #0A2540;
+  transition: all 0.2s ease;
+}
+.mb-btn--outline:hover {
+  background: rgba(10, 37, 64, 0.05);
 }
 .mb-btn--danger {
   border-color: rgba(220, 53, 69, 0.35);
@@ -3172,59 +3187,82 @@
 
 /* ===== Step active ===== */
 .lego-step.active {
-  border-color: #0593f1 !important;
+  border-color: #F59E0B !important;
+  background: rgba(245,158,11,0.15) !important;
+  color: #F59E0B !important;
   box-shadow: none !important;
+}
+.lego-step.active .dot {
+  background: #F59E0B !important;
+  color: #0A2540 !important;
+  border-color: #F59E0B !important;
+}
+
+/* ===== Step done ===== */
+.lego-step.done {
+  border-color: #3B82F6 !important;
+  background: rgba(59,130,246,0.15) !important;
+  color: #93c5fd !important;
+}
+.lego-step.done .dot {
+  background: #3B82F6 !important;
+  color: #fff !important;
+  border-color: #3B82F6 !important;
 }
 
 /* ===== Giá tiền ===== */
 .option-price,
 .total-value,
 .mb-total__value {
-  color: #1e70a0 !important;
+  color: #F59E0B !important;
+  font-weight: 800;
 }
 
 /* ===== Card active ===== */
 .option-card.is-active {
-  border-color: #458af8 !important;
-  background: rgba(59, 130, 246, 0.08) !important;
-  box-shadow: 0 14px 34px rgba(59, 130, 246, 0.14) !important;
+  border-color: #0A2540 !important;
+  background: rgba(10, 37, 64, 0.05) !important;
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.18) !important;
 }
 
 /* ===== Tick ===== */
 .option-check,
 .mb-check {
-  background: linear-gradient(135deg, #5d9bff, #0414f8) !important;
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35) !important;
+  background: linear-gradient(135deg, #0A2540, #3B82F6) !important;
+  box-shadow: 0 6px 16px rgba(10, 37, 64, 0.35) !important;
 }
 
 /* ===== Info box ===== */
 .panel-info {
-  border-color: rgba(59, 130, 246, 0.22) !important;
-  background: rgba(59, 130, 246, 0.08) !important;
+  border-color: rgba(10, 37, 64, 0.2) !important;
+  background: rgba(10, 37, 64, 0.04) !important;
 }
 .info-title {
-  color: #05adf0 !important;
+  color: #0A2540 !important;
 }
 
 /* ===== Primary button ===== */
 .mb-btn--primary,
 .btn-primary {
-  background: linear-gradient(135deg, #8dbefa, #0abaff) !important;
-  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.25) !important;
+  background: linear-gradient(135deg, #0A2540, #3B82F6) !important;
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.3) !important;
+  border-color: transparent !important;
 }
 
 /* ===== Qty button hover ===== */
 .qty-btn:hover,
 .mb-qty__btn:hover {
-  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25) !important;
+  background: #0A2540 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(10, 37, 64, 0.25) !important;
 }
 
 /* ===== Input focus ===== */
 .lego-customizer input:focus,
 .lego-customizer textarea:focus,
 .mb-input:focus {
-  border-color: #001aff !important;
-  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.15) !important;
+  border-color: #0A2540 !important;
+  box-shadow: 0 0 0 4px rgba(10, 37, 64, 0.12) !important;
 }
 
 /* ===== Size card active ===== */
