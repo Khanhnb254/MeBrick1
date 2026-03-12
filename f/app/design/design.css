@@ -1480,24 +1480,42 @@
 
 .mb-btn--primary {
   border-color: transparent;
-  background: linear-gradient(135deg, #8dbefa, #0abaff);
+  background: linear-gradient(135deg, #0A2540, #3B82F6);
   color: #fff;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.3);
   transition: all 0.2s ease;
 }
-.mb-btn--soft {
-  border-color: rgba(10, 37, 64, 0.15);
-  background: rgba(10, 37, 64, 0.05);
+.mb-btn--next {
+  border-color: transparent;
+  background: #F59E0B;
   color: #0A2540;
+  font-weight: 800;
+  box-shadow: 0 6px 20px rgba(245,158,11,0.35);
+  transition: all 0.2s ease;
+}
+.mb-btn--next:hover:not(:disabled) {
+  background: #e08e00;
+  box-shadow: 0 8px 24px rgba(245,158,11,0.5);
+  transform: translateY(-1px);
+}
+.mb-btn--soft {
+  border-color: #3B82F6;
+  background: transparent;
+  color: #3B82F6;
+  transition: all 0.2s ease;
+}
+.mb-btn--soft:hover {
+  background: rgba(59,130,246,0.1);
+  border-color: #3B82F6;
 }
 .mb-btn--outline {
-  background: #fff;
-  border-color: #0A2540;
-  color: #0A2540;
+  background: transparent;
+  border-color: #3B82F6;
+  color: #3B82F6;
   transition: all 0.2s ease;
 }
 .mb-btn--outline:hover {
-  background: rgba(10, 37, 64, 0.05);
+  background: rgba(59,130,246,0.1);
 }
 .mb-btn--danger {
   border-color: rgba(220, 53, 69, 0.35);
@@ -3298,9 +3316,10 @@
 /* ===== Primary button ===== */
 .mb-btn--primary,
 .btn-primary {
-  background: linear-gradient(135deg, #8dbefa, #0abaff) !important;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25) !important;
+  background: linear-gradient(135deg, #0A2540, #3B82F6) !important;
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.3) !important;
   border-color: transparent !important;
+  color: #fff !important;
 }
 
 /* ===== Qty button hover ===== */

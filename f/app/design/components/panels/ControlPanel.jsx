@@ -168,7 +168,7 @@ export default function ControlPanel(props) {
 
             <button
               type="button"
-              className="mb-btn mb-btn--primary mb-btn--lg mb-wfull"
+              className="mb-btn mb-btn--next mb-btn--lg mb-wfull"
               disabled={!selectedFrame}
               onClick={() => setStep(STEPS.BG)}>
               Tiếp theo → Chọn nền <FiArrowRight />
@@ -283,7 +283,7 @@ export default function ControlPanel(props) {
             <div className="mb-footer">
               <button
                 type="button"
-                className="mb-btn mb-btn--primary mb-btn--lg mb-wfull"
+                className="mb-btn mb-btn--next mb-btn--lg mb-wfull"
                 disabled={!selectedBackground}
                 onClick={() => setStep(STEPS.LEGO)}>
                 Tiếp theo → Chỉnh LEGO <FiArrowRight />
@@ -461,7 +461,7 @@ export default function ControlPanel(props) {
 
                 <button
                   type="button"
-                  className="mb-btn mb-btn--primary mb-btn--lg mb-wfull"
+                  className="mb-btn mb-btn--next mb-btn--lg mb-wfull"
                   onClick={() => setStep(STEPS.CHECKOUT)}
                   disabled={!selectedSize}>
                   Tiếp theo → Thanh toán <FiArrowRight />
