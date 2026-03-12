@@ -515,6 +515,26 @@ export default function ControlPanel(props) {
               </div>
             </div>
 
+            {/* MẸO: ĐẶT LỊCH SỚM */}
+            <div className="checkout-tip">
+              <div className="checkout-tip__header">
+                <span className="checkout-tip__icon">📅</span>
+                <span className="checkout-tip__title">Mẹo: Đặt Lịch Sớm (Early Bird)</span>
+              </div>
+              <p>Sản phẩm thủ công cần <strong>1-2 ngày hoàn thiện</strong> và 2-4 ngày vận chuyển.</p>
+              <p>Nếu bạn có kế hoạch tặng quà xa, hãy chọn ngày nhận <strong>sau 20 ngày</strong> ở bước thanh toán để được <strong>Giảm ngay 5%</strong>!</p>
+            </div>
+
+            {/* AN TÂM TUYỆT ĐỐI */}
+            <div className="checkout-antam">
+              <div className="checkout-antam__header">
+                <span className="checkout-antam__icon">🛡️</span>
+                <span className="checkout-antam__title">AN TÂM TUYỆT ĐỐI</span>
+                <span className="checkout-antam__badge">MIỄN PHÍ 100%</span>
+              </div>
+              <p>Sau khi đặt hàng, <strong className="checkout-antam__highlight">Designer chuyên nghiệp</strong> sẽ trực tiếp căn chỉnh lại bố cục, font chữ đẹp nhất và <strong>gửi ảnh thực tế</strong> cho bạn duyệt trước khi đóng gói &amp; gửi đi.</p>
+            </div>
+
             <div className="mb-block__label">Số lượng</div>
 
             <div className="mb-qty">

@@ -1853,6 +1853,90 @@
   background: rgba(0, 0, 0, 0.08);
   margin: 8px 0;
 }
+
+/* CHECKOUT TIP & ANTAM BOXES */
+.checkout-tip {
+  background: #f0f4ff;
+  border: 1.5px solid #c7d4f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.checkout-tip p {
+  margin: 3px 0 0 0;
+}
+
+.checkout-tip__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.checkout-tip__icon {
+  font-size: 16px;
+}
+
+.checkout-tip__title {
+  font-weight: 700;
+  font-size: 13px;
+  color: #0b2d72;
+}
+
+.checkout-antam {
+  background: #fff;
+  border: 2px solid #22c55e;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+.checkout-antam p {
+  margin: 6px 0 0 0;
+}
+
+.checkout-antam__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.checkout-antam__icon {
+  font-size: 18px;
+}
+
+.checkout-antam__title {
+  font-weight: 900;
+  font-size: 15px;
+  color: #1e293b;
+  letter-spacing: 0.3px;
+}
+
+.checkout-antam__badge {
+  background: #fca5a5;
+  color: #7f1d1d;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.checkout-antam__highlight {
+  background: #bbf7d0;
+  color: #14532d;
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-weight: 700;
+}
 /* Header của Stage */
 .stage-head {
   display: flex;
