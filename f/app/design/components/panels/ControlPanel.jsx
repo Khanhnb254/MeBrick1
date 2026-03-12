@@ -473,6 +473,7 @@ export default function ControlPanel(props) {
 
         {/* ===================== STEP 4 (CHECKOUT) ===================== */}
         {step === STEPS.CHECKOUT && (
+          <>
           <section className="mb-block">
             <div className="mb-row mb-row--between">
               <button
@@ -583,6 +584,7 @@ export default function ControlPanel(props) {
                   : "Thêm vào giỏ hàng"}
             </button>
           </div>
+          </>
         )}
       </div>
     </aside>
