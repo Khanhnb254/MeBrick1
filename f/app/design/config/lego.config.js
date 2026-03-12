@@ -1,19 +1,19 @@
 export const LEGO_CONFIG = {
   partConfig: {
-    totalWidth: 166,
-    totalHeight: 260,
+    totalWidth: 183,
+    totalHeight: 286,
 
-    head:   { width: 156, height: 104, zIndex: 11, offsetX: 5,  offsetY: 89  },
-    torso:  { width: 166, height: 125, zIndex: 10, offsetX: 0,  offsetY: 73  },
-    legs:   { width: 156, height: 114, zIndex: 9,  offsetX: 5,  offsetY: 88  },
-    face:   { width: 47,  height: 78,  zIndex: 13, offsetX: 0,  offsetY: -16 },
-    hair:   { width: 90, height: 68, zIndex: 14, offsetX: 0,  offsetY: -20  },
-    outfit: { width: 166, height: 125, zIndex: 10, offsetX: 0,  offsetY: 83  },
+    head:   { width: 172, height: 114, zIndex: 11, offsetX: 6,  offsetY: 98  },
+    torso:  { width: 183, height: 138, zIndex: 10, offsetX: 0,  offsetY: 80  },
+    legs:   { width: 172, height: 125, zIndex: 9,  offsetX: 6,  offsetY: 97  },
+    face:   { width: 52,  height: 86,  zIndex: 13, offsetX: 0,  offsetY: -18 },
+    hair:   { width: 99, height: 75, zIndex: 14, offsetX: 0,  offsetY: -22  },
+    outfit: { width: 183, height: 138, zIndex: 10, offsetX: 0,  offsetY: 91  },
   },
 
   assemblyConfig: {
-    headToTorso:   { overlap: 6.5 },
-    torsoToLegs:   { overlap: 10  },
+    headToTorso:   { overlap: 7.2 },
+    torsoToLegs:   { overlap: 11  },
     snapTolerance: 4,
   },
 
