@@ -36,7 +36,7 @@ export const FRAME_TYPES = [
     description: "Khung ảnh 1 LEGO + Thiệp chúc mừng + Hộp quà",
     price: 230000,
     basePrice: 230000,
-    features: ["🎨 Khung ảnh LEGO", "💝 Thiệp chúc mừng", "📦 Hộp quà"],
+    features: ["Khung ảnh LEGO", "Thiệp chúc mừng", "Hộp quà"],
     icon: "🖼️",
   },
   {
@@ -45,7 +45,7 @@ export const FRAME_TYPES = [
     description: "Khung ảnh 2 LEGO + Thiệp chúc mừng + Hộp quà",
     price: 250000,
     basePrice: 250000,
-    features: ["🎨 Khung ảnh LEGO", "💝 Thiệp chúc mừng", "📦 Hộp quà"],
+    features: ["Khung ảnh LEGO", "Thiệp chúc mừng", "Hộp quà"],
     icon: "🖼️",
   },
   {
@@ -55,10 +55,10 @@ export const FRAME_TYPES = [
     price: 320000,
     basePrice: 320000,
     features: [
-      "💡 Đèn LED",
-      "🎨 Khung ảnh LEGO",
-      "💝 Thiệp chúc mừng",
-      "📦 Hộp quà",
+      "Đèn LED",
+      "Khung ảnh LEGO",
+      "Thiệp chúc mừng",
+      "Hộp quà",
     ],
     icon: "💡",
   },
