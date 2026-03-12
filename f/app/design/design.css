@@ -3274,15 +3274,15 @@ html {
 
 /* ===== Step active ===== */
 .lego-step.active {
-  border-color: #0A2540 !important;
-  background: #0A2540 !important;
-  color: #fff !important;
-  box-shadow: 0 4px 14px rgba(10,37,64,0.3) !important;
+  border-color: #F59E0B !important;
+  background: #F59E0B !important;
+  color: #0A2540 !important;
+  box-shadow: 0 4px 14px rgba(245,158,11,0.35) !important;
 }
 .lego-step.active .dot {
-  background: rgba(255,255,255,0.2) !important;
-  color: #fff !important;
-  border-color: rgba(255,255,255,0.4) !important;
+  background: rgba(10,37,64,0.15) !important;
+  color: #0A2540 !important;
+  border-color: rgba(10,37,64,0.2) !important;
 }
 
 /* ===== Step done ===== */
