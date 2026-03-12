@@ -3275,26 +3275,26 @@ html {
 /* ===== Step active ===== */
 .lego-step.active {
   border-color: #F59E0B !important;
-  background: #F59E0B !important;
-  color: #0A2540 !important;
-  box-shadow: 0 4px 14px rgba(245,158,11,0.35) !important;
+  background: transparent !important;
+  color: #F59E0B !important;
+  box-shadow: none !important;
 }
 .lego-step.active .dot {
-  background: rgba(10,37,64,0.15) !important;
-  color: #0A2540 !important;
-  border-color: rgba(10,37,64,0.2) !important;
+  background: #F59E0B !important;
+  color: #fff !important;
+  border-color: #F59E0B !important;
 }
 
 /* ===== Step done ===== */
 .lego-step.done {
-  border-color: #3B82F6 !important;
-  background: #3B82F6 !important;
-  color: #fff !important;
+  border-color: #0A2540 !important;
+  background: transparent !important;
+  color: #0A2540 !important;
 }
 .lego-step.done .dot {
-  background: rgba(255,255,255,0.25) !important;
+  background: #0A2540 !important;
   color: #fff !important;
-  border-color: rgba(255,255,255,0.4) !important;
+  border-color: #0A2540 !important;
 }
 
 /* ===== Giá tiền ===== */
