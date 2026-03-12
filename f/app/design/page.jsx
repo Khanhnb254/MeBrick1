@@ -856,6 +856,7 @@ function DesignPageInner() {
         frameType: selectedFrame.frameType,
         frameTypeName: selectedFrame.frameTypeName,
         frameTypePrice: selectedFrame.frameTypePrice,
+        frameColor: selectedFrame.frameColor ?? null,
         sizeLabel: selectedFrame.size?.dimensions || "23x23cm",
         canvasSize,
         selectedBackground,

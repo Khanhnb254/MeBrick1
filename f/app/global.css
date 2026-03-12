@@ -812,6 +812,15 @@ button.danger-outline {
   color: #000;
 }
 
+.item-frame-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: #444;
+}
+
 .muted {
   color: #000;
 }

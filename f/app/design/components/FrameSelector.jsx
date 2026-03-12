@@ -11,7 +11,12 @@ export default function FrameSelector({ selectedFrame, setSelectedFrame }) {
   const fixedSize = SIZE_OPTIONS[0]; // 23x23cm
   const [selectedColor, setSelectedColor] = useState(null);
 
-  const handleSelectFrameType = (frameType) => {
+  const handleSelectColor = (colorId) => {
+    setSelectedColor(colorId);
+    if (selectedFrame?.frameType) {
+      setSelectedFrame({ ...selectedFrame, frameColor: colorId });
+    }
+  };
     setSelectedFrame({
       frameId: frame.id,
       frameName: frame.name,
@@ -70,7 +75,7 @@ export default function FrameSelector({ selectedFrame, setSelectedFrame }) {
             key={color.id}
             type="button"
             className={`frame-color-btn ${selectedColor === color.id ? "is-selected" : ""}`}
-            onClick={() => setSelectedColor(color.id)}>
+            onClick={() => handleSelectColor(color.id)}>
             {color.label}
           </button>
         ))}

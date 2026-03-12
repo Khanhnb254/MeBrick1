@@ -585,6 +585,18 @@ export default function AdminOrders() {
                     {toMoneyVND(it?.unit_price ?? 0)}
                   </div>
 
+                  {/* Loại khung & màu khung */}
+                  {(it?.design_data?.frameTypeName || it?.design_data?.frameColor) && (
+                    <div className="item-frame-info">
+                      {it?.design_data?.frameTypeName && (
+                        <span>Loại khung: <strong>{it.design_data.frameTypeName}</strong></span>
+                      )}
+                      {it?.design_data?.frameColor && (
+                        <span>Màu khung: <strong>{it.design_data.frameColor === "white" ? "Khung trắng" : "Khung gỗ"}</strong></span>
+                      )}
+                    </div>
+                  )}
+
                   {/* Ảnh khách upload */}
                   {uploadedImages.length > 0 && (
                     <div style={{ marginTop: 8 }}>
