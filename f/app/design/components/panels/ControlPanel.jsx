@@ -559,6 +559,9 @@ export default function ControlPanel(props) {
               <div className="mb-total__value">{formatVnd(p.total)}</div>
             </div>
 
+          </section>
+
+          <div className="mb-panel__actions">
             <button
               type="button"
               className="mb-btn mb-btn--soft mb-btn--lg mb-wfull"
@@ -579,7 +582,7 @@ export default function ControlPanel(props) {
                   ? "Cập nhật sản phẩm"
                   : "Thêm vào giỏ hàng"}
             </button>
-          </section>
+          </div>
         )}
       </div>
     </aside>

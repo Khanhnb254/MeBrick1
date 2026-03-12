@@ -1298,12 +1298,23 @@
   font-size: 16px;
 }
 .mb-panel__body {
-  padding: 26px 28px 28px;
+  padding: 26px 28px 8px;
   overflow: auto;
   flex: 1;
   min-height: 0;
   display: flex;
   flex-direction: column;
+}
+
+/* Sticky action buttons at bottom of panel */
+.mb-panel__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 28px 20px;
+  background: #fff;
+  border-top: 1px solid rgba(10, 37, 64, 0.08);
+  flex-shrink: 0;
 }
 
 @keyframes mb-step-in {
@@ -2056,7 +2067,7 @@
   max-width: 100%;
   position: relative;
   align-self: stretch;
-  overflow-y: auto;
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
 }
