@@ -537,24 +537,6 @@ export default function ControlPanel(props) {
               <p>Trường hợp muốn thêm frame hoặc điều chỉnh lại thiết kế, bạn cũng có thể nhắn Zalo trước khi đơn hàng được hoàn thiện và gửi đi.</p>
             </div>
 
-            <div className="mb-block__label">Số lượng</div>
-
-            <div className="mb-qty">
-              <button
-                type="button"
-                className="mb-qty__btn"
-                onClick={() => setQuantity((q) => Math.max(1, (q || 1) - 1))}>
-                −
-              </button>
-              <div className="mb-qty__val">{quantity || 1}</div>
-              <button
-                type="button"
-                className="mb-qty__btn"
-                onClick={() => setQuantity((q) => (q || 1) + 1)}>
-                +
-              </button>
-            </div>
-
             <div className="mb-row mb-row--between mb-total">
               <div className="mb-total__label">Tổng cộng</div>
               <div className="mb-total__value">{formatVnd(p.total)}</div>
@@ -563,26 +545,49 @@ export default function ControlPanel(props) {
           </section>
 
           <div className="mb-panel__actions">
-            <button
-              type="button"
-              className="mb-btn mb-btn--soft mb-btn--lg mb-wfull"
-              onClick={handleExportImage}
-              disabled={!selectedSize}>
-              <FiDownload /> Xuất hình ảnh
-            </button>
+            <div className="mb-panel__actions-inner">
+              <div className="mb-panel__actions-btns">
+                <button
+                  type="button"
+                  className="mb-btn mb-btn--soft mb-btn--lg mb-wfull"
+                  onClick={handleExportImage}
+                  disabled={!selectedSize}>
+                  <FiDownload /> Xuất hình ảnh
+                </button>
 
-            <button
-              type="button"
-              className="mb-btn mb-btn--primary mb-btn--lg mb-wfull"
-              onClick={handleOrder}
-              disabled={!selectedSize || isSaving}>
-              <FiShoppingCart />{" "}
-              {isSaving
-                ? "Đang lưu..."
-                : isEditing
-                  ? "Cập nhật sản phẩm"
-                  : "Thêm vào giỏ hàng"}
-            </button>
+                <button
+                  type="button"
+                  className="mb-btn mb-btn--primary mb-btn--lg mb-wfull"
+                  onClick={handleOrder}
+                  disabled={!selectedSize || isSaving}>
+                  <FiShoppingCart />{" "}
+                  {isSaving
+                    ? "Đang lưu..."
+                    : isEditing
+                      ? "Cập nhật sản phẩm"
+                      : "Thêm vào giỏ hàng"}
+                </button>
+              </div>
+
+              <div className="mb-panel__actions-qty">
+                <div className="mb-qty__label">SL</div>
+                <div className="mb-qty mb-qty--compact">
+                  <button
+                    type="button"
+                    className="mb-qty__btn"
+                    onClick={() => setQuantity((q) => Math.max(1, (q || 1) - 1))}>
+                    −
+                  </button>
+                  <div className="mb-qty__val">{quantity || 1}</div>
+                  <button
+                    type="button"
+                    className="mb-qty__btn"
+                    onClick={() => setQuantity((q) => (q || 1) + 1)}>
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           </>
         )}

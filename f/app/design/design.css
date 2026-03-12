@@ -1302,13 +1302,62 @@
 
 /* Sticky action buttons at bottom of panel */
 .mb-panel__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
   padding: 12px 28px 20px;
   background: #fff;
   border-top: 1px solid rgba(10, 37, 64, 0.08);
   flex-shrink: 0;
+}
+
+.mb-panel__actions-inner {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.mb-panel__actions-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.mb-panel__actions-qty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.mb-qty__label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mb-qty--compact {
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mb-qty--compact .mb-qty__btn {
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  padding: 0;
+  border-radius: 8px;
+}
+
+.mb-qty--compact .mb-qty__val {
+  font-size: 15px;
+  font-weight: 800;
+  min-width: 32px;
+  text-align: center;
+  padding: 2px 0;
 }
 
 @keyframes mb-step-in {
@@ -1431,9 +1480,9 @@
 
 .mb-btn--primary {
   border-color: transparent;
-  background: linear-gradient(135deg, #0A2540, #3B82F6);
+  background: linear-gradient(135deg, #8dbefa, #0abaff);
   color: #fff;
-  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.3);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
   transition: all 0.2s ease;
 }
 .mb-btn--soft {
@@ -3249,8 +3298,8 @@
 /* ===== Primary button ===== */
 .mb-btn--primary,
 .btn-primary {
-  background: linear-gradient(135deg, #0A2540, #3B82F6) !important;
-  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.3) !important;
+  background: linear-gradient(135deg, #8dbefa, #0abaff) !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25) !important;
   border-color: transparent !important;
 }
 
