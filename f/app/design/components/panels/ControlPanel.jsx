@@ -518,21 +518,22 @@ export default function ControlPanel(props) {
             {/* MẸO: ĐẶT LỊCH SỚM */}
             <div className="checkout-tip">
               <div className="checkout-tip__header">
-                <span className="checkout-tip__icon">📅</span>
-                <span className="checkout-tip__title">Mẹo: Đặt Lịch Sớm (Early Bird)</span>
+                <span className="checkout-tip__icon">🚚</span>
+                <span className="checkout-tip__title">Thời gian sản xuất &amp; giao hàng</span>
               </div>
-              <p>Sản phẩm thủ công cần <strong>1-2 ngày hoàn thiện</strong> và 2-4 ngày vận chuyển.</p>
-              <p>Nếu bạn có kế hoạch tặng quà xa, hãy chọn ngày nhận <strong>sau 20 ngày</strong> ở bước thanh toán để được <strong>Giảm ngay 5%</strong>!</p>
+              <p>Sản phẩm của Mê Bricks được làm thủ công nên cần khoảng <strong>1 ngày</strong> để hoàn thiện trước khi gửi đi.</p>
+              <p>Sau khi hoàn thành, đơn hàng sẽ được đóng gói cẩn thận và vận chuyển trong khoảng <strong>2–4 ngày</strong> tuỳ khu vực.</p>
+              <p>Để đảm bảo nhận quà đúng dịp, bạn nên <strong>đặt trước vài ngày</strong> so với ngày cần tặng.</p>
             </div>
 
-            {/* AN TÂM TUYỆT ĐỐI */}
+            {/* HỖ TRỢ TRƯỚC KHI GỬI HÀNG */}
             <div className="checkout-antam">
               <div className="checkout-antam__header">
-                <span className="checkout-antam__icon">🛡️</span>
-                <span className="checkout-antam__title">AN TÂM TUYỆT ĐỐI</span>
-                <span className="checkout-antam__badge">MIỄN PHÍ 100%</span>
+                <span className="checkout-antam__icon">💬</span>
+                <span className="checkout-antam__title">HỖ TRỢ TRƯỚC KHI GỬI HÀNG</span>
               </div>
-              <p>Sau khi đặt hàng, <strong className="checkout-antam__highlight">Designer chuyên nghiệp</strong> sẽ trực tiếp căn chỉnh lại bố cục, font chữ đẹp nhất và <strong>gửi ảnh thực tế</strong> cho bạn duyệt trước khi đóng gói &amp; gửi đi.</p>
+              <p>Nếu bạn muốn xem kỹ hơn về sản phẩm hoặc chỉnh sửa thêm chi tiết, hãy liên hệ trực tiếp qua <strong>Zalo: 0976 924 958</strong> để Mê Bricks hỗ trợ nhanh nhất.</p>
+              <p>Trường hợp muốn thêm frame hoặc điều chỉnh lại thiết kế, bạn cũng có thể nhắn Zalo trước khi đơn hàng được hoàn thiện và gửi đi.</p>
             </div>
 
             <div className="mb-block__label">Số lượng</div>
