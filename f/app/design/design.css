@@ -904,7 +904,7 @@
   margin-bottom: 12px;
 }
 
-.frame-color-btn {
+.frame-color-options .frame-color-btn {
   flex: 1;
   background-color: #f3f7fe;
   color: #3b82f6;
@@ -915,15 +915,16 @@
   font-size: 13px;
   font-weight: 600;
   transition: 0.3s;
+  padding: 0;
 }
 
-.frame-color-btn:hover {
+.frame-color-options .frame-color-btn:hover {
   background-color: #3b82f6;
   box-shadow: 0 0 0 5px #3b83f65f;
   color: #fff;
 }
 
-.frame-color-btn.is-selected {
+.frame-color-options .frame-color-btn.is-selected {
   background-color: #3b82f6;
   box-shadow: 0 0 0 5px #3b83f65f;
   color: #fff;
