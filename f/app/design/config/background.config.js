@@ -125,6 +125,18 @@ export const BACKGROUND_OPTIONS = [
         { id: "s4", x: 302, y: 453, w: 44,  h: 60,  rotate: 1 },
       ],
     };
+    const textFieldsMap = {
+      5: [
+        { id: "tf-name",      x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
+        { id: "tf-level",     x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập tuổi..." },
+        { id: "tf-manifesto", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập mong ước..." },
+      ],
+      6: [
+        { id: "tf-name",     x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
+        { id: "tf-dob",      x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập ngày sinh..." },
+        { id: "tf-position", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập chức vụ..." },
+      ],
+    };
     return {
       id: `bg-sample-${n}`,
       name: customNames[n] ?? `Mẫu ${n}`,
@@ -133,6 +145,7 @@ export const BACKGROUND_OPTIONS = [
       thumbnail: `/samples/sample${n}.png`,
       backgroundSize: "cover",
       slots: slotsMap[n] ?? [],
+      ...(textFieldsMap[n] ? { textFields: textFieldsMap[n] } : {}),
     };
   }).filter(Boolean),
 ];
