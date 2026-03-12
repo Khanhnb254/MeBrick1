@@ -59,10 +59,10 @@ export default function FrameSelector({ selectedFrame, setSelectedFrame }) {
       <div className="base-includes">
         <p className="base-includes-title">Giá cơ bản đã bao gồm:</p>
         <ul className="base-includes-list">
-          <li>🖼️ 1 khung ảnh 23x23 cm – thiết kế sang trọng, trưng bày ấn tượng</li>
-          <li>🎨 1 background tuỳ chọn – mẫu có sẵn hoặc sử dụng ảnh của bạn</li>
-          <li>🧑‍🎨 Miễn phí 1 nhân vật (tuỳ chỉnh mặt và kiểu tóc theo yêu cầu)</li>
-          <li>🎁 Hộp quà kèm thiệp viết tay – nội dung cá nhân hoá</li>
+          <li>1 khung ảnh 23x23 cm – thiết kế sang trọng, trưng bày ấn tượng</li>
+          <li>1 background tuỳ chọn – mẫu có sẵn hoặc sử dụng ảnh của bạn</li>
+          <li>Miễn phí 1 nhân vật (tuỳ chỉnh mặt và kiểu tóc theo yêu cầu)</li>
+          <li>Hộp quà kèm thiệp viết tay – nội dung cá nhân hoá</li>
         </ul>
       </div>
     </div>
