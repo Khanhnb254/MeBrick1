@@ -1,8 +1,4 @@
-"use client";
-
-import dynamic from "next/dynamic";
-
-const PayPageClient = dynamic(() => import("./PayPageClient"), { ssr: false });
+import PayPageClient from "./PayPageClient";
 
 export default function PayPage() {
   return <PayPageClient />;
