@@ -32,7 +32,7 @@ export const BACKGROUND_OPTIONS = [
       10: "Love ver 2",
       11: "Love ver 3",
       12: "Love ver 4",
-      13: "Love ver 5",
+      13: "Happy Birthday ver 11",
       14: "Love ver 6",
       15: "Love ver 7",
       16: "Happy Birthday ver 2",

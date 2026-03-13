@@ -132,6 +132,20 @@ function DesignPageInner() {
     setSelectedProductImage(initialProductImage);
   }, [initialProductImage]);
 
+  // Auto-select background from URL param
+  useEffect(() => {
+    const bgId = searchParams.get("bg");
+    if (bgId && !selectedBackground) {
+      const bg = BACKGROUND_OPTIONS.find((b) => b.id === bgId);
+      if (bg) {
+        setSelectedBackground({
+          ...bg,
+          value: bg.value?.startsWith("url") ? bg.value : `url(${bg.value})`,
+        });
+      }
+    }
+  }, []);
+
   // Auto-set selectedSize when selectedFrame is chosen (only 1 fixed size 23x23)
   useEffect(() => {
     if (selectedFrame && !selectedSize) {

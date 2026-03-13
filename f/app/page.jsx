@@ -614,13 +614,25 @@ export default function MeBrickPage() {
                     <div className={styles.productFooter} style={{ justifyContent: "center" }}>
                       <BubbleButton
                         style={{ padding: "10px 66px" }}
-                        onClick={() =>
-                          (window.location.href =
+                        onClick={() => {
+                          const defaultBgIds = [
+                            "bg-light-gray",   // mẫu 1 → Happy Birthday
+                            "bg-sample-5",     // mẫu 2 → Special Day ver 1
+                            "bg-sample-7",     // mẫu 3 → Special Day ver 3
+                            "bg-sample-17",    // mẫu 4 → Happy Birthday ver 3
+                            "bg-sample-7",     // mẫu 5 → Special Day ver 3
+                            "bg-sample-10",    // mẫu 6 → Love ver 2
+                            "bg-sample-7",     // mẫu 7 → Special Day ver 3
+                            "bg-sample-12",    // mẫu 8 → Love ver 4
+                          ];
+                          const bgParam = defaultBgIds[productIdx] ? `&bg=${defaultBgIds[productIdx]}` : "";
+                          window.location.href =
                             `/design?productId=${product.id}` +
                             `&name=${encodeURIComponent(product.name)}` +
                             `&price=${encodeURIComponent(product.price)}` +
-                            `&image=${encodeURIComponent(productImage)}`)
-                        }>
+                            `&image=${encodeURIComponent(productImage)}` +
+                            bgParam;
+                        }}>
                         Thiết kế
                       </BubbleButton>
                     </div>
