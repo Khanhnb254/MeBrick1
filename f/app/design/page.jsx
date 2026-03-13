@@ -282,7 +282,14 @@ function DesignPageInner() {
 
   // STEPPER
   const STEPS = { FRAME: 1, BG: 2, LEGO: 3, CHECKOUT: 4 };
-  const [step, setStep] = useState(STEPS.FRAME);
+  const [step, setStep] = useState(() => {
+    // If coming from a product link (has bg param), always start at step 1
+    if (typeof window !== "undefined") {
+      const hasBg = new URLSearchParams(window.location.search).get("bg");
+      if (hasBg) return 1;
+    }
+    return 1;
+  });
 
   // ✅ Auto-save / auto-restore draft
   const DRAFT_KEY = "mebrick_design_draft";
@@ -311,7 +318,8 @@ function DesignPageInner() {
       if (draft.savedImages?.length) setSavedImages(draft.savedImages);
       if (draft.slotImages && Object.keys(draft.slotImages).length) setSlotImages(draft.slotImages);
       if (draft.bgTextValues && Object.keys(draft.bgTextValues).length) setBgTextValues(draft.bgTextValues);
-      if (draft.step) setStep(draft.step);
+      // Only restore step if it's step 1 (frame selection) or if we have both frame and background
+      if (draft.step && draft.selectedFrame && draft.selectedBackground) setStep(draft.step);
     } catch { /* ignore */ }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
