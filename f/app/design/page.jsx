@@ -306,8 +306,9 @@ function DesignPageInner() {
     return 1;
   });
 
-  // ✅ Auto-save / auto-restore draft
+  // ✅ Auto-save / auto-restore draft (sessionStorage — tự xóa khi đóng tab)
   const DRAFT_KEY = "mebrick_design_draft";
+  const DRAFT_EXPIRY_MS = 5 * 60 * 1000; // 5 phút
 
   // Restore từ draft khi mở trang (chỉ khi không phải edit mode)
   useEffect(() => {
@@ -317,12 +318,12 @@ function DesignPageInner() {
     const hasBgParam = new URLSearchParams(window.location.search).get("bg");
     if (hasBgParam) return;
     try {
-      const raw = localStorage.getItem(DRAFT_KEY);
+      const raw = sessionStorage.getItem(DRAFT_KEY);
       if (!raw) return;
       const draft = JSON.parse(raw);
-      // Hết hạn sau 24 giờ
-      if (Date.now() - (draft.savedAt || 0) > 24 * 60 * 60 * 1000) {
-        localStorage.removeItem(DRAFT_KEY);
+      // Hết hạn sau 5 phút không hoạt động
+      if (Date.now() - (draft.savedAt || 0) > DRAFT_EXPIRY_MS) {
+        sessionStorage.removeItem(DRAFT_KEY);
         return;
       }
       if (draft.selectedFrame) setSelectedFrame(draft.selectedFrame);
@@ -333,7 +334,7 @@ function DesignPageInner() {
       if (draft.savedImages?.length) setSavedImages(draft.savedImages);
       if (draft.slotImages && Object.keys(draft.slotImages).length) setSlotImages(draft.slotImages);
       if (draft.bgTextValues && Object.keys(draft.bgTextValues).length) setBgTextValues(draft.bgTextValues);
-      // Only restore step if it's step 1 (frame selection) or if we have both frame and background
+      // Only restore step if both frame and background are set
       if (draft.step && draft.selectedFrame && draft.selectedBackground) setStep(draft.step);
     } catch { /* ignore */ }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -355,7 +356,7 @@ function DesignPageInner() {
           step,
           savedAt: Date.now(),
         };
-        localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+        sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
       } catch {
         // QuotaExceededError: thử lại không lưu base64 để tiết kiệm dung lượng
         try {
@@ -375,7 +376,7 @@ function DesignPageInner() {
             step,
             savedAt: Date.now(),
           };
-          localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+          sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
         } catch { /* ignore */ }
       }
     }, 500);
