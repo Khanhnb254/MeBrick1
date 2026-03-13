@@ -103,11 +103,12 @@ export default function ControlPanel(props) {
   const [selectedBgTab, setSelectedBgTab] = useState("Tất cả");
   const bgTabs = [
     "Tất cả",
-    "Special Day",
-    "Graduation",
     "Happy Birthday",
-    "Happy Anniversary",
+    "Special Day",
     "Love",
+    "Happy Anniversary",
+    "Happy Together",
+    "Graduation",
     "Football",
   ];
 

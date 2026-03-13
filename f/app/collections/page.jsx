@@ -185,10 +185,10 @@ export default function CollectionsPage() {
                 const imgSrc = getImg(p);
                 // Mapping mẫu số → background id (dùng id sample-N để không bị lệch khi có real products)
                 const sampleBgMapping = {
-                  1: "bg-light-gray",  // Mẫu 1 → Happy Birthday
+                  1: "bg-light-gray",  // Mẫu 1 → Happy Birthday ver 1
                   2: "bg-sample-5",    // Mẫu 2 → Special Day ver 1
                   3: "bg-sample-7",    // Mẫu 3 → Special Day ver 3
-                  4: "bg-sample-17",   // Mẫu 4 → Happy Birthday ver 3
+                  4: "bg-sample-17",   // Mẫu 4 → Happy Birthday ver 4
                   5: "bg-sample-7",    // Mẫu 5 → Special Day ver 3
                   6: "bg-sample-10",   // Mẫu 6 → Love ver 2
                   7: "bg-sample-7",    // Mẫu 7 → Special Day ver 3
