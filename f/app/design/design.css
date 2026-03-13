@@ -941,14 +941,14 @@ html {
 }
 
 .frame-color-options .frame-color-btn:hover {
-  background-color: #3B82F6;
-  box-shadow: 0 0 0 5px rgba(59,130,246,0.25);
+  background: linear-gradient(135deg, #0A2540, #3B82F6);
+  box-shadow: 0 8px 24px rgba(10,37,64,0.3);
   color: #fff;
 }
 
 .frame-color-options .frame-color-btn.is-selected {
-  background-color: #3B82F6;
-  box-shadow: 0 0 0 5px rgba(59,130,246,0.25);
+  background: linear-gradient(135deg, #0A2540, #3B82F6);
+  box-shadow: 0 8px 24px rgba(10,37,64,0.3);
   color: #fff;
   font-weight: 800;
 }
