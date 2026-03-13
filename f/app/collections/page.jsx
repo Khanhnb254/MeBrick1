@@ -40,43 +40,22 @@ export default function CollectionsPage() {
     };
   }, []);
 
-  const filtered = useMemo(() => {
+  const sampleItems = useMemo(() =>
+    SAMPLE_IMAGES.map((src, i) => ({
+      _isSample: true,
+      id: `sample-${i + 1}`,
+      name: `Mẫu ${i + 1}`,
+      image: src,
+    })),
+  []);
+
+  const allItems = useMemo(() => [...filtered, ...sampleItems], [filtered, sampleItems]);
+
+  const filteredAll = useMemo(() => {
+    if (!q.trim()) return allItems;
     const keyword = q.trim().toLowerCase();
-
-    let list = products.filter((p) => {
-      if (!keyword) return true;
-      const name = String(p?.name || "").toLowerCase();
-      return name.includes(keyword);
-    });
-
-    switch (sort) {
-      case "price-asc":
-        list = list
-          .slice()
-          .sort((a, b) => toPriceNumber(a?.price) - toPriceNumber(b?.price));
-        break;
-      case "price-desc":
-        list = list
-          .slice()
-          .sort((a, b) => toPriceNumber(b?.price) - toPriceNumber(a?.price));
-        break;
-      case "name-asc":
-        list = list
-          .slice()
-          .sort((a, b) =>
-            String(a?.name || "").localeCompare(String(b?.name || "")),
-          );
-        break;
-      case "newest":
-      default:
-        // Nếu backend đã ORDER BY mới nhất thì giữ nguyên
-        // Nếu chưa, bạn có thể sort theo createdAt hoặc id:
-        // list = list.slice().sort((a,b)=> (Number(b.id)||0)-(Number(a.id)||0))
-        break;
-    }
-
-    return list;
-  }, [products, q, sort]);
+    return allItems.filter((p) => String(p?.name || "").toLowerCase().includes(keyword));
+  }, [allItems, q]);
 
   return (
     <div style={{ minHeight: "100vh", background: "#fff" }}>
@@ -104,7 +83,7 @@ export default function CollectionsPage() {
             <div>
               <h1 style={{ margin: 0, color: "#0B2D72" }}>Bộ sưu tập</h1>
               <p style={{ marginTop: 8, color: "#666" }}>
-                {loading ? "Đang tải..." : `Có ${filtered.length} sản phẩm`}
+                {loading ? "Đang tải..." : `Có ${filteredAll.length} sản phẩm`}
               </p>
             </div>
 
@@ -182,28 +161,27 @@ export default function CollectionsPage() {
             </div>
           )}
 
-          {!loading && filtered.length === 0 && (
+          {!loading && filteredAll.length === 0 && (
             <div style={{ padding: 20, color: "#666" }}>
               Không tìm thấy sản phẩm phù hợp.
             </div>
           )}
 
-          {/* Grid */}
-          {!loading && filtered.length > 0 && (
+          {/* Grid — sản phẩm + ảnh mẫu */}
+          {!loading && filteredAll.length > 0 && (
             <div style={styles.grid}>
-              {filtered.map((p) => {
+              {filteredAll.map((p) => {
                 const imgSrc = getImg(p);
-                const priceNumber = toPriceNumber(p?.price);
 
                 return (
                   <div
                     key={p?.id ?? `${p?.name}-${imgSrc}`}
                     style={styles.card}>
-                    <div style={styles.imageWrap}>
+                    <div style={p._isSample ? styles.imageWrapContain : styles.imageWrap}>
                       <img
                         src={imgSrc}
                         alt={p?.name || "product"}
-                        style={styles.img}
+                        style={p._isSample ? styles.imgContain : styles.img}
                         draggable={false}
                         onContextMenu={(e) => e.preventDefault()}
                         onError={(e) => {
@@ -218,12 +196,14 @@ export default function CollectionsPage() {
                         {p?.name || "Sản phẩm"}
                       </div>
 
-                      <div style={{ marginTop: 12, display: "flex", gap: 10 }}>
+                      <div style={{ marginTop: 12 }}>
                         <Link
-                          href={`/design?product=${p?.id}&name=${encodeURIComponent(
-                            p?.name || "",
-                          )}&price=${toPriceNumber(p?.price)}&image=${encodeURIComponent(getImg(p))}`}
-                          style={{ textDecoration: "none", flex: 1 }}>
+                          href={
+                            p._isSample
+                              ? `/design?image=${encodeURIComponent(imgSrc)}`
+                              : `/design?product=${p?.id}&name=${encodeURIComponent(p?.name || "")}&price=${toPriceNumber(p?.price)}&image=${encodeURIComponent(imgSrc)}`
+                          }
+                          style={{ textDecoration: "none" }}>
                           <button style={styles.outlineBtn}>Tùy chỉnh</button>
                         </Link>
                       </div>
@@ -232,42 +212,6 @@ export default function CollectionsPage() {
                 );
               })}
             </div>
-          )}
-
-          {/* ===== ẢNH MẪU ===== */}
-          {!loading && (
-            <>
-              <h2 style={{ marginTop: 40, marginBottom: 4, color: "#0B2D72" }}>Ảnh mẫu tham khảo</h2>
-              <p style={{ marginTop: 0, marginBottom: 16, color: "#666", fontSize: 14 }}>
-                {SAMPLE_IMAGES.length} mẫu thiết kế — click để thiết kế ngay
-              </p>
-              <div style={styles.grid}>
-                {SAMPLE_IMAGES.map((src, i) => (
-                  <div key={i} style={styles.card}>
-                    <div style={styles.imageWrap}>
-                      <img
-                        src={src}
-                        alt={`Mẫu ${i + 1}`}
-                        style={styles.img}
-                        draggable={false}
-                        onContextMenu={(e) => e.preventDefault()}
-                        onError={(e) => { e.currentTarget.style.display = "none"; }}
-                      />
-                    </div>
-                    <div style={{ padding: 14 }}>
-                      <div style={{ fontWeight: 800, color: "#0B2D72" }}>Mẫu {i + 1}</div>
-                      <div style={{ marginTop: 12 }}>
-                        <Link
-                          href={`/design?image=${encodeURIComponent(src)}`}
-                          style={{ textDecoration: "none" }}>
-                          <button style={styles.outlineBtn}>Tùy chỉnh</button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </>
           )}
         </div>
       </section>
@@ -345,10 +289,24 @@ const styles = {
     background: "#f5f5f5",
     overflow: "hidden",
   },
+  imageWrapContain: {
+    height: 190,
+    background: "#fff",
+    overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   img: {
     width: "100%",
     height: "100%",
     objectFit: "cover",
+    display: "block",
+  },
+  imgContain: {
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
     display: "block",
   },
   outlineBtn: {
