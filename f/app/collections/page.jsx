@@ -8,6 +8,8 @@ import Footer from "../components/Footer";
 import { getProducts } from "../../lib/api/products";
 import { FiSearch } from "react-icons/fi";
 
+const SAMPLE_IMAGES = Array.from({ length: 59 }, (_, i) => `/mau/${i + 1}.png`);
+
 export default function CollectionsPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -230,6 +232,42 @@ export default function CollectionsPage() {
                 );
               })}
             </div>
+          )}
+
+          {/* ===== ẢNH MẪU ===== */}
+          {!loading && (
+            <>
+              <h2 style={{ marginTop: 40, marginBottom: 4, color: "#0B2D72" }}>Ảnh mẫu tham khảo</h2>
+              <p style={{ marginTop: 0, marginBottom: 16, color: "#666", fontSize: 14 }}>
+                {SAMPLE_IMAGES.length} mẫu thiết kế — click để thiết kế ngay
+              </p>
+              <div style={styles.grid}>
+                {SAMPLE_IMAGES.map((src, i) => (
+                  <div key={i} style={styles.card}>
+                    <div style={styles.imageWrap}>
+                      <img
+                        src={src}
+                        alt={`Mẫu ${i + 1}`}
+                        style={styles.img}
+                        draggable={false}
+                        onContextMenu={(e) => e.preventDefault()}
+                        onError={(e) => { e.currentTarget.style.display = "none"; }}
+                      />
+                    </div>
+                    <div style={{ padding: 14 }}>
+                      <div style={{ fontWeight: 800, color: "#0B2D72" }}>Mẫu {i + 1}</div>
+                      <div style={{ marginTop: 12 }}>
+                        <Link
+                          href={`/design?image=${encodeURIComponent(src)}`}
+                          style={{ textDecoration: "none" }}>
+                          <button style={styles.outlineBtn}>Tùy chỉnh</button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
           )}
         </div>
       </section>
