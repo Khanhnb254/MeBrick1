@@ -18,7 +18,6 @@ export default function AdminShell({ children }) {
   }, []);
 
   const nav = [
-    { href: "/admin", label: "Dashboard" },
     { href: "/admin/products", label: "Products" },
     { href: "/admin/orders", label: "Orders" },
   ];
