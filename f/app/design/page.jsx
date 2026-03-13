@@ -70,9 +70,24 @@ function DesignPageInner() {
 
   const [selectedFrame, setSelectedFrame] = useState(null);
 
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(() => {
+    // Pre-set size when coming from product link with bg param
+    if (typeof window !== "undefined") {
+      const hasBg = new URLSearchParams(window.location.search).get("bg");
+      if (hasBg) return SIZE_OPTIONS[0]?.id ?? null;
+    }
+    return null;
+  });
 
-  const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
+  const [canvasSize, setCanvasSize] = useState(() => {
+    if (typeof window !== "undefined") {
+      const hasBg = new URLSearchParams(window.location.search).get("bg");
+      if (hasBg && SIZE_OPTIONS[0]) {
+        return { width: SIZE_OPTIONS[0].canvasWidth, height: SIZE_OPTIONS[0].canvasHeight };
+      }
+    }
+    return { width: 400, height: 400 };
+  });
   // ...existing code...
 
   const [quantity, setQuantity] = useState(1);
