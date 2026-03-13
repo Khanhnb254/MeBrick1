@@ -70,39 +70,10 @@ function DesignPageInner() {
 
   const [selectedFrame, setSelectedFrame] = useState(null);
 
-  const [selectedSize, setSelectedSize] = useState(() => {
-    // Pre-set size when coming from product link with bg param
-    if (typeof window !== "undefined") {
-      const hasBg = new URLSearchParams(window.location.search).get("bg");
-      if (hasBg) return SIZE_OPTIONS[0]?.id ?? null;
-    }
-    return null;
-  });
-
-  const [canvasSize, setCanvasSize] = useState(() => {
-    if (typeof window !== "undefined") {
-      const hasBg = new URLSearchParams(window.location.search).get("bg");
-      if (hasBg && SIZE_OPTIONS[0]) {
-        return { width: SIZE_OPTIONS[0].canvasWidth, height: SIZE_OPTIONS[0].canvasHeight };
-      }
-    }
-    return { width: 400, height: 400 };
-  });
-  // ...existing code...
-
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
   const [quantity, setQuantity] = useState(1);
-  const [selectedBackground, setSelectedBackground] = useState(() => {
-    // Pre-select background from URL param at initialization
-    if (typeof window === "undefined") return null;
-    const bgId = new URLSearchParams(window.location.search).get("bg");
-    if (!bgId) return null;
-    const bg = BACKGROUND_OPTIONS.find((b) => b.id === bgId);
-    if (!bg) return null;
-    return {
-      ...bg,
-      value: bg.value?.startsWith("url") ? bg.value : `url(${bg.value})`,
-    };
-  });
+  const [selectedBackground, setSelectedBackground] = useState(null);
 
   const designAreaRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -157,6 +128,22 @@ function DesignPageInner() {
   useEffect(() => {
     setSelectedProductImage(initialProductImage);
   }, [initialProductImage]);
+
+  // ✅ Pre-select background/size from ?bg= URL param (runs client-side after mount)
+  useEffect(() => {
+    const bgId = searchParams.get("bg");
+    if (!bgId) return;
+    const bg = BACKGROUND_OPTIONS.find((b) => b.id === bgId);
+    if (!bg) return;
+    setSelectedBackground({
+      ...bg,
+      value: bg.value?.startsWith("url") ? bg.value : `url(${bg.value})`,
+    });
+    const fixedSize = SIZE_OPTIONS[0];
+    setSelectedSize(fixedSize.id);
+    setCanvasSize({ width: fixedSize.canvasWidth, height: fixedSize.canvasHeight });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Auto-set selectedSize when selectedFrame is chosen (only 1 fixed size 23x23)
   useEffect(() => {
@@ -297,14 +284,7 @@ function DesignPageInner() {
 
   // STEPPER
   const STEPS = { FRAME: 1, BG: 2, LEGO: 3, CHECKOUT: 4 };
-  const [step, setStep] = useState(() => {
-    // If coming from a product link (has bg param), always start at step 1
-    if (typeof window !== "undefined") {
-      const hasBg = new URLSearchParams(window.location.search).get("bg");
-      if (hasBg) return 1;
-    }
-    return 1;
-  });
+  const [step, setStep] = useState(1);
 
   // ✅ Auto-save / auto-restore draft (sessionStorage — tự xóa khi đóng tab)
   const DRAFT_KEY = "mebrick_design_draft";
