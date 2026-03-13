@@ -474,3 +474,34 @@ const s = {
     marginBottom: 4,
   },
 };
+    background: "#e8edf7",
+    borderColor: "#c7d2fe",
+    fontWeight: 700,
+  },
+  card: {
+    background: "#fff",
+    border: "1px solid #e5e7eb",
+    borderRadius: 14,
+    padding: 20,
+    marginBottom: 16,
+  },
+  th: {
+    padding: "12px 16px",
+    textAlign: "left",
+    fontSize: 13,
+    fontWeight: 600,
+    color: "#374151",
+    background: "#fafafa",
+  },
+  td: {
+    padding: "12px 16px",
+    fontSize: 13,
+    color: "#111",
+  },
+  colLabel: {
+    fontSize: 12,
+    fontWeight: 600,
+    color: "#6B7280",
+    marginBottom: 4,
+  },
+};
