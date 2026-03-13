@@ -40,6 +40,17 @@ export default function CollectionsPage() {
     };
   }, []);
 
+  const filtered = useMemo(() => {
+    let list = products.slice();
+    switch (sort) {
+      case "price-asc": list.sort((a, b) => toPriceNumber(a?.price) - toPriceNumber(b?.price)); break;
+      case "price-desc": list.sort((a, b) => toPriceNumber(b?.price) - toPriceNumber(a?.price)); break;
+      case "name-asc": list.sort((a, b) => String(a?.name || "").localeCompare(String(b?.name || ""))); break;
+      default: break;
+    }
+    return list;
+  }, [products, sort]);
+
   const sampleItems = useMemo(() =>
     SAMPLE_IMAGES.map((src, i) => ({
       _isSample: true,
