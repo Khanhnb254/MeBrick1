@@ -181,8 +181,20 @@ export default function CollectionsPage() {
           {/* Grid — sản phẩm + ảnh mẫu */}
           {!loading && filteredAll.length > 0 && (
             <div style={styles.grid}>
-              {filteredAll.map((p) => {
+              {filteredAll.map((p, pIdx) => {
                 const imgSrc = getImg(p);
+                // Mapping index → background id (mẫu 1-8 từ bộ sưu tập)
+                const bgMapping = [
+                  "bg-light-gray",  // 1 → Happy Birthday
+                  "bg-sample-5",    // 2 → Special Day ver 1
+                  "bg-sample-7",    // 3 → Special Day ver 3
+                  "bg-sample-17",   // 4 → Happy Birthday ver 3
+                  "bg-sample-7",    // 5 → Special Day ver 3
+                  "bg-sample-10",   // 6 → Love ver 2
+                  "bg-sample-7",    // 7 → Special Day ver 3
+                  "bg-sample-12",   // 8 → Love ver 4
+                ];
+                const bgParam = bgMapping[pIdx] ? `&bg=${bgMapping[pIdx]}` : "";
 
                 return (
                   <div
@@ -211,8 +223,8 @@ export default function CollectionsPage() {
                         <Link
                           href={
                             p._isSample
-                              ? `/design?product=${filtered[0]?.id || ""}&name=${encodeURIComponent(filtered[0]?.name || "")}&price=${toPriceNumber(filtered[0]?.price)}&image=${encodeURIComponent(imgSrc)}`
-                              : `/design?product=${p?.id}&name=${encodeURIComponent(p?.name || "")}&price=${toPriceNumber(p?.price)}&image=${encodeURIComponent(imgSrc)}`
+                              ? `/design?product=${filtered[0]?.id || ""}&name=${encodeURIComponent(filtered[0]?.name || "")}&price=${toPriceNumber(filtered[0]?.price)}&image=${encodeURIComponent(imgSrc)}${bgParam}`
+                              : `/design?product=${p?.id}&name=${encodeURIComponent(p?.name || "")}&price=${toPriceNumber(p?.price)}&image=${encodeURIComponent(imgSrc)}${bgParam}`
                           }
                           style={{ textDecoration: "none" }}>
                           <button style={styles.outlineBtn}>Tùy chỉnh</button>
