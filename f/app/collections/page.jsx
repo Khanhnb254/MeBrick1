@@ -183,18 +183,24 @@ export default function CollectionsPage() {
             <div style={styles.grid}>
               {filteredAll.map((p, pIdx) => {
                 const imgSrc = getImg(p);
-                // Mapping index → background id (mẫu 1-8 từ bộ sưu tập)
-                const bgMapping = [
-                  "bg-light-gray",  // 1 → Happy Birthday
-                  "bg-sample-5",    // 2 → Special Day ver 1
-                  "bg-sample-7",    // 3 → Special Day ver 3
-                  "bg-sample-17",   // 4 → Happy Birthday ver 3
-                  "bg-sample-7",    // 5 → Special Day ver 3
-                  "bg-sample-10",   // 6 → Love ver 2
-                  "bg-sample-7",    // 7 → Special Day ver 3
-                  "bg-sample-12",   // 8 → Love ver 4
-                ];
-                const bgParam = bgMapping[pIdx] ? `&bg=${bgMapping[pIdx]}` : "";
+                // Mapping mẫu số → background id (dùng id sample-N để không bị lệch khi có real products)
+                const sampleBgMapping = {
+                  1: "bg-light-gray",  // Mẫu 1 → Happy Birthday
+                  2: "bg-sample-5",    // Mẫu 2 → Special Day ver 1
+                  3: "bg-sample-7",    // Mẫu 3 → Special Day ver 3
+                  4: "bg-sample-17",   // Mẫu 4 → Happy Birthday ver 3
+                  5: "bg-sample-7",    // Mẫu 5 → Special Day ver 3
+                  6: "bg-sample-10",   // Mẫu 6 → Love ver 2
+                  7: "bg-sample-7",    // Mẫu 7 → Special Day ver 3
+                  8: "bg-sample-12",   // Mẫu 8 → Love ver 4
+                };
+                let bgParam = "";
+                if (p._isSample) {
+                  // Lấy số từ id "sample-N"
+                  const sampleNum = parseInt(String(p.id).replace("sample-", ""), 10);
+                  const bgId = sampleBgMapping[sampleNum];
+                  if (bgId) bgParam = `&bg=${bgId}`;
+                }
 
                 return (
                   <div
