@@ -294,8 +294,9 @@ function DesignPageInner() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem("editCartItemIndex") !== null) return;
-    // Nếu có bg param trong URL → không restore draft background
+    // Nếu có bg param trong URL → bắt đầu mới, không restore draft
     const hasBgParam = new URLSearchParams(window.location.search).get("bg");
+    if (hasBgParam) return;
     try {
       const raw = localStorage.getItem(DRAFT_KEY);
       if (!raw) return;
@@ -306,7 +307,7 @@ function DesignPageInner() {
         return;
       }
       if (draft.selectedFrame) setSelectedFrame(draft.selectedFrame);
-      if (!hasBgParam && draft.selectedBackground) setSelectedBackground(draft.selectedBackground);
+      if (draft.selectedBackground) setSelectedBackground(draft.selectedBackground);
       if (draft.stickers?.length) setStickers(draft.stickers);
       if (draft.legoCharacters?.length) setLegoCharacters(draft.legoCharacters);
       if (draft.quantity) setQuantity(draft.quantity);
