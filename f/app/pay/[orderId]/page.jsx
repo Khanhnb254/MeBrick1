@@ -1,5 +1,6 @@
 "use client";
 
+import "./pay.css";
 import { useEffect, useMemo, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getOrderById, getVietQRInfo, markTransferred } from "../../../lib/api/orders";
