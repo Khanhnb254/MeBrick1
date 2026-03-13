@@ -211,7 +211,7 @@ export default function CollectionsPage() {
                         <Link
                           href={
                             p._isSample
-                              ? `/design?image=${encodeURIComponent(imgSrc)}`
+                              ? `/design?product=${filtered[0]?.id || ""}&name=${encodeURIComponent(filtered[0]?.name || "")}&price=${toPriceNumber(filtered[0]?.price)}&image=${encodeURIComponent(imgSrc)}`
                               : `/design?product=${p?.id}&name=${encodeURIComponent(p?.name || "")}&price=${toPriceNumber(p?.price)}&image=${encodeURIComponent(imgSrc)}`
                           }
                           style={{ textDecoration: "none" }}>
