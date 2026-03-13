@@ -132,18 +132,18 @@ function DesignPageInner() {
     setSelectedProductImage(initialProductImage);
   }, [initialProductImage]);
 
-  // Auto-select background from URL param
+  // Auto-select background from URL param — runs after mount, overrides draft
   useEffect(() => {
     const bgId = searchParams.get("bg");
-    if (bgId && !selectedBackground) {
-      const bg = BACKGROUND_OPTIONS.find((b) => b.id === bgId);
-      if (bg) {
-        setSelectedBackground({
-          ...bg,
-          value: bg.value?.startsWith("url") ? bg.value : `url(${bg.value})`,
-        });
-      }
+    if (!bgId) return;
+    const bg = BACKGROUND_OPTIONS.find((b) => b.id === bgId);
+    if (bg) {
+      setSelectedBackground({
+        ...bg,
+        value: bg.value?.startsWith("url") ? bg.value : `url(${bg.value})`,
+      });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Auto-set selectedSize when selectedFrame is chosen (only 1 fixed size 23x23)
