@@ -465,7 +465,7 @@ export default function MeBrickPage() {
                       fontFamily: "'Antonio', sans-serif",
                       marginBottom: "8px",
                     }}>
-                    – {item.price}
+                    {item.price}
                   </div>
                   <p style={{ fontSize: "15px", color: "#444", margin: 0 }}>
                     {item.desc}
@@ -557,7 +557,7 @@ export default function MeBrickPage() {
                       style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: "cover",
+                        objectFit: "contain",
                         transition: "transform 0.3s ease",
                         display: "block",
                       }}

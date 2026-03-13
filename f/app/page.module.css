@@ -369,7 +369,7 @@
   height: 256px;
   position: relative;
   overflow: hidden;
-  background: #f3f4f6;
+  background: #fff;
   flex-shrink: 0;
 }
 
