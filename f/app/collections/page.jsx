@@ -196,6 +196,8 @@ export default function CollectionsPage() {
                   13: "bg-sample-16",  // Mẫu 13 → Happy Birthday ver 3
                   14: "bg-sample-16",  // Mẫu 14 → Happy Birthday ver 3
                   15: "bg-sample-16",  // Mẫu 15 → Happy Birthday ver 3
+                  17: "bg-sample-20",  // Mẫu 17 → Happy Anniversary ver 2
+                  18: "bg-sample-19",  // Mẫu 18 → Happy Anniversary ver 1
                 };
                 let bgParam = "";
                 if (p._isSample) {
