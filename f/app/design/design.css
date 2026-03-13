@@ -92,7 +92,7 @@ html {
   cursor: not-allowed;
 }
 .lego-step:hover:not(:disabled) {
-  background: rgba(245,158,11,0.15);
+  background: rgba(59,130,246,0.1);
   border-color: #3B82F6;
   color: #3B82F6;
   transform: translateY(-1px);
@@ -942,14 +942,14 @@ html {
 
 .frame-color-options .frame-color-btn:hover {
   background-color: #3B82F6;
-  box-shadow: 0 0 0 5px rgba(245,158,11,0.25);
-  color: #0A2540;
+  box-shadow: 0 0 0 5px rgba(59,130,246,0.25);
+  color: #fff;
 }
 
 .frame-color-options .frame-color-btn.is-selected {
   background-color: #3B82F6;
-  box-shadow: 0 0 0 5px rgba(245,158,11,0.25);
-  color: #0A2540;
+  box-shadow: 0 0 0 5px rgba(59,130,246,0.25);
+  color: #fff;
   font-weight: 800;
 }
 
@@ -1007,10 +1007,10 @@ html {
 }
 
 .frame-type-btn.is-selected {
-  border-color: #0A2540;
+  border-color: #3B82F6;
   border-width: 2px;
-  background: rgba(10, 37, 64, 0.04);
-  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.2);
+  background: rgba(59,130,246,0.06);
+  box-shadow: 0 8px 24px rgba(59,130,246,0.2);
 }
 
 .frame-type-btn.is-selected::before {
