@@ -53,18 +53,20 @@ export default function FrameSelector({ selectedFrame, setSelectedFrame }) {
               type="button"
               className={`frame-type-btn ${isSelected ? "is-selected" : ""}`}
               onClick={() => handleSelectFrameType(frameType)}>
-              <div className="frame-type-name">{frameType.name}</div>
-              <div className="frame-type-desc">{frameType.description}</div>
-              <div className="frame-type-features">
-                {frameType.features.map((feature, idx) => (
-                  <div key={idx} className="feature-item">
-                    {feature}
-                  </div>
-                ))}
+              <div className="frame-type-content">
+                <div className="frame-type-name">{frameType.name}</div>
+                <div className="frame-type-features">
+                  {frameType.features.map((feature, idx) => (
+                    <div key={idx} className="feature-item">
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+                <div className="frame-type-price">
+                  {frameType.price?.toLocaleString("vi-VN")}đ
+                </div>
               </div>
-              <div className="frame-type-price">
-                {frameType.price?.toLocaleString("vi-VN")}đ
-              </div>
+              <div className="frame-type-radio" />
             </button>
           );
         })}
