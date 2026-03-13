@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { getOrderById, getVietQRInfo, markTransferred } from "../../../lib/api/orders";
+
 // ===== Simple Toast Notification =====
 function showToast(message, duration = 3000) {
   let toast = document.getElementById("pay-toast");
@@ -28,9 +31,6 @@ function showToast(message, duration = 3000) {
     toast.style.opacity = 0;
   }, duration);
 }
-import { useParams, useRouter } from "next/navigation";
-
-import { getOrderById, getVietQRInfo, markTransferred } from "../../../lib/api/orders";
 
 function formatVnd(n) {
   return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(
