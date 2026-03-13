@@ -76,7 +76,18 @@ function DesignPageInner() {
   // ...existing code...
 
   const [quantity, setQuantity] = useState(1);
-  const [selectedBackground, setSelectedBackground] = useState(null);
+  const [selectedBackground, setSelectedBackground] = useState(() => {
+    // Pre-select background from URL param at initialization
+    if (typeof window === "undefined") return null;
+    const bgId = new URLSearchParams(window.location.search).get("bg");
+    if (!bgId) return null;
+    const bg = BACKGROUND_OPTIONS.find((b) => b.id === bgId);
+    if (!bg) return null;
+    return {
+      ...bg,
+      value: bg.value?.startsWith("url") ? bg.value : `url(${bg.value})`,
+    };
+  });
 
   const designAreaRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -131,20 +142,6 @@ function DesignPageInner() {
   useEffect(() => {
     setSelectedProductImage(initialProductImage);
   }, [initialProductImage]);
-
-  // Auto-select background from URL param — runs after mount, overrides draft
-  useEffect(() => {
-    const bgId = searchParams.get("bg");
-    if (!bgId) return;
-    const bg = BACKGROUND_OPTIONS.find((b) => b.id === bgId);
-    if (bg) {
-      setSelectedBackground({
-        ...bg,
-        value: bg.value?.startsWith("url") ? bg.value : `url(${bg.value})`,
-      });
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   // Auto-set selectedSize when selectedFrame is chosen (only 1 fixed size 23x23)
   useEffect(() => {
