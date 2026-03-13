@@ -393,6 +393,90 @@ export default function MeBrickPage() {
         </button>
       </section>
 
+      {/* PRODUCT VERSIONS SHOWCASE */}
+      <section style={{ padding: "80px 20px", background: "#f8f9ff" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <h2
+              style={{
+                fontSize: "32px",
+                fontWeight: "700",
+                color: "#0050b8",
+                fontFamily: "'Antonio', sans-serif",
+                textTransform: "uppercase",
+                textShadow: "2px 3px 8px rgba(0,80,184,0.15)",
+                marginBottom: "10px",
+              }}>
+              Chúng mình có 3 phiên bản
+            </h2>
+            <p style={{ fontSize: "16px", color: "#555" }}>
+              Mỗi phiên bản đều đi kèm thiệp viết tay &amp; box quà xinh xắn
+            </p>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "32px",
+            }}>
+            {[
+              {
+                img: "/images/frames/frame1.png",
+                price: "230.000đ",
+                desc: "Khung 1 lego + thiệp viết tay + box quà",
+              },
+              {
+                img: "/images/frames/frame2.png",
+                price: "250.000đ",
+                desc: "Khung 2 lego + thiệp viết tay + box quà",
+              },
+              {
+                img: "/images/frames/frame3.png",
+                price: "320.000đ",
+                desc: "Khung lego có đèn led + thiệp viết tay + box quà",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  background: "#fff",
+                  borderRadius: "18px",
+                  boxShadow: "0 4px 24px rgba(0,80,184,0.10)",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}>
+                <img
+                  src={item.img}
+                  alt={item.desc}
+                  style={{
+                    width: "100%",
+                    aspectRatio: "1/1",
+                    objectFit: "cover",
+                  }}
+                />
+                <div style={{ padding: "20px", textAlign: "center" }}>
+                  <div
+                    style={{
+                      fontSize: "22px",
+                      fontWeight: "700",
+                      color: "#0050b8",
+                      fontFamily: "'Antonio', sans-serif",
+                      marginBottom: "8px",
+                    }}>
+                    – {item.price}
+                  </div>
+                  <p style={{ fontSize: "15px", color: "#444", margin: 0 }}>
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FEATURED COLLECTIONS */}
       <section
         ref={(el) => (sectionRefs.current.featured = el)}
