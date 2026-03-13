@@ -1696,7 +1696,7 @@ html {
   border: 1px solid rgba(17, 24, 39, 0.08);
   background: rgba(248, 250, 252, 0.5);
   padding: 10px;
-  max-height: 330px;
+  max-height: 480px;
   overflow: auto;
 }
 .mb-bggrid {
@@ -1759,7 +1759,7 @@ html {
 
 .mb-block--bg .mb-bgbox {
   padding: 8px;
-  max-height: 280px;
+  max-height: 480px;
 }
 
 .mb-block--bg .mb-bggrid {
