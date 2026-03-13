@@ -334,20 +334,6 @@ export default function AdminOrders() {
   // ===== UI =====
   return (
     <div className="ao-page">
-      {/* SIDEBAR */}
-      <aside className="ao-sidebar">
-        <div className="ao-sidebar__logo">🧱 Mê Bricks</div>
-        <nav className="ao-sidebar__nav">
-          <a href="/admin-khanh-2026" className="ao-nav-item">📊 Dashboard</a>
-          <a href="/admin-khanh-2026/products" className="ao-nav-item">📦 Sản phẩm</a>
-          <a href="/admin-khanh-2026/orders" className="ao-nav-item ao-nav-item--active">🛒 Đơn hàng</a>
-        </nav>
-        <div className="ao-sidebar__footer">
-          <div className="ao-avatar">A</div>
-          <span>Admin</span>
-        </div>
-      </aside>
-
       {/* MAIN */}
       <main className="ao-main">
         <h1 className="ao-main__title">🛒 Quản lý đơn hàng</h1>
@@ -397,12 +383,6 @@ export default function AdminOrders() {
             }}
           >
             📥 Export CSV
-          </button>
-          <button
-            className="ao-btn ao-btn--ghost"
-            onClick={() => { setQ(""); setStatus("all"); setSort("newest"); }}
-          >
-            ✕ Xoá filter
           </button>
           {loading && <span style={{ color: "#64748b", fontSize: 13 }}>⏳ Loading…</span>}
         </div>

@@ -1,9 +1,8 @@
 /* ===== ADMIN ORDERS — Navy Theme ===== */
 .ao-page {
-  display: flex;
-  min-height: 100vh;
   background: #F1F5F9;
   font-family: inherit;
+  width: 100%;
 }
 
 /* SIDEBAR */

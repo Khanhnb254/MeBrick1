@@ -171,7 +171,7 @@ export default function PayPage() {
             background: "#fff",
             cursor: "pointer",
             fontWeight: 800,
-            fontFamily: "'Poppins', sans-serif",
+            fontFamily: "inherit",
           }}
         >
           Về trang chủ
@@ -222,7 +222,7 @@ export default function PayPage() {
                   background: "#fff",
                   cursor: "pointer",
                   fontWeight: 900,
-                  fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "inherit",
                 }}
               >
                 Xem đơn hàng
@@ -243,7 +243,7 @@ export default function PayPage() {
                     cursor: "pointer",
                     fontWeight: 900,
                     opacity: paying ? 0.7 : 1,
-                    fontFamily: "'Poppins', sans-serif",
+                    fontFamily: "inherit",
                   }}
                 >
                   {paying ? "Đang cập nhật..." : "Tôi đã chuyển khoản"}
