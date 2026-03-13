@@ -101,6 +101,16 @@ export default function OrderDetailPage() {
                   )}
                   <div style={{ fontWeight: 700 }}>{item.product_name || `Product #${item.product_id || "?"}`}</div>
                   <div style={{ fontSize: 13 }}>Số lượng: {item.quantity}</div>
+                  {(item?.design_data?.frameColor || item?.design_data?.frameTypeName) && (
+                    <div style={{ fontSize: 13, marginTop: 4 }}>
+                      {item?.design_data?.frameTypeName && (
+                        <span>Loại khung: <strong>{item.design_data.frameTypeName}</strong> &nbsp;</span>
+                      )}
+                      {item?.design_data?.frameColor && (
+                        <span>Màu khung: <strong>{item.design_data.frameColor === "white" ? "Khung trắng" : "Khung gỗ"}</strong></span>
+                      )}
+                    </div>
+                  )}
                   <div style={{ fontWeight: 600 }}>{formatVnd(item.unit_price)}</div>
                 </div>
               ))}

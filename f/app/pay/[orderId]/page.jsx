@@ -205,6 +205,18 @@ export default function PayPage() {
               <div>
                 <b>Trạng thái thanh toán:</b> {order?.payment_status || qrInfo?.payment_status || "unpaid"}
               </div>
+              {(order?.order_items || order?.items || []).map((item, idx) => {
+                const fc = item?.design_data?.frameColor;
+                const ft = item?.design_data?.frameTypeName;
+                if (!fc && !ft) return null;
+                return (
+                  <div key={idx} style={{ background: "#f0f4ff", borderRadius: 8, padding: "6px 10px", fontSize: 13 }}>
+                    <b>Sản phẩm {idx + 1}:</b>
+                    {ft && <span> Loại khung: <strong>{ft}</strong></span>}
+                    {fc && <span> · Màu khung: <strong>{fc === "white" ? "Khung trắng" : "Khung gỗ"}</strong></span>}
+                  </div>
+                );
+              })}
             </div>
 
             <div style={{ marginTop: 12, fontSize: 13, color: "#666", lineHeight: 1.6 }}>
