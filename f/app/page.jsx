@@ -233,9 +233,10 @@ export default function MeBrickPage() {
               right: 0,
               bottom: 0,
               backgroundImage: `url(${img})`,
-              backgroundSize: "cover",
+              backgroundSize: "contain",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
+              backgroundColor: "#0a1628",
               opacity: index === currentImage ? 1 : 0,
               transition: "opacity 1s ease-in-out",
             }}
