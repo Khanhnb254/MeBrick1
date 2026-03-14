@@ -205,7 +205,12 @@ export default function CollectionsPage() {
                   25: "bg-sample-26",  // Mẫu 25 → Love ver 11
                   27: "bg-sample-27",  // Mẫu 27 → Graduation ver 1
                   28: "bg-sample-38",  // Mẫu 28 → Graduation ver 3
-                  32: "bg-sample-35",  // Mẫu 32 → Happy Birthday ver 6
+                  29: "bg-sample-29",  // Mẫu 29 → Happy Birthday ver 5
+                  30: "bg-sample-31",  // Mẫu 30 → Love ver 12
+                  31: "bg-sample-27",  // Mẫu 31 → Graduation ver 1
+                  32: "bg-sample-34",  // Mẫu 32 → Happy Birthday ver 6
+                  33: "bg-sample-36",  // Mẫu 33 → Happy Birthday ver 8
+                  34: "bg-sample-35",  // Mẫu 34 → Happy Birthday ver 7
                   37: "bg-sample-40",  // Mẫu 37 → Special Day ver 7
                   38: "bg-sample-41",  // Mẫu 38 → Special Day ver 8
                   39: "bg-sample-42",  // Mẫu 39 → Special Day ver 9
