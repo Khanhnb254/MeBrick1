@@ -4,9 +4,19 @@ export const BACKGROUND_OPTIONS = [
   { id: "bg-light-gray", name: "Happy Birthday ver 1", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY.png", backgroundSize: "cover", slots: [
     { id: "s1", x: 53,  y: 387, w: 177, h: 102 },
   ], textFields: [
-    { id: "tf-name",  x: 266, y: 158, w: 265, h: 18, placeholder: "Nhập tên..." },
-    { id: "tf-level", x: 266, y: 195, w: 265, h: 18, placeholder: "Nhập tuổi..." },
-    { id: "tf-hobby", x: 266, y: 232, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+    // REMINDER — TO & DATE
+    { id: "tf-name",    x: 266, y: 158, w: 205, h: 18, placeholder: "Nhập tên..." },
+    { id: "tf-date",    x: 266, y: 195, w: 205, h: 18, placeholder: "Nhập ngày..." },
+    // REMINDER — message lines
+    { id: "tf-msg1",    x: 175, y: 237, w: 295, h: 18, placeholder: "Dòng tin nhắn 1..." },
+    { id: "tf-msg2",    x: 175, y: 262, w: 295, h: 18, placeholder: "Dòng tin nhắn 2..." },
+    { id: "tf-msg3",    x: 175, y: 287, w: 295, h: 18, placeholder: "Dòng tin nhắn 3..." },
+    // MESSAGE box (bottom right)
+    { id: "tf-message1", x: 285, y: 388, w: 215, h: 16, placeholder: "Message dòng 1..." },
+    { id: "tf-message2", x: 285, y: 410, w: 215, h: 16, placeholder: "Message dòng 2..." },
+    { id: "tf-message3", x: 285, y: 432, w: 215, h: 16, placeholder: "Message dòng 3..." },
+    { id: "tf-message4", x: 285, y: 454, w: 215, h: 16, placeholder: "Message dòng 4..." },
+    { id: "tf-message5", x: 285, y: 476, w: 215, h: 16, placeholder: "Message dòng 5..." },
   ] },
   { id: "bg-ocean", name: "Happy Birthday ver 2", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY2.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY2.png", backgroundSize: "cover", slots: [
     { id: "s0", x: 54,  y: 142, w: 120, h: 119, rotate: -18 },
