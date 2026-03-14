@@ -168,12 +168,13 @@ export const BACKGROUND_OPTIONS = [
       ],
       // Happy Birthday ver 4 (sample17) — REMINDER: TO, DATE + messages + MESSAGE textarea
       17: [
-        { id: "tf-name",    x: 275, y: 161, w: 265, h: 20, placeholder: "Nhập tên (TO)..." },
+        { id: "tf-name",    x: 275, y: 169, w: 265, h: 20, placeholder: "Nhập tên (TO)..." },
         { id: "tf-date",    x: 285, y: 196, w: 260, h: 20, placeholder: "Nhập ngày (DATE)..." },
         { id: "tf-msg1",    x: 245, y: 217, w: 320, h: 20, placeholder: "Dòng tin nhắn 1..." },
         { id: "tf-msg2",    x: 245, y: 243, w: 320, h: 20, placeholder: "Dòng tin nhắn 2..." },
         { id: "tf-msg3",    x: 245, y: 268, w: 320, h: 20, placeholder: "Dòng tin nhắn 3..." },
-        { id: "tf-message", x: 265, y: 393, w: 220, h: 90,  placeholder: "Nhập lời nhắn...", multiline: true },
+        { id: "tf-account", x: 288, y: 368, w: 182, h: 22, placeholder: "Nhập tên tài khoản..." },
+        { id: "tf-message", x: 265, y: 398, w: 220, h: 85,  placeholder: "Nhập lời nhắn...", multiline: true },
       ],
     };
     return {
