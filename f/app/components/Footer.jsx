@@ -91,17 +91,17 @@ export default function Footer() {
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <FiMapPin style={{ color: "#666", flexShrink: 0 }} />
               <span style={{ color: "#999", fontSize: "14px" }}>
-                FPT Hòa Lạc
+                Đại học FPT Hà Nội
               </span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <FiPhone style={{ color: "#666", flexShrink: 0 }} />
-              <span style={{ color: "#999", fontSize: "14px" }}>1900 1001</span>
+              <span style={{ color: "#999", fontSize: "14px" }}>0976924958</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <FiMail style={{ color: "#666", flexShrink: 0 }} />
               <span style={{ color: "#999", fontSize: "14px" }}>
-                mebrick.com
+                mebrickss@gmail.com
               </span>
             </div>
           </div>
