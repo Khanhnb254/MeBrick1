@@ -166,10 +166,10 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-dob",      x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập ngày sinh..." },
         { id: "tf-position", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập chức vụ..." },
       ],
-      // Love ver 4 (sample12) — MESSAGE box: account oval + message textarea
+      // Love ver 4 (sample12) — MESSAGE box: account top-right + message below oval
       12: [
-        { id: "tf-account", x: 290, y: 360, w: 195, h: 22, placeholder: "Nhập tên tài khoản..." },
-        { id: "tf-message", x: 270, y: 390, w: 230, h: 105, placeholder: "Nhập lời nhắn...", multiline: true },
+        { id: "tf-account", x: 310, y: 340, w: 155, h: 20, placeholder: "Nhập tên tài khoản..." },
+        { id: "tf-message", x: 105, y: 372, w: 360, h: 100, placeholder: "Nhập lời nhắn...", multiline: true },
       ],
       17: [
         { id: "tf-name",    x: 275, y: 169, w: 265, h: 20, placeholder: "Nhập tên (TO)..." },
