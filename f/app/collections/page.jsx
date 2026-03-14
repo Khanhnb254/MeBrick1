@@ -197,7 +197,16 @@ export default function CollectionsPage() {
                   14: "bg-sample-16",  // Mẫu 14 → Happy Birthday ver 3
                   15: "bg-sample-16",  // Mẫu 15 → Happy Birthday ver 3
                   17: "bg-sample-20",  // Mẫu 17 → Happy Anniversary ver 2
-                  18: "bg-sample-19",  // Mẫu 18 → Happy Anniversary ver 1
+                  18: "bg-sample-21",  // Mẫu 18 → Happy Anniversary ver 3
+                  19: "bg-sample-22",  // Mẫu 19 → Love ver 7
+                  22: "bg-sample-24",  // Mẫu 22 → Love ver 9
+                  23: "bg-sample-25",  // Mẫu 23 → Love ver 10
+                  24: "bg-sample-26",  // Mẫu 24 → Love ver 11
+                  25: "bg-sample-26",  // Mẫu 25 → Love ver 11
+                  27: "bg-sample-27",  // Mẫu 27 → Graduation ver 1
+                  28: "bg-sample-38",  // Mẫu 28 → Graduation ver 3
+                  37: "bg-sample-40",  // Mẫu 37 → Special Day ver 7
+                  38: "bg-sample-41",  // Mẫu 38 → Special Day ver 8
                 };
                 let bgParam = "";
                 if (p._isSample) {
