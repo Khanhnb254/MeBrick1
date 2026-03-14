@@ -193,6 +193,7 @@ export default function CollectionsPage() {
                   6: "bg-sample-10",   // Mẫu 6 → Love ver 2
                   7: "bg-sample-7",    // Mẫu 7 → Special Day ver 3
                   8: "bg-sample-12",   // Mẫu 8 → Love ver 4
+                  10: "bg-sample-11",  // Mẫu 10 → Love ver 3
                   13: "bg-sample-16",  // Mẫu 13 → Happy Birthday ver 3
                   14: "bg-sample-16",  // Mẫu 14 → Happy Birthday ver 3
                   15: "bg-sample-16",  // Mẫu 15 → Happy Birthday ver 3
@@ -214,7 +215,9 @@ export default function CollectionsPage() {
                   37: "bg-sample-40",  // Mẫu 37 → Special Day ver 7
                   38: "bg-sample-41",  // Mẫu 38 → Special Day ver 8
                   39: "bg-sample-42",  // Mẫu 39 → Special Day ver 9
+                  41: "bg-sample-44",  // Mẫu 41 → Special Day ver 10
                   43: "bg-sample-48",  // Mẫu 43 → Special Day ver 14
+                  46: "bg-sample-51",  // Mẫu 46 → Special Day ver 15
                   48: "bg-sample-53",  // Mẫu 48 → Football ver 1
                   49: "bg-sample-54",  // Mẫu 49 → Football ver 2
                   51: "bg-sample-55",  // Mẫu 51 → Football ver 3
