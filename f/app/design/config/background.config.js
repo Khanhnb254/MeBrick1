@@ -4,9 +4,10 @@ export const BACKGROUND_OPTIONS = [
   { id: "bg-light-gray", name: "Happy Birthday ver 1", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY.png", backgroundSize: "cover", slots: [
     { id: "s1", x: 53,  y: 387, w: 177, h: 102 },
   ], textFields: [
-    { id: "tf-name",  x: 266, y: 158, w: 265, h: 18, placeholder: "Nhập tên..." },
-    { id: "tf-level", x: 266, y: 195, w: 265, h: 18, placeholder: "Nhập tuổi..." },
-    { id: "tf-hobby", x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+    { id: "tf-name",      x: 266, y: 158, w: 265, h: 18, placeholder: "Nhập tên..." },
+    { id: "tf-level",     x: 266, y: 195, w: 265, h: 18, placeholder: "Nhập tuổi..." },
+    { id: "tf-hobby-box", x: 266, y: 258, w: 265, h: 90, placeholder: "Nhập sở thích...", multiline: true },
+    { id: "tf-hobby",     x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
   ] },
   { id: "bg-ocean", name: "Happy Birthday ver 2", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY2.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY2.png", backgroundSize: "cover", slots: [
     { id: "s0", x: 54,  y: 142, w: 120, h: 119, rotate: -18 },
