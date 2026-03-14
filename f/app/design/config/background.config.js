@@ -158,12 +158,12 @@ export const BACKGROUND_OPTIONS = [
         { id: "s4", x: 302, y: 453, w: 44,  h: 60,  rotate: 1 },
       ],
       // HB ver 6-9: photo slot at (54, 354)
-      34: [ { id: "s1", x: 54, y: 369, w: 165, h: 100 } ],
-      35: [ { id: "s1", x: 54, y: 369, w: 165, h: 100 } ],
-      36: [ { id: "s1", x: 54, y: 369, w: 165, h: 100 } ],
-      37: [ { id: "s1", x: 54, y: 369, w: 165, h: 100 } ],
+      34: [ { id: "s1", x: 57, y: 389, w: 165, h: 100 } ],
+      35: [ { id: "s1", x: 57, y: 389, w: 165, h: 100 } ],
+      36: [ { id: "s1", x: 57, y: 389, w: 165, h: 100 } ],
+      37: [ { id: "s1", x: 57, y: 389, w: 165, h: 100 } ],
       // HB ver 11 (sample-8)
-       8: [ { id: "s1", x: 54, y: 369, w: 165, h: 100 } ],
+       8: [ { id: "s1", x: 57, y: 389, w: 165, h: 100 } ],
     };
     const defaultTextFields = [];
     const textFieldsMap = {
