@@ -166,18 +166,14 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-dob",      x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập ngày sinh..." },
         { id: "tf-position", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập chức vụ..." },
       ],
-      // Happy Birthday ver 4 (sample17) — REMINDER: TO, DATE + message lines + MESSAGE box
+      // Happy Birthday ver 4 (sample17) — REMINDER: TO, DATE + messages + MESSAGE textarea
       17: [
-        { id: "tf-name",     x: 266, y: 158, w: 205, h: 18, placeholder: "Nhập tên (TO)..." },
-        { id: "tf-date",     x: 266, y: 195, w: 205, h: 18, placeholder: "Nhập ngày (DATE)..." },
-        { id: "tf-msg1",     x: 175, y: 237, w: 295, h: 18, placeholder: "Dòng tin nhắn 1..." },
-        { id: "tf-msg2",     x: 175, y: 262, w: 295, h: 18, placeholder: "Dòng tin nhắn 2..." },
-        { id: "tf-msg3",     x: 175, y: 287, w: 295, h: 18, placeholder: "Dòng tin nhắn 3..." },
-        { id: "tf-message1", x: 285, y: 388, w: 215, h: 16, placeholder: "Message dòng 1..." },
-        { id: "tf-message2", x: 285, y: 410, w: 215, h: 16, placeholder: "Message dòng 2..." },
-        { id: "tf-message3", x: 285, y: 432, w: 215, h: 16, placeholder: "Message dòng 3..." },
-        { id: "tf-message4", x: 285, y: 454, w: 215, h: 16, placeholder: "Message dòng 4..." },
-        { id: "tf-message5", x: 285, y: 476, w: 215, h: 16, placeholder: "Message dòng 5..." },
+        { id: "tf-name",    x: 200, y: 161, w: 265, h: 20, placeholder: "Nhập tên (TO)..." },
+        { id: "tf-date",    x: 205, y: 196, w: 260, h: 20, placeholder: "Nhập ngày (DATE)..." },
+        { id: "tf-msg1",    x: 145, y: 232, w: 320, h: 20, placeholder: "Dòng tin nhắn 1..." },
+        { id: "tf-msg2",    x: 145, y: 258, w: 320, h: 20, placeholder: "Dòng tin nhắn 2..." },
+        { id: "tf-msg3",    x: 145, y: 283, w: 320, h: 20, placeholder: "Dòng tin nhắn 3..." },
+        { id: "tf-message", x: 265, y: 393, w: 220, h: 90,  placeholder: "Nhập lời nhắn...", multiline: true },
       ],
     };
     return {

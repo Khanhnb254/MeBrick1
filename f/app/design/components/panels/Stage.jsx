@@ -621,37 +621,40 @@ export default function Stage({
                   selectedBackground.textFields.map((tf) => {
                     const key = `${selectedBackground.id}_${tf.id}`;
                     const val = bgTextValues?.[key] ?? "";
-                    return (
-                      <input
-                        key={tf.id}
-                        type="text"
-                        className="bg-text-field"
-                        value={val}
-                        placeholder={tf.placeholder}
-                        onChange={(e) => onSetBgTextValue?.(selectedBackground.id, tf.id, e.target.value)}
-                        onPointerDown={(e) => e.stopPropagation()}
-                        onClick={(e) => e.stopPropagation()}
-                        style={{
-                          position: "absolute",
-                          left: tf.x,
-                          top: tf.y,
-                          width: tf.w,
-                          height: tf.h,
-                          zIndex: 200,
-                          background: "transparent",
-                          border: "none",
-                          borderBottom: "1.5px solid rgba(0,0,0,0.25)",
-                          fontSize: 13,
-                          fontFamily: "inherit",
-                          fontWeight: 500,
-                          color: "#111",
-                          outline: "none",
-                          padding: "0 4px",
-                          boxSizing: "border-box",
-                          pointerEvents: "auto",
-                        }}
-                      />
-                    );
+                    const commonProps = {
+                      key: tf.id,
+                      className: "bg-text-field",
+                      value: val,
+                      placeholder: tf.placeholder,
+                      onChange: (e) => onSetBgTextValue?.(selectedBackground.id, tf.id, e.target.value),
+                      onPointerDown: (e) => e.stopPropagation(),
+                      onClick: (e) => e.stopPropagation(),
+                      style: {
+                        position: "absolute",
+                        left: tf.x,
+                        top: tf.y,
+                        width: tf.w,
+                        height: tf.h,
+                        zIndex: 200,
+                        background: "transparent",
+                        border: "none",
+                        borderBottom: tf.multiline ? "none" : "1.5px solid rgba(0,0,0,0.25)",
+                        fontSize: tf.fontSize ?? 13,
+                        fontFamily: "inherit",
+                        fontWeight: 500,
+                        color: "#111",
+                        outline: "none",
+                        padding: tf.multiline ? "4px" : "0 4px",
+                        boxSizing: "border-box",
+                        pointerEvents: "auto",
+                        resize: "none",
+                        overflowY: tf.multiline ? "auto" : "hidden",
+                        lineHeight: "1.4",
+                      },
+                    };
+                    return tf.multiline
+                      ? <textarea {...commonProps} />
+                      : <input type="text" {...commonProps} />;
                   })
                 }
 
