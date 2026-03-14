@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import DesignArea from "../DesignArea";
 import ImageTransformLayer from "../ImageTransformLayer";
 export default function Stage({
@@ -57,6 +57,66 @@ export default function Stage({
   // ====== Drag engine (ONE) ======
   const draggingRef = useRef(null); // { kind: "char"|"sticker", id, startX, startY }
   const pointerDownRef = useRef(false); // chống click trống khi vừa drag xong
+
+  // ====== Layout Edit Mode (URL param ?layoutEdit=1) ======
+  const [layoutEditMode] = useState(() =>
+    typeof window !== "undefined" && new URLSearchParams(window.location.search).get("layoutEdit") === "1"
+  );
+  const [tfPositions, setTfPositions] = useState({}); // { "bgId_tfId": {x,y,w,h} }
+  const [draggingTf, setDraggingTf] = useState(null); // { key, startX, startY, origX, origY }
+  const [showCopied, setShowCopied] = useState(false);
+
+  const getEffectiveTf = useCallback((bgId, tf) => {
+    const key = `${bgId}_${tf.id}`;
+    return tfPositions[key] ? { ...tf, ...tfPositions[key] } : tf;
+  }, [tfPositions]);
+
+  const handleTfPointerDown = useCallback((e, bgId, tf) => {
+    if (!layoutEditMode) return;
+    e.stopPropagation();
+    e.preventDefault();
+    const key = `${bgId}_${tf.id}`;
+    const cur = tfPositions[key] ?? { x: tf.x, y: tf.y };
+    setDraggingTf({ key, startX: e.clientX, startY: e.clientY, origX: cur.x, origY: cur.y });
+  }, [layoutEditMode, tfPositions]);
+
+  useEffect(() => {
+    if (!draggingTf) return;
+    const onMove = (e) => {
+      const dx = e.clientX - draggingTf.startX;
+      const dy = e.clientY - draggingTf.startY;
+      setTfPositions((prev) => ({
+        ...prev,
+        [draggingTf.key]: {
+          ...(prev[draggingTf.key] ?? {}),
+          x: Math.round(draggingTf.origX + dx),
+          y: Math.round(draggingTf.origY + dy),
+        },
+      }));
+    };
+    const onUp = () => setDraggingTf(null);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+  }, [draggingTf]);
+
+  const handleCopyConfig = useCallback(() => {
+    if (!selectedBackground) return;
+    const fields = (selectedBackground.textFields ?? []).map((tf) => {
+      const key = `${selectedBackground.id}_${tf.id}`;
+      const pos = tfPositions[key];
+      const merged = pos ? { ...tf, ...pos } : tf;
+      return `  { id: "${merged.id}", x: ${merged.x}, y: ${merged.y}, w: ${merged.w}, h: ${merged.h}, placeholder: "${merged.placeholder}"${merged.multiline ? ", multiline: true" : ""} }`;
+    });
+    const text = `${selectedBackground.id}: [\n${fields.join(",\n")},\n]`;
+    navigator.clipboard.writeText(text).then(() => {
+      setShowCopied(true);
+      setTimeout(() => setShowCopied(false), 2000);
+    });
+  }, [selectedBackground, tfPositions]);
 
   // ====== Slot image handling ======
   const slotFileInputRef = useRef(null);
@@ -616,47 +676,80 @@ export default function Stage({
                 {/* Free layers: sticker/text/image */}
                 {freeLayers.map(renderFreeLayer)}
 
-                {/* Background text fields (e.g. Happy Birthday Name/Level/Hobby) */}
+                {/* Background text fields */}
                 {selectedBackground?.textFields?.length > 0 && step > 1 &&
-                  selectedBackground.textFields.map((tf) => {
-                    const key = `${selectedBackground.id}_${tf.id}`;
+                  selectedBackground.textFields.map((tfRaw) => {
+                    const tf = getEffectiveTf(selectedBackground.id, tfRaw);
+                    const key = `${selectedBackground.id}_${tfRaw.id}`;
                     const val = bgTextValues?.[key] ?? "";
-                    const commonProps = {
-                      key: tf.id,
-                      className: "bg-text-field",
-                      value: val,
-                      placeholder: tf.placeholder,
-                      onChange: (e) => onSetBgTextValue?.(selectedBackground.id, tf.id, e.target.value),
+                    const isEditMode = layoutEditMode;
+                    const commonStyle = {
+                      position: "absolute",
+                      left: tf.x,
+                      top: tf.y,
+                      width: tf.w,
+                      height: tf.h,
+                      zIndex: 200,
+                      background: isEditMode ? "rgba(59,130,246,0.08)" : "transparent",
+                      border: isEditMode ? "1.5px dashed #3B82F6" : "none",
+                      borderBottom: !isEditMode && !tf.multiline ? "1.5px solid rgba(0,0,0,0.25)" : (!isEditMode ? "none" : undefined),
+                      fontSize: tf.fontSize ?? 13,
+                      fontFamily: "inherit",
+                      fontWeight: 500,
+                      color: "#111",
+                      outline: "none",
+                      padding: tf.multiline ? "4px" : "0 4px",
+                      boxSizing: "border-box",
+                      pointerEvents: "auto",
+                      resize: "none",
+                      overflowY: tf.multiline ? "auto" : "hidden",
+                      lineHeight: "1.4",
+                      cursor: isEditMode ? "move" : "text",
+                    };
+                    const editLabel = isEditMode ? (
+                      <div key={`label-${tfRaw.id}`} style={{
+                        position: "absolute", left: tf.x, top: tf.y - 14,
+                        zIndex: 201, fontSize: 9, color: "#3B82F6", background: "rgba(255,255,255,0.85)",
+                        padding: "1px 3px", borderRadius: 2, pointerEvents: "none", whiteSpace: "nowrap",
+                      }}>
+                        {tfRaw.id} ({tf.x},{tf.y})
+                      </div>
+                    ) : null;
+                    const dragProps = isEditMode ? {
+                      onPointerDown: (e) => handleTfPointerDown(e, selectedBackground.id, tf),
+                    } : {
                       onPointerDown: (e) => e.stopPropagation(),
                       onClick: (e) => e.stopPropagation(),
-                      style: {
-                        position: "absolute",
-                        left: tf.x,
-                        top: tf.y,
-                        width: tf.w,
-                        height: tf.h,
-                        zIndex: 200,
-                        background: "transparent",
-                        border: "none",
-                        borderBottom: tf.multiline ? "none" : "1.5px solid rgba(0,0,0,0.25)",
-                        fontSize: tf.fontSize ?? 13,
-                        fontFamily: "inherit",
-                        fontWeight: 500,
-                        color: "#111",
-                        outline: "none",
-                        padding: tf.multiline ? "4px" : "0 4px",
-                        boxSizing: "border-box",
-                        pointerEvents: "auto",
-                        resize: "none",
-                        overflowY: tf.multiline ? "auto" : "hidden",
-                        lineHeight: "1.4",
-                      },
                     };
-                    return tf.multiline
-                      ? <textarea {...commonProps} />
-                      : <input type="text" {...commonProps} />;
+                    const inputEl = tf.multiline
+                      ? <textarea key={tfRaw.id} className="bg-text-field" value={val} placeholder={tf.placeholder}
+                          onChange={(e) => !isEditMode && onSetBgTextValue?.(selectedBackground.id, tfRaw.id, e.target.value)}
+                          readOnly={isEditMode} style={commonStyle} {...dragProps} />
+                      : <input key={tfRaw.id} type="text" className="bg-text-field" value={val} placeholder={tf.placeholder}
+                          onChange={(e) => !isEditMode && onSetBgTextValue?.(selectedBackground.id, tfRaw.id, e.target.value)}
+                          readOnly={isEditMode} style={commonStyle} {...dragProps} />;
+                    return isEditMode ? [editLabel, inputEl] : inputEl;
                   })
                 }
+
+                {/* Layout Edit Mode — Copy Config button */}
+                {layoutEditMode && selectedBackground && step > 1 && (
+                  <div style={{
+                    position: "absolute", bottom: 4, right: 4, zIndex: 300,
+                    display: "flex", gap: 6, alignItems: "center",
+                  }}>
+                    <button
+                      onPointerDown={(e) => e.stopPropagation()}
+                      onClick={handleCopyConfig}
+                      style={{
+                        background: showCopied ? "#16a34a" : "#3B82F6", color: "#fff",
+                        border: "none", borderRadius: 6, padding: "4px 10px",
+                        fontSize: 11, cursor: "pointer", fontWeight: 600,
+                      }}>
+                      {showCopied ? "✓ Đã copy!" : "📋 Copy Config"}
+                    </button>
+                  </div>
+                )}
 
                 {step !== 4 && selectedSticker && (
                   <ImageTransformLayer
