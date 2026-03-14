@@ -155,6 +155,10 @@ export const BACKGROUND_OPTIONS = [
         { id: "s4", x: 302, y: 453, w: 44,  h: 60,  rotate: 1 },
       ],
     };
+    const defaultTextFields = [
+      { id: "tf-account", x: 290, y: 345, w: 175, h: 22, placeholder: "Nhập tên tài khoản..." },
+      { id: "tf-message", x: 105, y: 373, w: 375, h: 100, placeholder: "Nhập lời nhắn...", multiline: true },
+    ];
     const textFieldsMap = {
       5: [
         { id: "tf-name",      x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
@@ -190,7 +194,7 @@ export const BACKGROUND_OPTIONS = [
       thumbnail: `/samples/sample${n}.png`,
       backgroundSize: "cover",
       slots: slotsMap[n] ?? [],
-      ...(textFieldsMap[n] ? { textFields: textFieldsMap[n] } : {}),
+      ...(textFieldsMap[n] ? { textFields: textFieldsMap[n] } : { textFields: defaultTextFields }),
     };
   }).filter(Boolean),
 ];
