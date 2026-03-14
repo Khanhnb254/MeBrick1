@@ -169,7 +169,6 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-name",     x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
         { id: "tf-dob",      x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập ngày sinh..." },
         { id: "tf-position", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập chức vụ..." },
-        { id: "tf-hobby",    x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
       ],
       // HB ver 11 (sample-8)
       8: [
@@ -200,7 +199,7 @@ export const BACKGROUND_OPTIONS = [
       ],
       // Special Day ver 11 (sample-45)
       45: [
-        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+        { id: "tf-hobby",   x: 293, y: 408, w: 265, h: 18, placeholder: "Nhập sở thích..." },
       ],
       // Special Day ver 12 (sample-46)
       46: [
