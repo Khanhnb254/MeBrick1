@@ -166,7 +166,11 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-dob",      x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập ngày sinh..." },
         { id: "tf-position", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập chức vụ..." },
       ],
-      // Happy Birthday ver 4 (sample17) — REMINDER: TO, DATE + messages + MESSAGE textarea
+      // Love ver 4 (sample12) — MESSAGE box: account oval + message textarea
+      12: [
+        { id: "tf-account", x: 290, y: 360, w: 195, h: 22, placeholder: "Nhập tên tài khoản..." },
+        { id: "tf-message", x: 270, y: 390, w: 230, h: 105, placeholder: "Nhập lời nhắn...", multiline: true },
+      ],
       17: [
         { id: "tf-name",    x: 275, y: 169, w: 265, h: 20, placeholder: "Nhập tên (TO)..." },
         { id: "tf-date",    x: 285, y: 196, w: 260, h: 20, placeholder: "Nhập ngày (DATE)..." },
