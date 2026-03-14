@@ -157,6 +157,11 @@ export const BACKGROUND_OPTIONS = [
         { id: "s3", x: 66,  y: 458, w: 58,  h: 54,  rotate:  0 },
         { id: "s4", x: 302, y: 453, w: 44,  h: 60,  rotate: 1 },
       ],
+      // HB ver 6-9: photo slot at (54, 354)
+      34: [ { id: "s1", x: 54, y: 354, w: 175, h: 115 } ],
+      35: [ { id: "s1", x: 54, y: 354, w: 175, h: 115 } ],
+      36: [ { id: "s1", x: 54, y: 354, w: 175, h: 115 } ],
+      37: [ { id: "s1", x: 54, y: 354, w: 175, h: 115 } ],
     };
     const defaultTextFields = [];
     const textFieldsMap = {
