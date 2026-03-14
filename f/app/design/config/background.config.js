@@ -6,11 +6,13 @@ export const BACKGROUND_OPTIONS = [
   ], textFields: [
     { id: "tf-name",  x: 266, y: 158, w: 265, h: 18, placeholder: "Nhập tên..." },
     { id: "tf-level", x: 266, y: 195, w: 265, h: 18, placeholder: "Nhập tuổi..." },
-    { id: "tf-hobby", x: 266, y: 232, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+    { id: "tf-hobby", x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
   ] },
   { id: "bg-ocean", name: "Happy Birthday ver 2", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY2.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY2.png", backgroundSize: "cover", slots: [
     { id: "s0", x: 54,  y: 142, w: 120, h: 119, rotate: -18 },
     { id: "s1", x: 178, y: 172, w: 115, h: 113, rotate: 10 },
+  ], textFields: [
+    { id: "tf-hobby", x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
   ] },
 
   // ===== HAPPY TOGETHER =====
@@ -164,11 +166,31 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-name",      x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
         { id: "tf-level",     x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập tuổi..." },
         { id: "tf-manifesto", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập mong ước..." },
+        { id: "tf-hobby",     x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
       ],
       6: [
         { id: "tf-name",     x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
         { id: "tf-dob",      x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập ngày sinh..." },
         { id: "tf-position", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập chức vụ..." },
+        { id: "tf-hobby",    x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+      ],
+      // HB ver 11 (sample-8)
+      8: [
+        { id: "tf-account", x: 290, y: 345, w: 175, h: 22, placeholder: "Nhập tên tài khoản..." },
+        { id: "tf-message", x: 105, y: 373, w: 375, h: 100, placeholder: "Nhập lời nhắn...", multiline: true },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+      ],
+      // Love ver 2 (sample-10)
+      10: [
+        { id: "tf-account", x: 290, y: 345, w: 175, h: 22, placeholder: "Nhập tên tài khoản..." },
+        { id: "tf-message", x: 105, y: 373, w: 375, h: 100, placeholder: "Nhập lời nhắn...", multiline: true },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+      ],
+      // Love ver 3 (sample-11)
+      11: [
+        { id: "tf-account", x: 290, y: 345, w: 175, h: 22, placeholder: "Nhập tên tài khoản..." },
+        { id: "tf-message", x: 105, y: 373, w: 375, h: 100, placeholder: "Nhập lời nhắn...", multiline: true },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
       ],
       // Love ver 4 (sample12) — MESSAGE box: account top-right + message below oval
       12: [
@@ -183,6 +205,24 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-msg3",    x: 245, y: 268, w: 320, h: 20, placeholder: "Dòng tin nhắn 3..." },
         { id: "tf-account", x: 288, y: 348, w: 182, h: 22, placeholder: "Nhập tên tài khoản..." },
         { id: "tf-message", x: 265, y: 388, w: 220, h: 85,  placeholder: "Nhập lời nhắn...", multiline: true },
+      ],
+      // HB ver 10 (sample-49)
+      49: [
+        { id: "tf-account", x: 290, y: 345, w: 175, h: 22, placeholder: "Nhập tên tài khoản..." },
+        { id: "tf-message", x: 105, y: 373, w: 375, h: 100, placeholder: "Nhập lời nhắn...", multiline: true },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+      ],
+      // Special Day ver 11 (sample-45)
+      45: [
+        { id: "tf-account", x: 290, y: 345, w: 175, h: 22, placeholder: "Nhập tên tài khoản..." },
+        { id: "tf-message", x: 105, y: 373, w: 375, h: 100, placeholder: "Nhập lời nhắn...", multiline: true },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+      ],
+      // Special Day ver 12 (sample-46)
+      46: [
+        { id: "tf-account", x: 290, y: 345, w: 175, h: 22, placeholder: "Nhập tên tài khoản..." },
+        { id: "tf-message", x: 105, y: 373, w: 375, h: 100, placeholder: "Nhập lời nhắn...", multiline: true },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
       ],
     };
     return {
