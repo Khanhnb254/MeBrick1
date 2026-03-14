@@ -6,7 +6,7 @@ export const BACKGROUND_OPTIONS = [
   ], textFields: [
     { id: "tf-name",      x: 266, y: 158, w: 265, h: 18, placeholder: "Nhập tên..." },
     { id: "tf-level",     x: 266, y: 195, w: 265, h: 18, placeholder: "Nhập tuổi..." },
-    { id: "tf-hobby-box", x: 266, y: 248, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+    { id: "tf-hobby-box", x: 266, y: 233, w: 265, h: 18, placeholder: "Nhập sở thích..." },
     { id: "tf-hobby",     x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
   ] },
   { id: "bg-ocean", name: "Happy Birthday ver 2", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY2.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY2.png", backgroundSize: "cover", slots: [
