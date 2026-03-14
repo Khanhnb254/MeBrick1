@@ -162,6 +162,8 @@ export const BACKGROUND_OPTIONS = [
       35: [ { id: "s1", x: 54, y: 354, w: 175, h: 115 } ],
       36: [ { id: "s1", x: 54, y: 354, w: 175, h: 115 } ],
       37: [ { id: "s1", x: 54, y: 354, w: 175, h: 115 } ],
+      // HB ver 11 (sample-8)
+       8: [ { id: "s1", x: 54, y: 354, w: 175, h: 115 } ],
     };
     const defaultTextFields = [];
     const textFieldsMap = {
