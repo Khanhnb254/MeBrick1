@@ -187,7 +187,7 @@ export default function CollectionsPage() {
                 const sampleBgMapping = {
                   1: "bg-light-gray",  // Mẫu 1 → Happy Birthday ver 1
                   2: "bg-sample-5",    // Mẫu 2 → Special Day ver 1
-                  3: "bg-sample-7",    // Mẫu 3 → Special Day ver 3
+                  3: "bg-sample-6",    // Mẫu 3 → Special Day ver 2
                   4: "bg-sample-17",   // Mẫu 4 → Happy Birthday ver 4
                   5: "bg-sample-7",    // Mẫu 5 → Special Day ver 3
                   6: "bg-sample-10",   // Mẫu 6 → Love ver 2
@@ -205,8 +205,10 @@ export default function CollectionsPage() {
                   25: "bg-sample-26",  // Mẫu 25 → Love ver 11
                   27: "bg-sample-27",  // Mẫu 27 → Graduation ver 1
                   28: "bg-sample-38",  // Mẫu 28 → Graduation ver 3
+                  32: "bg-sample-35",  // Mẫu 32 → Happy Birthday ver 6
                   37: "bg-sample-40",  // Mẫu 37 → Special Day ver 7
                   38: "bg-sample-41",  // Mẫu 38 → Special Day ver 8
+                  39: "bg-sample-42",  // Mẫu 39 → Special Day ver 9
                 };
                 let bgParam = "";
                 if (p._isSample) {
