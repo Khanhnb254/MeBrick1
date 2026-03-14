@@ -92,7 +92,7 @@ export const BACKGROUND_OPTIONS = [
       37: "Happy Birthday", 49: "Happy Birthday",  8: "Happy Birthday",
       13: "Happy Birthday",
        5: "Special Day",  6: "Special Day",  7: "Special Day",
-      18: "Special Day", 28: "Special Day", 30: "Special Day",
+      18: "Special Day", 28: "Graduation", 30: "Special Day",
       40: "Special Day", 41: "Special Day", 42: "Special Day",
       44: "Special Day", 45: "Special Day", 46: "Special Day",
       47: "Special Day", 48: "Special Day", 51: "Special Day",

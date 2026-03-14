@@ -209,6 +209,10 @@ export default function CollectionsPage() {
                   37: "bg-sample-40",  // Mẫu 37 → Special Day ver 7
                   38: "bg-sample-41",  // Mẫu 38 → Special Day ver 8
                   39: "bg-sample-42",  // Mẫu 39 → Special Day ver 9
+                  43: "bg-sample-48",  // Mẫu 43 → Special Day ver 14
+                  48: "bg-sample-53",  // Mẫu 48 → Football ver 1
+                  49: "bg-sample-54",  // Mẫu 49 → Football ver 2
+                  51: "bg-sample-55",  // Mẫu 51 → Football ver 3
                 };
                 let bgParam = "";
                 if (p._isSample) {
