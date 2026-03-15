@@ -6,14 +6,14 @@ export const BACKGROUND_OPTIONS = [
   ], textFields: [
     { id: "tf-name",      x: 266, y: 158, w: 265, h: 18, placeholder: "Nhập tên..." },
     { id: "tf-level",     x: 266, y: 195, w: 265, h: 18, placeholder: "Nhập tuổi..." },
-    { id: "tf-hobby-box", x: 266, y: 233, w: 265, h: 18, placeholder: "Nhập sở thích..." },
-    { id: "tf-hobby",     x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+    { id: "tf-hobby-box", x: 266, y: 233, w: 265, h: 18, placeholder: "Nhập thông tin..." },
+    { id: "tf-hobby",     x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập thông tin..." },
   ] },
   { id: "bg-ocean", name: "Happy Birthday ver 2", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY2.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY2.png", backgroundSize: "cover", slots: [
     { id: "s0", x: 54,  y: 142, w: 120, h: 119, rotate: -18 },
     { id: "s1", x: 178, y: 172, w: 115, h: 113, rotate: 10 },
   ], textFields: [
-    { id: "tf-hobby", x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+    { id: "tf-hobby", x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập thông tin..." },
   ] },
 
   // ===== HAPPY TOGETHER =====
@@ -116,6 +116,9 @@ export const BACKGROUND_OPTIONS = [
       5: [
         { id: "s1", x: 53,  y: 387, w: 177, h: 102 },
       ],
+      8: [
+        { id: "s1", x: 53,  y: 387, w: 177, h: 102 },
+      ],
       6: [
         { id: "s1", x: 38,  y: 379, w: 222, h: 125 },
         { id: "s2", x: 275, y: 377, w: 64,  h: 56  },
@@ -164,7 +167,7 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-name",      x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
         { id: "tf-level",     x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập tuổi..." },
         { id: "tf-manifesto", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập mong ước..." },
-        { id: "tf-hobby",     x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+        { id: "tf-hobby",     x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập thông tin..." },
       ],
       6: [
         { id: "tf-name",     x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
@@ -173,15 +176,16 @@ export const BACKGROUND_OPTIONS = [
       ],
       // HB ver 11 (sample-8)
       8: [
-        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập thông tin..." },
       ],
+
       // Love ver 2 (sample-10)
       10: [
-        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập thông tin..." },
       ],
       // Love ver 3 (sample-11)
       11: [
-        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập thông tin..." },
       ],
       // Love ver 4 (sample12)
       12: [],
@@ -196,15 +200,15 @@ export const BACKGROUND_OPTIONS = [
       ],
       // HB ver 10 (sample-49)
       49: [
-        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập thông tin..." },
       ],
       // Special Day ver 11 (sample-45)
       45: [
-        { id: "tf-hobby",   x: 293, y: 408, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+        { id: "tf-hobby",   x: 293, y: 408, w: 265, h: 18, placeholder: "Nhập thông tin..." },
       ],
       // Special Day ver 12 (sample-46)
       46: [
-        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập sở thích..." },
+        { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập thông tin..." },
       ],
       // HB ver 6 (sample-34)
       34: [
