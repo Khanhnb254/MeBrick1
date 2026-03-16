@@ -767,10 +767,10 @@ export default function MeBrickPage() {
           }}>
             {[
               { src: "/samples/sample36.png", gridRow: "1", gridColumn: "1" },
-              { src: "/samples/sample37.png", gridRow: "2", gridColumn: "1" },
-              { src: "/images/hero/gift-feature.jpg", gridRow: "1 / 3", gridColumn: "2" },
-              { src: "/samples/sample34.png", gridRow: "1", gridColumn: "3" },
-              { src: "/samples/sample35.png", gridRow: "2", gridColumn: "3" },
+              { src: "/samples/sample5.png", gridRow: "2", gridColumn: "1" },
+              { src: "/samples/sample20.png", gridRow: "1 / 3", gridColumn: "2" },
+              { src: "/samples/sample17.png", gridRow: "1", gridColumn: "3" },
+              { src: "/samples/sample37.png", gridRow: "2", gridColumn: "3" },
             ].map((item, i) => (
               <div
                 key={i}
