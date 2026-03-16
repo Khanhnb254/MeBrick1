@@ -163,6 +163,16 @@ export const BACKGROUND_OPTIONS = [
         { id: "s3", x: 66,  y: 458, w: 58,  h: 54,  rotate:  0 },
         { id: "s4", x: 302, y: 453, w: 44,  h: 60,  rotate: 1 },
       ],
+      36: [
+        { id: "s1", x: 65,  y: 115, w: 108, h: 100 },
+        { id: "s2", x: 200, y: 108, w: 108, h: 100 },
+        { id: "s3", x: 335, y: 115, w: 108, h: 100 },
+      ],
+      37: [
+        { id: "s1", x: 65,  y: 115, w: 108, h: 100 },
+        { id: "s2", x: 200, y: 108, w: 108, h: 100 },
+        { id: "s3", x: 335, y: 115, w: 108, h: 100 },
+      ],
     };
     const defaultTextFields = [];
     const textFieldsMap = {
@@ -228,16 +238,7 @@ export const BACKGROUND_OPTIONS = [
       35: [
         { id: "tf-message", x: 78, y: 404, w: 400, h: 85, placeholder: "Nhập lời nhắn...", multiline: true },
       ],
-      36: [
-        { id: "s1", x: 65,  y: 115, w: 108, h: 100 },
-        { id: "s2", x: 200, y: 108, w: 108, h: 100 },
-        { id: "s3", x: 335, y: 115, w: 108, h: 100 },
-      ],
-      37: [
-        { id: "s1", x: 65,  y: 115, w: 108, h: 100 },
-        { id: "s2", x: 200, y: 108, w: 108, h: 100 },
-        { id: "s3", x: 335, y: 115, w: 108, h: 100 },
-      ],
+      // HB ver 8 (sample-36)
       36: [
         { id: "tf-message", x: 78, y: 417, w: 400, h: 85, placeholder: "Nhập lời nhắn...", multiline: true },
       ],
