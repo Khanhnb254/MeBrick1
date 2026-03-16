@@ -22,7 +22,7 @@ export default function FeedbackSection() {
             textShadow: "3px 4px 10px rgba(0,102,197,0.18)",
           }}
         >
-          Khách hàng nói gì về chúng tôi
+          Khách hàng nói gì về Mê Brick
         </h2>
 
         <div
