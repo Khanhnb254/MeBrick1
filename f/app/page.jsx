@@ -701,13 +701,15 @@ export default function MeBrickPage() {
                   {/* Text side */}
                   <div
                     style={{
-                      flex: 1,
+                      flex: "0 0 50%",
+                      width: "50%",
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "center",
                       padding: "50px 60px",
                       backgroundColor: index % 2 === 0 ? "#f8f9ff" : "#ffffff",
                       textAlign: "left",
+                      boxSizing: "border-box",
                     }}>
                     <h3 style={{
                       fontSize: "28px",
@@ -728,7 +730,8 @@ export default function MeBrickPage() {
                   {/* Image side */}
                   <div
                     style={{
-                      flex: 1,
+                      flex: "0 0 50%",
+                      width: "50%",
                       backgroundImage: `url(${feature.image})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
