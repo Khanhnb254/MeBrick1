@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FiShoppingCart, FiFacebook, FiInstagram } from "react-icons/fi";
+import { SiTiktok } from "react-icons/si";
 import { PiMusicNoteFill, PiSpeakerSlashFill } from "react-icons/pi";
 import { getCart, cartTotalQty } from "../../lib/cart";
 import { SOCIAL_LINKS } from "../../lib/social-links";
@@ -152,6 +153,18 @@ export default function Header({ overlay = false }) {
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}>
             <FiInstagram style={{ fontSize: "18px" }} />
+          </a>
+
+          {/* TikTok */}
+          <a
+            href={SOCIAL_LINKS.tiktok}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.socialLinks}
+            style={{ color: isTransparent ? "#fff" : "#000", display: "flex", alignItems: "center" }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}>
+            <SiTiktok style={{ fontSize: "16px" }} />
           </a>
 
           {/* Music toggle */}
