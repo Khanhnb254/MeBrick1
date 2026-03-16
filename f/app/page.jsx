@@ -51,21 +51,25 @@ export default function MeBrickPage() {
       icon: "🧩",
       title: "Concept theo câu chuyện",
       description: "Một món decor nhỏ để giữ lại những khoảnh khắc đáng nhớ",
+      image: "/images/hero/hero1.jpg",
     },
     {
       icon: "🎨",
       title: "Thiết kế riêng",
       description: "Biến ý tưởng và kỷ niệm thành một món quà thật riêng",
+      image: "/images/hero/hero2.jpg",
     },
     {
       icon: "🎁",
       title: "Quà tặng ý nghĩa",
       description: "Đóng gói sang trọng, phù hợp làm quà tặng",
+      image: "/images/hero/hero3.jpg",
     },
     {
       icon: "🚚",
       title: "Giao hàng toàn quốc",
       description: "Miễn phí vận chuyển cho đơn từ 1 triệu",
+      image: "/images/hero/hero4.jpg",
     },
   ];
 
@@ -656,21 +660,21 @@ export default function MeBrickPage() {
         ref={(el) => (sectionRefs.current.features = el)}
         data-section="features"
         style={{
-          padding: "80px 20px",
           backgroundColor: "#0B2D72",
+          overflow: "hidden",
           opacity: visibleSections.features ? 1 : 0,
           transform: visibleSections.features
             ? "translateY(0)"
             : "translateY(50px)",
           transition: "opacity 1s ease, transform 1s ease",
         }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <h2
+        <div>
+        <h2
             style={{
               fontSize: "36px",
               fontWeight: "700",
               textAlign: "center",
-              marginBottom: "50px",
+              padding: "60px 20px 50px",
               fontFamily: "'Antonio', sans-serif",
               textTransform: "uppercase",
               textShadow: "3px 4px 10px rgba(0,0,0,0.3)",
@@ -679,62 +683,61 @@ export default function MeBrickPage() {
             Vì sao chọn MÊ BRICK?
           </h2>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-              gap: "40px",
-            }}>
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                style={{
-                  textAlign: "center",
-                  padding: "30px",
-                  backgroundColor: "#ffffff",
-                  borderRadius: "10px",
-                  boxShadow: "0 5px 15px rgba(0,0,0,0.05)",
-                  transition: "all 0.3s ease",
-                  opacity: visibleSections.features ? 1 : 0,
-                  transform: visibleSections.features
-                    ? "translateY(0)"
-                    : "translateY(30px)",
-                  transitionDelay: visibleSections.features
-                    ? `${index * 0.2}s`
-                    : "0s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-5px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 10px 25px rgba(0,0,0,0.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 5px 15px rgba(0,0,0,0.05)";
-                }}>
-                <div style={{ fontSize: "48px", marginBottom: "20px" }}>
-                  {feature.icon}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+            {features.map((feature, index) => {
+              const isTextLeft = index % 2 === 0;
+              return (
+                <div
+                  key={index}
+                  style={{
+                    display: "flex",
+                    flexDirection: isTextLeft ? "row" : "row-reverse",
+                    minHeight: "420px",
+                    opacity: visibleSections.features ? 1 : 0,
+                    transform: visibleSections.features ? "translateY(0)" : "translateY(30px)",
+                    transition: `opacity 1s ease ${index * 0.2}s, transform 1s ease ${index * 0.2}s`,
+                  }}>
+                  {/* Text side */}
+                  <div
+                    style={{
+                      flex: 1,
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      padding: "60px 70px",
+                      backgroundColor: index % 2 === 0 ? "#0B2D72" : "#0a2560",
+                      textAlign: isTextLeft ? "left" : "right",
+                    }}>
+                    <div style={{ fontSize: "52px", marginBottom: "20px" }}>{feature.icon}</div>
+                    <h3 style={{
+                      fontSize: "28px",
+                      fontWeight: "700",
+                      color: "#fff",
+                      marginBottom: "16px",
+                      fontFamily: "'Antonio', sans-serif",
+                      textTransform: "uppercase",
+                    }}>{feature.title}</h3>
+                    <p style={{
+                      fontSize: "16px",
+                      color: "rgba(255,255,255,0.8)",
+                      lineHeight: "1.8",
+                      maxWidth: "420px",
+                      marginLeft: isTextLeft ? 0 : "auto",
+                    }}>{feature.description}</p>
+                  </div>
+                  {/* Image side */}
+                  <div
+                    style={{
+                      flex: 1,
+                      backgroundImage: `url(${feature.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      minHeight: "420px",
+                    }}
+                  />
                 </div>
-                <h3
-                  style={{
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                    color: "#0066c5",
-                    marginBottom: "15px",
-                  }}>
-                  {feature.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "16px",
-                    color: "#666",
-                    lineHeight: "1.6",
-                  }}>
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
