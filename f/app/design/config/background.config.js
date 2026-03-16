@@ -179,10 +179,10 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-message", x: 265, y: 388, w: 220, h: 85,  placeholder: "Nhập lời nhắn...", multiline: true },
       ],
       40: [
-        { id: "tf-message", x: 80, y: 400, w: 390, h: 80, placeholder: "Nhập lời nhắn...", multiline: true }
+        { id: "tf-message", x: 80, y: 370, w: 375, h: 80, placeholder: "Nhập lời nhắn...", multiline: true }
       ],
       41: [
-        { id: "tf-message", x: 80, y: 400, w: 390, h: 80, placeholder: "Nhập lời nhắn...", multiline: true }
+        { id: "tf-message", x: 80, y: 370, w: 375, h: 80, placeholder: "Nhập lời nhắn...", multiline: true }
       ],
       6: [
         { id: "tf-name",      x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
@@ -201,10 +201,10 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-message", x: 265, y: 388, w: 220, h: 85,  placeholder: "Nhập lời nhắn...", multiline: true },
       ],
       40: [
-        { id: "tf-message", x: 80, y: 400, w: 390, h: 80, placeholder: "Nhập lời nhắn...", multiline: true }
+        { id: "tf-message", x: 80, y: 370, w: 375, h: 80, placeholder: "Nhập lời nhắn...", multiline: true }
       ],
       41: [
-        { id: "tf-message", x: 80, y: 400, w: 390, h: 80, placeholder: "Nhập lời nhắn...", multiline: true }
+        { id: "tf-message", x: 80, y: 370, w: 375, h: 80, placeholder: "Nhập lời nhắn...", multiline: true }
       ],
       49: [
         { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập thông tin..." },
