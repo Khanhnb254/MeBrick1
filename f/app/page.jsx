@@ -660,7 +660,7 @@ export default function MeBrickPage() {
         ref={(el) => (sectionRefs.current.features = el)}
         data-section="features"
         style={{
-          backgroundColor: "#0B2D72",
+          backgroundColor: "#ffffff",
           overflow: "hidden",
           opacity: visibleSections.features ? 1 : 0,
           transform: visibleSections.features
@@ -678,7 +678,7 @@ export default function MeBrickPage() {
               fontFamily: "'Antonio', sans-serif",
               textTransform: "uppercase",
               textShadow: "3px 4px 10px rgba(0,0,0,0.3)",
-              color: "#ffffff",
+              color: "#0B2D72",
             }}>
             Vì sao chọn MÊ BRICK?
           </h2>
@@ -705,21 +705,21 @@ export default function MeBrickPage() {
                       flexDirection: "column",
                       justifyContent: "center",
                       padding: "60px 70px",
-                      backgroundColor: index % 2 === 0 ? "#0B2D72" : "#0a2560",
+                      backgroundColor: index % 2 === 0 ? "#f8f9ff" : "#ffffff",
                       textAlign: isTextLeft ? "left" : "right",
                     }}>
                     <div style={{ fontSize: "52px", marginBottom: "20px" }}>{feature.icon}</div>
                     <h3 style={{
                       fontSize: "28px",
                       fontWeight: "700",
-                      color: "#fff",
+                      color: "#0B2D72",
                       marginBottom: "16px",
                       fontFamily: "'Antonio', sans-serif",
                       textTransform: "uppercase",
                     }}>{feature.title}</h3>
                     <p style={{
                       fontSize: "16px",
-                      color: "rgba(255,255,255,0.8)",
+                      color: "rgba(11,45,114,0.8)",
                       lineHeight: "1.8",
                       maxWidth: "420px",
                       marginLeft: isTextLeft ? 0 : "auto",
