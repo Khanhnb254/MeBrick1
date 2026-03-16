@@ -388,7 +388,7 @@
 }
 
 .productName {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   color: #0050b8;
   margin: 0 0 8px;
@@ -403,7 +403,7 @@
 }
 
 .productDescription {
-  font-size: 13px;
+  font-size: 15px;
   color: #6b7280;
   margin-bottom: 14px;
   line-height: 1.5;
