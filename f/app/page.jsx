@@ -63,7 +63,7 @@ export default function MeBrickPage() {
       icon: "🎁",
       title: "Quà tặng ý nghĩa",
       description: "Đóng gói sang trọng, phù hợp làm quà tặng",
-      image: "/images/hero/hero3.jpg",
+      image: "/images/hero/gift-feature.jpg",
     },
     {
       icon: "🚚",
