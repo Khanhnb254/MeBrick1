@@ -52,8 +52,8 @@ export const BACKGROUND_OPTIONS = [
       40: "Special Day ver 7",
       41: "Special Day ver 8",
       42: "Special Day ver 9",
-      44: "Special Day ver 10",
-      45: "Special Day ver 11",
+      44: "Happy Together ver 2",
+      45: "Happy Together ver 3",
       46: "Special Day ver 12",
       47: "Special Day ver 13",
       48: "Special Day ver 14",
@@ -97,7 +97,7 @@ export const BACKGROUND_OPTIONS = [
        5: "Special Day",  6: "Special Day",  7: "Special Day",
       18: "Special Day", 28: "Graduation", 30: "Special Day",
       40: "Special Day", 41: "Special Day", 42: "Special Day",
-      44: "Special Day", 45: "Special Day", 46: "Special Day",
+      44: "Happy Together", 45: "Happy Together", 46: "Special Day",
       47: "Special Day", 48: "Special Day", 51: "Special Day",
       52: "Special Day", 56: "Special Day",
        9: "Love", 10: "Love", 11: "Love", 12: "Love",
@@ -194,10 +194,14 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-date",    x: 285, y: 196, w: 260, h: 20, placeholder: "Nhập ngày (DATE)..." },
         { id: "tf-msg1",    x: 245, y: 217, w: 320, h: 20, placeholder: "Dòng tin nhắn 1..." },
         { id: "tf-msg2",    x: 245, y: 243, w: 320, h: 20, placeholder: "Dòng tin nhắn 2..." },
-        { id: "tf-msg3",    x: 245, y: 268, w: 320, h: 20, placeholder: "Dòng tin nhắn 3..." },
-        { id: "tf-account", x: 288, y: 348, w: 182, h: 22, placeholder: "Nhập tên tài khoản..." },
-        { id: "tf-message", x: 265, y: 388, w: 220, h: 85,  placeholder: "Nhập lời nhắn...", multiline: true },
-      ],
+        // Special Day ver 7 (sample-40)
+        40: [
+          { id: "tf-message", x: 80, y: 420, w: 390, h: 40, placeholder: "Nhập lời nhắn..." }
+        ],
+        // Special Day ver 8 (sample-41)
+        41: [
+          { id: "tf-message", x: 80, y: 420, w: 390, h: 40, placeholder: "Nhập lời nhắn..." }
+        ],
       // HB ver 10 (sample-49)
       49: [
         { id: "tf-hobby",   x: 293, y: 398, w: 265, h: 18, placeholder: "Nhập thông tin..." },

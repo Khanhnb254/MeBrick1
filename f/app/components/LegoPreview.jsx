@@ -34,6 +34,20 @@ export default function LegoPreview({ body, clothes, face, hair }) {
         />
       )}
 
+      {/* HEAD (ẩn nếu có face) */}
+      {!face && (
+        <img
+          src={body}
+          style={{
+            position: "absolute",
+            width: "38%",
+            left: "31%",
+            top: "22%",
+            opacity: 1
+          }}
+        />
+      )}
+
       {/* FACE */}
       {face && (
         <img

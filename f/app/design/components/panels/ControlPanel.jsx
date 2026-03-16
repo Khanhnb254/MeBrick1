@@ -398,6 +398,11 @@ export default function ControlPanel(props) {
                     : "Thêm nhân vật LEGO"}
                 </button>
 
+                  {/* Ghi chú bên dưới button thêm nhân vật LEGO */}
+                  <div className="mb-note" style={{ margin: "8px 0", color: "#888", fontSize: "14px" }}>
+                    Ghi chú: Bạn có thể thêm nhiều nhân vật LEGO để thiết kế sinh động hơn.
+                  </div>
+
                 <div className="mb-layergrid">
                   {(getFilteredLayers?.() || []).map((layer) => (
                     <button
