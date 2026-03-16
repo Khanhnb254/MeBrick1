@@ -745,6 +745,62 @@ export default function MeBrickPage() {
         </div>
       </section>
 
+      {/* GALLERY SECTION */}
+      <section style={{ padding: "80px 20px", backgroundColor: "#fff" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <h2 style={{
+            fontSize: "36px",
+            fontWeight: "700",
+            textAlign: "center",
+            marginBottom: "48px",
+            fontFamily: "'Antonio', sans-serif",
+            textTransform: "uppercase",
+            color: "#0B2D72",
+            textShadow: "3px 4px 10px rgba(0,0,0,0.1)",
+          }}>Bộ sưu tập mẫu</h2>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 2fr 1fr",
+            gridTemplateRows: "1fr 1fr",
+            gap: "10px",
+            height: "600px",
+          }}>
+            {[
+              { src: "/samples/sample36.png", gridRow: "1", gridColumn: "1" },
+              { src: "/samples/sample37.png", gridRow: "2", gridColumn: "1" },
+              { src: "/images/hero/gift-feature.jpg", gridRow: "1 / 3", gridColumn: "2" },
+              { src: "/samples/sample34.png", gridRow: "1", gridColumn: "3" },
+              { src: "/samples/sample35.png", gridRow: "2", gridColumn: "3" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  gridRow: item.gridRow,
+                  gridColumn: item.gridColumn,
+                  overflow: "hidden",
+                  borderRadius: "12px",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={e => e.currentTarget.querySelector("img").style.transform = "scale(1.08)"}
+                onMouseLeave={e => e.currentTarget.querySelector("img").style.transform = "scale(1)"}
+              >
+                <img
+                  src={item.src}
+                  alt=""
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transition: "transform 0.4s ease",
+                    display: "block",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <div
         ref={(el) => (sectionRefs.current.feedback = el)}
         data-section="feedback"
