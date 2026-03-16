@@ -2668,6 +2668,13 @@ html {
     height: 100%;
   }
 
+  .sample-sidebar {
+    flex: 2;
+    max-width: 320px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
   .sample-gallery {
     flex: 1;
     max-height: none;
@@ -3409,7 +3416,8 @@ html {
   color: #01ccff !important;
 }
 .selected-product-thumb {
-  width: 380px; /* chỉnh kích thước ở đây */
+  width: 100%;
+  max-width: 380px; /* chỉnh kích thước ở đây */
   height: auto;
   padding: 4px;
   border-radius: 8px;
@@ -3425,6 +3433,9 @@ html {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  flex: 2;
+  max-width: 380px;
+  overflow: hidden;
 }
 /* Danh sách ảnh mẫu */
 .sample-row {
