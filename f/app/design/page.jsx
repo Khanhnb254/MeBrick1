@@ -178,6 +178,7 @@ function DesignPageInner() {
 
   const [isSaving, setIsSaving] = useState(false);
   const [savedImages, setSavedImages] = useState([]);
+  const [designerNote, setDesignerNote] = useState("");
 
   // ✅ Edit cart item mode
   const [editCartItemIndex, setEditCartItemIndex] = useState(null);
@@ -891,6 +892,7 @@ function DesignPageInner() {
         createdAt: Date.now(),
         design_preview_url: previewUrl,
         slot_images: uploadedSlotImages,
+        designer_note: designerNote || "",
         uploaded_images: [
           ...savedImages.map((i) => i.url),
           ...Object.values(uploadedSlotImages).filter((u) => typeof u === "string" && !u.startsWith("data:")),
@@ -1049,6 +1051,8 @@ function DesignPageInner() {
                 handleExportImage={handleExportImage}
                 handleOrder={handleOrder}
                 isSaving={isSaving}
+                designerNote={designerNote}
+                setDesignerNote={setDesignerNote}
                 isEditing={editCartItemIndex !== null}
                 activePanel={activePanel}
                 setActivePanel={setActivePanel}

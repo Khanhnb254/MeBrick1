@@ -76,6 +76,8 @@ export default function ControlPanel(props) {
     isSaving = false,
 
     onSaveImage,
+    designerNote = "",
+    setDesignerNote,
   } = props;
 
   const p = pricing || {
@@ -398,10 +400,28 @@ export default function ControlPanel(props) {
                     : "Thêm nhân vật LEGO"}
                 </button>
 
-                  {/* Ghi chú bên dưới button thêm nhân vật LEGO */}
-                  <div className="mb-note" style={{ margin: "8px 0", color: "#888", fontSize: "14px" }}>
-                    Ghi chú: Bạn có thể thêm nhiều nhân vật LEGO để thiết kế sinh động hơn.
+                  {/* Ghi chú nhờ designer chỉnh sửa */}
+                  <div style={{ margin: "10px 0 4px", color: "#555", fontSize: "12px", fontWeight: 600 }}>
+                    📝 Yêu cầu thêm cho designer (không thể tự thiết kế):
                   </div>
+                  <textarea
+                    value={designerNote}
+                    onChange={(e) => setDesignerNote?.(e.target.value)}
+                    placeholder="VD: Thêm chữ tên ở góc phải, đổi màu nền sang hồng, thêm trái tim..."
+                    rows={3}
+                    style={{
+                      width: "100%",
+                      padding: "8px 10px",
+                      fontSize: "12px",
+                      border: "1px solid #ddd",
+                      borderRadius: "6px",
+                      resize: "vertical",
+                      fontFamily: "inherit",
+                      color: "#333",
+                      outline: "none",
+                      boxSizing: "border-box",
+                    }}
+                  />
 
                 <div className="mb-layergrid">
                   {(getFilteredLayers?.() || []).map((layer) => (
