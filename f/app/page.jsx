@@ -211,9 +211,8 @@ export default function MeBrickPage() {
       <section
         style={{
           position: "relative",
-          height: "70vh",
-          minHeight: "500px",
-          maxHeight: "700px",
+          height: "100svh",
+          minHeight: "100svh",
           backgroundColor: "#8893fa",
           display: "flex",
           alignItems: "center",
@@ -233,7 +232,7 @@ export default function MeBrickPage() {
               right: 0,
               bottom: 0,
               backgroundImage: `url(${img})`,
-              backgroundSize: "contain",
+              backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
               backgroundColor: "#0a1628",
