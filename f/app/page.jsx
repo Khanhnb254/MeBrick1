@@ -692,7 +692,8 @@ export default function MeBrickPage() {
                   style={{
                     display: "flex",
                     flexDirection: isTextLeft ? "row" : "row-reverse",
-                    minHeight: "420px",
+                    minHeight: "360px",
+                    borderBottom: index < features.length - 1 ? "1px solid rgba(0,0,0,0.08)" : "none",
                     opacity: visibleSections.features ? 1 : 0,
                     transform: visibleSections.features ? "translateY(0)" : "translateY(30px)",
                     transition: `opacity 1s ease ${index * 0.2}s, transform 1s ease ${index * 0.2}s`,
@@ -704,7 +705,7 @@ export default function MeBrickPage() {
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "center",
-                      padding: "60px 70px",
+                      padding: "50px 60px",
                       backgroundColor: index % 2 === 0 ? "#f8f9ff" : "#ffffff",
                       textAlign: "left",
                     }}>
@@ -731,7 +732,7 @@ export default function MeBrickPage() {
                       backgroundImage: `url(${feature.image})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
-                      minHeight: "420px",
+                      minHeight: "360px",
                     }}
                   />
                 </div>
