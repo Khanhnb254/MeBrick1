@@ -15,6 +15,7 @@ export default function MeBrickPage() {
   const [currentImage, setCurrentImage] = useState(0);
   const [imageErrors, setImageErrors] = useState({});
   const [heroReady, setHeroReady] = useState(false);
+  const [lightboxSrc, setLightboxSrc] = useState(null);
 
   // ====== SCROLL ANIMATION ======
   const [visibleSections, setVisibleSections] = useState({});
@@ -768,7 +769,7 @@ export default function MeBrickPage() {
             {[
               { src: "/samples/gallery1.png", gridRow: "1", gridColumn: "1" },
               { src: "/samples/gallery2.png", gridRow: "2", gridColumn: "1" },
-              { src: "/samples/gallery3.png", gridRow: "1 / 3", gridColumn: "2" },
+              { src: "/samples/gallery-center.png", gridRow: "1 / 3", gridColumn: "2", center: true },
               { src: "/samples/gallery4.png", gridRow: "1", gridColumn: "3" },
               { src: "/samples/gallery5.png", gridRow: "2", gridColumn: "3" },
             ].map((item, i) => (
@@ -783,6 +784,7 @@ export default function MeBrickPage() {
                 }}
                 onMouseEnter={e => e.currentTarget.querySelector("img").style.transform = "scale(1.08)"}
                 onMouseLeave={e => e.currentTarget.querySelector("img").style.transform = "scale(1)"}
+                onClick={item.center ? () => setLightboxSrc(item.src) : undefined}
               >
                 <img
                   src={item.src}
@@ -800,6 +802,24 @@ export default function MeBrickPage() {
           </div>
         </div>
       </section>
+
+      {/* LIGHTBOX */}
+      {lightboxSrc && (
+        <div
+          onClick={() => setLightboxSrc(null)}
+          style={{
+            position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.85)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            zIndex: 9999, cursor: "zoom-out",
+          }}
+        >
+          <img
+            src={lightboxSrc}
+            alt=""
+            style={{ maxWidth: "90vw", maxHeight: "90vh", borderRadius: "12px", boxShadow: "0 8px 40px rgba(0,0,0,0.5)" }}
+          />
+        </div>
+      )}
 
       <div
         ref={(el) => (sectionRefs.current.feedback = el)}
