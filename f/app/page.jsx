@@ -47,8 +47,8 @@ export default function MeBrickPage() {
   const features = [
     {
       icon: "🧩",
-      title: "LEGO Độc quyền",
-      description: "Những bộ LEGO độc đáo chỉ có tại MÊ BRICK",
+      title: "Concept theo câu chuyện",
+      description: "Một món decor nhỏ để giữ lại những khoảnh khắc đáng nhớ",
     },
     {
       icon: "🎨",
