@@ -403,8 +403,8 @@ export default function Stage({
           height: h,
           zIndex: z,
           pointerEvents: "none", // ✅ quan trọng: canvas bắt hết
-          borderRadius: 12,
-          overflow: "hidden",
+          borderRadius: s.type === "image" ? 0 : 12,
+          overflow: s.type === "image" ? "visible" : "hidden",
         }}>
         {/* Selection outline - REMOVED */}
 
