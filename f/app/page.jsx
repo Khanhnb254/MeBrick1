@@ -408,7 +408,7 @@ export default function MeBrickPage() {
                 textShadow: "2px 3px 8px rgba(0,80,184,0.15)",
                 marginBottom: "10px",
               }}>
-              Chúng mình có 3 phiên bản
+              Mê Brick có 3 phiên bản
             </h2>
             <p style={{ fontSize: "16px", color: "#555" }}>
               Mỗi phiên bản đều đi kèm thiệp viết tay &amp; box quà xinh xắn
