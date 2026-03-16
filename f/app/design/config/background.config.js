@@ -228,7 +228,16 @@ export const BACKGROUND_OPTIONS = [
       35: [
         { id: "tf-message", x: 78, y: 404, w: 400, h: 85, placeholder: "Nhập lời nhắn...", multiline: true },
       ],
-      // HB ver 8 (sample-36)
+      36: [
+        { id: "s1", x: 65,  y: 115, w: 108, h: 100 },
+        { id: "s2", x: 200, y: 108, w: 108, h: 100 },
+        { id: "s3", x: 335, y: 115, w: 108, h: 100 },
+      ],
+      37: [
+        { id: "s1", x: 65,  y: 115, w: 108, h: 100 },
+        { id: "s2", x: 200, y: 108, w: 108, h: 100 },
+        { id: "s3", x: 335, y: 115, w: 108, h: 100 },
+      ],
       36: [
         { id: "tf-message", x: 78, y: 417, w: 400, h: 85, placeholder: "Nhập lời nhắn...", multiline: true },
       ],
