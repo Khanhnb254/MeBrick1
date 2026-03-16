@@ -164,14 +164,14 @@ export const BACKGROUND_OPTIONS = [
         { id: "s4", x: 302, y: 453, w: 44,  h: 60,  rotate: 1 },
       ],
       36: [
-        { id: "s1", x: 80,  y: 115, w: 98, h: 90, rotate: -15 },
-        { id: "s2", x: 213, y: 108, w: 98, h: 90, rotate:   0 },
-        { id: "s3", x: 345, y: 125, w: 98, h: 90, rotate:  10 },
+        { id: "s1", x: 80,  y: 115, w: 98, h: 90, rotate: -10 },
+        { id: "s2", x: 228, y: 108, w: 98, h: 90, rotate:   0 },
+        { id: "s3", x: 345, y: 142, w: 98, h: 90, rotate:  10 },
       ],
       37: [
-        { id: "s1", x: 80,  y: 115, w: 98, h: 90, rotate: -15 },
-        { id: "s2", x: 213, y: 108, w: 98, h: 90, rotate:   0 },
-        { id: "s3", x: 345, y: 125, w: 98, h: 90, rotate:  10 },
+        { id: "s1", x: 80,  y: 115, w: 98, h: 90, rotate: -10 },
+        { id: "s2", x: 228, y: 108, w: 98, h: 90, rotate:   0 },
+        { id: "s3", x: 345, y: 142, w: 98, h: 90, rotate:  10 },
       ],
     };
     const defaultTextFields = [];
