@@ -236,13 +236,13 @@ export function useLegoCharacter({
       torso: LEGO_CONFIG.baseParts.torso,
       legs: LEGO_CONFIG.baseParts.legs,
 
-      face: defaultFace,
+      face: null,
       hair: defaultHair,
       outfit: null,
 
       // ✅ giá mặc định (thường = 0 nếu config không set price)
       outfit_price: 0,
-      face_price: findPriceBySrc(LEGO_CONFIG.faces, defaultFace),
+      face_price: 0,
       hair_price: findPriceBySrc(LEGO_CONFIG.hairs, defaultHair),
     };
 
@@ -437,12 +437,18 @@ export function useLegoCharacter({
     );
 
     setStickers((prev) => {
-      const filtered = prev.filter(
+      // Xóa face sticker cũ
+      let filtered = prev.filter(
         (s) =>
           !(s.characterId === selectedCharacterId && s.layerType === "face"),
       );
 
       if (faceSrc) {
+        // Ẩn head sticker để tránh mặt gốc chồng lên mặt mới
+        filtered = filtered.filter(
+          (s) => !(s.characterId === selectedCharacterId && s.part === "head"),
+        );
+
         const character = getCharacterById(selectedCharacterId) || {
           x: 0,
           y: 0,
@@ -465,6 +471,32 @@ export function useLegoCharacter({
           characterId: selectedCharacterId,
           price: facePrice, // ✅ QUAN TRỌNG
         });
+      } else {
+        // Không có mặt mới → hiện lại head gốc nếu chưa có
+        const character = getCharacterById(selectedCharacterId);
+        const headExists = filtered.some(
+          (s) => s.characterId === selectedCharacterId && s.part === "head",
+        );
+        if (!headExists && character?.head) {
+          const pos = calculateExactPosition(character, "head");
+          filtered.push({
+            id: `${selectedCharacterId}-head`,
+            type: "lego",
+            name: "Đầu",
+            src: character.head,
+            x: pos.x,
+            y: pos.y,
+            width: pos.width,
+            height: pos.height,
+            zIndex: partConfig.head.zIndex,
+            isSelected: false,
+            layerType: "base",
+            part: "head",
+            characterId: selectedCharacterId,
+            isBasePart: true,
+            price: 0,
+          });
+        }
       }
 
       return filtered;
