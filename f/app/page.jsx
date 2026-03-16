@@ -31,6 +31,8 @@ export default function MeBrickPage() {
     "/images/hero/hero1.jpg",
     "/images/hero/hero2.jpg",
     "/images/hero/hero3.jpg",
+    "/images/hero/hero4.jpg",
+    "/images/hero/hero5.jpg",
   ];
 
   const possibleProductImages = [
