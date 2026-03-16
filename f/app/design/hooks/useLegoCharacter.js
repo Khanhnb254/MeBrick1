@@ -148,7 +148,8 @@ export function useLegoCharacter({
       });
     }
 
-    if (character.head) {
+    // Ẩn mặt gốc nếu đã có mặt mới
+    if (character.head && !character.face) {
       const pos = calculateExactPosition(character, "head");
       result.push({
         id: `${character.id}-head`,
