@@ -706,9 +706,8 @@ export default function MeBrickPage() {
                       justifyContent: "center",
                       padding: "60px 70px",
                       backgroundColor: index % 2 === 0 ? "#f8f9ff" : "#ffffff",
-                      textAlign: isTextLeft ? "left" : "right",
+                      textAlign: "left",
                     }}>
-                    <div style={{ fontSize: "52px", marginBottom: "20px" }}>{feature.icon}</div>
                     <h3 style={{
                       fontSize: "28px",
                       fontWeight: "700",
@@ -722,7 +721,7 @@ export default function MeBrickPage() {
                       color: "rgba(11,45,114,0.8)",
                       lineHeight: "1.8",
                       maxWidth: "420px",
-                      marginLeft: isTextLeft ? 0 : "auto",
+                      marginLeft: 0,
                     }}>{feature.description}</p>
                   </div>
                   {/* Image side */}
