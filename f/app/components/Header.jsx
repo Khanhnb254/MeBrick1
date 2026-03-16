@@ -10,11 +10,19 @@ import { getCart, cartTotalQty } from "../../lib/cart";
 import { SOCIAL_LINKS } from "../../lib/social-links";
 import styles from "./header.module.css";
 
-export default function Header() {
+export default function Header({ overlay = false }) {
   const [cartCount, setCartCount] = useState(0);
   const [musicOn, setMusicOn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [designHref, setDesignHref] = useState("/collections");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!overlay) return;
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [overlay]);
   const audioRef = useRef(null);
 
   // Lấy sản phẩm đầu tiên từ API để tạo link thiết kế đúng
@@ -57,16 +65,22 @@ export default function Header() {
     }
   }, [musicOn]);
 
+  const isTransparent = overlay && !scrolled;
+
   return (
     <header
       style={{
-        backgroundColor: "#fff",
-        borderBottom: "1px solid #f0f0f0",
+        backgroundColor: isTransparent ? "transparent" : "#fff",
+        borderBottom: isTransparent ? "none" : "1px solid #f0f0f0",
         padding: "10px 0",
-        position: "sticky",
+        position: overlay ? "fixed" : "sticky",
         top: 0,
+        left: 0,
+        right: 0,
+        width: "100%",
         zIndex: 100,
-        boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
+        boxShadow: isTransparent ? "none" : "0 2px 6px rgba(0,0,0,0.04)",
+        transition: "background-color 0.3s ease, box-shadow 0.3s ease",
       }}>
       {/* Background music */}
       <audio ref={audioRef} src="/music/background.mp3" loop preload="none" />
@@ -100,15 +114,15 @@ export default function Header() {
               key={item.name}
               href={item.href}
               style={{
-                color: "#333",
+                color: isTransparent ? "#fff" : "#333",
                 textDecoration: "none",
                 fontSize: "12px",
                 fontWeight: 600,
                 padding: "4px 0",
                 transition: "color 0.2s ease",
               }}
-              onMouseEnter={(e) => (e.target.style.color = "#0B2D72")}
-              onMouseLeave={(e) => (e.target.style.color = "#333")}>
+              onMouseEnter={(e) => (e.target.style.color = isTransparent ? "#f0c060" : "#0B2D72")}
+              onMouseLeave={(e) => (e.target.style.color = isTransparent ? "#fff" : "#333")}>
               {item.name}
             </Link>
           ))}
@@ -122,7 +136,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLinks}
-            style={{ color: "#1877f2", display: "flex", alignItems: "center" }}
+            style={{ color: isTransparent ? "#fff" : "#1877f2", display: "flex", alignItems: "center" }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}>
             <FiFacebook style={{ fontSize: "18px" }} />
@@ -134,7 +148,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLinks}
-            style={{ color: "#e1306c", display: "flex", alignItems: "center" }}
+            style={{ color: isTransparent ? "#fff" : "#e1306c", display: "flex", alignItems: "center" }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}>
             <FiInstagram style={{ fontSize: "18px" }} />
@@ -150,7 +164,7 @@ export default function Header() {
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
-              color: musicOn ? "#0B2D72" : "#aaa",
+              color: isTransparent ? "#fff" : (musicOn ? "#0B2D72" : "#aaa"),
               fontSize: "18px",
               padding: 0,
               transition: "color 0.2s",
@@ -163,7 +177,7 @@ export default function Header() {
           </button>
 
           {/* Cart */}
-          <Link href="/cart" style={{ position: "relative", display: "flex", alignItems: "center" }}>
+          <Link href="/cart" style={{ position: "relative", display: "flex", alignItems: "center", color: isTransparent ? "#fff" : "inherit" }}>
             <FiShoppingCart style={{ fontSize: "18px", cursor: "pointer" }} />
             {cartCount > 0 && (
               <span
@@ -187,12 +201,35 @@ export default function Header() {
             )}
           </Link>
 
+          {/* Thiết kế ngay button – overlay mode only */}
+          {overlay && (
+            <Link
+              href="/collections"
+              className={styles.desktopNav}
+              style={{
+                border: "1px solid #fff",
+                color: "#fff",
+                padding: "7px 16px",
+                borderRadius: "2px",
+                fontSize: "12px",
+                fontWeight: 600,
+                textDecoration: "none",
+                transition: "background 0.2s, color 0.2s",
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "#333"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#fff"; }}>
+              Thiết kế ngay
+            </Link>
+          )}
+
           {/* Hamburger – mobile only */}
           <button
             className={styles.hamburger}
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
-            aria-expanded={menuOpen}>
+            aria-expanded={menuOpen}
+            style={{ filter: isTransparent ? "invert(1)" : "none" }}>
             <span />
             <span />
             <span />

@@ -205,7 +205,7 @@ export default function MeBrickPage() {
         backgroundColor: "#fff",
       }}>
       {/* HEADER */}
-      <Header />
+      <Header overlay />
 
       {/* HERO SECTION */}
       <section
