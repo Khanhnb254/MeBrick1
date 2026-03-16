@@ -53,7 +53,7 @@ export default function MeBrickPage() {
     {
       icon: "🎨",
       title: "Thiết kế riêng",
-      description: "Tạo LEGO theo ý tưởng cá nhân của bạn",
+      description: "Biến ý tưởng và kỷ niệm thành một món quà thật riêng",
     },
     {
       icon: "🎁",
