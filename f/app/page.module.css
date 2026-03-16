@@ -389,7 +389,7 @@
 
 .productName {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 800;
   color: #0050b8;
   margin: 0 0 8px;
   overflow: hidden;
@@ -397,7 +397,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   min-height: 48px;
-  font-family: var(--font-antonio), 'Antonio', sans-serif;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
