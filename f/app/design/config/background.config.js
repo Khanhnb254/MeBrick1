@@ -125,7 +125,6 @@ export const BACKGROUND_OPTIONS = [
       ],
       17: [
         { id: "s1", x: 50,  y: 341, w: 175, h: 125 },
-        { id: "s2", x: 287, y: 339, w: 17,  h: 56  },
       ],
       7: [
         { id: "s1", x: 43,  y: 377, w: 61,  h: 54  },
