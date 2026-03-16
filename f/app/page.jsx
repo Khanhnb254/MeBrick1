@@ -766,11 +766,11 @@ export default function MeBrickPage() {
             height: "600px",
           }}>
             {[
-              { src: "/samples/sample36.png", gridRow: "1", gridColumn: "1" },
-              { src: "/samples/sample5.png", gridRow: "2", gridColumn: "1" },
-              { src: "/samples/sample20.png", gridRow: "1 / 3", gridColumn: "2" },
-              { src: "/samples/sample17.png", gridRow: "1", gridColumn: "3" },
-              { src: "/samples/sample37.png", gridRow: "2", gridColumn: "3" },
+              { src: "/samples/sample55.png", gridRow: "1", gridColumn: "1" },
+              { src: "/samples/sample56.png", gridRow: "2", gridColumn: "1" },
+              { src: "/samples/sample57.png", gridRow: "1 / 3", gridColumn: "2" },
+              { src: "/samples/sample58.png", gridRow: "1", gridColumn: "3" },
+              { src: "/samples/sample59.png", gridRow: "2", gridColumn: "3" },
             ].map((item, i) => (
               <div
                 key={i}
