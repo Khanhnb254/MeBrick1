@@ -184,6 +184,11 @@ export const BACKGROUND_OPTIONS = [
       41: [
         { id: "tf-message", x: 80, y: 420, w: 390, h: 40, placeholder: "Nhập lời nhắn..." }
       ],
+      6: [
+        { id: "tf-name",      x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
+        { id: "tf-level",     x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập tuổi..." },
+        { id: "tf-manifesto", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập mong ước..." },
+      ],
       // Love ver 4 (sample12)
       12: [],
       17: [
