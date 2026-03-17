@@ -747,7 +747,7 @@ export default function MeBrickPage() {
       </section>
 
       {/* GALLERY SECTION */}
-      <section style={{ padding: "80px 20px", backgroundColor: "#fff" }}>
+      <section style={{ padding: "80px 20px", backgroundColor: "#f2f2f2" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <h2 style={{
             fontSize: "36px",
@@ -784,7 +784,7 @@ export default function MeBrickPage() {
                 }}
                 onMouseEnter={e => e.currentTarget.querySelector("img").style.transform = "scale(1.08)"}
                 onMouseLeave={e => e.currentTarget.querySelector("img").style.transform = "scale(1)"}
-                onClick={item.center ? () => setLightboxSrc(item.src) : undefined}
+                onClick={() => setLightboxSrc(item.src)}
               >
                 <img
                   src={item.src}
