@@ -196,6 +196,7 @@ export default function CollectionsPage() {
                   10: "bg-sample-11",  // Mẫu 10 → Love ver 3
                   11: "bg-sample-11",  // Mẫu 11 → Love ver 3
                    9: "bg-sample-9",   // Mẫu 9
+                  12: "bg-sample-12",  // Mẫu 12
                   13: "bg-sample-16",  // Mẫu 13 → Happy Birthday ver 3
                   14: "bg-sample-16",  // Mẫu 14 → Happy Birthday ver 3
                   15: "bg-sample-16",  // Mẫu 15 → Happy Birthday ver 3
@@ -223,6 +224,13 @@ export default function CollectionsPage() {
                   48: "bg-sample-53",  // Mẫu 48 → Football ver 1
                   49: "bg-sample-54",  // Mẫu 49 → Football ver 2
                   51: "bg-sample-55",  // Mẫu 51 → Football ver 3
+                  53: "bg-sample-53",  // Mẫu 53
+                  54: "bg-sample-54",  // Mẫu 54
+                  55: "bg-sample-55",  // Mẫu 55
+                  56: "bg-sample-56",  // Mẫu 56
+                  57: "bg-new-57",     // Mẫu 57
+                  58: "bg-new-58",     // Mẫu 58
+                  59: "bg-new-59",     // Mẫu 59
                 };
                 let bgParam = "";
                 if (p._isSample) {
