@@ -16,7 +16,7 @@ export default function FeedbackSection() {
             fontWeight: "700",
             textAlign: "center",
             marginBottom: "50px",
-            color: "#0066c5",
+            color: "#0B2D72",
             fontFamily: "'Antonio', sans-serif",
             textTransform: "uppercase",
             textShadow: "3px 4px 10px rgba(0,102,197,0.18)",
