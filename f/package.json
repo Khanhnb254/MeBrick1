@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node -e \"const {spawnSync}=require('node:child_process'); const env={...process.env}; delete env.__NEXT_PRIVATE_STANDALONE_CONFIG; delete env.__NEXT_PRIVATE_ORIGIN; const r=spawnSync('npx',['next','build'],{stdio:'inherit',shell:true,env}); process.exit(r.status ?? 1);\"",
     "start": "next start"
   },
   "dependencies": {

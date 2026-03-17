@@ -13,6 +13,50 @@ const SAMPLE_IMAGES = [
   "/mau/60.jpg",
   "/mau/61.png",
 ];
+const SAMPLE_CATEGORY_BY_NUMBER = {
+  1: "Happy Birthday",
+  2: "Special Day",
+  3: "Special Day",
+  4: "Happy Birthday",
+  5: "Special Day",
+  6: "Love",
+  7: "Special Day",
+  8: "Love",
+  10: "Love",
+  11: "Love",
+  13: "Happy Birthday",
+  14: "Happy Birthday",
+  15: "Happy Birthday",
+  17: "Happy Anniversary",
+  18: "Happy Anniversary",
+  19: "Love",
+  22: "Love",
+  23: "Love",
+  24: "Love",
+  25: "Love",
+  27: "Graduation",
+  28: "Graduation",
+  29: "Happy Birthday",
+  30: "Love",
+  31: "Graduation",
+  32: "Happy Birthday",
+  33: "Happy Birthday",
+  34: "Happy Birthday",
+  37: "Special Day",
+  38: "Special Day",
+  39: "Special Day",
+  41: "Special Day",
+  43: "Special Day",
+  46: "Special Day",
+  48: "Football",
+  49: "Football",
+  51: "Football",
+  53: "Football",
+  54: "Football",
+  55: "Football",
+  60: "Happy Anniversary",
+  61: "Happy Together",
+};
 
 export default function CollectionsPage() {
   const [products, setProducts] = useState([]);
@@ -55,14 +99,20 @@ export default function CollectionsPage() {
     return list;
   }, [products, sort]);
 
-  const sampleItems = useMemo(() =>
-    SAMPLE_IMAGES.map((src, i) => ({
-      _isSample: true,
-      id: `sample-${i + 1}`,
-      name: `Mẫu ${i + 1}`,
-      image: src,
-    })),
-  []);
+  const sampleItems = useMemo(() => {
+    const categoryCount = {};
+    return SAMPLE_IMAGES.map((src, i) => {
+      const sampleNum = i + 1;
+      const category = SAMPLE_CATEGORY_BY_NUMBER[sampleNum] || "Happy Together";
+      categoryCount[category] = (categoryCount[category] || 0) + 1;
+      return {
+        _isSample: true,
+        id: `sample-${sampleNum}`,
+        name: `${category} ${categoryCount[category]}`,
+        image: src,
+      };
+    });
+  }, []);
 
   const allItems = useMemo(() => [...filtered, ...sampleItems], [filtered, sampleItems]);
 
