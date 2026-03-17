@@ -92,11 +92,6 @@ export default function PayPage() {
 
         if (!alive) return;
 
-        // Nếu trạng thái thanh toán đã là 'paid', thông báo cho khách
-        if (o?.payment_status === "paid") {
-          showToast("🎉 Đơn hàng của bạn đã được shop xác nhận thanh toán thành công!");
-        }
-
         setOrder(o);
 
         // ✅ Nếu là COD thì không vào trang QR
@@ -125,6 +120,22 @@ export default function PayPage() {
       alive = false;
     };
   }, [orderId, router]);
+
+  // Polling kiểm tra trạng thái thanh toán mỗi 5 giây (khi chưa paid)
+  useEffect(() => {
+    if (!orderId || !order || order?.payment_status === "paid") return;
+
+    const interval = setInterval(async () => {
+      try {
+        const o = await getOrderById(orderId);
+        if (o?.payment_status === "paid") {
+          setOrder(o);
+        }
+      } catch {}
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [orderId, order?.payment_status]);
 
   const amount = useMemo(() => Number(qrInfo?.amount || 0), [qrInfo]);
   const memo = useMemo(() => String(qrInfo?.memo || ""), [qrInfo]);
@@ -157,7 +168,76 @@ export default function PayPage() {
 
   if (!orderId) return null;
 
-  return (
+  // ✅ Màn hình thanh toán thành công
+  if (order?.payment_status === "paid") {
+    return (
+      <div style={{ minHeight: "80vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+        <div style={{
+          maxWidth: 480,
+          width: "100%",
+          background: "#fff",
+          borderRadius: 20,
+          padding: "48px 32px",
+          textAlign: "center",
+          boxShadow: "0 8px 40px rgba(0,80,184,0.10)",
+          border: "1px solid #e0eaff",
+        }}>
+          <div style={{ fontSize: 72, marginBottom: 16 }}>🎉</div>
+          <h2 style={{
+            fontSize: 28,
+            fontWeight: 900,
+            color: "#0B2D72",
+            fontFamily: "'Antonio', sans-serif",
+            textTransform: "uppercase",
+            marginBottom: 12,
+          }}>Thanh toán thành công!</h2>
+          <p style={{ fontSize: 16, color: "#555", lineHeight: 1.7, marginBottom: 8 }}>
+            Shop đã xác nhận thanh toán cho đơn hàng <strong>#{order?.id}</strong>.
+          </p>
+          <p style={{ fontSize: 15, color: "#888", marginBottom: 32 }}>
+            Cảm ơn bạn đã tin tưởng và ủng hộ <strong style={{ color: "#0B2D72" }}>Mê Brick</strong>! 💛
+          </p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
+            <button
+              onClick={() => router.push(`/order/${encodeURIComponent(orderId)}`)}
+              style={{
+                height: 44,
+                padding: "0 24px",
+                borderRadius: 12,
+                border: "1px solid #0b2d72",
+                background: "#0b2d72",
+                color: "#fff",
+                cursor: "pointer",
+                fontWeight: 900,
+                fontSize: 15,
+                fontFamily: "inherit",
+              }}
+            >
+              Xem đơn hàng
+            </button>
+            <button
+              onClick={() => router.push("/")}
+              style={{
+                height: 44,
+                padding: "0 24px",
+                borderRadius: 12,
+                border: "1px solid #eee",
+                background: "#fff",
+                cursor: "pointer",
+                fontWeight: 900,
+                fontSize: 15,
+                fontFamily: "inherit",
+              }}
+            >
+              Về trang chủ
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+
     <div style={{ maxWidth: 980, margin: "0 auto", padding: 16 }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
         <h1 style={{ margin: 0, fontSize: 20, fontWeight: 900 }}>Thanh toán VietQR</h1>
