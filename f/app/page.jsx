@@ -761,17 +761,19 @@ export default function MeBrickPage() {
           }}>Bộ sưu tập mẫu</h2>
           <div style={{
             display: "grid",
-            gridTemplateColumns: "1fr 2fr 1fr",
-            gridTemplateRows: "1fr 1fr",
+            gridTemplateColumns: "1fr 1.6fr 1fr",
+            gridTemplateRows: "1fr 1fr 1fr",
             gap: "10px",
-            height: "600px",
+            height: "700px",
           }}>
             {[
               { src: "/samples/gallery1.png", gridRow: "1", gridColumn: "1" },
               { src: "/samples/gallery2.png", gridRow: "2", gridColumn: "1" },
-              { src: "/samples/gallery-center.png", gridRow: "1 / 3", gridColumn: "2", center: true },
-              { src: "/samples/gallery4.png", gridRow: "1", gridColumn: "3" },
-              { src: "/samples/gallery5.png", gridRow: "2", gridColumn: "3" },
+              { src: "/samples/gallery3.png", gridRow: "3", gridColumn: "1" },
+              { src: "/samples/gallery-center.png", gridRow: "1 / 3", gridColumn: "2" },
+              { src: "/samples/gallery4.png", gridRow: "3", gridColumn: "2" },
+              { src: "/samples/gallery5.png", gridRow: "1 / 3", gridColumn: "3" },
+              { src: "/samples/gallery6.png", gridRow: "3", gridColumn: "3" },
             ].map((item, i) => (
               <div
                 key={i}
