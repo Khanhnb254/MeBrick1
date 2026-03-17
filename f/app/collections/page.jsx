@@ -57,6 +57,50 @@ const SAMPLE_CATEGORY_BY_NUMBER = {
   60: "Happy Anniversary",
   61: "Happy Together",
 };
+const SAMPLE_NAME_BY_NUMBER = {
+  1: "Happy Birthday Ver 1",
+  2: "Special Day Ver 1",
+  3: "Special Day Ver 2",
+  4: "Happy Birthday Ver 4",
+  5: "Special Day Ver 3",
+  6: "Love Ver 2",
+  7: "Special Day Ver 3",
+  8: "Love Ver 4",
+  10: "Love Ver 3",
+  11: "Love Ver 3",
+  13: "Happy Birthday Ver 3",
+  14: "Happy Birthday Ver 3",
+  15: "Happy Birthday Ver 3",
+  17: "Happy Anniversary Ver 2",
+  18: "Happy Anniversary Ver 3",
+  19: "Love Ver 7",
+  22: "Love Ver 9",
+  23: "Love Ver 10",
+  24: "Love Ver 11",
+  25: "Love Ver 11",
+  27: "Graduation Ver 1",
+  28: "Graduation Ver 3",
+  29: "Happy Birthday Ver 5",
+  30: "Love Ver 12",
+  31: "Graduation Ver 1",
+  32: "Happy Birthday Ver 6",
+  33: "Happy Birthday Ver 8",
+  34: "Happy Birthday Ver 7",
+  37: "Special Day Ver 7",
+  38: "Special Day Ver 8",
+  39: "Special Day Ver 9",
+  41: "Special Day Ver 10",
+  43: "Special Day Ver 14",
+  46: "Special Day Ver 15",
+  48: "Football Ver 1",
+  49: "Football Ver 2",
+  51: "Football Ver 3",
+  53: "Football Ver 4",
+  54: "Football Ver 5",
+  55: "Football Ver 6",
+  60: "Happy Anniversary Day",
+  61: "Favourite Person",
+};
 
 export default function CollectionsPage() {
   const [products, setProducts] = useState([]);
@@ -104,11 +148,12 @@ export default function CollectionsPage() {
     return SAMPLE_IMAGES.map((src, i) => {
       const sampleNum = i + 1;
       const category = SAMPLE_CATEGORY_BY_NUMBER[sampleNum] || "Happy Together";
+      const explicitName = SAMPLE_NAME_BY_NUMBER[sampleNum];
       categoryCount[category] = (categoryCount[category] || 0) + 1;
       return {
         _isSample: true,
         id: `sample-${sampleNum}`,
-        name: `${category} ${categoryCount[category]}`,
+        name: explicitName || `${category} Template ${categoryCount[category]}`,
         image: src,
       };
     });
