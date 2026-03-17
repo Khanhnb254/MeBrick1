@@ -237,7 +237,8 @@ export default function PayPage() {
     );
   }
 
-
+
+  return (
     <div style={{ maxWidth: 980, margin: "0 auto", padding: 16 }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
         <h1 style={{ margin: 0, fontSize: 20, fontWeight: 900 }}>Thanh toán VietQR</h1>
