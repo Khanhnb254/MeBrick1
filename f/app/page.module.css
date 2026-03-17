@@ -389,7 +389,7 @@
 
 .productName {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
   color: #0050b8;
   margin: 0 0 8px;
   overflow: hidden;
@@ -397,9 +397,9 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   min-height: 40px;
-  font-family: 'Antonio', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  font-family: var(--font-main), 'Be Vietnam Pro', sans-serif;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .productDescription {
