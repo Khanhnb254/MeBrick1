@@ -8,7 +8,11 @@ import Footer from "../components/Footer";
 import { getProducts } from "../../lib/api/products";
 import { FiSearch } from "react-icons/fi";
 
-const SAMPLE_IMAGES = Array.from({ length: 59 }, (_, i) => `/mau/${i + 1}.png`);
+const SAMPLE_IMAGES = [
+  ...Array.from({ length: 59 }, (_, i) => `/mau/${i + 1}.png`),
+  "/mau/60.jpg",
+  "/mau/61.png",
+];
 
 export default function CollectionsPage() {
   const [products, setProducts] = useState([]);
