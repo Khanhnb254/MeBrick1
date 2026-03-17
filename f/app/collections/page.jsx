@@ -194,6 +194,8 @@ export default function CollectionsPage() {
                   7: "bg-sample-7",    // Mẫu 7 → Special Day ver 3
                   8: "bg-sample-12",   // Mẫu 8 → Love ver 4
                   10: "bg-sample-11",  // Mẫu 10 → Love ver 3
+                  11: "bg-sample-11",  // Mẫu 11 → Love ver 3
+                   9: "bg-sample-9",   // Mẫu 9
                   13: "bg-sample-16",  // Mẫu 13 → Happy Birthday ver 3
                   14: "bg-sample-16",  // Mẫu 14 → Happy Birthday ver 3
                   15: "bg-sample-16",  // Mẫu 15 → Happy Birthday ver 3
