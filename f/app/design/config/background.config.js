@@ -165,12 +165,12 @@ export const BACKGROUND_OPTIONS = [
       ],
       36: [
         { id: "s1", x: 90,  y: 132, w: 98, h: 94, rotate: -10 },
-        { id: "s2", x: 224, y: 123, w: 98, h: 94, rotate:   0 },
+        { id: "s2", x: 224, y: 118, w: 98, h: 98, rotate:   0 },
         { id: "s3", x: 349, y: 130, w: 98, h: 90, rotate:   5 },
       ],
       37: [
         { id: "s1", x: 90,  y: 132, w: 98, h: 94, rotate: -10 },
-        { id: "s2", x: 224, y: 123, w: 98, h: 94, rotate:   0 },
+        { id: "s2", x: 224, y: 118, w: 98, h: 98, rotate:   0 },
         { id: "s3", x: 349, y: 130, w: 98, h: 90, rotate:   5 },
       ],
     };
