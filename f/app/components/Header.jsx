@@ -46,7 +46,6 @@ export default function Header({ overlay = false }) {
     { name: "Trang chủ", href: "/" },
     { name: "Thiết kế", href: designHref },
     { name: "Bộ sưu tập", href: "/collections" },
-    { name: "Doanh nghiệp", href: "#" },
     { name: "Tra cứu", href: "/tra-cuu" },
   ];
 
