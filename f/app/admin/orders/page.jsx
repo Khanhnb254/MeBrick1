@@ -623,6 +623,13 @@ export default function AdminOrders() {
                     </div>
                   )}
 
+                  {/* Ghi chú thiết kế */}
+                  {it?.design_data?.designer_note && (
+                    <div style={{ marginTop: 6, fontSize: "0.85rem", background: "#fffbe6", border: "1px solid #ffe58f", borderRadius: 6, padding: "5px 8px" }}>
+                      <b>📝 Ghi chú:</b> {it.design_data.designer_note}
+                    </div>
+                  )}
+
                   {/* Ảnh khách upload */}
                   {uploadedImages.length > 0 && (
                     <div style={{ marginTop: 8 }}>
