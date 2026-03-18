@@ -32,7 +32,7 @@ export default function MeBrickPage() {
     "/images/hero/hero1.jpg",
     "/images/hero/hero2.jpg",
     "/images/hero/hero3.jpg",
-    "/images/hero/hero4.jpg",
+    "/images/hero/hero4.png",
     "/images/hero/hero5.jpg",
   ];
 
@@ -70,7 +70,7 @@ export default function MeBrickPage() {
       icon: "🚚",
       title: "Giao hàng toàn quốc",
       description: "Miễn phí vận chuyển cho đơn từ 1 triệu",
-      image: "/images/hero/hero4.jpg",
+      image: "/images/hero/hero4.png",
     },
   ];
 
