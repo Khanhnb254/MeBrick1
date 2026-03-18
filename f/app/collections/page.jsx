@@ -162,6 +162,16 @@ export default function CollectionsPage() {
 
   const sampleItems = useMemo(() => {
     const categoryCount = {};
+    const sampleNameOverrideByNumber = {
+      2: "Graduation Ver 1",
+      3: "Graduation Ver 2",
+      9: "Happy Birthday ver 2",
+      27: "Graduation Ver 8",
+      28: "Graduation Ver 9",
+      31: "Graduation Ver 10",
+      35: "Graduation Ver 6",
+      36: "Graduation Ver 7",
+    };
     return SAMPLE_IMAGES.map((src, i) => {
       const sampleNum = i + 1;
       const category = SAMPLE_CATEGORY_BY_NUMBER[sampleNum] || "Happy Together";
@@ -169,7 +179,7 @@ export default function CollectionsPage() {
       return {
         _isSample: true,
         id: `sample-${sampleNum}`,
-        name: sampleNum === 9 ? "Happy Birthday ver 2" : `${category} Ver ${categoryCount[category]}`,
+        name: sampleNameOverrideByNumber[sampleNum] || `${category} Ver ${categoryCount[category]}`,
         image: src,
       };
     });
@@ -346,6 +356,8 @@ export default function CollectionsPage() {
                   57: "bg-new-57",     // Mẫu 57
                   58: "bg-new-58",     // Mẫu 58
                   59: "bg-new-59",     // Mẫu 59
+                  60: "bg-sample-52",  // Happy Anniversary Ver 3 → Special Day Ver 19
+                  61: "bg-sample-53",  // Happy Together Ver 11 → Special Day Ver 20
                 };
                 let bgParam = "";
                 if (p._isSample) {
