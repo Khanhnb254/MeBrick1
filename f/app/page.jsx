@@ -30,7 +30,7 @@ export default function MeBrickPage() {
   // ====================
   const heroImages = [
     "/images/hero/hero1.jpg",
-    "/images/hero/hero2.jpg",
+    "/images/hero/hero2.png",
     "/images/hero/hero3.jpg",
     "/images/hero/hero4.png",
     "/images/hero/hero5.jpg",
@@ -58,7 +58,7 @@ export default function MeBrickPage() {
       icon: "🎨",
       title: "Thiết kế riêng",
       description: "Biến ý tưởng và kỷ niệm thành một món quà thật riêng",
-      image: "/images/hero/hero2.jpg",
+      image: "/images/hero/hero2.png",
     },
     {
       icon: "🎁",
