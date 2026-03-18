@@ -1365,7 +1365,7 @@ html {
 .mb-panel__actions-inner {
   display: flex;
   gap: 10px;
-  align-items: stretch;
+  align-items: center;
 }
 
 .mb-panel__actions-btns {
@@ -1378,10 +1378,10 @@ html {
 
 .mb-panel__actions-qty {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
   flex-shrink: 0;
 }
 
@@ -1394,24 +1394,24 @@ html {
 }
 
 .mb-qty--compact {
-  flex-direction: column;
-  gap: 2px;
+  flex-direction: row;
+  gap: 4px;
 }
 
 .mb-qty--compact .mb-qty__btn {
-  width: 32px;
-  height: 32px;
-  font-size: 16px;
+  width: 26px;
+  height: 26px;
+  font-size: 14px;
   padding: 0;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .mb-qty--compact .mb-qty__val {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 800;
-  min-width: 32px;
+  min-width: 22px;
   text-align: center;
-  padding: 2px 0;
+  padding: 0;
 }
 
 @keyframes mb-step-in {
