@@ -402,7 +402,7 @@ export default function ControlPanel(props) {
 
                   {/* Ghi chú nhờ designer chỉnh sửa */}
                   <div style={{ margin: "10px 0 4px", color: "#555", fontSize: "12px", fontWeight: 600 }}>
-                    📝 Yêu cầu thêm cho designer (không thể tự thiết kế):
+                    📝 Yêu cầu thêm cho designer (khi bạn không thể tự thiết kế) sau đó Designer sẽ liên hệ cho b để b check:
                   </div>
                   <textarea
                     value={designerNote}
