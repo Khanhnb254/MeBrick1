@@ -33,7 +33,7 @@ export default function Footer() {
               fontWeight: "bold",
               marginBottom: "20px",
             }}>
-            Mê Brick
+            MeBricks
           </h3>
           <p
             style={{
@@ -168,7 +168,7 @@ export default function Footer() {
           color: "#666",
           fontSize: "14px",
         }}>
-        <p>© 2024 Mê Brick. Tất cả các quyền được bảo lưu.</p>
+        <p>© 2024 MeBricks. Tất cả các quyền được bảo lưu.</p>
         <p style={{ marginTop: "10px" }}>
           Được thiết kế với ❤️ cho những khoảnh khắc đặc biệt
         </p>
@@ -176,3 +176,4 @@ export default function Footer() {
     </footer>
   );
 }
+

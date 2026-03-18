@@ -63,8 +63,8 @@ const cinzel = Cinzel({
 });
 
 export const metadata = {
-  title: "Mê Brick - Bộ sưu tập",
-  description: "Bộ sưu tập LEGO độc đáo từ Mê Brick",
+  title: "MeBricks - Bộ sưu tập",
+  description: "Bộ sưu tập LEGO độc đáo từ MeBricks",
 };
 
 export const viewport = {
@@ -84,3 +84,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

@@ -547,7 +547,7 @@ export default function ControlPanel(props) {
                 <span className="checkout-tip__icon">🚚</span>
                 <span className="checkout-tip__title">Thời gian sản xuất &amp; giao hàng</span>
               </div>
-              <p>Sản phẩm của Mê Bricks được làm thủ công nên cần khoảng <strong>1 ngày</strong> để hoàn thiện trước khi gửi đi.</p>
+              <p>Sản phẩm của MeBricks được làm thủ công nên cần khoảng <strong>1 ngày</strong> để hoàn thiện trước khi gửi đi.</p>
               <p>Sau khi hoàn thành, đơn hàng sẽ được đóng gói cẩn thận và vận chuyển trong khoảng <strong>2–4 ngày</strong> tuỳ khu vực.</p>
               <p>Để đảm bảo nhận quà đúng dịp, bạn nên <strong>đặt trước vài ngày</strong> so với ngày cần tặng.</p>
             </div>
@@ -558,7 +558,7 @@ export default function ControlPanel(props) {
                 <span className="checkout-antam__icon">💬</span>
                 <span className="checkout-antam__title">HỖ TRỢ TRƯỚC KHI GỬI HÀNG</span>
               </div>
-              <p>Nếu bạn muốn xem kỹ hơn về sản phẩm hoặc chỉnh sửa thêm chi tiết, hãy liên hệ trực tiếp qua <strong>Zalo: 0976 924 958</strong> để Mê Bricks hỗ trợ nhanh nhất.</p>
+              <p>Nếu bạn muốn xem kỹ hơn về sản phẩm hoặc chỉnh sửa thêm chi tiết, hãy liên hệ trực tiếp qua <strong>Zalo: 0976 924 958</strong> để MeBricks hỗ trợ nhanh nhất.</p>
               <p>Trường hợp muốn thêm frame hoặc điều chỉnh lại thiết kế, bạn cũng có thể nhắn Zalo trước khi đơn hàng được hoàn thiện và gửi đi.</p>
             </div>
 
@@ -612,3 +612,4 @@ export default function ControlPanel(props) {
     </aside>
   );
 }
+

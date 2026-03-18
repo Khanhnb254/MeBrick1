@@ -414,7 +414,7 @@ export default function MeBrickPage() {
                 textShadow: "2px 3px 8px rgba(0,80,184,0.15)",
                 marginBottom: "10px",
               }}>
-              Mê Brick có 3 phiên bản
+              MeBricks có 3 phiên bản
             </h2>
             <p style={{ fontSize: "16px", color: "#555" }}>
               Mỗi phiên bản đều đi kèm thiệp viết tay &amp; box quà xinh xắn
@@ -681,7 +681,7 @@ export default function MeBrickPage() {
               textShadow: "3px 4px 10px rgba(0,0,0,0.3)",
               color: "#0B2D72",
             }}>
-            Vì sao chọn MÊ BRICK?
+            Vì sao chọn MeBricks?
           </h2>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
@@ -884,3 +884,4 @@ export default function MeBrickPage() {
     </div>
   );
 }
+
