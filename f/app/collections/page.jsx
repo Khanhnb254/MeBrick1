@@ -47,13 +47,21 @@ const SAMPLE_CATEGORY_BY_NUMBER = {
   39: "Special Day",
   41: "Special Day",
   43: "Special Day",
+  45: "Happy Valentine",
   46: "Special Day",
+  47: "Special Day",
   48: "Football",
   49: "Football",
+  50: "Special Day",
   51: "Football",
-  53: "Football",
-  54: "Football",
-  55: "Football",
+  52: "Special Day",
+  53: "Special Day",
+  54: "Special Day",
+  55: "Special Day",
+  56: "Special Day",
+  57: "Happy Birthday",
+  58: "Happy Birthday",
+  59: "Happy Birthday",
   60: "Happy Anniversary",
   61: "Happy Together",
 };
@@ -91,13 +99,21 @@ const SAMPLE_NAME_BY_NUMBER = {
   39: "Special Day Ver 9",
   41: "Special Day Ver 10",
   43: "Special Day Ver 14",
+  45: "Happy Valentine Ver 13",
   46: "Special Day Ver 15",
+  47: "Special Day Ver 20",
   48: "Football Ver 1",
   49: "Football Ver 2",
+  50: "Special Day Ver 21",
   51: "Football Ver 3",
-  53: "Football Ver 4",
-  54: "Football Ver 5",
-  55: "Football Ver 6",
+  52: "Special Day Ver 22",
+  53: "Special Day Ver 16",
+  54: "Special Day Ver 17",
+  55: "Special Day Ver 18",
+  56: "Special Day Ver 19",
+  57: "Happy Birthday Ver 13",
+  58: "Happy Birthday Ver 14",
+  59: "Happy Birthday Ver 15",
   60: "Happy Anniversary Ver 4",
   61: "Happy Together Ver 1",
 };
@@ -148,12 +164,11 @@ export default function CollectionsPage() {
     return SAMPLE_IMAGES.map((src, i) => {
       const sampleNum = i + 1;
       const category = SAMPLE_CATEGORY_BY_NUMBER[sampleNum] || "Happy Together";
-      const explicitName = SAMPLE_NAME_BY_NUMBER[sampleNum];
       categoryCount[category] = (categoryCount[category] || 0) + 1;
       return {
         _isSample: true,
         id: `sample-${sampleNum}`,
-        name: explicitName || `${category} Template ${categoryCount[category]}`,
+        name: `${category} Ver ${categoryCount[category]}`,
         image: src,
       };
     });
