@@ -52,7 +52,7 @@ export default function MeBrickPage() {
       icon: "🧩",
       title: "Concept theo câu chuyện",
       description: "Một món decor nhỏ để giữ lại những khoảnh khắc đáng nhớ",
-      image: "/images/hero/hero1.jpg",
+      image: "/images/hero/concept-story.png",
     },
     {
       icon: "🎨",
