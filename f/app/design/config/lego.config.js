@@ -560,7 +560,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      offsetYExtra: 17,
+      offsetYExtra: 22,
     },
     {
       id: "hair-nu-3",
@@ -587,7 +587,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      offsetYExtra: 18, // Dịch xuống dưới 3px
+      offsetYExtra: 21,
       offsetXExtra: -2, // Dịch sang trái 2px
       sizeScale: 0.9,  // Thu nhỏ 10%
     },
