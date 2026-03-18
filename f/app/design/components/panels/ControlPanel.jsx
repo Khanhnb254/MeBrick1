@@ -5,7 +5,6 @@ import {
   FiArrowLeft,
   FiArrowRight,
   FiCheck,
-  FiDownload,
   FiShoppingCart,
   FiLayers,
   FiFilter,
@@ -62,7 +61,6 @@ export default function ControlPanel(props) {
     setQuantity,
     calculateTotal,
     pricing,
-    handleExportImage,
     handleOrder,
     isEditing = false,
 
@@ -574,14 +572,6 @@ export default function ControlPanel(props) {
           <div className="mb-panel__actions">
             <div className="mb-panel__actions-inner">
               <div className="mb-panel__actions-btns">
-                <button
-                  type="button"
-                  className="mb-btn mb-btn--soft mb-btn--lg mb-wfull"
-                  onClick={handleExportImage}
-                  disabled={!selectedSize}>
-                  <FiDownload /> Xuất hình ảnh
-                </button>
-
                 <button
                   type="button"
                   className="mb-btn mb-btn--primary mb-btn--lg mb-wfull"
