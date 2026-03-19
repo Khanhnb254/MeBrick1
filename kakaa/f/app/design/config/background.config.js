@@ -127,9 +127,9 @@ export const BACKGROUND_OPTIONS = [
         { id: "s4", x: 302, y: 453, w: 44,  h: 60,  rotate: 1 },
       ],
       48: [
-        { id: "s0", x: 80,  y: 88, w: 100, h: 100, rotate: -10 },
-        { id: "s1", x: 218, y: 74,  w: 102, h: 96, rotate:  0 },
-        { id: "s2", x: 365, y: 98, w: 101, h: 98, rotate: 17 },
+        { id: "s0", x: 73,  y: 76, w: 100, h: 100, rotate: -10 },
+        { id: "s1", x: 211, y: 62,  w: 102, h: 96, rotate:  0 },
+        { id: "s2", x: 358, y: 86, w: 101, h: 98, rotate: 17 },
       ],
     };
     return {
