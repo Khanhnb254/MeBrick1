@@ -356,8 +356,8 @@ export default function CollectionsPage() {
                   57: "bg-new-57",     // Mẫu 57
                   58: "bg-new-58",     // Mẫu 58
                   59: "bg-new-59",     // Mẫu 59
-                  60: "bg-sample-52",  // Happy Anniversary Ver 3 → Special Day Ver 19
-                  61: "bg-sample-53",  // Happy Together Ver 11 → Special Day Ver 20
+                  60: "bg-new-61",     // Happy Anniversary Ver 3 → /samples/61.jpg
+                  61: "bg-new-moi",    // Happy Together Ver 11 → /samples/moi.jpg
                 };
                 let bgParam = "";
                 if (p._isSample) {
