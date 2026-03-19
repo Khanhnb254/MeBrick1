@@ -345,12 +345,15 @@ export default function CollectionsPage() {
                   39: "bg-sample-42",  // Mẫu 39 → Special Day ver 9
                   41: "bg-sample-44",  // Mẫu 41 → Special Day ver 10
                   43: "bg-sample-48",  // Mẫu 43 → Special Day ver 14
+                  47: "bg-new-52",     // Special Day Ver 20 → /samples/52.jpg
                   46: "bg-sample-51",  // Mẫu 46 → Special Day ver 15
                   48: "bg-sample-53",  // Mẫu 48 → Football ver 1
                   49: "bg-sample-54",  // Mẫu 49 → Football ver 2
+                  50: "bg-new-57",     // Special Day Ver 21 → /samples/57.jpg
                   51: "bg-sample-55",  // Mẫu 51 → Football ver 3
+                  52: "bg-new-54",     // Special Day Ver 22 → /samples/54.jpg
                   53: "bg-sample-53",  // Mẫu 53
-                  54: "bg-sample-54",  // Mẫu 54
+                  54: "bg-new-54",     // Special Day Ver 17 → /samples/54.jpg
                   55: "bg-sample-55",  // Mẫu 55
                   56: "bg-sample-56",  // Mẫu 56
                   57: "bg-new-57",     // Mẫu 57
