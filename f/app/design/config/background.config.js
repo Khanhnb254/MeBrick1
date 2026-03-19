@@ -289,7 +289,11 @@ export const BACKGROUND_OPTIONS = [
   { id: "bg-new-54", name: "Special Day ver 18",      category: "Special Day",        type: "pattern", value: "url('/samples/54.jpg')", thumbnail: "/samples/54.jpg", backgroundSize: "cover", slots: [], textFields: [] },
   { id: "bg-new-57", name: "Happy Birthday ver 13",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/57.jpg')", thumbnail: "/samples/57.jpg", backgroundSize: "cover", slots: [], textFields: [] },
   { id: "bg-new-58", name: "Happy Birthday ver 14",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/58.jpg')", thumbnail: "/samples/58.jpg", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-59", name: "Happy Birthday ver 15",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/59.jpg')", thumbnail: "/samples/59.jpg", backgroundSize: "cover", slots: [], textFields: [] },
+  { id: "bg-new-59", name: "Happy Birthday ver 15",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/59.jpg')", thumbnail: "/samples/59.jpg", backgroundSize: "cover", slots: [
+    { id: "s0", x: 80,  y: 128, w: 100, h: 100, rotate: -10 },
+    { id: "s1", x: 218, y: 114, w: 102, h: 96,  rotate: 0 },
+    { id: "s2", x: 365, y: 138, w: 101, h: 98,  rotate: 17 },
+  ], textFields: [] },
   { id: "bg-new-61", name: "Special Day ver 19",      category: "Special Day",        type: "pattern", value: "url('/samples/61.jpg')", thumbnail: "/samples/61.jpg", backgroundSize: "cover", slots: [], textFields: [] },
   { id: "bg-new-moi", name: "Special Day ver 20",     category: "Special Day",        type: "pattern", value: "url('/samples/moi.jpg')", thumbnail: "/samples/moi.jpg", backgroundSize: "cover", slots: [], textFields: [] },
 ];

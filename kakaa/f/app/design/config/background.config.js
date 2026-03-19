@@ -129,6 +129,11 @@ export const BACKGROUND_OPTIONS = [
         { id: "s3", x: 66,  y: 458, w: 58,  h: 54,  rotate:  0 },
         { id: "s4", x: 302, y: 453, w: 44,  h: 60,  rotate: 1 },
       ],
+      59: [
+        { id: "s0", x: 80,  y: 128, w: 100, h: 100, rotate: -10 },
+        { id: "s1", x: 218, y: 114,  w: 102, h: 96, rotate:  0 },
+        { id: "s2", x: 365, y: 138, w: 101, h: 98, rotate: 17 },
+      ],
       48: [
         { id: "s0", x: 73,  y: 76, w: 100, h: 100, rotate: -10 },
         { id: "s5", x: 211, y: 62,  w: 102, h: 96, rotate:  0 },
