@@ -307,7 +307,7 @@ export const BACKGROUND_OPTIONS = [
   ], textFields: [] },
   { id: "bg-new-61", name: "Happy Anniversary ver 3", category: "Happy Anniversary",  type: "pattern", value: "url('/samples/61.jpg')", thumbnail: "/samples/61.jpg", backgroundSize: "cover", slots: [], textFields: [] },
   { id: "bg-new-moi", name: "Happy Together ver 11",  category: "Happy Together",     type: "pattern", value: "url('/samples/moi.jpg')", thumbnail: "/samples/moi.jpg", backgroundSize: "cover", slots: [
-    { id: "s1", x: 72,  y: 102, w: 112, h: 117 },
-    { id: "s2", x: 104, y: 235, w: 118, h: 116, rotate: 4 },
+    { id: "s1", x: 72,  y: 98, w: 112, h: 117 },
+    { id: "s2", x: 104, y: 231, w: 118, h: 116, rotate: 4 },
   ], textFields: [] },
 ];
