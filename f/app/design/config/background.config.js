@@ -286,7 +286,12 @@ export const BACKGROUND_OPTIONS = [
   // ===== 8 NỀN MỚI =====
   { id: "bg-new-52", name: "Happy Anniversary ver 5", category: "Happy Anniversary", type: "pattern", value: "url('/samples/52.jpg')", thumbnail: "/samples/52.jpg", backgroundSize: "cover", slots: [], textFields: [] },
   { id: "bg-new-53", name: "Happy Anniversary ver 6", category: "Happy Anniversary", type: "pattern", value: "url('/samples/53.jpg')", thumbnail: "/samples/53.jpg", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-54", name: "Special Day ver 22",      category: "Special Day",        type: "pattern", value: "url('/samples/54.jpg')", thumbnail: "/samples/54.jpg", backgroundSize: "cover", slots: [], textFields: [] },
+  { id: "bg-new-54", name: "Special Day ver 22",      category: "Special Day",        type: "pattern", value: "url('/samples/54.jpg')", thumbnail: "/samples/54.jpg", backgroundSize: "cover", slots: [
+    { id: "s1", x: 38,  y: 143, w: 97, h: 93 },
+    { id: "s2", x: 159, y: 143, w: 97, h: 93 },
+    { id: "s3", x: 280, y: 143, w: 97, h: 93 },
+    { id: "s4", x: 401, y: 143, w: 97, h: 93 },
+  ], textFields: [] },
   { id: "bg-new-57", name: "Happy Birthday ver 13",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/57.jpg')", thumbnail: "/samples/57.jpg", backgroundSize: "cover", slots: [], textFields: [] },
   { id: "bg-new-58", name: "Happy Birthday ver 14",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/58.jpg')", thumbnail: "/samples/58.jpg", backgroundSize: "cover", slots: [], textFields: [] },
   { id: "bg-new-59", name: "Happy Birthday ver 15",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/59.jpg')", thumbnail: "/samples/59.jpg", backgroundSize: "cover", slots: [
