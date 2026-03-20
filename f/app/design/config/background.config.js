@@ -196,6 +196,12 @@ export const BACKGROUND_OPTIONS = [
         { id: "s2", x: 224, y: 118, w: 98, h: 98, rotate:   0 },
         { id: "s3", x: 349, y: 130, w: 98, h: 90, rotate:   5 },
       ],
+      56: [
+        { id: "s1", x: 60,  y: 342, w: 100, h: 138 },
+        { id: "s2", x: 173, y: 342, w: 100, h: 138 },
+        { id: "s3", x: 286, y: 342, w: 100, h: 138 },
+        { id: "s4", x: 399, y: 342, w: 100, h: 138 },
+      ],
     };
     const defaultTextFields = [];
     const textFieldsMap = {
