@@ -195,7 +195,7 @@ export default function PayPage() {
             Shop đã xác nhận thanh toán cho đơn hàng <strong>#{order?.id}</strong>.
           </p>
           <p style={{ fontSize: 15, color: "#888", marginBottom: 32 }}>
-            Cảm ơn bạn đã tin tưởng và ủng hộ <strong style={{ color: "#0B2D72" }}>MeBricks</strong>! 💛
+            Cảm ơn bạn đã tin tưởng và ủng hộ <strong style={{ color: "#0B2D72" }}>Mê Bricks</strong>! 💛
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
             <button
