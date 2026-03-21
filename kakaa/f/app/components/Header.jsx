@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { FiShoppingCart, FiFacebook, FiInstagram } from "react-icons/fi";
+import { FiShoppingCart, FiFacebook } from "react-icons/fi";
 import { PiMusicNoteFill, PiSpeakerSlashFill } from "react-icons/pi";
 import { getCart, cartTotalQty } from "../../lib/cart";
 import { SOCIAL_LINKS } from "../../lib/social-links";
@@ -126,18 +126,6 @@ export default function Header() {
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}>
             <FiFacebook style={{ fontSize: "18px" }} />
-          </a>
-
-          {/* Instagram */}
-          <a
-            href={SOCIAL_LINKS.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.socialLinks}
-            style={{ color: "#e1306c", display: "flex", alignItems: "center" }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}>
-            <FiInstagram style={{ fontSize: "18px" }} />
           </a>
 
           {/* Music toggle */}

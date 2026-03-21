@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  FiInstagram,
   FiFacebook,
   FiMail,
   FiPhone,
@@ -49,21 +48,6 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer">
               <FiFacebook
-                style={{
-                  fontSize: "20px",
-                  color: "#999",
-                  cursor: "pointer",
-                  transition: "color 0.3s",
-                }}
-                onMouseEnter={(e) => (e.target.style.color = "#fff")}
-                onMouseLeave={(e) => (e.target.style.color = "#999")}
-              />
-            </a>
-            <a
-              href={SOCIAL_LINKS.instagram}
-              target="_blank"
-              rel="noopener noreferrer">
-              <FiInstagram
                 style={{
                   fontSize: "20px",
                   color: "#999",
