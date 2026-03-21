@@ -6,7 +6,7 @@ export const LEGO_CONFIG = {
     head:   { width: 186, height: 124, zIndex: 11, offsetX: 6,  offsetY: 106 },
     torso:  { width: 199, height: 149, zIndex: 10, offsetX: 0,  offsetY: 87  },
     legs:   { width: 186, height: 135, zIndex: 9,  offsetX: 6,  offsetY: 105 },
-    face:   { width: 53,  height: 93,  zIndex: 13, offsetX: 2,  offsetY: -19 },
+    face:   { width: 56,  height: 93,  zIndex: 13, offsetX: 2,  offsetY: -19 },
     hair:   { width: 107, height: 81,  zIndex: 14, offsetX: 0,  offsetY: -23 },
     outfit: { width: 199, height: 149, zIndex: 10, offsetX: 0,  offsetY: 98  },
   },
