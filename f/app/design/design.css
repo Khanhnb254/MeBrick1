@@ -709,7 +709,7 @@ html {
 .stage-card {
   background: #F8FAFC;
   border: 1px solid rgba(10, 37, 64, 0.1);
-  border-radius: clamp(1.25rem, 4vw, 1.75rem);
+  border-radius: 0;
   box-shadow: 0 14px 40px rgba(10, 37, 64, 0.1);
   padding: var(--space-md);
   width: 100%;
@@ -2116,7 +2116,7 @@ html {
 /* step gọn hơn */
 .stage-steps .lego-step {
   padding: 4px 8px;
-  border-radius: 0;
+  border-radius: 999px;
   font-size: 11px;
   white-space: nowrap;
   flex-shrink: 0;
@@ -2128,7 +2128,7 @@ html {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0;
+  border-radius: 999px;
   margin-right: 4px;
   font-size: 10px;
 }
