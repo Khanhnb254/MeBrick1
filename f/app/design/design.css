@@ -184,7 +184,7 @@ html {
 .lego-stageCard > div[style*="overflow"] {
   background: rgba(17, 24, 39, 0.03);
   border: 1px solid var(--lego-border);
-  border-radius: var(--r-md);
+  border-radius: 0;
 }
 
 /* ===== Canvas ===== */
@@ -2116,7 +2116,7 @@ html {
 /* step gọn hơn */
 .stage-steps .lego-step {
   padding: 4px 8px;
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 11px;
   white-space: nowrap;
   flex-shrink: 0;
@@ -2128,7 +2128,7 @@ html {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: 0;
   margin-right: 4px;
   font-size: 10px;
 }
