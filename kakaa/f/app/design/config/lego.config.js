@@ -325,6 +325,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
+      widthAdjust: -2,
+      offsetYExtra: -1,
     },
     {
       id: "face-34",
@@ -561,6 +563,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
+      sizeScale: 0.95,
       offsetYExtra: 17,
     },
     {

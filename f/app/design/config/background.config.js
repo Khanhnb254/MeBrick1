@@ -163,7 +163,7 @@ export const BACKGROUND_OPTIONS = [
         { id: "s1", x: 71,  y: 217, w: 60,  h: 58, rotate: -16 },
         { id: "s2", x: 132, y: 227, w: 55,  h: 55, rotate: 4 },
         { id: "s3", x: 44,  y: 388, w: 63,  h: 61 },
-        { id: "s4", x: 303, y: 394, w: 61,  h: 58 },
+        { id: "s4", x: 303, y: 394, w: 51,  h: 63 },
       ],
       47: [
         { id: "s1", x: 317, y: 153, w: 108, h: 101, rotate: -10 },

@@ -304,7 +304,10 @@ export function useLegoCharacter({
             if (sticker.layerType === "face") {
               const faceObj = [...(LEGO_CONFIG?.faces || []), ...(LEGO_CONFIG?.facesFemale || [])].find((f) => f?.src === sticker.src);
               const offsetYExtra = faceObj?.offsetYExtra || 0;
-              return { ...sticker, x: pos.x, y: pos.y + offsetYExtra + 3 };
+              const widthAdjust = Number(faceObj?.widthAdjust || 0);
+              const faceWidth = Math.max(1, pos.width + widthAdjust);
+              const faceX = pos.x + (pos.width - faceWidth) / 2;
+              return { ...sticker, x: faceX, y: pos.y + offsetYExtra + 3, width: faceWidth };
             }
             return { ...sticker, x: pos.x, y: pos.y };
           }),
@@ -448,14 +451,17 @@ export function useLegoCharacter({
         };
         const pos = calculateExactPosition(character, "face");
         const faceOffsetYExtra = faceObj?.offsetYExtra || 0;
+        const faceWidthAdjust = Number(faceObj?.widthAdjust || 0);
+        const faceWidth = Math.max(1, pos.width + faceWidthAdjust);
+        const faceX = pos.x + (pos.width - faceWidth) / 2;
         filtered.push({
           id: `${selectedCharacterId}-face`,
           type: "lego",
           name: "Khuôn mặt",
           src: faceSrc,
-          x: pos.x,
+          x: faceX,
           y: pos.y + faceOffsetYExtra + 3,
-          width: pos.width,
+          width: faceWidth,
           height: pos.height,
           zIndex: partConfig.face.zIndex,
           isSelected: false,
