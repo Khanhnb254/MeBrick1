@@ -509,6 +509,7 @@ export default function Stage({
                               backgroundPosition: "center",
                               backgroundRepeat: "no-repeat",
                               position: "absolute",
+                              zIndex: Number(part.zIndex ?? 0),
                               pointerEvents: isOutfit ? "auto" : "none",
                               cursor: isOutfit ? "pointer" : "default",
                             }}
