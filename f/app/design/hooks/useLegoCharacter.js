@@ -305,7 +305,7 @@ export function useLegoCharacter({
             if (sticker.layerType === "face") {
               const faceObj = [...(LEGO_CONFIG?.faces || []), ...(LEGO_CONFIG?.facesFemale || [])].find((f) => f?.src === sticker.src);
               const offsetYExtra = faceObj?.offsetYExtra || 0;
-              return { ...sticker, x: pos.x, y: pos.y + offsetYExtra + 1 };
+              return { ...sticker, x: pos.x, y: pos.y + offsetYExtra + 3 };
             }
             return { ...sticker, x: pos.x, y: pos.y };
           }),
@@ -461,7 +461,7 @@ export function useLegoCharacter({
           name: "Khuôn mặt",
           src: faceSrc,
           x: pos.x,
-          y: pos.y + faceOffsetYExtra + 1,
+          y: pos.y + faceOffsetYExtra + 3,
           width: pos.width,
           height: pos.height,
           zIndex: partConfig.face.zIndex,
