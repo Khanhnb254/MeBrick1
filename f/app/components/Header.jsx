@@ -28,7 +28,7 @@ export default function Header({ overlay = false }) {
 
   // Lấy sản phẩm đầu tiên từ API để tạo link thiết kế đúng
   useEffect(() => {
-    const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+    const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
     fetch(`${BASE_URL}/api/products?limit=1`)
       .then((r) => r.json())
       .then((data) => {

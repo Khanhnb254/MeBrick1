@@ -33,7 +33,7 @@ import { useStickerManager } from "./hooks/useStickerManager";
 import { exportImage } from "./utils/exportImage";
 
 async function uploadPreviewToBackend(dataUrl) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "";
   const res = await fetch(`${baseUrl}/api/uploads/base64`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -752,7 +752,7 @@ function DesignPageInner() {
   const handleSaveCustomerImage = async (file) => {
     if (!file) return;
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || "";
       const formData = new FormData();
       formData.append("file", file);
       const res = await fetch(`${baseUrl}/api/uploads/customer-image-public`, {
@@ -839,7 +839,7 @@ function DesignPageInner() {
       try {
         const up = await uploadPreviewToBackend(dataUrl);
         const baseUrl =
-          process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+          process.env.NEXT_PUBLIC_API_URL || "";
         if (up?.url)
           previewUrl = up.url.startsWith("http")
             ? up.url
@@ -849,7 +849,7 @@ function DesignPageInner() {
       }
 
       // upload slot images (ảnh khách thêm vào ô slot của background)
-      const baseUrlForSlot = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const baseUrlForSlot = process.env.NEXT_PUBLIC_API_URL || "";
       const uploadedSlotImages = {};
       await Promise.all(
         Object.entries(slotImages).map(async ([key, src]) => {

@@ -1,5 +1,5 @@
 // lib/api/orders.js
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 const API_URL = `${BASE_URL.replace(/\/$/, "")}/api/orders`;
 
 async function handle(res, hint) {
