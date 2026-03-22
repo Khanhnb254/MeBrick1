@@ -323,7 +323,7 @@ export const BACKGROUND_OPTIONS = [
     { id: "s4", x: 399, y: 143, w: 99, h: 93 },
   ], textFields: [] },
   { id: "bg-new-57", name: "Happy Birthday ver 13",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/57.jpg')", thumbnail: "/samples/57.jpg", backgroundSize: "cover", slots: [
-    { id: "s1", x: 34,  y: 234, w: 78, h: 75, rotate: -15 },
+    { id: "s1", x: 29,  y: 234, w: 78, h: 75, rotate: -18 },
     { id: "s2", x: 107, y: 243, w: 75, h: 72, rotate: 2 },
     { id: "s3", x: 183, y: 229, w: 75, h: 72, rotate: -8 },
   ], textFields: [] },
