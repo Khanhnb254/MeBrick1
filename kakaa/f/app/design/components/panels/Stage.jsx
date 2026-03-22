@@ -60,6 +60,7 @@ export default function Stage({
   const slotFileInputRef = useRef(null);
   const pendingSlotRef = useRef(null); // { slotId } khi đang chờ user chọn file
   const [selectedSlotId, setSelectedSlotId] = useState(null);
+  const [inlineEditingTextId, setInlineEditingTextId] = useState(null);
   const [canvasAnimKey, setCanvasAnimKey] = useState(0);
   useEffect(() => {
     if (selectedSize) setCanvasAnimKey((k) => k + 1);
@@ -93,6 +94,13 @@ export default function Stage({
     };
     reader.readAsDataURL(file);
   };
+  useEffect(() => {
+    if (!inlineEditingTextId) return;
+    const current = (stickers || []).find((s) => s.id === inlineEditingTextId);
+    if (!current || current.type !== "text" || selectedId !== inlineEditingTextId) {
+      setInlineEditingTextId(null);
+    }
+  }, [inlineEditingTextId, selectedId, stickers]);
   const PAD = 1;
   const getCanvasPoint = (e) => {
     const el = e.currentTarget;
@@ -200,14 +208,17 @@ export default function Stage({
     if (hit.kind === "char") {
       setSelectedCharacterId(hit.id);
       setSelectedId(null);
+      setInlineEditingTextId(null);
       // clear sticker selected state
       setStickers((prev) => prev.map((s) => ({ ...s, isSelected: false })));
       return;
     }
 
     if (hit.kind === "sticker") {
+      const hitSticker = (stickers || []).find((s) => s.id === hit.id);
       setSelectedCharacterId(null);
       setSelectedId(hit.id);
+      setInlineEditingTextId(hitSticker?.type === "text" ? hit.id : null);
       setStickers((prev) =>
         prev.map((s) => ({ ...s, isSelected: s.id === hit.id })),
       );
@@ -278,8 +289,19 @@ export default function Stage({
     if (!picked) {
       pointerDownRef.current = false;
       handleDesignAreaClick?.(); // clear
+      setInlineEditingTextId(null);
       setSelectedSlotId(null);
       return;
+    }
+
+    if (picked.kind === "sticker") {
+      const pickedSticker = (stickers || []).find((s) => s.id === picked.id);
+      if (pickedSticker?.type === "text") {
+        e.preventDefault();
+        e.stopPropagation();
+        selectHit(picked);
+        return;
+      }
     }
 
     e.preventDefault();
@@ -293,6 +315,7 @@ export default function Stage({
     const lines = Array.isArray(s.lines) ? s.lines : null;
 
     const isSel = !!selectedId && s.id === selectedId;
+    const isInlineEditingText = s.type === "text" && inlineEditingTextId === s.id;
 
     // zIndex: selected nổi lên
     const z = isSel ? 99999 : Number(s.zIndex ?? 100 + idx);
@@ -319,9 +342,10 @@ export default function Stage({
           width: w,
           height: h,
           zIndex: z,
-          pointerEvents: "none", // ✅ quan trọng: canvas bắt hết
+          pointerEvents: isInlineEditingText ? "auto" : "none",
           borderRadius: 12,
           overflow: "hidden",
+          border: isInlineEditingText ? "1.5px dashed rgba(15,23,42,0.45)" : "none",
         }}>
         {/* Selection outline - REMOVED */}
 
@@ -344,11 +368,43 @@ export default function Stage({
               fontWeight: Number(s.fontWeight ?? 800),
               lineHeight: Number(s.lineHeight ?? 1.1),
               padding: 2,
-              userSelect: "none",
+              userSelect: isInlineEditingText ? "text" : "none",
               whiteSpace: "pre-wrap",
               wordBreak: "break-word",
             }}>
-            {Array.isArray(s.lines) && s.lines.length > 0 ? (
+            {isInlineEditingText ? (
+              <textarea
+                autoFocus
+                value={content}
+                onChange={(e) => {
+                  const nextContent = e.target.value;
+                  setStickers((prev) =>
+                    prev.map((item) =>
+                      item.id === s.id
+                        ? { ...item, content: nextContent, lines: undefined }
+                        : item,
+                    ),
+                  );
+                }}
+                onPointerDown={(e) => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  background: "transparent",
+                  border: "none",
+                  outline: "none",
+                  resize: "none",
+                  color,
+                  fontFamily,
+                  fontSize,
+                  fontWeight: Number(s.fontWeight ?? 800),
+                  lineHeight: Number(s.lineHeight ?? 1.1),
+                  textAlign: align,
+                  padding: 2,
+                }}
+              />
+            ) : Array.isArray(s.lines) && s.lines.length > 0 ? (
               <div>
                 {s.lines.map((l, i) => (
                   <div key={i} style={{ color: l.color ?? color }}>
