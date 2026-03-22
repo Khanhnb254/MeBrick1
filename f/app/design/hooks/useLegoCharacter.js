@@ -42,6 +42,9 @@ export function useLegoCharacter({
     const obj = (list || []).find((x) => x?.src === src);
     return Number(obj?.price || 0);
   };
+  const shouldLiftHairForFace = (faceSrc) =>
+    faceSrc === "/images/lego/faces/faceswoman/10.png" ||
+    faceSrc === "/images/lego/faces/faceswoman/45.png";
 
   const calculateExactPosition = (character, partType) => {
     const config = partConfig[partType];
@@ -178,6 +181,7 @@ export function useLegoCharacter({
       const hairObj = (LEGO_CONFIG?.hairs || []).find((h) => h?.src === character.hair);
       const offsetYExtra = hairObj?.offsetYExtra || 0;
       const offsetXExtra = hairObj?.offsetXExtra || 0;
+      const faceLiftY = shouldLiftHairForFace(character.face) ? -3 : 0;
       const sizeScale = hairObj?.sizeScale || 1;
       const heightAdjust = Number(hairObj?.heightAdjust || 0);
       const hairW = Math.round(pos.width * sizeScale);
@@ -188,7 +192,7 @@ export function useLegoCharacter({
         name: "Tóc",
         src: character.hair,
         x: pos.x + (pos.width - hairW) / 2 + offsetXExtra,
-        y: pos.y + offsetYExtra,
+        y: pos.y + offsetYExtra + faceLiftY,
         width: hairW,
         height: hairH,
         zIndex: partConfig.hair.zIndex,
@@ -292,6 +296,7 @@ export function useLegoCharacter({
               const hairObj = (LEGO_CONFIG?.hairs || []).find((h) => h?.src === sticker.src);
               const offsetYExtra = hairObj?.offsetYExtra || 0;
               const offsetXExtra = hairObj?.offsetXExtra || 0;
+              const faceLiftY = shouldLiftHairForFace(movedChar.face) ? -3 : 0;
               const sizeScale = hairObj?.sizeScale || 1;
               const heightAdjust = Number(hairObj?.heightAdjust || 0);
               const hairW = Math.round(pos.width * sizeScale);
@@ -299,7 +304,7 @@ export function useLegoCharacter({
               return {
                 ...sticker,
                 x: pos.x + (pos.width - hairW) / 2 + offsetXExtra,
-                y: pos.y + offsetYExtra,
+                y: pos.y + offsetYExtra + faceLiftY,
                 width: hairW,
                 height: hairH,
               };
@@ -511,6 +516,27 @@ export function useLegoCharacter({
         }
       }
 
+      const faceLiftY = shouldLiftHairForFace(faceSrc) ? -3 : 0;
+      filtered = filtered.map((s) => {
+        if (!(s.characterId === selectedCharacterId && s.layerType === "hair")) return s;
+        const character = getCharacterById(selectedCharacterId) || { x: 0, y: 0 };
+        const pos = calculateExactPosition(character, "hair");
+        const hairObj = (LEGO_CONFIG?.hairs || []).find((h) => h?.src === s.src);
+        const hairOffsetYExtra = hairObj?.offsetYExtra || 0;
+        const hairOffsetXExtra = hairObj?.offsetXExtra || 0;
+        const hairSizeScale = hairObj?.sizeScale || 1;
+        const hairHeightAdjust = Number(hairObj?.heightAdjust || 0);
+        const hairW = Math.round(pos.width * hairSizeScale);
+        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale) + hairHeightAdjust);
+        return {
+          ...s,
+          x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra,
+          y: pos.y + hairOffsetYExtra + faceLiftY,
+          width: hairW,
+          height: hairH,
+        };
+      });
+
       return filtered;
     });
   };
@@ -549,6 +575,7 @@ export function useLegoCharacter({
         const pos = calculateExactPosition(character, "hair");
         const hairOffsetYExtra = hairObj?.offsetYExtra || 0;
         const hairOffsetXExtra = hairObj?.offsetXExtra || 0;
+        const faceLiftY = shouldLiftHairForFace(character.face) ? -3 : 0;
         const hairSizeScale = hairObj?.sizeScale || 1;
         const hairHeightAdjust = Number(hairObj?.heightAdjust || 0);
         const hairW = Math.round(pos.width * hairSizeScale);
@@ -559,7 +586,7 @@ export function useLegoCharacter({
           name: "Tóc",
           src: hairSrc,
           x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra,
-          y: pos.y + hairOffsetYExtra,
+          y: pos.y + hairOffsetYExtra + faceLiftY,
           width: hairW,
           height: hairH,
           zIndex: partConfig.hair.zIndex,
