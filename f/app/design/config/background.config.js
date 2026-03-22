@@ -322,7 +322,11 @@ export const BACKGROUND_OPTIONS = [
     { id: "s3", x: 280, y: 143, w: 97, h: 93 },
     { id: "s4", x: 399, y: 143, w: 99, h: 93 },
   ], textFields: [] },
-  { id: "bg-new-57", name: "Happy Birthday ver 13",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/57.jpg')", thumbnail: "/samples/57.jpg", backgroundSize: "cover", slots: [], textFields: [] },
+  { id: "bg-new-57", name: "Happy Birthday ver 13",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/57.jpg')", thumbnail: "/samples/57.jpg", backgroundSize: "cover", slots: [
+    { id: "s1", x: 24,  y: 224, w: 61, h: 72, rotate: -15 },
+    { id: "s2", x: 93,  y: 233, w: 61, h: 72, rotate: 2 },
+    { id: "s3", x: 163, y: 224, w: 61, h: 72, rotate: -8 },
+  ], textFields: [] },
   { id: "bg-new-58", name: "Happy Birthday ver 14",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/58.jpg')", thumbnail: "/samples/58.jpg", backgroundSize: "cover", slots: [], textFields: [] },
   { id: "bg-new-59", name: "Happy Birthday ver 15",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/59.jpg')", thumbnail: "/samples/59.jpg", backgroundSize: "cover", slots: [
     { id: "s1", x: 90,  y: 132, w: 98, h: 94, rotate: -10 },
