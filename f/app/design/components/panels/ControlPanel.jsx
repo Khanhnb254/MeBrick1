@@ -348,7 +348,7 @@ export default function ControlPanel(props) {
               style={{ display: "none" }}
             />
 
-            {activePanel === "text" && !!selectedText && (
+            {!!selectedText && (
               <TextEditorPanel
                 selectedText={selectedText}
                 onAddText={onAddTextClick}
@@ -361,12 +361,15 @@ export default function ControlPanel(props) {
                   setSelectedId?.(null);
                   setActivePanel?.(null);
                 }}
-                onClose={() => setActivePanel?.(null)}
+                onClose={() => {
+                  setSelectedId?.(null);
+                  setActivePanel?.(null);
+                }}
                 disabled={isSaving}
               />
             )}
 
-            {activePanel !== "text" && (
+            {!selectedText && (
               <>
                 <div className="mb-tabs">
                   {layerTabs.map((t) => (
