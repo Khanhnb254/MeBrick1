@@ -99,7 +99,7 @@ export const BACKGROUND_OPTIONS = [
         { id: "s4", x: 309, y: 461, w: 42,  h: 42  },
       ],
       10: [
-        { id: "s1", x: 45, y: 376, w: 78, h: 53 },
+        { id: "s1", x: 45, y: 377, w: 78, h: 52 },
       ],
       12: [
         { id: "s1", x: 43,  y: 377, w: 61,  h: 53  },
