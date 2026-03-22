@@ -307,9 +307,11 @@ export function useLegoCharacter({
               const faceObj = [...(LEGO_CONFIG?.faces || []), ...(LEGO_CONFIG?.facesFemale || [])].find((f) => f?.src === sticker.src);
               const offsetYExtra = faceObj?.offsetYExtra || 0;
               const widthAdjust = Number(faceObj?.widthAdjust || 0);
+              const heightAdjust = Number(faceObj?.heightAdjust || 0);
               const faceWidth = Math.max(1, pos.width + widthAdjust);
+              const faceHeight = Math.max(1, pos.height + heightAdjust);
               const faceX = pos.x + (pos.width - faceWidth) / 2;
-              return { ...sticker, x: faceX, y: pos.y + offsetYExtra + 3, width: faceWidth };
+              return { ...sticker, x: faceX, y: pos.y + offsetYExtra + 3, width: faceWidth, height: faceHeight };
             }
             return { ...sticker, x: pos.x, y: pos.y };
           }),
@@ -454,7 +456,9 @@ export function useLegoCharacter({
         const pos = calculateExactPosition(character, "face");
         const faceOffsetYExtra = faceObj?.offsetYExtra || 0;
         const faceWidthAdjust = Number(faceObj?.widthAdjust || 0);
+        const faceHeightAdjust = Number(faceObj?.heightAdjust || 0);
         const faceWidth = Math.max(1, pos.width + faceWidthAdjust);
+        const faceHeight = Math.max(1, pos.height + faceHeightAdjust);
         const faceX = pos.x + (pos.width - faceWidth) / 2;
         filtered.push({
           id: `${selectedCharacterId}-face`,
@@ -464,7 +468,7 @@ export function useLegoCharacter({
           x: faceX,
           y: pos.y + faceOffsetYExtra + 3,
           width: faceWidth,
-          height: pos.height,
+          height: faceHeight,
           zIndex: partConfig.face.zIndex,
           isSelected: false,
           layerType: "face",
