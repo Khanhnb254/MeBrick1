@@ -572,6 +572,7 @@ export const LEGO_CONFIG = {
       sizeScale: 0.95,
       heightAdjust: 1,
       offsetYExtra: 22,
+      rotation: 2,
     },
     {
       id: "hair-nu-3",

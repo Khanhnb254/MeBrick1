@@ -220,6 +220,7 @@ export function useLegoCharacter({
       const faceLiftY = getHairLiftOffset(character.face, character.hair);
       const sizeScale = hairObj?.sizeScale || 1;
       const heightAdjust = Number(hairObj?.heightAdjust || 0);
+      const hairRotation = Number(hairObj?.rotation || 0);
       const hairSizeBoost = getHairSizeBoostForFace(character.face);
       const hairW = Math.max(1, Math.round(pos.width * sizeScale) + hairSizeBoost);
       const hairH = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust + hairSizeBoost);
@@ -232,6 +233,7 @@ export function useLegoCharacter({
         y: pos.y + offsetYExtra + faceLiftY,
         width: hairW,
         height: hairH,
+        rotation: hairRotation,
         zIndex: partConfig.hair.zIndex,
         isSelected: false,
         layerType: "hair",
@@ -336,6 +338,7 @@ export function useLegoCharacter({
               const faceLiftY = getHairLiftOffset(movedChar.face, sticker.src);
               const sizeScale = hairObj?.sizeScale || 1;
               const heightAdjust = Number(hairObj?.heightAdjust || 0);
+              const hairRotation = Number(hairObj?.rotation || 0);
               const hairSizeBoost = getHairSizeBoostForFace(movedChar.face);
               const hairW = Math.max(1, Math.round(pos.width * sizeScale) + hairSizeBoost);
               const hairH = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust + hairSizeBoost);
@@ -345,6 +348,7 @@ export function useLegoCharacter({
                 y: pos.y + offsetYExtra + faceLiftY,
                 width: hairW,
                 height: hairH,
+                rotation: hairRotation,
               };
             }
             if (sticker.layerType === "face") {
@@ -532,6 +536,7 @@ export function useLegoCharacter({
         const hairOffsetXExtra = hairObj?.offsetXExtra || 0;
         const hairSizeScale = hairObj?.sizeScale || 1;
         const hairHeightAdjust = Number(hairObj?.heightAdjust || 0);
+        const hairRotation = Number(hairObj?.rotation || 0);
         const hairSizeBoost = getHairSizeBoostForFace(faceSrc);
         const hairW = Math.max(1, Math.round(pos.width * hairSizeScale) + hairSizeBoost);
         const hairH = Math.max(1, Math.round(pos.height * hairSizeScale) + hairHeightAdjust + hairSizeBoost);
@@ -541,6 +546,7 @@ export function useLegoCharacter({
           y: pos.y + hairOffsetYExtra + getHairLiftOffset(faceSrc, s.src),
           width: hairW,
           height: hairH,
+          rotation: hairRotation,
         };
       });
 
@@ -585,6 +591,7 @@ export function useLegoCharacter({
         const faceLiftY = getHairLiftOffset(character.face, hairSrc);
         const hairSizeScale = hairObj?.sizeScale || 1;
         const hairHeightAdjust = Number(hairObj?.heightAdjust || 0);
+        const hairRotation = Number(hairObj?.rotation || 0);
         const hairSizeBoost = getHairSizeBoostForFace(character.face);
         const hairW = Math.max(1, Math.round(pos.width * hairSizeScale) + hairSizeBoost);
         const hairH = Math.max(1, Math.round(pos.height * hairSizeScale) + hairHeightAdjust + hairSizeBoost);
@@ -597,6 +604,7 @@ export function useLegoCharacter({
           y: pos.y + hairOffsetYExtra + faceLiftY,
           width: hairW,
           height: hairH,
+          rotation: hairRotation,
           zIndex: partConfig.hair.zIndex,
           isSelected: false,
           layerType: "hair",
