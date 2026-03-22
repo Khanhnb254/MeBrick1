@@ -4,23 +4,27 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
+const normalizeOrigin = (origin) => String(origin || "").trim().replace(/\/+$/, "");
 const allowedOrigins = (process.env.CORS_ORIGINS || "")
   .split(",")
-  .map((origin) => origin.trim())
+  .map(normalizeOrigin)
   .filter(Boolean);
 const defaultOrigins = [
   "http://localhost:3000",
   "https://me-brick.vercel.app",
   "https://khakk.vercel.app",
+  "https://mebricks.vn",
+  "https://www.mebricks.vn",
 ];
-const originAllowlist = [...new Set([...defaultOrigins, ...allowedOrigins])];
+const originAllowlist = [...new Set([...defaultOrigins, ...allowedOrigins].map(normalizeOrigin))];
 
 // CORS trước routes
 app.use(
   cors({
     origin(origin, callback) {
       if (!origin) return callback(null, true);
-      if (originAllowlist.includes(origin) || /\.vercel\.app$/.test(origin)) {
+      const normalizedOrigin = normalizeOrigin(origin);
+      if (originAllowlist.includes(normalizedOrigin) || /\.vercel\.app$/.test(normalizedOrigin)) {
         return callback(null, true);
       }
       return callback(new Error("Not allowed by CORS"));
