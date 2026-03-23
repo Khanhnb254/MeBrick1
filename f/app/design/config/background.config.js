@@ -198,8 +198,8 @@ export const BACKGROUND_OPTIONS = [
         { id: "s4", x: 302, y: 453, w: 44,  h: 60,  rotate: 1 },
       ],
       45: [
-        { id: "s1", x: 328, y: 147, w: 123, h: 119, rotate: -15 },
-        { id: "s2", x: 388, y: 234, w: 119, h: 92,  rotate: 14 },
+        { id: "s1", x: 328, y: 147, w: 113, h: 119, rotate: -15 },
+        { id: "s2", x: 388, y: 234, w: 109, h: 92,  rotate: 14 },
         { id: "s3", x: 61,  y: 386, w: 84,  h: 60 },
       ],
       48: [
