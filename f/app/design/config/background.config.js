@@ -199,7 +199,7 @@ export const BACKGROUND_OPTIONS = [
       ],
       45: [
         { id: "s1", x: 352, y: 133, w: 107, h: 106, rotate: -15 },
-        { id: "s2", x: 408, y: 223, w: 100, h: 92,  rotate: 14 },
+        { id: "s2", x: 412, y: 223, w: 100, h: 92,  rotate: 14 },
         { id: "s3", x: 61,  y: 386, w: 84,  h: 60 },
       ],
       48: [
