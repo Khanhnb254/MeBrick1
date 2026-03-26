@@ -53,11 +53,17 @@ export function useLegoCharacter({
     const isFemaleHair1Or2 =
       hairSrc === "/images/lego/hair/nu/tocnu1.png" ||
       hairSrc === "/images/lego/hair/nu/tocnu2.png";
+    const isFemaleFace3Or5 =
+      faceSrc === "/images/lego/faces/faceswoman/10.png" ||
+      faceSrc === "/images/lego/faces/faceswoman/45.png";
     if (isFace5Or6 && isHair2Or4) {
       return -2;
     }
     if (isFace5 && isFemaleHair1Or2) {
       return -2;
+    }
+    if (isFemaleHair1Or2 && !isFemaleFace3Or5) {
+      return -0.7;
     }
     if (
       faceSrc === "/images/lego/faces/faceswoman/10.png" ||
