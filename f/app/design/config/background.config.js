@@ -24,7 +24,7 @@ export const BACKGROUND_OPTIONS = [
     { id: "s2", x: 295, y: 224, w: 101, h: 107 },
     { id: "s3", x: 400, y: 224, w: 100, h: 107 },
   ], textFields: [
-    { id: "tf-hobby", x: 293, y: 404, w: 247, h: 18, placeholder: "Nhập thông tin..." },
+    { id: "tf-hobby", x: 293, y: 408, w: 247, h: 18, placeholder: "Nhập thông tin..." },
   ] },
 
   // ===== ẢNH MẪU (sample4 – sample56) =====
