@@ -23,6 +23,8 @@ export const BACKGROUND_OPTIONS = [
     { id: "s1", x: 400, y: 121, w: 95, h: 102 },
     { id: "s2", x: 295, y: 224, w: 101, h: 107 },
     { id: "s3", x: 400, y: 224, w: 100, h: 107 },
+  ], textFields: [
+    { id: "tf-hobby", x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
   ] },
 
   // ===== ẢNH MẪU (sample4 – sample56) =====
@@ -255,6 +257,12 @@ export const BACKGROUND_OPTIONS = [
         { id: "tf-name",      x: 266, y: 158, w: 247, h: 18, placeholder: "Nhập tên..." },
         { id: "tf-level",     x: 266, y: 195, w: 247, h: 18, placeholder: "Nhập tuổi..." },
         { id: "tf-manifesto", x: 266, y: 232, w: 247, h: 18, placeholder: "Nhập mong ước..." },
+      ],
+      8: [
+        { id: "tf-hobby",     x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
+      ],
+      10: [
+        { id: "tf-hobby",     x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
       ],
       // Love ver 4 (sample12)
       12: [],
