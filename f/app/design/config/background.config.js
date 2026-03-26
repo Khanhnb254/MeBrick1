@@ -13,7 +13,7 @@ export const BACKGROUND_OPTIONS = [
     { id: "s0", x: 54,  y: 142, w: 120, h: 119, rotate: -18 },
     { id: "s1", x: 178, y: 172, w: 115, h: 113, rotate: 10 },
   ], textFields: [
-    { id: "tf-hobby", x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
+    { id: "tf-hobby", x: 293, y: 404, w: 247, h: 18, placeholder: "Nhập thông tin..." },
   ] },
 
   // ===== HAPPY TOGETHER =====
@@ -24,7 +24,7 @@ export const BACKGROUND_OPTIONS = [
     { id: "s2", x: 295, y: 224, w: 101, h: 107 },
     { id: "s3", x: 400, y: 224, w: 100, h: 107 },
   ], textFields: [
-    { id: "tf-hobby", x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
+    { id: "tf-hobby", x: 293, y: 404, w: 247, h: 18, placeholder: "Nhập thông tin..." },
   ] },
 
   // ===== ẢNH MẪU (sample4 – sample56) =====
