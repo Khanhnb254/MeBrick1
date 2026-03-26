@@ -264,6 +264,9 @@ export const BACKGROUND_OPTIONS = [
       10: [
         { id: "tf-hobby",     x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
       ],
+      11: [
+        { id: "tf-hobby",     x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
+      ],
       // Love ver 4 (sample12)
       12: [],
       17: [
@@ -328,13 +331,17 @@ export const BACKGROUND_OPTIONS = [
     { id: "s1", x: 35,  y: 233, w: 70, h: 70, rotate: -15 },
     { id: "s2", x: 105, y: 251, w: 62, h: 62, rotate: 9 },
     { id: "s3", x: 171, y: 247, w: 67, h: 62, rotate: -9 },
-  ], textFields: [] },
+  ], textFields: [
+    { id: "tf-hobby", x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
+  ] },
   { id: "bg-new-54", name: "Special Day ver 22",      category: "Special Day",        type: "pattern", value: "url('/samples/54.jpg')", thumbnail: "/samples/54.jpg", backgroundSize: "cover", slots: [
     { id: "s1", x: 44,  y: 143, w: 97, h: 93 },
     { id: "s2", x: 162, y: 143, w: 97, h: 93 },
     { id: "s3", x: 280, y: 143, w: 97, h: 93 },
     { id: "s4", x: 399, y: 143, w: 99, h: 93 },
-  ], textFields: [] },
+  ], textFields: [
+    { id: "tf-hobby", x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
+  ] },
   { id: "bg-new-57", name: "Happy Birthday ver 13",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/57.jpg')", thumbnail: "/samples/57.jpg", backgroundSize: "cover", slots: [
     { id: "s1", x: 29,  y: 234, w: 78, h: 75, rotate: -18 },
     { id: "s2", x: 107, y: 243, w: 75, h: 72, rotate: 2 },
