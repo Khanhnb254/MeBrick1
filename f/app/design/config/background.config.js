@@ -13,7 +13,7 @@ export const BACKGROUND_OPTIONS = [
     { id: "s0", x: 54,  y: 142, w: 120, h: 119, rotate: -18 },
     { id: "s1", x: 178, y: 172, w: 115, h: 113, rotate: 10 },
   ], textFields: [
-    { id: "tf-hobby", x: 293, y: 404, w: 247, h: 18, placeholder: "Nhập thông tin..." },
+    { id: "tf-hobby", x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
   ] },
 
   // ===== HAPPY TOGETHER =====
@@ -332,7 +332,7 @@ export const BACKGROUND_OPTIONS = [
     { id: "s2", x: 105, y: 251, w: 62, h: 62, rotate: 9 },
     { id: "s3", x: 171, y: 247, w: 67, h: 62, rotate: -9 },
   ], textFields: [
-    { id: "tf-hobby", x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
+    { id: "tf-hobby", x: 293, y: 404, w: 247, h: 18, placeholder: "Nhập thông tin..." },
   ] },
   { id: "bg-new-54", name: "Special Day ver 22",      category: "Special Day",        type: "pattern", value: "url('/samples/54.jpg')", thumbnail: "/samples/54.jpg", backgroundSize: "cover", slots: [
     { id: "s1", x: 44,  y: 143, w: 97, h: 93 },
