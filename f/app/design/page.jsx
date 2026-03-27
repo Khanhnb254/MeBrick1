@@ -455,40 +455,6 @@ function DesignPageInner() {
     pendingLegoRebuildRef.current = false;
   }, [legoCharacters, createStickersFromCharacter]);
 
-  // Luôn đồng bộ sticker LEGO theo config mới (ví dụ đổi size trong lego.config.js)
-  useEffect(() => {
-    if (!legoCharacters?.length) return;
-    setStickers((prev) => {
-      const nonCharacterStickers = (prev || []).filter((s) => !s.characterId);
-      const prevCharacterStickers = (prev || []).filter((s) => !!s.characterId);
-      const rebuiltCharacterStickers = legoCharacters.flatMap((character) =>
-        createStickersFromCharacter(character),
-      );
-
-      const sameCharacterStickers =
-        prevCharacterStickers.length === rebuiltCharacterStickers.length &&
-        prevCharacterStickers.every((oldS, i) => {
-          const newS = rebuiltCharacterStickers[i];
-          if (!newS) return false;
-          return (
-            oldS.id === newS.id &&
-            oldS.src === newS.src &&
-            oldS.x === newS.x &&
-            oldS.y === newS.y &&
-            oldS.width === newS.width &&
-            oldS.height === newS.height &&
-            oldS.rotation === newS.rotation &&
-            oldS.layerType === newS.layerType &&
-            oldS.part === newS.part &&
-            oldS.characterId === newS.characterId
-          );
-        });
-
-      if (sameCharacterStickers) return prev;
-      return [...nonCharacterStickers, ...rebuiltCharacterStickers];
-    });
-  }, [legoCharacters, createStickersFromCharacter]);
-
   // ✅ WRAPPER: luôn clear selection/panel trước khi add character
   const addCompleteLegoCharacterSafe = () => {
     setActivePanel(null);
