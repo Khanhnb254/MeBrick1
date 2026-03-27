@@ -121,6 +121,7 @@ export function useLegoCharacter({
       faceSrc === "/images/lego/faces/faceswoman/02.png" ||
       faceSrc === "/images/lego/faces/faceswoman/06.png";
     const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
+    const isFemaleHair = String(hairSrc || "").includes("/images/lego/hair/nu/");
     if (isFace5Or6 && isMaleHair2) return 0.7;
     if (isFemaleFace1Or2 && isFemaleHair2) return 1.5;
     if (isFemaleHair) return -5;
@@ -733,3 +734,4 @@ export function useLegoCharacter({
     handleDeleteCharacter,
   };
 }
+
