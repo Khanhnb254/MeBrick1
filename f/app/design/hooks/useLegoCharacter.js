@@ -99,7 +99,12 @@ export function useLegoCharacter({
       faceSrc === "/images/lego/faces/15.png" ||
       faceSrc === "/images/lego/faces/34.png";
     const isMaleHair2 = hairSrc === "/images/lego/hair/nam/tocnam2.png";
+    const isFemaleFace1Or2 =
+      faceSrc === "/images/lego/faces/faceswoman/02.png" ||
+      faceSrc === "/images/lego/faces/faceswoman/06.png";
+    const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
     if (isFace5Or6 && isMaleHair2) return 0.7;
+    if (isFemaleFace1Or2 && isFemaleHair2) return 1.5;
     return 0;
   };
 
