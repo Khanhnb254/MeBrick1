@@ -63,7 +63,7 @@ export function useLegoCharacter({
       return -2;
     }
     if (isFemaleHair1Or2 && !isFemaleFace3Or5) {
-      return -0.7;
+      return -1;
     }
     if (
       faceSrc === "/images/lego/faces/faceswoman/10.png" ||
