@@ -327,8 +327,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: -1.5,
-      heightAdjust: -0.5,
+      widthAdjust: -3,
+      heightAdjust: -5,
       offsetYExtra: -1,
     },
     {
