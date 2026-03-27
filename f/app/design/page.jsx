@@ -64,6 +64,7 @@ function DesignPageInner() {
   const [stickers, setStickers] = useState([]);
   const [activeSticker, setActiveSticker] = useState(null);
   const [showSamples, setShowSamples] = useState(false);
+  const pendingLegoRebuildRef = useRef(false);
 
   const [selectedCategory, setSelectedCategory] = useState("characters");
   const [searchQuery, setSearchQuery] = useState("");
@@ -206,7 +207,10 @@ function DesignPageInner() {
         if (dd.selectedSize) setSelectedSize(dd.selectedSize);
         if (dd.selectedBackground) setSelectedBackground(dd.selectedBackground);
         if (dd.stickers) setStickers(dd.stickers);
-        if (dd.legoCharacters) setLegoCharacters(dd.legoCharacters);
+        if (dd.legoCharacters) {
+          setLegoCharacters(dd.legoCharacters);
+          pendingLegoRebuildRef.current = true;
+        }
         if (dd.quantity) setQuantity(dd.quantity);
 
         // Clear sessionStorage
@@ -310,7 +314,10 @@ function DesignPageInner() {
       if (draft.selectedFrame) setSelectedFrame(draft.selectedFrame);
       if (draft.selectedBackground) setSelectedBackground(draft.selectedBackground);
       if (draft.stickers?.length) setStickers(draft.stickers);
-      if (draft.legoCharacters?.length) setLegoCharacters(draft.legoCharacters);
+      if (draft.legoCharacters?.length) {
+        setLegoCharacters(draft.legoCharacters);
+        pendingLegoRebuildRef.current = true;
+      }
       if (draft.quantity) setQuantity(draft.quantity);
       if (draft.savedImages?.length) setSavedImages(draft.savedImages);
       if (draft.slotImages && Object.keys(draft.slotImages).length) setSlotImages(draft.slotImages);
@@ -405,6 +412,7 @@ function DesignPageInner() {
   // LEGO LOGIC HOOK
   // ====================
   const {
+    createStickersFromCharacter,
     addCompleteLegoCharacter,
     moveLegoCharacter,
     updateCharacterOutfit,
@@ -430,6 +438,22 @@ function DesignPageInner() {
     setShowOutfitSelector,
     setOutfitSelectorCharId,
   });
+
+  useEffect(() => {
+    if (!pendingLegoRebuildRef.current) return;
+    if (!legoCharacters?.length) {
+      pendingLegoRebuildRef.current = false;
+      return;
+    }
+    setStickers((prev) => {
+      const nonCharacterStickers = (prev || []).filter((s) => !s.characterId);
+      const rebuiltCharacterStickers = legoCharacters.flatMap((character) =>
+        createStickersFromCharacter(character),
+      );
+      return [...nonCharacterStickers, ...rebuiltCharacterStickers];
+    });
+    pendingLegoRebuildRef.current = false;
+  }, [legoCharacters, createStickersFromCharacter]);
 
   // ✅ WRAPPER: luôn clear selection/panel trước khi add character
   const addCompleteLegoCharacterSafe = () => {
