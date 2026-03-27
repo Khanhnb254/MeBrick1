@@ -318,10 +318,15 @@ export function useLegoCharacter({
     const defaultFace = LEGO_CONFIG.faces[0]?.src || null;
     const defaultHair = LEGO_CONFIG.hairs[0]?.src || null;
 
+    const NEW_CHARACTER_SHIFT_X = -4;
+    const NEW_CHARACTER_SHIFT_Y = -4;
+    const initialX = Math.max(0, Math.min(safeX + NEW_CHARACTER_SHIFT_X, canvasSize.width - partConfig.totalWidth));
+    const initialY = Math.max(0, Math.min(safeY + NEW_CHARACTER_SHIFT_Y, canvasSize.height - partConfig.totalHeight));
+
     const newCharacter = {
       id: characterId,
-      x: safeX,
-      y: safeY,
+      x: initialX,
+      y: initialY,
       head: LEGO_CONFIG.baseParts.head,
       torso: LEGO_CONFIG.baseParts.torso,
       legs: LEGO_CONFIG.baseParts.legs,
