@@ -94,6 +94,14 @@ export function useLegoCharacter({
     }
     return 0;
   };
+  const getHairFaceXOffset = (faceSrc, hairSrc) => {
+    const isFace5Or6 =
+      faceSrc === "/images/lego/faces/15.png" ||
+      faceSrc === "/images/lego/faces/34.png";
+    const isMaleHair2 = hairSrc === "/images/lego/hair/nam/tocnam2.png";
+    if (isFace5Or6 && isMaleHair2) return 0.7;
+    return 0;
+  };
 
   const calculateExactPosition = (character, partType) => {
     const config = partConfig[partType];
@@ -231,6 +239,7 @@ export function useLegoCharacter({
       const offsetYExtra = hairObj?.offsetYExtra || 0;
       const offsetXExtra = hairObj?.offsetXExtra || 0;
       const faceLiftY = getHairLiftOffset(character.face, character.hair);
+      const faceShiftX = getHairFaceXOffset(character.face, character.hair);
       const sizeScale = hairObj?.sizeScale || 1;
       const heightAdjust = Number(hairObj?.heightAdjust || 0);
       const hairRotation = Number(hairObj?.rotation || 0);
@@ -242,7 +251,7 @@ export function useLegoCharacter({
         type: "lego",
         name: "Tóc",
         src: character.hair,
-        x: pos.x + (pos.width - hairW) / 2 + offsetXExtra,
+        x: pos.x + (pos.width - hairW) / 2 + offsetXExtra + faceShiftX,
         y: pos.y + offsetYExtra + faceLiftY,
         width: hairW,
         height: hairH,
@@ -349,6 +358,7 @@ export function useLegoCharacter({
               const offsetYExtra = hairObj?.offsetYExtra || 0;
               const offsetXExtra = hairObj?.offsetXExtra || 0;
               const faceLiftY = getHairLiftOffset(movedChar.face, sticker.src);
+              const faceShiftX = getHairFaceXOffset(movedChar.face, sticker.src);
               const sizeScale = hairObj?.sizeScale || 1;
               const heightAdjust = Number(hairObj?.heightAdjust || 0);
               const hairRotation = Number(hairObj?.rotation || 0);
@@ -357,7 +367,7 @@ export function useLegoCharacter({
               const hairH = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust + hairSizeBoost);
               return {
                 ...sticker,
-                x: pos.x + (pos.width - hairW) / 2 + offsetXExtra,
+                x: pos.x + (pos.width - hairW) / 2 + offsetXExtra + faceShiftX,
                 y: pos.y + offsetYExtra + faceLiftY,
                 width: hairW,
                 height: hairH,
@@ -583,11 +593,12 @@ export function useLegoCharacter({
         const hairHeightAdjust = Number(hairObj?.heightAdjust || 0);
         const hairRotation = Number(hairObj?.rotation || 0);
         const hairSizeBoost = getHairSizeBoostForFace(faceSrc);
+        const faceShiftX = getHairFaceXOffset(faceSrc, s.src);
         const hairW = Math.max(1, Math.round(pos.width * hairSizeScale) + hairSizeBoost);
         const hairH = Math.max(1, Math.round(pos.height * hairSizeScale) + hairHeightAdjust + hairSizeBoost);
         return {
           ...s,
-          x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra,
+          x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra + faceShiftX,
           y: pos.y + hairOffsetYExtra + getHairLiftOffset(faceSrc, s.src),
           width: hairW,
           height: hairH,
@@ -634,6 +645,7 @@ export function useLegoCharacter({
         const hairOffsetYExtra = hairObj?.offsetYExtra || 0;
         const hairOffsetXExtra = hairObj?.offsetXExtra || 0;
         const faceLiftY = getHairLiftOffset(character.face, hairSrc);
+        const faceShiftX = getHairFaceXOffset(character.face, hairSrc);
         const hairSizeScale = hairObj?.sizeScale || 1;
         const hairHeightAdjust = Number(hairObj?.heightAdjust || 0);
         const hairRotation = Number(hairObj?.rotation || 0);
@@ -645,7 +657,7 @@ export function useLegoCharacter({
           type: "lego",
           name: "Tóc",
           src: hairSrc,
-          x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra,
+          x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra + faceShiftX,
           y: pos.y + hairOffsetYExtra + faceLiftY,
           width: hairW,
           height: hairH,
