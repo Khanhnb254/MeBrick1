@@ -42,9 +42,9 @@ export function useLegoCharacter({
     const obj = (list || []).find((x) => x?.src === src);
     return Number(obj?.price || 0);
   };
-  const GLOBAL_HAIR_LIFT_Y = -7;
+  const GLOBAL_HAIR_LIFT_Y = -4;
   const getFemaleFaceLiftOffset = (faceSrc) =>
-    String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? -7 : 0;
+    String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? -4 : 0;
   const getHairLiftOffset = (faceSrc, hairSrc) => {
     const isFace5Or6 =
       faceSrc === "/images/lego/faces/15.png" ||
