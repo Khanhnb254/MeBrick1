@@ -45,6 +45,8 @@ export function useLegoCharacter({
   const GLOBAL_HAIR_LIFT_Y = -4;
   const getFemaleFaceLiftOffset = (faceSrc) =>
     String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? -4 : 0;
+  const getFemaleFaceXOffset = (faceSrc) =>
+    String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? -5 : 0;
   const getHairLiftOffset = (faceSrc, hairSrc) => {
     const isFace5Or6 =
       faceSrc === "/images/lego/faces/15.png" ||
@@ -57,6 +59,7 @@ export function useLegoCharacter({
       hairSrc === "/images/lego/hair/nu/tocnu1.png" ||
       hairSrc === "/images/lego/hair/nu/tocnu2.png";
     const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
+    const isFemaleHair = String(hairSrc || "").includes("/images/lego/hair/nu/");
     const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
     const isFemaleFace1Or2Or4 =
       faceSrc === "/images/lego/faces/faceswoman/02.png" ||
@@ -120,6 +123,7 @@ export function useLegoCharacter({
     const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
     if (isFace5Or6 && isMaleHair2) return 0.7;
     if (isFemaleFace1Or2 && isFemaleHair2) return 1.5;
+    if (isFemaleHair) return -5;
     return 0;
   };
 
@@ -404,7 +408,7 @@ export function useLegoCharacter({
               const faceX = pos.x + (pos.width - faceWidth) / 2;
               return {
                 ...sticker,
-                x: faceX,
+                x: faceX + getFemaleFaceXOffset(sticker.src),
                 y: pos.y + offsetYExtra + 3 + getFemaleFaceLiftOffset(sticker.src),
                 width: faceWidth,
                 height: faceHeight,
@@ -568,7 +572,7 @@ export function useLegoCharacter({
           type: "lego",
           name: "Khuôn mặt",
           src: faceSrc,
-          x: faceX,
+          x: faceX + getFemaleFaceXOffset(faceSrc),
           y: pos.y + faceOffsetYExtra + 3 + getFemaleFaceLiftOffset(faceSrc),
           width: faceWidth,
           height: faceHeight,
