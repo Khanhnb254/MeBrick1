@@ -6,8 +6,8 @@ export const LEGO_CONFIG = {
     head:   { width: 206, height: 144, zIndex: 11, offsetX: 6,  offsetY: 106 },
     torso:  { width: 199, height: 149, zIndex: 10, offsetX: 0,  offsetY: 87  },
     legs:   { width: 186, height: 135, zIndex: 9,  offsetX: 6,  offsetY: 105 },
-    face:   { width: 70,  height: 106,  zIndex: 13, offsetX: 1,  offsetY: -21 },
-    hair:   { width: 117, height: 91,  zIndex: 14, offsetX: 0,  offsetY: -23 },
+    face:   { width: 65,  height: 101,  zIndex: 13, offsetX: 1,  offsetY: -21 },
+    hair:   { width: 112, height: 86,  zIndex: 14, offsetX: 0,  offsetY: -23 },
     outfit: { width: 199, height: 149, zIndex: 10, offsetX: 0,  offsetY: 98  },
   },
 
@@ -25,8 +25,8 @@ export const LEGO_CONFIG = {
     head:   { width: 124, height: 89, zIndex: 11, offsetX: 3,  offsetY: 59  },
     torso:  { width: 111, height: 83, zIndex: 10, offsetX: 0,  offsetY: 49  },
     legs:   { width: 104, height: 76, zIndex: 9,  offsetX: 3,  offsetY: 59  },
-    face:   { width: 45,  height: 67, zIndex: 13, offsetX: 2,  offsetY: -12 },
-    hair:   { width: 70, height: 55, zIndex: 14, offsetX: 0,  offsetY: -14  },
+    face:   { width: 40,  height: 62, zIndex: 13, offsetX: 2,  offsetY: -12 },
+    hair:   { width: 65, height: 50, zIndex: 14, offsetX: 0,  offsetY: -14  },
     outfit: { width: 111, height: 83, zIndex: 10, offsetX: 0,  offsetY: 55  },
   },
 
