@@ -42,6 +42,9 @@ export function useLegoCharacter({
     const obj = (list || []).find((x) => x?.src === src);
     return Number(obj?.price || 0);
   };
+  const GLOBAL_HAIR_LIFT_Y = -10;
+  const getFemaleFaceLiftOffset = (faceSrc) =>
+    String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? -10 : 0;
   const getHairLiftOffset = (faceSrc, hairSrc) => {
     const isFace5Or6 =
       faceSrc === "/images/lego/faces/15.png" ||
@@ -269,7 +272,7 @@ export function useLegoCharacter({
         name: "Tóc",
         src: character.hair,
         x: pos.x + (pos.width - hairW) / 2 + offsetXExtra + faceShiftX,
-        y: pos.y + offsetYExtra + faceLiftY,
+        y: pos.y + offsetYExtra + faceLiftY + GLOBAL_HAIR_LIFT_Y,
         width: hairW,
         height: hairH,
         rotation: hairRotation,
@@ -385,7 +388,7 @@ export function useLegoCharacter({
               return {
                 ...sticker,
                 x: pos.x + (pos.width - hairW) / 2 + offsetXExtra + faceShiftX,
-                y: pos.y + offsetYExtra + faceLiftY,
+                y: pos.y + offsetYExtra + faceLiftY + GLOBAL_HAIR_LIFT_Y,
                 width: hairW,
                 height: hairH,
                 rotation: hairRotation,
@@ -399,7 +402,13 @@ export function useLegoCharacter({
               const faceWidth = Math.max(1, pos.width + widthAdjust);
               const faceHeight = Math.max(1, pos.height + heightAdjust);
               const faceX = pos.x + (pos.width - faceWidth) / 2;
-              return { ...sticker, x: faceX, y: pos.y + offsetYExtra + 3, width: faceWidth, height: faceHeight };
+              return {
+                ...sticker,
+                x: faceX,
+                y: pos.y + offsetYExtra + 3 + getFemaleFaceLiftOffset(sticker.src),
+                width: faceWidth,
+                height: faceHeight,
+              };
             }
             return { ...sticker, x: pos.x, y: pos.y };
           }),
@@ -560,7 +569,7 @@ export function useLegoCharacter({
           name: "Khuôn mặt",
           src: faceSrc,
           x: faceX,
-          y: pos.y + faceOffsetYExtra + 3,
+          y: pos.y + faceOffsetYExtra + 3 + getFemaleFaceLiftOffset(faceSrc),
           width: faceWidth,
           height: faceHeight,
           zIndex: partConfig.face.zIndex,
@@ -616,7 +625,7 @@ export function useLegoCharacter({
         return {
           ...s,
           x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra + faceShiftX,
-          y: pos.y + hairOffsetYExtra + getHairLiftOffset(faceSrc, s.src),
+          y: pos.y + hairOffsetYExtra + getHairLiftOffset(faceSrc, s.src) + GLOBAL_HAIR_LIFT_Y,
           width: hairW,
           height: hairH,
           rotation: hairRotation,
@@ -675,7 +684,7 @@ export function useLegoCharacter({
           name: "Tóc",
           src: hairSrc,
           x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra + faceShiftX,
-          y: pos.y + hairOffsetYExtra + faceLiftY,
+          y: pos.y + hairOffsetYExtra + faceLiftY + GLOBAL_HAIR_LIFT_Y,
           width: hairW,
           height: hairH,
           rotation: hairRotation,
