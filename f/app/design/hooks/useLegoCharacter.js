@@ -46,7 +46,7 @@ export function useLegoCharacter({
   const getFemaleFaceLiftOffset = (faceSrc) =>
     String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? -4 : 0;
   const getFemaleFaceXOffset = (faceSrc) =>
-    String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? -5 : 0;
+    String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? -4 : 0;
   const getHairLiftOffset = (faceSrc, hairSrc) => {
     const isFace5Or6 =
       faceSrc === "/images/lego/faces/15.png" ||
@@ -113,18 +113,8 @@ export function useLegoCharacter({
     return 0;
   };
   const getHairFaceXOffset = (faceSrc, hairSrc) => {
-    const isFace5Or6 =
-      faceSrc === "/images/lego/faces/15.png" ||
-      faceSrc === "/images/lego/faces/34.png";
-    const isMaleHair2 = hairSrc === "/images/lego/hair/nam/tocnam2.png";
-    const isFemaleFace1Or2 =
-      faceSrc === "/images/lego/faces/faceswoman/02.png" ||
-      faceSrc === "/images/lego/faces/faceswoman/06.png";
-    const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
-    const isFemaleHair = String(hairSrc || "").includes("/images/lego/hair/nu/");
-    if (isFace5Or6 && isMaleHair2) return 0.7;
-    if (isFemaleFace1Or2 && isFemaleHair2) return 1.5;
-    if (isFemaleHair) return -5;
+    const isAnyHair = String(hairSrc || "").includes("/images/lego/hair/");
+    if (isAnyHair) return -4;
     return 0;
   };
 
