@@ -615,7 +615,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       offsetYExtra: 21,
       offsetXExtra: -4, // Dịch sang trái 2px
-      ,  // Thu nhỏ 10%
+      sizeScale: 0.97344,  // Thu nhỏ 10%
     },
   ],
 };
