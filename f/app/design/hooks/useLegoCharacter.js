@@ -43,7 +43,7 @@ export function useLegoCharacter({
     return Number(obj?.price || 0);
   };
   // Quick tuning knobs for global placement inside the character box
-  const FACE_GLOBAL_X = -4;
+  const FACE_GLOBAL_X = -5;
   const FACE_GLOBAL_Y = -4;
   const HAIR_GLOBAL_X = -4;
   const HAIR_GLOBAL_Y = -4;
