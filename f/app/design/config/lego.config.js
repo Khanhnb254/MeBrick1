@@ -364,7 +364,7 @@ export const LEGO_CONFIG = {
       layerType: "face",
       widthAdjust: 2,
       heightAdjust: 3,
-      offsetYExtra: -1.8,
+      offsetYExtra: -0.8,
     },
     {
       id: "face-female-06",
@@ -378,7 +378,7 @@ export const LEGO_CONFIG = {
       layerType: "face",
       widthAdjust: 2,
       heightAdjust: 3,
-      offsetYExtra: -1.1,
+      offsetYExtra: -0.1,
     },
     {
       id: "face-female-10",
@@ -390,7 +390,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      offsetYExtra: -1,
+      offsetYExtra: 0,
       heightAdjust: -2,
     },
     {
@@ -403,7 +403,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      offsetYExtra: 1.9,
+      offsetYExtra: 2.9,
     },
     {
       id: "face-female-45",
@@ -415,9 +415,10 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      offsetYExtra: 1.5,
+      offsetYExtra: 2.5,
       heightAdjust: -2,
     },
+
   ],
 
   hairs: [
