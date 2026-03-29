@@ -293,6 +293,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
+      widthAdjust: 2,
+      heightAdjust: 3,
     },
     {
       id: "face-neutral",
@@ -315,6 +317,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
+      widthAdjust: 2,
+      heightAdjust: 3,
       offsetYExtra: -0.8,
     },
     {
