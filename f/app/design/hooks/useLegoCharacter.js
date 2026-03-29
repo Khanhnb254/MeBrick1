@@ -156,7 +156,8 @@ export function useLegoCharacter({
           (headCfg.offsetY || 0) -
           (assembly.headToTorso.overlap || 0);
 
-        x = headX + (headCfg.width - config.width) / 2 + (config.offsetX || 0);
+        // Shift all faces left by FACE_GLOBAL_X (e.g., -4)
+        x = headX + (headCfg.width - config.width) / 2 + (config.offsetX || 0) + FACE_GLOBAL_X;
         y = headY + (config.offsetY || 0);
         break;
       }
