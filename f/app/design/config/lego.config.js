@@ -1,13 +1,13 @@
 export const LEGO_CONFIG = {
   partConfig: {
-    totalWidth: 199,
-    totalHeight: 309,
+    totalWidth: 193,
+    totalHeight: 301,
 
     head:   { width: 206, height: 144, zIndex: 11, offsetX: 6,  offsetY: 106 },
     torso:  { width: 199, height: 149, zIndex: 10, offsetX: 0,  offsetY: 87  },
     legs:   { width: 186, height: 135, zIndex: 9,  offsetX: 6,  offsetY: 105 },
-    face:   { width: 65,  height: 101,  zIndex: 13, offsetX: 1,  offsetY: -26 },
-    hair:   { width: 112, height: 86,  zIndex: 14, offsetX: 0,  offsetY: -28 },
+    face:   { width: 63,  height: 98,  zIndex: 13, offsetX: 1,  offsetY: -26 },
+    hair:   { width: 109, height: 83,  zIndex: 14, offsetX: 0,  offsetY: -28 },
     outfit: { width: 199, height: 149, zIndex: 10, offsetX: 0,  offsetY: 98  },
   },
 
@@ -19,14 +19,14 @@ export const LEGO_CONFIG = {
 
   // Mobile sizes (scale = 1/1.5 ≈ 0.667 — nhỏ hơn desktop 1.5 lần)
   partConfigMobile: {
-    totalWidth: 111,
-    totalHeight: 173,
+    totalWidth: 108,
+    totalHeight: 168,
 
     head:   { width: 124, height: 89, zIndex: 11, offsetX: 3,  offsetY: 59  },
     torso:  { width: 111, height: 83, zIndex: 10, offsetX: 0,  offsetY: 49  },
     legs:   { width: 104, height: 76, zIndex: 9,  offsetX: 3,  offsetY: 59  },
-    face:   { width: 40,  height: 62, zIndex: 13, offsetX: 2,  offsetY: -17 },
-    hair:   { width: 65, height: 50, zIndex: 14, offsetX: 0,  offsetY: -19  },
+    face:   { width: 39,  height: 60, zIndex: 13, offsetX: 2,  offsetY: -17 },
+    hair:   { width: 63, height: 49, zIndex: 14, offsetX: 0,  offsetY: -19  },
     outfit: { width: 111, height: 83, zIndex: 10, offsetX: 0,  offsetY: 55  },
   },
 
