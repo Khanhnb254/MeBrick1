@@ -427,7 +427,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       offsetYExtra: 15,
       sizeScale: 0.8666432,
-      offsetXExtra: 2,
+      offsetXExtra: -1,
     },
     {
       id: "hair-nam-2",
@@ -442,7 +442,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       offsetYExtra: 11,
       sizeScale: 0.9426144,
-      offsetXExtra: 1,
+      offsetXExtra: -2,
     },
     {
       id: "hair-nam-3",
@@ -457,6 +457,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       offsetYExtra: 14,
       sizeScale: 0.876096,
+      offsetXExtra: -3,
     },
     {
       id: "hair-nam-4",
@@ -471,7 +472,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       offsetYExtra: 8,
       sizeScale: 0.9426144,
-      offsetXExtra: 0,
+      offsetXExtra: -3,
     },
     {
       id: "hair-nam-5",
@@ -486,7 +487,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       offsetYExtra: 12,
       sizeScale: 0.876096,
-      offsetXExtra: 1,
+      offsetXExtra: -2,
     },
     {
       id: "hair-nam-6",
@@ -501,7 +502,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       offsetYExtra: 13,
       sizeScale: 0.876096,
-      offsetXExtra: 1,
+      offsetXExtra: -2,
     },
     {
       id: "hair-nam-7",
@@ -516,7 +517,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       offsetYExtra: 11,
       sizeScale: 0.876096,
-      offsetXExtra: 1,
+      offsetXExtra: -2,
     },
     {
       id: "hair-nam-8",
@@ -531,7 +532,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       sizeScale: 0.75712,
       offsetYExtra: 13,
-      offsetXExtra: 1,
+      offsetXExtra: -2,
     },
     {
       id: "hair-nam-9",
@@ -546,7 +547,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       sizeScale: 0.75712,
       offsetYExtra: 13,
-      offsetXExtra: 0,
+      offsetXExtra: -3,
     },
     {
       id: "hair-nu-1",
