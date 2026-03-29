@@ -567,8 +567,7 @@ export const LEGO_CONFIG = {
       thumbnail: "/images/lego/hair/nu/tocnu1.png",
       part: "head",
       price: 0,
-      layerType: "hair",
-      , // Thu nhỏ 15%
+      layerType: "hair", // Thu nhỏ 15%
       heightAdjust: 1,
       offsetXExtra: -4,
       offsetYExtra: 5,
