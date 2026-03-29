@@ -282,6 +282,8 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "face",
       offsetYExtra: -0.8,
+      widthAdjust: 2,
+      heightAdjust: 3,
     },
     {
       id: "face-smile",
@@ -293,6 +295,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
+      widthAdjust: 2,
+      heightAdjust: 3,
     },
     {
       id: "face-neutral",
@@ -304,6 +308,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
+      widthAdjust: 2,
+      heightAdjust: 3,
     },
     {
       id: "face-wink",
@@ -316,8 +322,8 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "face",
       offsetYExtra: -1.8,
-      widthAdjust: 1,
-      heightAdjust: 2,
+      widthAdjust: 2,
+      heightAdjust: 3,
     },
     {
       id: "face-15",
