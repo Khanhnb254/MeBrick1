@@ -50,7 +50,7 @@ export function useLegoCharacter({
   const getFemaleFaceLiftOffset = (faceSrc) =>
     String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? FACE_GLOBAL_Y : 0;
   const getFemaleFaceXOffset = (faceSrc) =>
-    String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? FACE_GLOBAL_X : 0;
+    faceSrc ? FACE_GLOBAL_X : 0;
   const getHairLiftOffset = (faceSrc, hairSrc) => {
     const isFace5Or6 =
       faceSrc === "/images/lego/faces/15.png" ||
