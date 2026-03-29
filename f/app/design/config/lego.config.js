@@ -281,6 +281,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
+      widthAdjust: 2,
+      heightAdjust: 3,
       offsetYExtra: -0.8,
     },
     {
@@ -293,8 +295,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 3,
+      widthAdjust: 4,
+      heightAdjust: 6,
       offsetYExtra: -1.5,
     },
     {
@@ -307,6 +309,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
+      widthAdjust: 2,
+      heightAdjust: 3,
     },
     {
       id: "face-wink",
@@ -318,8 +322,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 3,
+      widthAdjust: 4,
+      heightAdjust: 6,
       offsetYExtra: -2.3,
     },
     {
@@ -332,8 +336,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: -3,
-      heightAdjust: -0.5,
+      widthAdjust: -1,
+      heightAdjust: 2.5,
       offsetYExtra: -1,
     },
     {
@@ -346,8 +350,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: -0.5,
-      heightAdjust: -0.5,
+      widthAdjust: 1.5,
+      heightAdjust: 2.5,
     },
   ],
 
@@ -390,8 +394,9 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
+      widthAdjust: 2,
+      heightAdjust: 1,
       offsetYExtra: 0,
-      heightAdjust: -2,
     },
     {
       id: "face-female-16",
@@ -403,6 +408,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
+      widthAdjust: 2,
+      heightAdjust: 3,
       offsetYExtra: 2.9,
     },
     {
@@ -415,9 +422,12 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
+      widthAdjust: 2,
+      heightAdjust: 1,
       offsetYExtra: 3.5,
       heightAdjust: -2,
     },
+
 
   ],
 
