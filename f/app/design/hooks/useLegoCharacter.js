@@ -227,26 +227,54 @@ export function useLegoCharacter({
       });
     }
 
-    // Ẩn mặt gốc nếu đã có mặt mới
+    // Nếu chưa chọn mặt thì hiển thị mặt mặc định (nếu có) thay vì chỉ hiện head gốc
     if (character.head && !character.face) {
-      const pos = calculateExactPosition(character, "head");
-      result.push({
-        id: `${character.id}-head`,
-        type: "lego",
-        name: "Đầu",
-        src: character.head,
-        x: pos.x,
-        y: pos.y,
-        width: pos.width,
-        height: pos.height,
-        zIndex: partConfig.head.zIndex,
-        isSelected: false,
-        layerType: "base",
-        part: "head",
-        characterId: character.id,
-        isBasePart: true,
-        price: 0,
-      });
+      const defaultFaceObj = (LEGO_CONFIG?.faces || [])[0] || null;
+      if (defaultFaceObj) {
+        const pos = calculateExactPosition(character, "face");
+        const faceObj = ([...(LEGO_CONFIG?.faces || []), ...(LEGO_CONFIG?.facesFemale || [])].find((f) => f?.src === defaultFaceObj.src) || defaultFaceObj);
+        const faceOffsetYExtra = faceObj?.offsetYExtra || 0;
+        const faceWidthAdjust = Number(faceObj?.widthAdjust || 0);
+        const faceHeightAdjust = Number(faceObj?.heightAdjust || 0);
+        const faceWidth = Math.max(1, pos.width + faceWidthAdjust);
+        const faceHeight = Math.max(1, pos.height + faceHeightAdjust);
+        const faceX = pos.x + (pos.width - faceWidth) / 2;
+        result.push({
+          id: `${character.id}-face`,
+          type: "lego",
+          name: "Khuôn mặt",
+          src: defaultFaceObj.src || defaultFaceObj,
+          x: faceX + getFemaleFaceXOffset(defaultFaceObj.src || defaultFaceObj),
+          y: pos.y + faceOffsetYExtra + 3 + getFemaleFaceLiftOffset(defaultFaceObj.src || defaultFaceObj),
+          width: faceWidth,
+          height: faceHeight,
+          zIndex: partConfig.face.zIndex,
+          isSelected: false,
+          layerType: "face",
+          part: "face",
+          characterId: character.id,
+          price: 0,
+        });
+      } else {
+        const pos = calculateExactPosition(character, "head");
+        result.push({
+          id: `${character.id}-head`,
+          type: "lego",
+          name: "Đầu",
+          src: character.head,
+          x: pos.x,
+          y: pos.y,
+          width: pos.width,
+          height: pos.height,
+          zIndex: partConfig.head.zIndex,
+          isSelected: false,
+          layerType: "base",
+          part: "head",
+          characterId: character.id,
+          isBasePart: true,
+          price: 0,
+        });
+      }
     }
 
     // ❌ Xóa phần face (khuôn mặt) để tránh chồng lấp
