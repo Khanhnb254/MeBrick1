@@ -43,14 +43,14 @@ export function useLegoCharacter({
     return Number(obj?.price || 0);
   };
   // Quick tuning knobs for global placement inside the character box
-  const FACE_GLOBAL_X = -5;
+  const FACE_GLOBAL_X = -4;
   const FACE_GLOBAL_Y = -4;
   const HAIR_GLOBAL_X = -4;
   const HAIR_GLOBAL_Y = -4;
   const getFemaleFaceLiftOffset = (faceSrc) =>
     String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? FACE_GLOBAL_Y : 0;
   const getFemaleFaceXOffset = (faceSrc) =>
-    faceSrc ? FACE_GLOBAL_X : 0;
+    String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? FACE_GLOBAL_X : 0;
   const getHairLiftOffset = (faceSrc, hairSrc) => {
     const isFace5Or6 =
       faceSrc === "/images/lego/faces/15.png" ||
@@ -65,7 +65,6 @@ export function useLegoCharacter({
     const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
     const isFemaleHair = String(hairSrc || "").includes("/images/lego/hair/nu/");
     const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
-    const isMaleHair6 = hairSrc === "/images/lego/hair/nam/tocnam6.png";
     const isFemaleFace1Or2Or4 =
       faceSrc === "/images/lego/faces/faceswoman/02.png" ||
       faceSrc === "/images/lego/faces/faceswoman/06.png" ||
@@ -87,10 +86,6 @@ export function useLegoCharacter({
     }
     if (isFemaleHair1Or2 && !isFemaleFace3Or5) {
       return -1;
-    }
-    // when female face 3 or 5 with male hair 6, push hair down 1px
-    if (isFemaleFace3Or5 && isMaleHair6) {
-      return 1;
     }
     if (isFemaleFace3Or5 && isMaleHair9) {
       return 1;
@@ -120,14 +115,6 @@ export function useLegoCharacter({
       return 2;
     }
     return 0;
-  };
-  const getHairSizeMultiplierForFace = (faceSrc, hairSrc) => {
-    const isFemaleFace3Or5 =
-      faceSrc === "/images/lego/faces/faceswoman/10.png" ||
-      faceSrc === "/images/lego/faces/faceswoman/45.png";
-    const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
-    if (isFemaleFace3Or5 && isFemaleHair2) return 1.03;
-    return 1;
   };
   const getHairFaceXOffset = (faceSrc, hairSrc) => {
     const isAnyHair = String(hairSrc || "").includes("/images/lego/hair/");
@@ -169,8 +156,7 @@ export function useLegoCharacter({
           (headCfg.offsetY || 0) -
           (assembly.headToTorso.overlap || 0);
 
-        // Shift all faces left by FACE_GLOBAL_X (e.g., -4)
-        x = headX + (headCfg.width - config.width) / 2 + (config.offsetX || 0) + FACE_GLOBAL_X;
+        x = headX + (headCfg.width - config.width) / 2 + (config.offsetX || 0);
         y = headY + (config.offsetY || 0);
         break;
       }
@@ -241,54 +227,26 @@ export function useLegoCharacter({
       });
     }
 
-    // Nếu chưa chọn mặt thì hiển thị mặt mặc định (nếu có) thay vì chỉ hiện head gốc
+    // Ẩn mặt gốc nếu đã có mặt mới
     if (character.head && !character.face) {
-      const defaultFaceObj = (LEGO_CONFIG?.faces || [])[0] || null;
-      if (defaultFaceObj) {
-        const pos = calculateExactPosition(character, "face");
-        const faceObj = ([...(LEGO_CONFIG?.faces || []), ...(LEGO_CONFIG?.facesFemale || [])].find((f) => f?.src === defaultFaceObj.src) || defaultFaceObj);
-        const faceOffsetYExtra = faceObj?.offsetYExtra || 0;
-        const faceWidthAdjust = Number(faceObj?.widthAdjust || 0);
-        const faceHeightAdjust = Number(faceObj?.heightAdjust || 0);
-        const faceWidth = Math.max(1, pos.width + faceWidthAdjust);
-        const faceHeight = Math.max(1, pos.height + faceHeightAdjust);
-        const faceX = pos.x + (pos.width - faceWidth) / 2;
-        result.push({
-          id: `${character.id}-face`,
-          type: "lego",
-          name: "Khuôn mặt",
-          src: defaultFaceObj.src || defaultFaceObj,
-          x: faceX + getFemaleFaceXOffset(defaultFaceObj.src || defaultFaceObj),
-          y: pos.y + faceOffsetYExtra + 3 + getFemaleFaceLiftOffset(defaultFaceObj.src || defaultFaceObj),
-          width: faceWidth,
-          height: faceHeight,
-          zIndex: partConfig.face.zIndex,
-          isSelected: false,
-          layerType: "face",
-          part: "face",
-          characterId: character.id,
-          price: 0,
-        });
-      } else {
-        const pos = calculateExactPosition(character, "head");
-        result.push({
-          id: `${character.id}-head`,
-          type: "lego",
-          name: "Đầu",
-          src: character.head,
-          x: pos.x,
-          y: pos.y,
-          width: pos.width,
-          height: pos.height,
-          zIndex: partConfig.head.zIndex,
-          isSelected: false,
-          layerType: "base",
-          part: "head",
-          characterId: character.id,
-          isBasePart: true,
-          price: 0,
-        });
-      }
+      const pos = calculateExactPosition(character, "head");
+      result.push({
+        id: `${character.id}-head`,
+        type: "lego",
+        name: "Đầu",
+        src: character.head,
+        x: pos.x,
+        y: pos.y,
+        width: pos.width,
+        height: pos.height,
+        zIndex: partConfig.head.zIndex,
+        isSelected: false,
+        layerType: "base",
+        part: "head",
+        characterId: character.id,
+        isBasePart: true,
+        price: 0,
+      });
     }
 
     // ❌ Xóa phần face (khuôn mặt) để tránh chồng lấp
@@ -305,11 +263,8 @@ export function useLegoCharacter({
       const heightAdjust = Number(hairObj?.heightAdjust || 0);
       const hairRotation = Number(hairObj?.rotation || 0);
       const hairSizeBoost = getHairSizeBoostForFace(character.face);
-      const hairSizeMultiplier = getHairSizeMultiplierForFace(character.face, character.hair);
-      const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
-      const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
-      const hairH = Math.max(1, Math.round(pos.height * sizeScale * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
-
+      const hairW = Math.max(1, Math.round(pos.width * sizeScale) + hairSizeBoost);
+      const hairH = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust + hairSizeBoost);
       result.push({
         id: `${character.id}-hair`,
         type: "lego",
@@ -432,10 +387,8 @@ export function useLegoCharacter({
               const heightAdjust = Number(hairObj?.heightAdjust || 0);
               const hairRotation = Number(hairObj?.rotation || 0);
               const hairSizeBoost = getHairSizeBoostForFace(movedChar.face);
-              const hairSizeMultiplier = getHairSizeMultiplierForFace(movedChar.face, sticker.src);
-              const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
-              const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
-              const hairH = Math.max(1, Math.round(pos.height * sizeScale * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
+              const hairW = Math.max(1, Math.round(pos.width * sizeScale) + hairSizeBoost);
+              const hairH = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust + hairSizeBoost);
               return {
                 ...sticker,
                 x: pos.x + (pos.width - hairW) / 2 + offsetXExtra + faceShiftX,
@@ -671,10 +624,8 @@ export function useLegoCharacter({
         const hairRotation = Number(hairObj?.rotation || 0);
         const hairSizeBoost = getHairSizeBoostForFace(faceSrc);
         const faceShiftX = getHairFaceXOffset(faceSrc, s.src);
-        const hairSizeMultiplier = getHairSizeMultiplierForFace(faceSrc, s.src);
-        const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
-        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
-        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale * hairSizeMultiplier) + hairHeightAdjust + hairSizeBoost);
+        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale) + hairSizeBoost);
+        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale) + hairHeightAdjust + hairSizeBoost);
         return {
           ...s,
           x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra + faceShiftX,
@@ -729,10 +680,8 @@ export function useLegoCharacter({
         const hairHeightAdjust = Number(hairObj?.heightAdjust || 0);
         const hairRotation = Number(hairObj?.rotation || 0);
         const hairSizeBoost = getHairSizeBoostForFace(character.face);
-        const hairSizeMultiplier = getHairSizeMultiplierForFace(character.face, hairSrc);
-        const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
-        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
-        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale * hairSizeMultiplier) + hairHeightAdjust + hairSizeBoost);
+        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale) + hairSizeBoost);
+        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale) + hairHeightAdjust + hairSizeBoost);
         filtered.push({
           id: `${selectedCharacterId}-hair`,
           type: "lego",

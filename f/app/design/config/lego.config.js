@@ -1,13 +1,13 @@
 export const LEGO_CONFIG = {
   partConfig: {
-    totalWidth: 193,
-    totalHeight: 301,
+    totalWidth: 199,
+    totalHeight: 309,
 
     head:   { width: 206, height: 144, zIndex: 11, offsetX: 6,  offsetY: 106 },
     torso:  { width: 199, height: 149, zIndex: 10, offsetX: 0,  offsetY: 87  },
     legs:   { width: 186, height: 135, zIndex: 9,  offsetX: 6,  offsetY: 105 },
-    face:   { width: 63,  height: 98,  zIndex: 13, offsetX: 1,  offsetY: -26 },
-    hair:   { width: 109, height: 83,  zIndex: 14, offsetX: 0,  offsetY: -28 },
+    face:   { width: 65,  height: 101,  zIndex: 13, offsetX: 1,  offsetY: -26 },
+    hair:   { width: 112, height: 86,  zIndex: 14, offsetX: 0,  offsetY: -28 },
     outfit: { width: 199, height: 149, zIndex: 10, offsetX: 0,  offsetY: 98  },
   },
 
@@ -19,14 +19,14 @@ export const LEGO_CONFIG = {
 
   // Mobile sizes (scale = 1/1.5 ≈ 0.667 — nhỏ hơn desktop 1.5 lần)
   partConfigMobile: {
-    totalWidth: 108,
-    totalHeight: 168,
+    totalWidth: 111,
+    totalHeight: 173,
 
     head:   { width: 124, height: 89, zIndex: 11, offsetX: 3,  offsetY: 59  },
     torso:  { width: 111, height: 83, zIndex: 10, offsetX: 0,  offsetY: 49  },
     legs:   { width: 104, height: 76, zIndex: 9,  offsetX: 3,  offsetY: 59  },
-    face:   { width: 39,  height: 60, zIndex: 13, offsetX: 2,  offsetY: -17 },
-    hair:   { width: 63, height: 49, zIndex: 14, offsetX: 0,  offsetY: -19  },
+    face:   { width: 40,  height: 62, zIndex: 13, offsetX: 2,  offsetY: -17 },
+    hair:   { width: 65, height: 50, zIndex: 14, offsetX: 0,  offsetY: -19  },
     outfit: { width: 111, height: 83, zIndex: 10, offsetX: 0,  offsetY: 55  },
   },
 
@@ -281,9 +281,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 3,
-      offsetYExtra: -2.8,
+      offsetYExtra: -0.8,
     },
     {
       id: "face-smile",
@@ -295,9 +293,6 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 4,
-      heightAdjust: 6,
-      offsetYExtra: -4.5,
     },
     {
       id: "face-neutral",
@@ -309,9 +304,6 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 3,
-      offsetYExtra: -3,
     },
     {
       id: "face-wink",
@@ -323,9 +315,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 4,
-      heightAdjust: 6,
-      offsetYExtra: -5,
+      offsetYExtra: -0.8,
     },
     {
       id: "face-15",
@@ -337,9 +327,9 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: -1,
-      heightAdjust: 2.5,
-      offsetYExtra: -3,
+      widthAdjust: -3,
+      heightAdjust: -0.5,
+      offsetYExtra: -1,
     },
     {
       id: "face-34",
@@ -351,9 +341,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 1.5,
-      heightAdjust: 2.5,
-      offsetYExtra: -3,
+      widthAdjust: -0.5,
+      heightAdjust: -0.5,
     },
   ],
 
@@ -368,9 +357,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 3,
-      offsetYExtra: -0.8,
+      offsetYExtra: -1.8,
     },
     {
       id: "face-female-06",
@@ -382,9 +369,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 3,
-      offsetYExtra: -0.1,
+      offsetYExtra: -1.1,
     },
     {
       id: "face-female-10",
@@ -396,9 +381,8 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 1,
-      offsetYExtra: -1,
+      offsetYExtra: -2,
+      heightAdjust: -2,
     },
     {
       id: "face-female-16",
@@ -410,9 +394,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 3,
-      offsetYExtra: 1.9,
+      offsetYExtra: 0.9,
     },
     {
       id: "face-female-45",
@@ -424,14 +406,9 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 1,
-      offsetYExtra: 3.5,
+      offsetYExtra: 0.5,
       heightAdjust: -2,
     },
-
-
-
   ],
 
   hairs: [
@@ -447,8 +424,8 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 15,
-      sizeScale: 0.875784,
-      offsetXExtra: -3,
+      sizeScale: 0.8288,
+      offsetXExtra: 2,
     },
     {
       id: "hair-nam-2",
@@ -462,10 +439,9 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 11,
-      sizeScale: 0.951678,
-      offsetXExtra: -4,
+      sizeScale: 0.8983,
+      offsetXExtra: 0.5,
     },
-
     {
       id: "hair-nam-3",
       type: "lego",
@@ -478,11 +454,8 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 14,
-      sizeScale: 0.88452,
-      widthAdjust: 2,
-      offsetXExtra: -5,
+      sizeScale: 0.8368,
     },
-
     {
       id: "hair-nam-4",
       type: "lego",
@@ -495,8 +468,8 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 8,
-      sizeScale: 0.915075,
-      offsetXExtra: -5,
+      sizeScale: 0.8715,
+      offsetXExtra: -0.5,
     },
     {
       id: "hair-nam-5",
@@ -510,10 +483,9 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 12,
-      sizeScale: 0.88452,
-      offsetXExtra: -4,
+      sizeScale: 0.8368,
+      offsetXExtra: 1,
     },
-
     {
       id: "hair-nam-6",
       type: "lego",
@@ -526,10 +498,9 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 13,
-      sizeScale: 0.88452,
-      offsetXExtra: -4,
+      sizeScale: 0.8368,
+      offsetXExtra: 1,
     },
-
     {
       id: "hair-nam-7",
       type: "lego",
@@ -541,11 +512,10 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      offsetYExtra: 12,
-      sizeScale: 0.88452,
-      offsetXExtra: -4,
+      offsetYExtra: 11,
+      sizeScale: 0.8368,
+      offsetXExtra: 1,
     },
-
     {
       id: "hair-nam-8",
       type: "lego",
@@ -557,12 +527,10 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      sizeScale: 0.7644,
-      widthAdjust: 2,
-      offsetYExtra: 14,
-      offsetXExtra: -4,
+      sizeScale: 0.7268,
+      offsetYExtra: 13,
+      offsetXExtra: 1,
     },
-
     {
       id: "hair-nam-9",
       type: "lego",
@@ -574,14 +542,10 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      sizeScale: 0.794976,
-      widthAdjust: 2,
-      rotation: 2,
-      offsetYExtra: 14,
-      offsetXExtra: -5,
+      sizeScale: 0.7268,
+      offsetYExtra: 13,
+      offsetXExtra: 0,
     },
-
-
     {
       id: "hair-nu-1",
       type: "lego",
@@ -593,10 +557,10 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      sizeScale: 1.753977, // tăng 3%
+      sizeScale: 1.53, // Thu nhỏ 15%
       heightAdjust: 1,
-      offsetYExtra: 2,
-      offsetXExtra: -7.8,
+      offsetYExtra: 5,
+      offsetXExtra: -2,
     },
     {
       id: "hair-nu-2",
@@ -609,10 +573,9 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      sizeScale: 1.089071,
+      sizeScale: 0.95,
       heightAdjust: 1,
       offsetYExtra: 22,
-      offsetXExtra: -5,
       rotation: 2,
     },
     {
@@ -627,8 +590,7 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 14,
-      sizeScale: 1.2243,
-      offsetXExtra: -5,
+      sizeScale: 1.1,
     },
     {
       id: "hair-nu-4",
@@ -642,9 +604,8 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 21,
-      offsetXExtra: -7, // Dịch sang trái 2px
-      sizeScale: 1.0017,  // Thu nhỏ 10% 
+      offsetXExtra: -2, // Dịch sang trái 2px
+      sizeScale: 0.9,  // Thu nhỏ 10%
     },
-
   ],
 };
