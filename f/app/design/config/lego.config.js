@@ -536,7 +536,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      offsetYExtra: 11,
+      offsetYExtra: 12,
       sizeScale: 0.8505,
       offsetXExtra: -4,
     },
@@ -552,7 +552,7 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       sizeScale: 0.735,
-      offsetYExtra: 13,
+      offsetYExtra: 14,
       offsetXExtra: -4,
     },
     {
@@ -568,7 +568,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       sizeScale: 0.735,
       rotation: 2,
-      offsetYExtra: 13,
+      offsetYExtra: 14,
       offsetXExtra: -5,
     },
     {
