@@ -1088,6 +1088,17 @@ function DesignPageInner() {
                 isSaving={isSaving}
                 designerNote={designerNote}
                 setDesignerNote={setDesignerNote}
+
+                // print info props
+                printName={printName}
+                setPrintName={setPrintName}
+                printTitle={printTitle}
+                setPrintTitle={setPrintTitle}
+                printMessage={printMessage}
+                setPrintMessage={setPrintMessage}
+                printDate={printDate}
+                setPrintDate={setPrintDate}
+
                 isEditing={editCartItemIndex !== null}
                 activePanel={activePanel}
                 setActivePanel={setActivePanel}
