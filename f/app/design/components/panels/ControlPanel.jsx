@@ -455,7 +455,7 @@ export default function ControlPanel(props) {
                       type="text"
                       value={printName}
                       onChange={(e) => setPrintName?.(e.target.value)}
-                      placeholder="NGUYEN THI THU HA"
+                      placeholder=""
                       style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
                     />
 
@@ -472,7 +472,7 @@ export default function ControlPanel(props) {
                       type="text"
                       value={printTitle}
                       onChange={(e) => setPrintTitle?.(e.target.value)}
-                      placeholder="Happy Graduation"
+                      placeholder=""
                       style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%" }}
                     />
                   </div>
@@ -481,7 +481,7 @@ export default function ControlPanel(props) {
                     <textarea
                       value={printMessage}
                       onChange={(e) => setPrintMessage?.(e.target.value)}
-                      placeholder="Business Management / CONGRATULATIONS ON YOUR GRADUATION / You did it"
+                      placeholder=""
                       rows={3}
                       style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%", resize: "vertical" }}
                     />
