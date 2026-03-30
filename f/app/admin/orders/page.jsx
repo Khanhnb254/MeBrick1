@@ -379,12 +379,12 @@ export default function AdminOrders() {
           <button
             className="ao-btn ao-btn--outline"
             onClick={() => {
-              try { exportOrdersToCSV(filtered); } catch { alert("Export CSV thất bại"); }
+              try { exportOrdersToCSV(filtered); } catch { alert("Xuất CSV thất bại"); }
             }}
           >
-            📥 Export CSV
+            📥 Xuất CSV
           </button>
-          {loading && <span style={{ color: "#64748b", fontSize: 13 }}>⏳ Loading…</span>}
+          {loading && <span style={{ color: "#64748b", fontSize: 13 }}>⏳ Đang tải…</span>}
         </div>
 
         {/* BULK BAR */}
@@ -467,7 +467,7 @@ export default function AdminOrders() {
                         onClick={() => markPaid(r)}
                         disabled={payText(r) === "paid"}
                       >
-                        Mark Paid
+                        Đánh dấu đã thanh toán
                       </button>
                       <select
                         value={r.status}
@@ -517,7 +517,7 @@ export default function AdminOrders() {
     >
       <div className="drawer-header">
         <div>
-          <h3>Order #{detail.id}</h3>
+          <h3>Đơn hàng #{detail.id}</h3>
           <div className="drawer-sub">
             {detail.customer_name} • {detail.phone}
           </div>
@@ -557,16 +557,16 @@ export default function AdminOrders() {
           <h4>Ảnh thiết kế</h4>
 
           {detailPreviews.length === 0 ? (
-            <div className="muted">Không có preview</div>
+            <div className="muted">Không có ảnh xem trước</div>
           ) : (
             <div className="preview-grid">
               {detailPreviews.map((url, i) => (
                 <img
                   key={url}
                   src={url}
-                  alt={`preview-${i}`}
+                  alt={`ảnh-xem-truoc-${i}`}
                   onClick={() => {
-                    const result = openImageModal(url, `Preview ${i + 1}`);
+                    const result = openImageModal(url, `Ảnh xem trước ${i + 1}`);
                     if (result) setImageModal(result);
                   }}
                   style={{ cursor: "pointer" }}
@@ -578,7 +578,7 @@ export default function AdminOrders() {
 
         {/* ITEMS */}
         <div className="drawer-section">
-          <h4>Items</h4>
+          <h4>Sản phẩm</h4>
 
           {detailItems.map((it, idx) => {
             const preview = pickPreviewUrl(it);
@@ -590,7 +590,7 @@ export default function AdminOrders() {
                 {preview ? (
                   <img
                     src={preview}
-                    alt="preview"
+                    alt="ảnh-xem-truoc"
                     onClick={() => {
                       const result = openImageModal(preview, `Thiết kế ${idx + 1}`);
                       if (result) setImageModal(result);
@@ -598,7 +598,7 @@ export default function AdminOrders() {
                     style={{ cursor: "pointer" }}
                   />
                 ) : (
-                  <div className="no-preview">No preview</div>
+                  <div className="no-preview">Không có ảnh xem trước</div>
                 )}
 
                 <div className="item-info">
