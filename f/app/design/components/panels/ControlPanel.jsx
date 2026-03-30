@@ -435,53 +435,64 @@ export default function ControlPanel(props) {
                   />
 
                   {/* ===== Print information form (Step 3) ===== */}
-                  <div style={{ marginTop: 12, marginBottom: 6, fontSize: 13, fontWeight: 700, color: "#333" }}>
-                    2. NHẬP THÔNG TIN IN ẤN
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setPrintName?.("");
-                        setPrintTitle?.("");
-                        setPrintMessage?.("");
-                        setPrintDate?.("");
-                      }}
-                      style={{ float: "right", background: "transparent", border: "none", color: "#888", cursor: "pointer" }}>
-                      XÓA TẤT CẢ
-                    </button>
+                  <div style={{ marginTop: 12, marginBottom: 6 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: '#333' }}>2. NHẬP THÔNG TIN IN ẤN</div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPrintName?.("");
+                          setPrintTitle?.("");
+                          setPrintMessage?.("");
+                          setPrintDate?.("");
+                        }}
+                        style={{ background: "transparent", border: "none", color: "#888", cursor: "pointer" }}>
+                        XÓA TẤT CẢ
+                      </button>
+                    </div>
                   </div>
 
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 160px", gap: 8 }}>
-                    <input
-                      type="text"
-                      value={printName}
-                      onChange={(e) => setPrintName?.(e.target.value)}
-                      placeholder=""
-                      style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
-                    />
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>TÊN <span style={{ color: '#d00' }}>*</span></label>
+                      <input
+                        type="text"
+                        value={printName}
+                        onChange={(e) => setPrintName?.(e.target.value)}
+                        placeholder="NGUYEN THI THU HA"
+                        style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
+                      />
+                    </div>
 
-                    <input
-                      type="date"
-                      value={printDate}
-                      onChange={(e) => setPrintDate?.(e.target.value)}
-                      style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
-                    />
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>NGÀY</label>
+                      <input
+                        type="text"
+                        value={printDate}
+                        onChange={(e) => setPrintDate?.(e.target.value)}
+                        placeholder="mm/dd/yyyy"
+                        style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
+                      />
+                    </div>
                   </div>
 
                   <div style={{ marginTop: 8 }}>
+                    <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>TIÊU ĐỀ</label>
                     <input
                       type="text"
                       value={printTitle}
                       onChange={(e) => setPrintTitle?.(e.target.value)}
-                      placeholder=""
+                      placeholder="Happy Graduation"
                       style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%" }}
                     />
                   </div>
 
                   <div style={{ marginTop: 8 }}>
+                    <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>NGÀNH / TIÊU ĐỀ / LỜI CHÚC</label>
                     <textarea
                       value={printMessage}
                       onChange={(e) => setPrintMessage?.(e.target.value)}
-                      placeholder=""
+                      placeholder="Business Management / CONGRATULATIONS ON YOUR GRADUATION / You did it"
                       rows={3}
                       style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%", resize: "vertical" }}
                     />
