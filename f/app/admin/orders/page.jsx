@@ -630,6 +630,17 @@ export default function AdminOrders() {
                     </div>
                   )}
 
+                  {/* Thông tin in ấn */}
+                  {((it?.design_data && it.design_data.print_info) || it.print_info) && (
+                    <div style={{ marginTop: 8, fontSize: "0.9rem", background: "#f6f9ff", border: "1px solid #e6f0ff", borderRadius: 6, padding: "8px 10px" }}>
+                      <div style={{ fontWeight: 700, marginBottom: 6 }}>Thông tin in ấn</div>
+                      <div><strong>Tên:</strong> {(it.design_data && it.design_data.print_info?.name) || it.print_info?.name || "-"}</div>
+                      <div><strong>Tiêu đề:</strong> {(it.design_data && it.design_data.print_info?.title) || it.print_info?.title || "-"}</div>
+                      <div><strong>Ngành / Lời chúc:</strong> {(it.design_data && it.design_data.print_info?.message) || it.print_info?.message || "-"}</div>
+                      <div><strong>Ngày:</strong> {(it.design_data && it.design_data.print_info?.date) || it.print_info?.date || "-"}</div>
+                    </div>
+                  )}
+
                   {/* Ảnh khách upload */}
                   {uploadedImages.length > 0 && (
                     <div style={{ marginTop: 8 }}>
