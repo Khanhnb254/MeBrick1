@@ -590,7 +590,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      sizeScale: 1.70289, // Thu nhỏ 15%
+      sizeScale: 1.753977, // tăng 3%
       heightAdjust: 1,
       offsetYExtra: 5,
       offsetXExtra: -7,
@@ -606,7 +606,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      sizeScale: 1.05735,
+      sizeScale: 1.089071,
       heightAdjust: 1,
       offsetYExtra: 22,
       offsetXExtra: -5,
