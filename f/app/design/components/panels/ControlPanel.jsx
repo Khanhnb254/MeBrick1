@@ -467,10 +467,9 @@ export default function ControlPanel(props) {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>NGÀY</label>
                       <input
-                        type="text"
+                        type="date"
                         value={printDate}
                         onChange={(e) => setPrintDate?.(e.target.value)}
-                        placeholder=""
                         style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
                       />
                     </div>
