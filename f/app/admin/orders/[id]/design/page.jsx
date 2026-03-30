@@ -118,10 +118,11 @@ export default function AdminOrderDesignsPage() {
      BUILD IMAGE LISTS
   ========================== */
 
-  const { previewList, uploadedList } = useMemo(() => {
+  const { previewList, uploadedList, printInfoList } = useMemo(() => {
     const items = order?.order_items || order?.items || [];
     const previews = [];
     const uploads = [];
+    const printInfos = [];
 
     items.forEach((it) => {
       const preview = pickPreviewUrl(it);
@@ -139,11 +140,18 @@ export default function AdminOrderDesignsPage() {
           : u;
         uploads.push(url);
       });
+
+      // collect print_info inside design_data if present
+      const design = it.design_data || it.designData || it.design;
+      if (design && design.print_info) {
+        printInfos.push(design.print_info);
+      }
     });
 
     return {
       previewList: Array.from(new Set(previews.filter(Boolean))),
       uploadedList: Array.from(new Set(uploads.filter(Boolean))),
+      printInfoList: printInfos,
     };
   }, [order, baseUrl]);
 
@@ -258,6 +266,26 @@ export default function AdminOrderDesignsPage() {
                 index={idx + 1}
                 downloadFile={downloadFile}
               />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ===== PRINT INFO ===== */}
+      {printInfoList && printInfoList.length > 0 && (
+        <div style={{ marginTop: 24 }}>
+          <h3 style={{ margin: "0 0 10px", fontSize: 15, color: "#333" }}>
+            Thông tin in ấn
+          </h3>
+          <div style={{ background: "#fff", border: "1px solid #eee", borderRadius: 12, padding: 12 }}>
+            {printInfoList.map((pi, idx) => (
+              <div key={idx} style={{ marginBottom: 10 }}>
+                <div style={{ fontSize: 13, color: "#555" }}><strong>Hạng mục #{idx + 1}</strong></div>
+                <div style={{ marginTop: 6 }}><strong>Tên:</strong> {pi.name || "-"}</div>
+                <div><strong>Tiêu đề:</strong> {pi.title || "-"}</div>
+                <div><strong>Ngành / Lời chúc:</strong> {pi.message || "-"}</div>
+                <div><strong>Ngày:</strong> {pi.date || "-"}</div>
+              </div>
             ))}
           </div>
         </div>
