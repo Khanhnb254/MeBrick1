@@ -169,6 +169,23 @@ function DesignPageInner() {
     return null;
   }
 
+  // Format date to DD/MM/YYYY for persisting (input stays as yyyy-mm-dd)
+  function formatDateDMY(raw) {
+    if (!raw) return null;
+    if (typeof raw !== "string") return null;
+    // If ISO yyyy-mm-dd
+    if (raw.includes("-")) {
+      const parts = raw.split("-");
+      if (parts.length === 3) {
+        const [y, m, d] = parts;
+        return `${String(d).padStart(2, "0")}/${String(m).padStart(2, "0")}/${y}`;
+      }
+    }
+    // If already in d/m/y format, return as-is
+    if (raw.includes("/")) return raw;
+    return raw;
+  }
+
   // ✅ FIX: hỗ trợ mọi key: product / productId / product_id / id
   const productId = pickPositiveInt(
     searchParams.get("product"),
@@ -926,7 +943,7 @@ function DesignPageInner() {
           name: printName || null,
           title: printTitle || null,
           message: printMessage || null,
-          date: printDate || null,
+          date: formatDateDMY(printDate) || null,
         },
         uploaded_images: [
           ...savedImages.map((i) => i.url),
