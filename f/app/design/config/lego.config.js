@@ -572,11 +572,12 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      sizeScale: 0.7644,
+      sizeScale: 0.794976,
       rotation: 2,
       offsetYExtra: 14,
       offsetXExtra: -5,
     },
+
 
     {
       id: "hair-nu-1",
