@@ -148,6 +148,18 @@ export default function AdminOrderDesignsPage() {
       }
     });
 
+    // If no print infos found in order_items, try fallback to order.items_data (saved by backend update)
+    if (printInfos.length === 0 && order?.items_data) {
+      try {
+        const itemsData = Array.isArray(order.items_data) ? order.items_data : JSON.parse(order.items_data || "[]");
+        itemsData.forEach((it) => {
+          if (it?.design_data?.print_info) printInfos.push(it.design_data.print_info);
+        });
+      } catch (e) {
+        // ignore parse errors
+      }
+    }
+
     return {
       previewList: Array.from(new Set(previews.filter(Boolean))),
       uploadedList: Array.from(new Set(uploads.filter(Boolean))),
