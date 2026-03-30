@@ -370,7 +370,7 @@ export const LEGO_CONFIG = {
       layerType: "face",
       widthAdjust: 2,
       heightAdjust: 3,
-      offsetYExtra: -1.8,
+      offsetYExtra: -1,
     },
     {
       id: "face-female-06",
@@ -384,7 +384,7 @@ export const LEGO_CONFIG = {
       layerType: "face",
       widthAdjust: 2,
       heightAdjust: 3,
-      offsetYExtra: -1.1,
+      offsetYExtra: -0.3,
     },
     {
       id: "face-female-10",
@@ -398,7 +398,7 @@ export const LEGO_CONFIG = {
       layerType: "face",
       widthAdjust: 2,
       heightAdjust: 1,
-      offsetYExtra: -2,
+      offsetYExtra: -1.2,
     },
     {
       id: "face-female-16",
@@ -412,7 +412,7 @@ export const LEGO_CONFIG = {
       layerType: "face",
       widthAdjust: 2,
       heightAdjust: 3,
-      offsetYExtra: 0.9,
+      offsetYExtra: 1.7,
     },
     {
       id: "face-female-45",
@@ -426,7 +426,7 @@ export const LEGO_CONFIG = {
       layerType: "face",
       widthAdjust: 2,
       heightAdjust: 1,
-      offsetYExtra: 2.5,
+      offsetYExtra: 3.3,
       heightAdjust: -2,
     },
 
@@ -648,6 +648,7 @@ export const LEGO_CONFIG = {
 
   ],
 };
+
 
 
 
