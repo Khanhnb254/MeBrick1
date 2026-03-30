@@ -306,8 +306,10 @@ export function useLegoCharacter({
       const hairRotation = Number(hairObj?.rotation || 0);
       const hairSizeBoost = getHairSizeBoostForFace(character.face);
       const hairSizeMultiplier = getHairSizeMultiplierForFace(character.face, character.hair);
-      const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost);
+      const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
+      const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
       const hairH = Math.max(1, Math.round(pos.height * sizeScale * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
+
       result.push({
         id: `${character.id}-hair`,
         type: "lego",
@@ -431,7 +433,8 @@ export function useLegoCharacter({
               const hairRotation = Number(hairObj?.rotation || 0);
               const hairSizeBoost = getHairSizeBoostForFace(movedChar.face);
               const hairSizeMultiplier = getHairSizeMultiplierForFace(movedChar.face, sticker.src);
-              const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost);
+              const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
+              const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
               const hairH = Math.max(1, Math.round(pos.height * sizeScale * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
               return {
                 ...sticker,
@@ -669,7 +672,8 @@ export function useLegoCharacter({
         const hairSizeBoost = getHairSizeBoostForFace(faceSrc);
         const faceShiftX = getHairFaceXOffset(faceSrc, s.src);
         const hairSizeMultiplier = getHairSizeMultiplierForFace(faceSrc, s.src);
-        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale * hairSizeMultiplier) + hairSizeBoost);
+        const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
+        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
         const hairH = Math.max(1, Math.round(pos.height * hairSizeScale * hairSizeMultiplier) + hairHeightAdjust + hairSizeBoost);
         return {
           ...s,
@@ -726,7 +730,8 @@ export function useLegoCharacter({
         const hairRotation = Number(hairObj?.rotation || 0);
         const hairSizeBoost = getHairSizeBoostForFace(character.face);
         const hairSizeMultiplier = getHairSizeMultiplierForFace(character.face, hairSrc);
-        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale * hairSizeMultiplier) + hairSizeBoost);
+        const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
+        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
         const hairH = Math.max(1, Math.round(pos.height * hairSizeScale * hairSizeMultiplier) + hairHeightAdjust + hairSizeBoost);
         filtered.push({
           id: `${selectedCharacterId}-hair`,
