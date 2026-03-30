@@ -408,7 +408,7 @@ export const LEGO_CONFIG = {
     {
       id: "face-female-50",
       type: "lego",
-      name: "Mặt nữ 50",
+      name: "Mặt nữ 6",
       category: "face",
       src: "/images/lego/faces/faceswoman/matnu6.png",
       thumbnail: "/images/lego/faces/faceswoman/matnu6.png",
