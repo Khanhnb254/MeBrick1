@@ -169,6 +169,23 @@ function DesignPageInner() {
     return null;
   }
 
+  // Format date to DD/MM/YYYY for persisting (input stays as yyyy-mm-dd)
+  function formatDateDMY(raw) {
+    if (!raw) return null;
+    if (typeof raw !== "string") return null;
+    // If ISO yyyy-mm-dd
+    if (raw.includes("-")) {
+      const parts = raw.split("-");
+      if (parts.length === 3) {
+        const [y, m, d] = parts;
+        return `${String(d).padStart(2, "0")}/${String(m).padStart(2, "0")}/${y}`;
+      }
+    }
+    // If already in d/m/y format, return as-is
+    if (raw.includes("/")) return raw;
+    return raw;
+  }
+
   // ✅ FIX: hỗ trợ mọi key: product / productId / product_id / id
   const productId = pickPositiveInt(
     searchParams.get("product"),
@@ -180,6 +197,11 @@ function DesignPageInner() {
   const [isSaving, setIsSaving] = useState(false);
   const [savedImages, setSavedImages] = useState([]);
   const [designerNote, setDesignerNote] = useState("");
+  // Print information (Step 3 control panel)
+  const [printName, setPrintName] = useState("");
+  const [printTitle, setPrintTitle] = useState("");
+  const [printMessage, setPrintMessage] = useState("");
+  const [printDate, setPrintDate] = useState("");
 
   // ✅ Edit cart item mode
   const [editCartItemIndex, setEditCartItemIndex] = useState(null);
@@ -917,6 +939,12 @@ function DesignPageInner() {
         design_preview_url: previewUrl,
         slot_images: uploadedSlotImages,
         designer_note: designerNote || "",
+        print_info: {
+          name: printName || null,
+          title: printTitle || null,
+          message: printMessage || null,
+          date: formatDateDMY(printDate) || null,
+        },
         uploaded_images: [
           ...savedImages.map((i) => i.url),
           ...Object.values(uploadedSlotImages).filter((u) => typeof u === "string" && !u.startsWith("data:")),
@@ -1077,6 +1105,17 @@ function DesignPageInner() {
                 isSaving={isSaving}
                 designerNote={designerNote}
                 setDesignerNote={setDesignerNote}
+
+                // print info props
+                printName={printName}
+                setPrintName={setPrintName}
+                printTitle={printTitle}
+                setPrintTitle={setPrintTitle}
+                printMessage={printMessage}
+                setPrintMessage={setPrintMessage}
+                printDate={printDate}
+                setPrintDate={setPrintDate}
+
                 isEditing={editCartItemIndex !== null}
                 activePanel={activePanel}
                 setActivePanel={setActivePanel}
