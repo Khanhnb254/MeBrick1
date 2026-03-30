@@ -180,6 +180,11 @@ function DesignPageInner() {
   const [isSaving, setIsSaving] = useState(false);
   const [savedImages, setSavedImages] = useState([]);
   const [designerNote, setDesignerNote] = useState("");
+  // Print information (Step 3 control panel)
+  const [printName, setPrintName] = useState("");
+  const [printTitle, setPrintTitle] = useState("");
+  const [printMessage, setPrintMessage] = useState("");
+  const [printDate, setPrintDate] = useState("");
 
   // ✅ Edit cart item mode
   const [editCartItemIndex, setEditCartItemIndex] = useState(null);
@@ -917,6 +922,12 @@ function DesignPageInner() {
         design_preview_url: previewUrl,
         slot_images: uploadedSlotImages,
         designer_note: designerNote || "",
+        print_info: {
+          name: printName || null,
+          title: printTitle || null,
+          message: printMessage || null,
+          date: printDate || null,
+        },
         uploaded_images: [
           ...savedImages.map((i) => i.url),
           ...Object.values(uploadedSlotImages).filter((u) => typeof u === "string" && !u.startsWith("data:")),

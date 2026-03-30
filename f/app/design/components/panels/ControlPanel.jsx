@@ -76,6 +76,16 @@ export default function ControlPanel(props) {
     onSaveImage,
     designerNote = "",
     setDesignerNote,
+
+    // print info (from DesignPage)
+    printName = "",
+    setPrintName = () => {},
+    printTitle = "",
+    setPrintTitle = () => {},
+    printMessage = "",
+    setPrintMessage = () => {},
+    printDate = "",
+    setPrintDate = () => {},
   } = props;
 
   const p = pricing || {
@@ -423,6 +433,59 @@ export default function ControlPanel(props) {
                       boxSizing: "border-box",
                     }}
                   />
+
+                  {/* ===== Print information form (Step 3) ===== */}
+                  <div style={{ marginTop: 12, marginBottom: 6, fontSize: 13, fontWeight: 700, color: "#333" }}>
+                    2. NHẬP THÔNG TIN IN ẤN
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPrintName?.("");
+                        setPrintTitle?.("");
+                        setPrintMessage?.("");
+                        setPrintDate?.("");
+                      }}
+                      style={{ float: "right", background: "transparent", border: "none", color: "#888", cursor: "pointer" }}>
+                      XÓA TẤT CẢ
+                    </button>
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 160px", gap: 8 }}>
+                    <input
+                      type="text"
+                      value={printName}
+                      onChange={(e) => setPrintName?.(e.target.value)}
+                      placeholder="NGUYEN THI THU HA"
+                      style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
+                    />
+
+                    <input
+                      type="date"
+                      value={printDate}
+                      onChange={(e) => setPrintDate?.(e.target.value)}
+                      style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
+                    />
+                  </div>
+
+                  <div style={{ marginTop: 8 }}>
+                    <input
+                      type="text"
+                      value={printTitle}
+                      onChange={(e) => setPrintTitle?.(e.target.value)}
+                      placeholder="Happy Graduation"
+                      style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%" }}
+                    />
+                  </div>
+
+                  <div style={{ marginTop: 8 }}>
+                    <textarea
+                      value={printMessage}
+                      onChange={(e) => setPrintMessage?.(e.target.value)}
+                      placeholder="Business Management / CONGRATULATIONS ON YOUR GRADUATION / You did it"
+                      rows={3}
+                      style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%", resize: "vertical" }}
+                    />
+                  </div>
 
                 <div className="mb-layergrid">
                   {(getFilteredLayers?.() || []).map((layer) => (
