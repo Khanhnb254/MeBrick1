@@ -432,7 +432,7 @@ export const LEGO_CONFIG = {
 
 
 
-  ],
+  \n    {\n      id: "face-female-50",\n      type: "lego",\n      name: "Mặt nữ 50",\n      category: "face",\n      src: "/images/lego/faces/faceswoman/50.png",\n      thumbnail: "/images/lego/faces/faceswoman/50.png",\n      part: "head",\n      price: 0,\n      layerType: "face",\n      widthAdjust: 2,\n      heightAdjust: 1,\n      offsetYExtra: 0,\n    },\n],
 
   hairs: [
     {
@@ -646,8 +646,9 @@ export const LEGO_CONFIG = {
       sizeScale: 1.068814,  // Thu nhỏ 10% 
     },
 
-  ],
+  \n    {\n      id: "hair-nu-5",\n      type: "lego",\n      name: "Tóc Nữ 5",\n      category: "hair",\n      gender: "nu",\n      src: "/images/lego/hair/nu/tocnu5.png",\n      thumbnail: "/images/lego/hair/nu/tocnu5.png",\n      part: "head",\n      price: 0,\n      layerType: "hair",\n      sizeScale: 1.871494,\n      heightAdjust: 1,\n      offsetYExtra: -1,\n      offsetXExtra: -7.8,\n    },\n    {\n      id: "hair-nu-6",\n      type: "lego",\n      name: "Tóc Nữ 6",\n      category: "hair",\n      gender: "nu",\n      src: "/images/lego/hair/nu/tocnu6.png",\n      thumbnail: "/images/lego/hair/nu/tocnu6.png",\n      part: "head",\n      price: 0,\n      layerType: "hair",\n      sizeScale: 1.162039,\n      heightAdjust: 1,\n      offsetYExtra: 19,\n      offsetXExtra: -5,\n      rotation: 2,\n    },\n    {\n      id: "hair-nu-7",\n      type: "lego",\n      name: "Tóc Nữ 7",\n      category: "hair",\n      gender: "nu",\n      src: "/images/lego/hair/nu/tocnu7.png",\n      thumbnail: "/images/lego/hair/nu/tocnu7.png",\n      part: "head",\n      price: 0,\n      layerType: "hair",\n      sizeScale: 1.306328,\n      offsetYExtra: 11,\n      offsetXExtra: -5,\n    },\n],
 };
+
 
 
 
