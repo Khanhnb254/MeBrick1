@@ -256,13 +256,15 @@ export function useLegoCharacter({
         const faceWidth = Math.max(1, pos.width + faceWidthAdjust);
         const faceHeight = Math.max(1, pos.height + faceHeightAdjust);
         const faceX = pos.x + (pos.width - faceWidth) / 2;
+        // shift face down 1px when hair is female 1 and face is female 1 or 2
+        const faceHairShiftY = (character.hair === "/images/lego/hair/nu/tocnu1.png" && (faceObj?.src === "/images/lego/faces/faceswoman/02.png" || faceObj?.src === "/images/lego/faces/faceswoman/06.png")) ? 1 : 0;
         result.push({
           id: `${character.id}-face`,
           type: "lego",
           name: "Khuôn mặt",
           src: defaultFaceObj.src || defaultFaceObj,
           x: faceX + getFemaleFaceXOffset(defaultFaceObj.src || defaultFaceObj),
-          y: pos.y + faceOffsetYExtra + 3 + getFemaleFaceLiftOffset(defaultFaceObj.src || defaultFaceObj),
+          y: pos.y + faceOffsetYExtra + 3 + getFemaleFaceLiftOffset(defaultFaceObj.src || defaultFaceObj) + faceHairShiftY,
           width: faceWidth,
           height: faceHeight,
           zIndex: partConfig.face.zIndex,
