@@ -106,6 +106,7 @@ export default function ControlPanel(props) {
     "Graduation",
     "Happy Birthday",
     "Happy Anniversary",
+    "Special Day",
     "Love",
     "Football",
   ];

@@ -113,6 +113,7 @@ export default function RightPanel(props) {
                 "Graduation",
                 "Happy Birthday",
                 "Happy Anniversary",
+                "Special Day",
                 "Football",
                 "Merry Christmas",
               ].map((tab) => (
