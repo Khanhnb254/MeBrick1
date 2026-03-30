@@ -59,9 +59,7 @@ export function useLegoCharacter({
       hairSrc === "/images/lego/hair/nam/tocnam2.png" ||
       hairSrc === "/images/lego/hair/nam/tocnam4.png";
     const isFace5 = faceSrc === "/images/lego/faces/15.png";
-    const isFemaleHair1Or2 =
-      hairSrc === "/images/lego/hair/nu/tocnu1.png" ||
-      hairSrc === "/images/lego/hair/nu/tocnu2.png";
+    const isFemaleHair1 = hairSrc === "/images/lego/hair/nu/tocnu1.png";
     const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
     const isFemaleHair = String(hairSrc || "").includes("/images/lego/hair/nu/");
     const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
@@ -79,13 +77,18 @@ export function useLegoCharacter({
     if (isFace5Or6 && isHair2Or4) {
       return -1;
     }
-    if (isFace5 && isFemaleHair1Or2) {
+    if (isFace5 && (isFemaleHair1 || isFemaleHair2)) {
       return -2;
     }
     if (isFemaleFace1Or2Or4 && isFemaleHair2) {
       return -1.5;
     }
-    if (isFemaleHair1Or2 && !isFemaleFace3Or5) {
+    // If hair is female 1 and face is NOT 3 or 5, shift hair up 1.5px
+    if (isFemaleHair1 && !isFemaleFace3Or5) {
+      return -1.5;
+    }
+    // If hair is female 2 and face is NOT 3 or 5, shift up 1px (legacy)
+    if (isFemaleHair2 && !isFemaleFace3Or5) {
       return -1;
     }
     // when female face 3 or 5 with male hair 6, push hair down 1px
