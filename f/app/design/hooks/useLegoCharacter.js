@@ -121,6 +121,14 @@ export function useLegoCharacter({
     }
     return 0;
   };
+  const getHairSizeMultiplierForFace = (faceSrc, hairSrc) => {
+    const isFemaleFace3Or5 =
+      faceSrc === "/images/lego/faces/faceswoman/10.png" ||
+      faceSrc === "/images/lego/faces/faceswoman/45.png";
+    const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
+    if (isFemaleFace3Or5 && isFemaleHair2) return 1.03;
+    return 1;
+  };
   const getHairFaceXOffset = (faceSrc, hairSrc) => {
     const isAnyHair = String(hairSrc || "").includes("/images/lego/hair/");
     if (isAnyHair) return HAIR_GLOBAL_X;
@@ -297,8 +305,9 @@ export function useLegoCharacter({
       const heightAdjust = Number(hairObj?.heightAdjust || 0);
       const hairRotation = Number(hairObj?.rotation || 0);
       const hairSizeBoost = getHairSizeBoostForFace(character.face);
-      const hairW = Math.max(1, Math.round(pos.width * sizeScale) + hairSizeBoost);
-      const hairH = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust + hairSizeBoost);
+      const hairSizeMultiplier = getHairSizeMultiplierForFace(character.face, character.hair);
+      const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost);
+      const hairH = Math.max(1, Math.round(pos.height * sizeScale * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
       result.push({
         id: `${character.id}-hair`,
         type: "lego",
@@ -421,8 +430,9 @@ export function useLegoCharacter({
               const heightAdjust = Number(hairObj?.heightAdjust || 0);
               const hairRotation = Number(hairObj?.rotation || 0);
               const hairSizeBoost = getHairSizeBoostForFace(movedChar.face);
-              const hairW = Math.max(1, Math.round(pos.width * sizeScale) + hairSizeBoost);
-              const hairH = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust + hairSizeBoost);
+              const hairSizeMultiplier = getHairSizeMultiplierForFace(movedChar.face, sticker.src);
+              const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost);
+              const hairH = Math.max(1, Math.round(pos.height * sizeScale * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
               return {
                 ...sticker,
                 x: pos.x + (pos.width - hairW) / 2 + offsetXExtra + faceShiftX,
@@ -658,8 +668,9 @@ export function useLegoCharacter({
         const hairRotation = Number(hairObj?.rotation || 0);
         const hairSizeBoost = getHairSizeBoostForFace(faceSrc);
         const faceShiftX = getHairFaceXOffset(faceSrc, s.src);
-        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale) + hairSizeBoost);
-        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale) + hairHeightAdjust + hairSizeBoost);
+        const hairSizeMultiplier = getHairSizeMultiplierForFace(faceSrc, s.src);
+        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale * hairSizeMultiplier) + hairSizeBoost);
+        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale * hairSizeMultiplier) + hairHeightAdjust + hairSizeBoost);
         return {
           ...s,
           x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra + faceShiftX,
@@ -714,8 +725,9 @@ export function useLegoCharacter({
         const hairHeightAdjust = Number(hairObj?.heightAdjust || 0);
         const hairRotation = Number(hairObj?.rotation || 0);
         const hairSizeBoost = getHairSizeBoostForFace(character.face);
-        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale) + hairSizeBoost);
-        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale) + hairHeightAdjust + hairSizeBoost);
+        const hairSizeMultiplier = getHairSizeMultiplierForFace(character.face, hairSrc);
+        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale * hairSizeMultiplier) + hairSizeBoost);
+        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale * hairSizeMultiplier) + hairHeightAdjust + hairSizeBoost);
         filtered.push({
           id: `${selectedCharacterId}-hair`,
           type: "lego",
