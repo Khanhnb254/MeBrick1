@@ -447,7 +447,7 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 15,
-      sizeScale: 0.8421,
+      sizeScale: 0.875784,
       offsetXExtra: -3,
     },
     {
@@ -462,9 +462,10 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 11,
-      sizeScale: 0.915075,
+      sizeScale: 0.951678,
       offsetXExtra: -4,
     },
+
     {
       id: "hair-nam-3",
       type: "lego",
@@ -477,9 +478,10 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 14,
-      sizeScale: 0.8505,
+      sizeScale: 0.88452,
       offsetXExtra: -5,
     },
+
     {
       id: "hair-nam-4",
       type: "lego",
@@ -507,9 +509,10 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 12,
-      sizeScale: 0.8505,
+      sizeScale: 0.88452,
       offsetXExtra: -4,
     },
+
     {
       id: "hair-nam-6",
       type: "lego",
@@ -522,9 +525,10 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 13,
-      sizeScale: 0.8505,
+      sizeScale: 0.88452,
       offsetXExtra: -4,
     },
+
     {
       id: "hair-nam-7",
       type: "lego",
@@ -537,9 +541,10 @@ export const LEGO_CONFIG = {
       price: 0,
       layerType: "hair",
       offsetYExtra: 12,
-      sizeScale: 0.8505,
+      sizeScale: 0.88452,
       offsetXExtra: -4,
     },
+
     {
       id: "hair-nam-8",
       type: "lego",
@@ -551,10 +556,11 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      sizeScale: 0.735,
+      sizeScale: 0.7644,
       offsetYExtra: 14,
       offsetXExtra: -4,
     },
+
     {
       id: "hair-nam-9",
       type: "lego",
@@ -566,11 +572,12 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "hair",
-      sizeScale: 0.735,
+      sizeScale: 0.7644,
       rotation: 2,
       offsetYExtra: 14,
       offsetXExtra: -5,
     },
+
     {
       id: "hair-nu-1",
       type: "lego",
