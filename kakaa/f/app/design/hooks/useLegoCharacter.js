@@ -52,6 +52,12 @@ export function useLegoCharacter({
     const isFace5 = faceSrc === "/images/lego/faces/15.png";
     const isFemaleHair1 = hairSrc === "/images/lego/hair/nu/tocnu1.png";
     const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
+
+    // When selected face matnu6, lift ALL hair up by 1.2px
+    if (faceSrc === "/images/lego/faces/faceswoman/matnu6.png") {
+      return -1.2;
+    }
+
     // Special-case: when hair is Tóc Nữ 5 and face is one of (15,34,faceswoman/10,faceswoman/45)
     const isTargetFaceForTocnu5 =
       faceSrc === "/images/lego/faces/15.png" ||
