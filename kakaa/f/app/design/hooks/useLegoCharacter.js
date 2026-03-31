@@ -364,9 +364,10 @@ export function useLegoCharacter({
               const offsetYExtra = faceObj?.offsetYExtra || 0;
               const widthAdjust = Number(faceObj?.widthAdjust || 0);
               const heightAdjust = Number(faceObj?.heightAdjust || 0);
-              const faceWidth = Math.max(1, pos.width + widthAdjust);
-              const faceHeight = Math.max(1, pos.height + heightAdjust);
-              const faceX = pos.x + (pos.width - faceWidth) / 2;
+              const sizeScale = Number(faceObj?.sizeScale || 1);
+              const faceWidth = Math.max(1, Math.round(pos.width * sizeScale) + widthAdjust);
+              const faceHeight = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust);
+              const faceX = pos.x + (pos.width - faceWidth) / 2 + (Number(faceObj?.offsetXExtra || 0));
               return { ...sticker, x: faceX, y: pos.y + offsetYExtra + 3, width: faceWidth, height: faceHeight };
             }
             return { ...sticker, x: pos.x, y: pos.y };
@@ -516,7 +517,7 @@ export function useLegoCharacter({
         const faceSizeScale = Number(faceObj?.sizeScale || 1);
         const faceWidth = Math.max(1, Math.round(pos.width * faceSizeScale) + faceWidthAdjust);
         const faceHeight = Math.max(1, Math.round(pos.height * faceSizeScale) + faceHeightAdjust);
-        const faceX = pos.x + (pos.width - faceWidth) / 2;
+        const faceX = pos.x + (pos.width - faceWidth) / 2 + (Number(faceObj?.offsetXExtra || 0));
         filtered.push({
           id: `${selectedCharacterId}-face`,
           type: "lego",
