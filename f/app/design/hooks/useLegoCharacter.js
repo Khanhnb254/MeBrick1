@@ -72,11 +72,11 @@ export function useLegoCharacter({
       faceSrc === "/images/lego/faces/faceswoman/10.png" ||
       faceSrc === "/images/lego/faces/faceswoman/45.png";
 
-    // Specific: when selected face matnu6, lift Tóc Nữ 1 and Tóc Nữ 2 up by 2px
-    if (
-      faceSrc === "/images/lego/faces/faceswoman/matnu6.png" &&
-      (hairSrc === "/images/lego/hair/nu/tocnu1.png" || hairSrc === "/images/lego/hair/nu/tocnu2.png")
-    ) {
+    // Specific: when selected face matnu6, lift Tóc Nữ 1 up by 3px and Tóc Nữ 2 up by 2px
+    if (faceSrc === "/images/lego/faces/faceswoman/matnu6.png" && hairSrc === "/images/lego/hair/nu/tocnu1.png") {
+      return -3;
+    }
+    if (faceSrc === "/images/lego/faces/faceswoman/matnu6.png" && hairSrc === "/images/lego/hair/nu/tocnu2.png") {
       return -2;
     }
 
