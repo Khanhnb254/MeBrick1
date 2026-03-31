@@ -374,7 +374,13 @@ export function useLegoCharacter({
               const faceWidth = Math.max(1, Math.round(pos.width * sizeScale) + widthAdjust);
               const faceHeight = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust);
               const faceX = pos.x + (pos.width - faceWidth) / 2 + (Number(faceObj?.offsetXExtra || 0));
-              return { ...sticker, x: faceX, y: pos.y + offsetYExtra + 3, width: faceWidth, height: faceHeight };
+              return {
+                ...sticker,
+                x: faceX + getFemaleFaceXOffset(sticker.src),
+                y: pos.y + offsetYExtra + 3 + getFemaleFaceLiftOffset(sticker.src),
+                width: faceWidth,
+                height: faceHeight,
+              };
             }
             return { ...sticker, x: pos.x, y: pos.y };
           }),
@@ -529,8 +535,8 @@ export function useLegoCharacter({
           type: "lego",
           name: "Khuôn mặt",
           src: faceSrc,
-          x: faceX,
-          y: pos.y + faceOffsetYExtra + 3,
+          x: faceX + getFemaleFaceXOffset(faceSrc),
+          y: pos.y + faceOffsetYExtra + 3 + getFemaleFaceLiftOffset(faceSrc),
           width: faceWidth,
           height: faceHeight,
           zIndex: partConfig.face.zIndex,
