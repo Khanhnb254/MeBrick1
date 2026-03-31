@@ -367,7 +367,7 @@ export const LEGO_CONFIG = {
       part: "head",
       price: 0,
       layerType: "face",
-      offsetYExtra: -1.1,
+      offsetYExtra: -0.6,
     },
     {
       id: "face-female-10",
