@@ -59,7 +59,7 @@ export function useLegoCharacter({
       faceSrc === "/images/lego/faces/faceswoman/10.png" ||
       faceSrc === "/images/lego/faces/faceswoman/45.png";
     if (hairSrc === "/images/lego/hair/nu/tocnu5.png" && isTargetFaceForTocnu5) {
-      return 1.5;
+      return 0.9;
     }
     if (isFace5Or6 && isHair2Or4) {
       return -2;
