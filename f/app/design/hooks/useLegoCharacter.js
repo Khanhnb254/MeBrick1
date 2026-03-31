@@ -264,8 +264,9 @@ export function useLegoCharacter({
         const faceOffsetYExtra = faceObj?.offsetYExtra || 0;
         const faceWidthAdjust = Number(faceObj?.widthAdjust || 0);
         const faceHeightAdjust = Number(faceObj?.heightAdjust || 0);
-        const faceWidth = Math.max(1, pos.width + faceWidthAdjust);
-        const faceHeight = Math.max(1, pos.height + faceHeightAdjust);
+        const faceSizeScale = Number(faceObj?.sizeScale || 1);
+        const faceWidth = Math.max(1, Math.round(pos.width * faceSizeScale) + faceWidthAdjust);
+        const faceHeight = Math.max(1, Math.round(pos.height * faceSizeScale) + faceHeightAdjust);
         const faceX = pos.x + (pos.width - faceWidth) / 2;
         // shift face down 1px when hair is female 1 and face is female 1 or 2
         const faceHairShiftY = (character.hair === "/images/lego/hair/nu/tocnu1.png" && (faceObj?.src === "/images/lego/faces/faceswoman/02.png" || faceObj?.src === "/images/lego/faces/faceswoman/06.png")) ? 1 : 0;
@@ -627,8 +628,9 @@ export function useLegoCharacter({
         const faceOffsetYExtra = faceObj?.offsetYExtra || 0;
         const faceWidthAdjust = Number(faceObj?.widthAdjust || 0);
         const faceHeightAdjust = Number(faceObj?.heightAdjust || 0);
-        const faceWidth = Math.max(1, pos.width + faceWidthAdjust);
-        const faceHeight = Math.max(1, pos.height + faceHeightAdjust);
+        const faceSizeScale = Number(faceObj?.sizeScale || 1);
+        const faceWidth = Math.max(1, Math.round(pos.width * faceSizeScale) + faceWidthAdjust);
+        const faceHeight = Math.max(1, Math.round(pos.height * faceSizeScale) + faceHeightAdjust);
         const faceX = pos.x + (pos.width - faceWidth) / 2;
         filtered.push({
           id: `${selectedCharacterId}-face`,
