@@ -3790,7 +3790,3 @@ html {
 
 
 
-
-/* Override: allow stage-workspace to scroll with page (avoid internal fixed scrolling) */
-.stage-workspace { height: auto !important; overflow: visible !important; }
-
