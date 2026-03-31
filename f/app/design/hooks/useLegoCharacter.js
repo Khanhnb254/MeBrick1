@@ -638,7 +638,7 @@ export function useLegoCharacter({
         const faceSizeScale = Number(faceObj?.sizeScale || 1);
         const faceWidth = Math.max(1, Math.round(pos.width * faceSizeScale) + faceWidthAdjust);
         const faceHeight = Math.max(1, Math.round(pos.height * faceSizeScale) + faceHeightAdjust);
-        const faceX = pos.x + (pos.width - faceWidth) / 2;
+        const faceX = pos.x + (pos.width - faceWidth) / 2 + (Number(faceObj?.offsetXExtra || 0));
         filtered.push({
           id: `${selectedCharacterId}-face`,
           type: "lego",
