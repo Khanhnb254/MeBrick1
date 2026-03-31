@@ -158,7 +158,7 @@ html {
     grid-template-columns: minmax(0, 1fr) minmax(320px, 360px);
     gap: var(--space-lg);
     align-items: start;
-    height: calc(100vh - 120px);
+    height: auto;
   }
 }
 
