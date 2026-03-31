@@ -340,10 +340,10 @@ export const BACKGROUND_OPTIONS = [
   ], textFields: [] },
 
   // ===== 6 NỀN SPECIAL DAY MỚI (thêm bởi Copilot) =====
-  { id: "bg-special-62", name: "Special Day ver 18", category: "Special Day", type: "pattern", value: "url('/samples/sample62.png')", thumbnail: "/samples/sample62.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-special-63", name: "Special Day ver 19", category: "Special Day", type: "pattern", value: "url('/samples/sample63.png')", thumbnail: "/samples/sample63.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-special-64", name: "Special Day ver 20", category: "Special Day", type: "pattern", value: "url('/samples/sample64.png')", thumbnail: "/samples/sample64.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-special-65", name: "Special Day ver 21", category: "Special Day", type: "pattern", value: "url('/samples/sample65.png')", thumbnail: "/samples/sample65.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-special-66", name: "Special Day ver 22", category: "Special Day", type: "pattern", value: "url('/samples/sample66.png')", thumbnail: "/samples/sample66.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-special-67", name: "Special Day ver 23", category: "Special Day", type: "pattern", value: "url('/samples/sample67.png')", thumbnail: "/samples/sample67.png", backgroundSize: "cover", slots: [], textFields: [] },
+  { id: "bg-special-62", name: "Special Day ver 18", category: "Special Day", type: "pattern", value: "url('/samples/62.png')", thumbnail: "/samples/62.png", backgroundSize: "cover", slots: [], textFields: [] },
+  { id: "bg-special-63", name: "Special Day ver 19", category: "Special Day", type: "pattern", value: "url('/samples/63.png')", thumbnail: "/samples/63.png", backgroundSize: "cover", slots: [], textFields: [] },
+  { id: "bg-special-64", name: "Special Day ver 20", category: "Special Day", type: "pattern", value: "url('/samples/64.png')", thumbnail: "/samples/64.png", backgroundSize: "cover", slots: [], textFields: [] },
+  { id: "bg-special-65", name: "Special Day ver 21", category: "Special Day", type: "pattern", value: "url('/samples/65.png')", thumbnail: "/samples/65.png", backgroundSize: "cover", slots: [], textFields: [] },
+  { id: "bg-special-66", name: "Special Day ver 22", category: "Special Day", type: "pattern", value: "url('/samples/66.png')", thumbnail: "/samples/66.png", backgroundSize: "cover", slots: [], textFields: [] },
+  { id: "bg-special-67", name: "Special Day ver 23", category: "Special Day", type: "pattern", value: "url('/samples/67.png')", thumbnail: "/samples/67.png", backgroundSize: "cover", slots: [], textFields: [] },
 ];
