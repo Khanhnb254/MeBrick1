@@ -419,6 +419,7 @@ export const LEGO_CONFIG = {
       layerType: "face",
       sizeScale: 0.9482235,
       offsetXExtra: 1,
+      offsetYExtra: 1,
     },
   ],
 
