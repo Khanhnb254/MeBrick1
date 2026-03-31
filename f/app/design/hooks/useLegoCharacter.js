@@ -347,8 +347,8 @@ export function useLegoCharacter({
       const hairSizeBoost = getHairSizeBoostForFace(character.face);
       const hairSizeMultiplier = getHairSizeMultiplierForFace(character.face, character.hair);
       const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
-      const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
-      const hairH = Math.max(1, Math.round(pos.height * sizeScale * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
+      const hairW = Math.max(1, pos.width * sizeScale * hairSizeMultiplier + hairSizeBoost + hairWidthAdjust);
+      const hairH = Math.max(1, pos.height * sizeScale * hairSizeMultiplier + heightAdjust + hairSizeBoost);
 
       result.push({
         id: `${character.id}-hair`,
@@ -474,8 +474,8 @@ export function useLegoCharacter({
               const hairSizeBoost = getHairSizeBoostForFace(movedChar.face);
               const hairSizeMultiplier = getHairSizeMultiplierForFace(movedChar.face, sticker.src);
               const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
-              const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
-              const hairH = Math.max(1, Math.round(pos.height * sizeScale * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
+              const hairW = Math.max(1, pos.width * sizeScale * hairSizeMultiplier + hairSizeBoost + hairWidthAdjust);
+              const hairH = Math.max(1, pos.height * sizeScale * hairSizeMultiplier + heightAdjust + hairSizeBoost);
               return {
                 ...sticker,
                 x: pos.x + (pos.width - hairW) / 2 + offsetXExtra + faceShiftX,
@@ -491,8 +491,8 @@ export function useLegoCharacter({
               const widthAdjust = Number(faceObj?.widthAdjust || 0);
               const heightAdjust = Number(faceObj?.heightAdjust || 0);
               const sizeScale = Number(faceObj?.sizeScale || 1);
-              const faceWidth = Math.max(1, Math.round(pos.width * sizeScale) + widthAdjust);
-              const faceHeight = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust);
+              const faceWidth = Math.max(1, pos.width * sizeScale + widthAdjust);
+              const faceHeight = Math.max(1, pos.height * sizeScale + heightAdjust);
               const faceX = pos.x + (pos.width - faceWidth) / 2 + (Number(faceObj?.offsetXExtra || 0));
               // debug when updating existing face sticker during move
               if (sticker.src === "/images/lego/faces/faceswoman/06.png") {
@@ -829,4 +829,5 @@ export function useLegoCharacter({
     handleDeleteCharacter,
   };
 }
+
 
