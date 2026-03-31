@@ -508,7 +508,7 @@ export const LEGO_CONFIG = {
       offsetYExtra: 11,
       sizeScale: 0.953221,
       widthAdjust: 2,
-      offsetXExtra: -5,
+      offsetXExtra: -5.5,
     },
 
     {
