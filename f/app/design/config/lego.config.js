@@ -687,7 +687,7 @@ export const LEGO_CONFIG = {
       layerType: "hair",
       sizeScale: 1.871494,
       heightAdjust: 1,
-      offsetYExtra: 14,
+      offsetYExtra: 17,
       offsetXExtra: -4.8,
     },
     {
