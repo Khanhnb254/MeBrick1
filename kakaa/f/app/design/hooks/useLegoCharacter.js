@@ -52,6 +52,15 @@ export function useLegoCharacter({
     const isFace5 = faceSrc === "/images/lego/faces/15.png";
     const isFemaleHair1 = hairSrc === "/images/lego/hair/nu/tocnu1.png";
     const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
+    // Special-case: when hair is Tóc Nữ 5 and face is one of (15,34,faceswoman/10,faceswoman/45)
+    const isTargetFaceForTocnu5 =
+      faceSrc === "/images/lego/faces/15.png" ||
+      faceSrc === "/images/lego/faces/34.png" ||
+      faceSrc === "/images/lego/faces/faceswoman/10.png" ||
+      faceSrc === "/images/lego/faces/faceswoman/45.png";
+    if (hairSrc === "/images/lego/hair/nu/tocnu5.png" && isTargetFaceForTocnu5) {
+      return 1.5;
+    }
     if (isFace5Or6 && isHair2Or4) {
       return -2;
     }

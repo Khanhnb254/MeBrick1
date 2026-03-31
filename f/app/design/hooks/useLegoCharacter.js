@@ -71,6 +71,17 @@ export function useLegoCharacter({
     const isFemaleFace3Or5 =
       faceSrc === "/images/lego/faces/faceswoman/10.png" ||
       faceSrc === "/images/lego/faces/faceswoman/45.png";
+    // Special case: when hair is Tóc Nữ 5 and face is one of (15,34,faceswoman/10,faceswoman/45)
+    // push hair down by 1.5px to compensate visual overlap
+    const isTargetFaceForTocnu5 =
+      faceSrc === "/images/lego/faces/15.png" ||
+      faceSrc === "/images/lego/faces/34.png" ||
+      faceSrc === "/images/lego/faces/faceswoman/10.png" ||
+      faceSrc === "/images/lego/faces/faceswoman/45.png";
+    if (hairSrc === "/images/lego/hair/nu/tocnu5.png" && isTargetFaceForTocnu5) {
+      return 1.5;
+    }
+      faceSrc === "/images/lego/faces/faceswoman/45.png";
     if (isFace5) {
       return -2;
     }
