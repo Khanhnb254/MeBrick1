@@ -287,6 +287,10 @@ export function useLegoCharacter({
         const faceWidth = Math.max(1, Math.round(pos.width * faceSizeScale) + faceWidthAdjust);
         const faceHeight = Math.max(1, Math.round(pos.height * faceSizeScale) + faceHeightAdjust);
         const faceX = pos.x + (pos.width - faceWidth) / 2 + (Number(faceObj?.offsetXExtra || 0));
+        // debug for face-female-06
+        if (faceObj?.src === "/images/lego/faces/faceswoman/06.png") {
+          console.log(`[DEBUG][face-female-06] createStickers computed: pos.y=${pos.y}, faceOffsetYExtra=${faceOffsetYExtra}, faceHairShiftY=${(character.hair === "/images/lego/hair/nu/tocnu1.png" && (faceObj?.src === "/images/lego/faces/faceswoman/02.png" || faceObj?.src === "/images/lego/faces/faceswoman/06.png")) ? 1 : 0}, finalY=${pos.y + faceOffsetYExtra + 3 + getFemaleFaceLiftOffset(defaultFaceObj.src || defaultFaceObj) + ((character.hair === "/images/lego/hair/nu/tocnu1.png" && (faceObj?.src === "/images/lego/faces/faceswoman/02.png" || faceObj?.src === "/images/lego/faces/faceswoman/06.png")) ? 1 : 0)}`);
+        }
         // shift face down 1px when hair is female 1 and face is female 1 or 2
         const faceHairShiftY = (character.hair === "/images/lego/hair/nu/tocnu1.png" && (faceObj?.src === "/images/lego/faces/faceswoman/02.png" || faceObj?.src === "/images/lego/faces/faceswoman/06.png")) ? 1 : 0;
         result.push({
@@ -490,6 +494,10 @@ export function useLegoCharacter({
               const faceWidth = Math.max(1, Math.round(pos.width * sizeScale) + widthAdjust);
               const faceHeight = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust);
               const faceX = pos.x + (pos.width - faceWidth) / 2 + (Number(faceObj?.offsetXExtra || 0));
+              // debug when updating existing face sticker during move
+              if (sticker.src === "/images/lego/faces/faceswoman/06.png") {
+                console.log(`[DEBUG][face-female-06] moveLegoCharacter update computed: pos.y=${pos.y}, offsetYExtra=${offsetYExtra}, finalY=${pos.y + offsetYExtra + 3 + getFemaleFaceLiftOffset(sticker.src)}`);
+              }
               return {
                 ...sticker,
                 x: faceX + getFemaleFaceXOffset(sticker.src),
@@ -652,6 +660,10 @@ export function useLegoCharacter({
         const faceWidth = Math.max(1, Math.round(pos.width * faceSizeScale) + faceWidthAdjust);
         const faceHeight = Math.max(1, Math.round(pos.height * faceSizeScale) + faceHeightAdjust);
         const faceX = pos.x + (pos.width - faceWidth) / 2 + (Number(faceObj?.offsetXExtra || 0));
+        // debug when setting face sticker via updateCharacterFace
+        if (faceSrc === "/images/lego/faces/faceswoman/06.png") {
+          console.log(`[DEBUG][face-female-06] updateCharacterFace computed: pos.y=${pos.y}, faceOffsetYExtra=${faceOffsetYExtra}, finalY=${pos.y + faceOffsetYExtra + 3 + getFemaleFaceLiftOffset(faceSrc)}`);
+        }
         filtered.push({
           id: `${selectedCharacterId}-face`,
           type: "lego",
