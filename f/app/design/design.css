@@ -2163,8 +2163,8 @@ html {
 .stage-workspace {
   flex: 5;
   min-width: 0;
-  height: 100%;
-  overflow: auto;
+  height: 100vh; /* fixed viewport height so canvas stays in place */
+  overflow: hidden; /* prevent stage from scrolling */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2194,8 +2194,8 @@ html {
 .control-panel {
   flex: 3;
   min-width: 0;
-  height: 100%;
-  overflow-y: auto;
+  max-height: 100vh;
+  overflow: auto; /* allow scrolling only inside control panel */
   scrollbar-gutter: stable;
 }
 
