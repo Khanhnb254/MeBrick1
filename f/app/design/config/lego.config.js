@@ -433,20 +433,7 @@ export const LEGO_CONFIG = {
 
 
 
-    {
-      id: "face-female-50",
-      type: "lego",
-      name: "Mặt nữ 50",
-      category: "face",
-      src: "/images/lego/faces/faceswoman/50.png",
-      thumbnail: "/images/lego/faces/faceswoman/50.png",
-      part: "head",
-      price: 0,
-      layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 1,
-      offsetYExtra: 0,
-    },
+
 
     {
       id: "face-female-matnu6",

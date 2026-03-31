@@ -406,20 +406,7 @@ export const LEGO_CONFIG = {
       layerType: "face",
       heightAdjust: -2,
     },
-    {
-      id: "face-female-50",
-      type: "lego",
-      name: "Mặt nữ 6",
-      category: "face",
-      src: "/images/lego/faces/faceswoman/matnu6.png",
-      thumbnail: "/images/lego/faces/faceswoman/matnu6.png",
-      part: "head",
-      price: 0,
-      layerType: "face",
-      widthAdjust: 2,
-      heightAdjust: 1,
-      offsetYExtra: 0,
-    },
+
     {
       id: "face-female-matnu6",
       type: "lego",
