@@ -108,6 +108,11 @@ export function useLegoCharacter({
     if (isFemaleFace1Or2Or4 && isFemaleHair2) {
       return -1.5;
     }
+
+    // When female face is 02/06/16, lift Tóc Nữ 1 up by 2px
+    if (isFemaleFace1Or2Or4 && isFemaleHair1) {
+      return -2;
+    }
     // If hair is female 1 and face is NOT 3 or 5, shift hair up 1.5px
     if (isFemaleHair1 && !isFemaleFace3Or5) {
       return -1.5;
