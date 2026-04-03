@@ -306,7 +306,7 @@ export function useLegoCharacter({
         name: "Tóc",
         src: character.hair,
         x: pos.x + (pos.width - hairW) / 2 + offsetXExtra + faceShiftX,
-        y: computedHairY,
+        y: Math.round(computedHairY),
         width: hairW,
         height: hairH,
         rotation: hairRotation,
@@ -421,7 +421,7 @@ export function useLegoCharacter({
               return {
                 ...sticker,
                 x: pos.x + (pos.width - hairW) / 2 + offsetXExtra,
-                y: pos.y + offsetYExtra + faceLiftY + HAIR_GLOBAL_Y,
+                y: Math.round(pos.y + offsetYExtra + faceLiftY + HAIR_GLOBAL_Y),
                 width: hairW,
                 height: hairH,
                 rotation: hairRotation,
@@ -635,7 +635,7 @@ export function useLegoCharacter({
         return {
           ...s,
           x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra,
-          y: pos.y + hairOffsetYExtra + getHairLiftOffset(faceSrc, s.src) + HAIR_GLOBAL_Y,
+          y: Math.round(pos.y + hairOffsetYExtra + getHairLiftOffset(faceSrc, s.src) + HAIR_GLOBAL_Y),
           width: hairW,
           height: hairH,
           rotation: hairRotation,
