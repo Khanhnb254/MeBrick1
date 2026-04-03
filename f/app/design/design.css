@@ -3221,6 +3221,7 @@ html {
 .sample-gallery {
   flex: 2;
   min-width: 0;
+  height: 100%; /* match parent height */
   overflow-y: auto;
   border-right: none;
   padding-right: 0px;
