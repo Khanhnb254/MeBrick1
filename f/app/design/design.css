@@ -704,6 +704,8 @@ html {
 .stage-wrap {
   flex: 1;
   min-width: 0;
+  height: 100%; /* ensure it respects parent height */
+  overflow: hidden; /* prevent scroll at wrap level */
 }
 
 .stage-card {
@@ -2169,7 +2171,9 @@ html {
   gap: 0px;
   min-height: calc(100vh - 80px);
   height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
   align-items: stretch;
+  overflow: hidden; /* prevent any scrolling at layout level */
 }
 
 .stage-workspace {
