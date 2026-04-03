@@ -65,7 +65,7 @@ export function useLegoCharacter({
     const isMaleHair6 = hairSrc === "/images/lego/hair/nam/tocnam6.png";
     // Prevent any face-driven lift for Tóc Nam 9
     if (isMaleHair9) {
-      return 0;
+      return -2;
     }
     const isFemaleFace1Or2Or4 =
       faceSrc === "/images/lego/faces/faceswoman/02.png" ||
