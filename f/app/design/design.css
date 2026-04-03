@@ -2163,8 +2163,9 @@ html {
 .stage-workspace {
   flex: 5;
   min-width: 0;
-  height: 100vh; /* fixed viewport height so canvas stays in place */
-  overflow: hidden; /* prevent stage from scrolling */
+  height: auto; /* keep stage in normal flow */
+  min-height: 0;
+  overflow: visible; /* allow internal panel scrolling */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2178,7 +2179,7 @@ html {
   max-width: 100%;
   position: relative;
   align-self: stretch;
-  overflow-y: hidden;
+  overflow-y: visible;
   display: flex;
   flex-direction: column;
 }
