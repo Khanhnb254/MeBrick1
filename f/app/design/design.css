@@ -842,19 +842,20 @@ html {
   background: #ffffff;
   width: fit-content;
   height: fit-content;
-  margin: 0 auto;
+  margin: 1rem auto;
   aspect-ratio: 1 / 1;
   animation: canvas-appear 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-  /* Keep the photo-frame sticky within the viewport so background + LEGO don't move when right panel scrolls */
+  /* Make canvas sticky within its scrolling container */
   position: sticky;
-  top: 20px; /* reduced from 80px to bring closer to stepper */
+  top: 1rem; /* stick near top when scrolling */
   align-self: center; /* remain horizontally centered */
-  z-index: 5;
+  z-index: 10; /* ensure it stays above other content */
   border-radius: 4px;
   box-shadow: 
     0 2px 8px rgba(0, 0, 0, 0.08),
     0 4px 16px rgba(0, 0, 0, 0.06),
     0 0 0 1px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0; /* prevent shrinking */
 }
 
 /* viền trắng (mat) + gờ trong */
@@ -2174,12 +2175,13 @@ html {
 .stage-workspace {
   flex: 5;
   min-width: 0;
-  height: auto; /* keep stage in normal flow */
+  height: 100%; /* match parent height */
   min-height: 0;
-  overflow: visible; /* allow internal panel scrolling */
+  overflow-y: auto; /* allow scrolling within workspace */
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* align to top instead of center */
   align-items: center;
   text-align: center;
   background: #f5f7fa;
