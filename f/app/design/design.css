@@ -845,6 +845,11 @@ html {
   margin: 0 auto;
   aspect-ratio: 1 / 1;
   animation: canvas-appear 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Keep the photo-frame sticky within the viewport so background + LEGO don't move when right panel scrolls */
+  position: sticky;
+  top: 16px; /* adjust if header is taller */
+  align-self: center; /* remain horizontally centered */
+  z-index: 5;
 }
 
 /* viền trắng (mat) + gờ trong */
