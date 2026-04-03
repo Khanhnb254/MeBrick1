@@ -847,7 +847,7 @@ html {
   animation: canvas-appear 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   /* Keep the photo-frame sticky within the viewport so background + LEGO don't move when right panel scrolls */
   position: sticky;
-  top: 80px; /* align with thumbnails scroll area */
+  top: 20px; /* reduced from 80px to bring closer to stepper */
   align-self: center; /* remain horizontally centered */
   z-index: 5;
   border-radius: 4px;
@@ -2183,7 +2183,7 @@ html {
   align-items: center;
   text-align: center;
   background: #f5f7fa;
-  padding: 2rem 1rem;
+  padding: 0.5rem 1rem 2rem 1rem;
 }
 
 .design-layout > .mb-panel {
