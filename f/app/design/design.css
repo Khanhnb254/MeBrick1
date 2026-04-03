@@ -191,7 +191,7 @@ html {
 .lego-canvas {
   position: relative;
   background: #fff;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   /* Ensure canvas is always square */
@@ -2335,7 +2335,7 @@ html {
   }
 
   .lego-canvas {
-    background-size: cover !important;
+    background-size: contain !important;
     /* max-width/max-height removed: canvas DOM must stay at logical size,
        visual scaling is handled by transform: scale(canvasScale) in JS */
   }
@@ -2579,7 +2579,7 @@ html {
   }
 
   .lego-canvas {
-    background-size: cover !important;
+    background-size: contain !important;
   }
 
   .design-layout > .mb-panel {
@@ -2595,7 +2595,7 @@ html {
   }
 
   .lego-canvas {
-    background-size: cover !important;
+    background-size: contain !important;
   }
 
   .photo-frame-studio {

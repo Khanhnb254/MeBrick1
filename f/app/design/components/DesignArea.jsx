@@ -60,7 +60,7 @@ export default function DesignArea({
       style.backgroundImage = bgValue?.startsWith("url")
         ? bgValue
         : `url(${bgValue})`;
-      const baseSize = selectedBackground.backgroundSize || "cover";
+      const baseSize = selectedBackground.backgroundSize || "contain";
       // Nếu bgZoom khác 1, chuyển sang % để scale được
       style.backgroundSize = bgZoom !== 1 ? `${bgZoom * 100}%` : baseSize;
       style.backgroundPosition = "center";
