@@ -352,6 +352,8 @@ export function useLegoCharacter({
       const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
       const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
       const hairH = Math.max(1, Math.round(pos.height * sizeScale * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
+      const computedHairY = pos.y + offsetYExtra + faceLiftY + HAIR_GLOBAL_Y;
+      console.log(`[DEBUG][hair-create] src=${character.hair}, pos.y=${pos.y}, offsetYExtra=${offsetYExtra}, faceLiftY=${faceLiftY}, HAIR_GLOBAL_Y=${HAIR_GLOBAL_Y}, finalY=${computedHairY}`);
 
       result.push({
         id: `${character.id}-hair`,
@@ -359,7 +361,7 @@ export function useLegoCharacter({
         name: "Tóc",
         src: character.hair,
         x: pos.x + (pos.width - hairW) / 2 + offsetXExtra + faceShiftX,
-        y: pos.y + offsetYExtra + faceLiftY + HAIR_GLOBAL_Y,
+        y: computedHairY,
         width: hairW,
         height: hairH,
         rotation: hairRotation,
