@@ -2156,7 +2156,8 @@ html {
 .design-layout {
   display: flex;
   gap: 0px;
-  min-height: calc((100vh - 80px) * 1.2);
+  min-height: calc(100vh - 80px);
+  height: calc(100vh - 80px);
   align-items: stretch;
 }
 
