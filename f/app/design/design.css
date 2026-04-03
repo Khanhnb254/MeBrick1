@@ -2221,6 +2221,32 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* Custom scrollbar for control panel */
+.control-panel::-webkit-scrollbar {
+  width: 12px;
+}
+
+.control-panel::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.control-panel::-webkit-scrollbar-thumb {
+  background: #1e3a8a;
+  border-radius: 10px;
+  border: 3px solid #f1f5f9;
+}
+
+.control-panel::-webkit-scrollbar-thumb:hover {
+  background: #1e40af;
+}
+
+/* Firefox scrollbar */
+.control-panel {
+  scrollbar-width: auto;
+  scrollbar-color: #1e3a8a #f1f5f9;
+}
+
 /* ===== RESPONSIVE MEDIA QUERIES (Mobile-First) ===== */
 
 /* Extra small phones (360px - 480px) */
