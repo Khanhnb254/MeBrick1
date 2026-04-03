@@ -716,6 +716,7 @@ html {
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden; /* prevent scrolling at this level */
 }
 
 /* Header */
@@ -845,9 +846,8 @@ html {
   margin: 1rem auto;
   aspect-ratio: 1 / 1;
   animation: canvas-appear 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-  /* Make canvas sticky within its scrolling container */
-  position: sticky;
-  top: 1rem; /* stick near top when scrolling */
+  /* Canvas is static, always visible - no sticky needed */
+  position: relative;
   align-self: center; /* remain horizontally centered */
   z-index: 10; /* ensure it stays above other content */
   border-radius: 4px;
@@ -2177,7 +2177,7 @@ html {
   min-width: 0;
   height: 100%; /* match parent height */
   min-height: 0;
-  overflow-y: auto; /* allow scrolling within workspace */
+  overflow-y: hidden; /* no scroll in stage workspace itself */
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -2210,8 +2210,10 @@ html {
 .control-panel {
   flex: 3;
   min-width: 0;
-  max-height: 100vh;
-  overflow: auto; /* allow scrolling only inside control panel */
+  height: 100%; /* match parent container height */
+  max-height: none; /* remove max-height constraint */
+  overflow-y: auto; /* allow scrolling only inside control panel */
+  overflow-x: hidden;
   scrollbar-gutter: stable;
 }
 
