@@ -847,7 +847,7 @@ html {
   animation: canvas-appear 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   /* Keep the photo-frame sticky within the viewport so background + LEGO don't move when right panel scrolls */
   position: sticky;
-  top: 16px; /* adjust if header is taller */
+  top: 80px; /* align with thumbnails scroll area */
   align-self: center; /* remain horizontally centered */
   z-index: 5;
 }
@@ -3190,7 +3190,11 @@ html {
   flex: 1;
   min-height: 0;
   overflow: auto;
-  max-height: none; /* bỏ giới hạn cứng */
+  /* hạn chế viewport của vùng thumbnails để dễ so sánh với khung ảnh */
+  max-height: calc(100vh - 240px);
+  padding-top: 80px;
+  padding-bottom: 80px;
+  box-sizing: border-box;
 }
 /* ===== Sample Gallery ===== */
 .sample-gallery {
