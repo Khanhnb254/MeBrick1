@@ -64,6 +64,9 @@ export function useLegoCharacter({
     const isFemaleHair = String(hairSrc || "").includes("/images/lego/hair/nu/");
     const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
     const isMaleHair6 = hairSrc === "/images/lego/hair/nam/tocnam6.png";
+    if (isMaleHair9) {
+      return 0;
+    }
     const isFemaleFace1Or2Or4 =
       faceSrc === "/images/lego/faces/faceswoman/02.png" ||
       faceSrc === "/images/lego/faces/faceswoman/06.png" ||
