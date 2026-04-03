@@ -196,7 +196,7 @@ html {
   background-position: center;
   /* Ensure canvas is always square */
   aspect-ratio: 1 / 1;
-  overflow: hidden;
+  overflow: visible;
   touch-action: none;
   transition:
     width 0.25s ease,

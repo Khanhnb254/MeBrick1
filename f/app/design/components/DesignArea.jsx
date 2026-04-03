@@ -72,7 +72,7 @@ export default function DesignArea({
   };
 
   return (
-    // ✅ WRAPPER = kích thước visual sau scale, overflow hidden clip phần DOM thừa
+    // ✅ WRAPPER = kích thước visual sau scale, overflow visible để slot-zones và background không bị cắt
     <div
       style={{
         width: `${canvasSize.width * canvasScale}px`,
@@ -80,7 +80,7 @@ export default function DesignArea({
         position: "relative",
         margin: "0 auto",
         boxSizing: "border-box",
-        overflow: "hidden",
+        overflow: "visible",
         flexShrink: 0,
       }}
     >
