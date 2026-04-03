@@ -1927,6 +1927,7 @@ html {
   padding: 10px;
   max-height: 320px;
   overflow: auto;
+  margin-top: 16px; /* ensure it appears below the form */
 }
 .mb-layercard {
   border-radius: 16px;
