@@ -1,7 +1,7 @@
 export const BACKGROUND_OPTIONS = [
 
   // ===== HAPPY BIRTHDAY =====
-  { id: "bg-light-gray", name: "Happy Birthday ver 1", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY.png", backgroundSize: "cover", slots: [
+  { id: "bg-light-gray", name: "Happy Birthday ver 1", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY.png", backgroundSize: "contain", slots: [
     { id: "s1", x: 53,  y: 387, w: 177, h: 102 },
   ], textFields: [
     { id: "tf-name",      x: 266, y: 158, w: 265, h: 18, placeholder: "Nhập tên..." },
@@ -9,7 +9,7 @@ export const BACKGROUND_OPTIONS = [
     { id: "tf-hobby-box", x: 266, y: 233, w: 247, h: 18, placeholder: "Nhập thông tin..." },
     { id: "tf-hobby",     x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
   ] },
-  { id: "bg-ocean", name: "Happy Birthday ver 2", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY2.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY2.png", backgroundSize: "cover", slots: [
+  { id: "bg-ocean", name: "Happy Birthday ver 2", category: "Happy Birthday", type: "pattern", value: "url('/images/hero/products/HAPPYBIRTHDAY2.png')", thumbnail: "/images/hero/products/HAPPYBIRTHDAY2.png", backgroundSize: "contain", slots: [
     { id: "s0", x: 54,  y: 142, w: 120, h: 119, rotate: -18 },
     { id: "s1", x: 178, y: 172, w: 115, h: 113, rotate: 10 },
   ], textFields: [
@@ -17,7 +17,7 @@ export const BACKGROUND_OPTIONS = [
   ] },
 
   // ===== HAPPY TOGETHER =====
-  { id: "bg-sunset", name: "Happy Together ver 1", category: "Happy Together", type: "pattern", value: "url('/images/hero/products/HAPPYTOGETHER.png')", thumbnail: "/images/hero/products/HAPPYTOGETHER.png", backgroundSize: "cover", slots: [
+  { id: "bg-sunset", name: "Happy Together ver 1", category: "Happy Together", type: "pattern", value: "url('/images/hero/products/HAPPYTOGETHER.png')", thumbnail: "/images/hero/products/HAPPYTOGETHER.png", backgroundSize: "contain", slots: [
     { id: "s4", x: 42,  y: 385, w: 82,  h: 50 },
     { id: "s0", x: 297, y: 125, w: 105, h: 99 },
     { id: "s1", x: 400, y: 121, w: 95, h: 102 },
@@ -319,22 +319,22 @@ export const BACKGROUND_OPTIONS = [
       type: "pattern",
       value: `url('/samples/sample${n}.png')`,
       thumbnail: `/samples/sample${n}.png`,
-      backgroundSize: "cover",
+      backgroundSize: "contain",
       slots: slotsMap[n] ?? [],
       ...(textFieldsMap[n] ? { textFields: textFieldsMap[n] } : { textFields: defaultTextFields }),
     };
   }).filter(Boolean),
 
   // ===== 8 NỀN MỚI =====
-  { id: "bg-new-52", name: "Happy Anniversary ver 5", category: "Happy Anniversary", type: "pattern", value: "url('/samples/52.jpg')", thumbnail: "/samples/52.jpg", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-53", name: "Happy Anniversary ver 6", category: "Happy Anniversary", type: "pattern", value: "url('/samples/53.jpg')", thumbnail: "/samples/53.jpg", backgroundSize: "cover", slots: [
+  { id: "bg-new-52", name: "Happy Anniversary ver 5", category: "Happy Anniversary", type: "pattern", value: "url('/samples/52.jpg')", thumbnail: "/samples/52.jpg", backgroundSize: "contain", slots: [], textFields: [] },
+  { id: "bg-new-53", name: "Happy Anniversary ver 6", category: "Happy Anniversary", type: "pattern", value: "url('/samples/53.jpg')", thumbnail: "/samples/53.jpg", backgroundSize: "contain", slots: [
     { id: "s1", x: 35,  y: 233, w: 70, h: 70, rotate: -15 },
     { id: "s2", x: 105, y: 251, w: 62, h: 62, rotate: 9 },
     { id: "s3", x: 171, y: 247, w: 67, h: 62, rotate: -9 },
   ], textFields: [
     { id: "tf-hobby", x: 293, y: 408, w: 247, h: 18, placeholder: "Nhập thông tin..." },
   ] },
-  { id: "bg-new-54", name: "Special Day ver 22",      category: "Special Day",        type: "pattern", value: "url('/samples/54.jpg')", thumbnail: "/samples/54.jpg", backgroundSize: "cover", slots: [
+  { id: "bg-new-54", name: "Special Day ver 22",      category: "Special Day",        type: "pattern", value: "url('/samples/54.jpg')", thumbnail: "/samples/54.jpg", backgroundSize: "contain", slots: [
     { id: "s1", x: 44,  y: 143, w: 97, h: 93 },
     { id: "s2", x: 162, y: 143, w: 97, h: 93 },
     { id: "s3", x: 280, y: 143, w: 97, h: 93 },
@@ -342,26 +342,28 @@ export const BACKGROUND_OPTIONS = [
   ], textFields: [
     { id: "tf-hobby", x: 293, y: 398, w: 247, h: 18, placeholder: "Nhập thông tin..." },
   ] },
-  { id: "bg-new-57", name: "Happy Birthday ver 13",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/57.jpg')", thumbnail: "/samples/57.jpg", backgroundSize: "cover", slots: [
+  { id: "bg-new-57", name: "Happy Birthday ver 13",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/57.jpg')", thumbnail: "/samples/57.jpg", backgroundSize: "contain", slots: [
     { id: "s1", x: 29,  y: 234, w: 78, h: 75, rotate: -18 },
     { id: "s2", x: 107, y: 243, w: 75, h: 72, rotate: 2 },
     { id: "s3", x: 183, y: 229, w: 75, h: 72, rotate: -8 },
   ], textFields: [] },
-  { id: "bg-new-58", name: "Happy Birthday ver 14",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/58.jpg')", thumbnail: "/samples/58.jpg", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-59", name: "Happy Birthday ver 15",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/59.jpg')", thumbnail: "/samples/59.jpg", backgroundSize: "cover", slots: [
+  { id: "bg-new-58", name: "Happy Birthday ver 14",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/58.jpg')", thumbnail: "/samples/58.jpg", backgroundSize: "contain", slots: [], textFields: [] },
+  { id: "bg-new-59", name: "Happy Birthday ver 15",   category: "Happy Birthday",     type: "pattern", value: "url('/samples/59.jpg')", thumbnail: "/samples/59.jpg", backgroundSize: "contain", slots: [
     { id: "s1", x: 90,  y: 132, w: 98, h: 94, rotate: -10 },
     { id: "s2", x: 224, y: 118, w: 98, h: 98, rotate: 0 },
     { id: "s3", x: 349, y: 130, w: 98, h: 90, rotate: 5 },
   ], textFields: [] },
-  { id: "bg-new-61", name: "Happy Anniversary ver 3", category: "Happy Anniversary",  type: "pattern", value: "url('/samples/61.jpg')", thumbnail: "/samples/61.jpg", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-62", name: "Special Day ver 23", category: "Special Day", type: "pattern", value: "url('/samples/62.png')", thumbnail: "/samples/62.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-63", name: "Special Day ver 24", category: "Special Day", type: "pattern", value: "url('/samples/63.png')", thumbnail: "/samples/63.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-64", name: "Special Day ver 25", category: "Special Day", type: "pattern", value: "url('/samples/64.png')", thumbnail: "/samples/64.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-65", name: "Special Day ver 26", category: "Special Day", type: "pattern", value: "url('/samples/65.png')", thumbnail: "/samples/65.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-66", name: "Special Day ver 27", category: "Special Day", type: "pattern", value: "url('/samples/66.png')", thumbnail: "/samples/66.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-67", name: "Special Day ver 28", category: "Special Day", type: "pattern", value: "url('/samples/67.png')", thumbnail: "/samples/67.png", backgroundSize: "cover", slots: [], textFields: [] },
-  { id: "bg-new-moi", name: "Happy Together ver 11",  category: "Happy Together",     type: "pattern", value: "url('/samples/moi.jpg')", thumbnail: "/samples/moi.jpg", backgroundSize: "cover", slots: [
+  { id: "bg-new-61", name: "Happy Anniversary ver 3", category: "Happy Anniversary",  type: "pattern", value: "url('/samples/61.jpg')", thumbnail: "/samples/61.jpg", backgroundSize: "contain", slots: [], textFields: [] },
+  { id: "bg-new-62", name: "Special Day ver 23", category: "Special Day", type: "pattern", value: "url('/samples/62.png')", thumbnail: "/samples/62.png", backgroundSize: "contain", slots: [], textFields: [] },
+  { id: "bg-new-63", name: "Special Day ver 24", category: "Special Day", type: "pattern", value: "url('/samples/63.png')", thumbnail: "/samples/63.png", backgroundSize: "contain", slots: [], textFields: [] },
+  { id: "bg-new-64", name: "Special Day ver 25", category: "Special Day", type: "pattern", value: "url('/samples/64.png')", thumbnail: "/samples/64.png", backgroundSize: "contain", slots: [], textFields: [] },
+  { id: "bg-new-65", name: "Special Day ver 26", category: "Special Day", type: "pattern", value: "url('/samples/65.png')", thumbnail: "/samples/65.png", backgroundSize: "contain", slots: [], textFields: [] },
+  { id: "bg-new-66", name: "Special Day ver 27", category: "Special Day", type: "pattern", value: "url('/samples/66.png')", thumbnail: "/samples/66.png", backgroundSize: "contain", slots: [], textFields: [] },
+  { id: "bg-new-67", name: "Special Day ver 28", category: "Special Day", type: "pattern", value: "url('/samples/67.png')", thumbnail: "/samples/67.png", backgroundSize: "contain", slots: [], textFields: [] },
+  { id: "bg-new-moi", name: "Happy Together ver 11",  category: "Happy Together",     type: "pattern", value: "url('/samples/moi.jpg')", thumbnail: "/samples/moi.jpg", backgroundSize: "contain", slots: [
     { id: "s1", x: 72,  y: 98, w: 116, h: 117 },
     { id: "s2", x: 110, y: 234, w: 117, h: 108, rotate: 6 },
   ], textFields: [] },
 ];
+
+
