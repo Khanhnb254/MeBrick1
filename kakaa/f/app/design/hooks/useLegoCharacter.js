@@ -42,6 +42,14 @@ export function useLegoCharacter({
     const obj = (list || []).find((x) => x?.src === src);
     return Number(obj?.price || 0);
   };
+  const FACE_GLOBAL_X = -5;
+  const FACE_GLOBAL_Y = -4;
+  const HAIR_GLOBAL_X = -4;
+  const HAIR_GLOBAL_Y = -4;
+  const getFemaleFaceLiftOffset = (faceSrc) =>
+    String(faceSrc || "").includes("/images/lego/faces/faceswoman/") ? FACE_GLOBAL_Y : 0;
+  const getFemaleFaceXOffset = (faceSrc) =>
+    faceSrc ? FACE_GLOBAL_X : 0;
   const getHairLiftOffset = (faceSrc, hairSrc) => {
     const isFace5Or6 =
       faceSrc === "/images/lego/faces/15.png" ||
@@ -52,6 +60,20 @@ export function useLegoCharacter({
     const isFace5 = faceSrc === "/images/lego/faces/15.png";
     const isFemaleHair1 = hairSrc === "/images/lego/hair/nu/tocnu1.png";
     const isFemaleHair2 = hairSrc === "/images/lego/hair/nu/tocnu2.png";
+    const isFemaleHair = String(hairSrc || "").includes("/images/lego/hair/nu/");
+    const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
+    const isMaleHair6 = hairSrc === "/images/lego/hair/nam/tocnam6.png";
+    // Prevent any face-driven lift for Tóc Nam 9
+    if (isMaleHair9) {
+      return 0;
+    }
+    const isFemaleFace1Or2Or4 =
+      faceSrc === "/images/lego/faces/faceswoman/02.png" ||
+      faceSrc === "/images/lego/faces/faceswoman/06.png" ||
+      faceSrc === "/images/lego/faces/faceswoman/16.png";
+    const isFemaleFace3Or5 =
+      faceSrc === "/images/lego/faces/faceswoman/10.png" ||
+      faceSrc === "/images/lego/faces/faceswoman/45.png";
 
     // Specific: when selected face matnu6, lift Tóc Nữ 1 up by 3px and Tóc Nữ 2 up by 2px
     if (faceSrc === "/images/lego/faces/faceswoman/matnu6.png" && hairSrc === "/images/lego/hair/nu/tocnu1.png") {
@@ -66,7 +88,8 @@ export function useLegoCharacter({
       return -1.2;
     }
 
-    // Special-case: when hair is Tóc Nữ 5 and face is one of (15,34,faceswoman/10,faceswoman/45)
+    // Special case: when hair is Tóc Nữ 5 and face is one of (15,34,faceswoman/10,faceswoman/45)
+    // push hair down by 0.9px to compensate visual overlap
     const isTargetFaceForTocnu5 =
       faceSrc === "/images/lego/faces/15.png" ||
       faceSrc === "/images/lego/faces/34.png" ||
@@ -76,10 +99,36 @@ export function useLegoCharacter({
       return 0.9;
     }
     if (isFace5Or6 && isHair2Or4) {
-      return -2;
+      return -1;
     }
     if (isFace5 && (isFemaleHair1 || isFemaleHair2)) {
       return -2;
+    }
+    if (isFemaleFace1Or2Or4 && isFemaleHair2) {
+      return -1.5;
+    }
+
+    // When female face is 02/06/16, lift Tóc Nữ 1 up by 2px
+    if (isFemaleFace1Or2Or4 && isFemaleHair1) {
+      return -2;
+    }
+    // If hair is female 1 and face is NOT 3 or 5, shift hair up 1.5px
+    if (isFemaleHair1 && !isFemaleFace3Or5) {
+      return -1.5;
+    }
+    // If hair is female 2 and face is NOT 3 or 5, shift up 1px (legacy)
+    if (isFemaleHair2 && !isFemaleFace3Or5) {
+      return -1;
+    }
+    // when female face 3 or 5 with male hair 6, push hair down 1px
+    if (isFemaleFace3Or5 && isMaleHair6) {
+      return 1;
+    }
+    if (isFemaleFace3Or5 && isMaleHair9) {
+      return 1;
+    }
+    if (isHair2Or4 && faceSrc) {
+      return -1;
     }
     if (
       faceSrc === "/images/lego/faces/faceswoman/10.png" ||
@@ -243,16 +292,21 @@ export function useLegoCharacter({
       const sizeScale = hairObj?.sizeScale || 1;
       const heightAdjust = Number(hairObj?.heightAdjust || 0);
       const hairRotation = Number(hairObj?.rotation || 0);
-      const hairSizeBoost = getHairSizeBoostForFace(character.face);
-      const hairW = Math.max(1, pos.width * sizeScale + hairSizeBoost);
-      const hairH = Math.max(1, pos.height * sizeScale + heightAdjust + hairSizeBoost);
+      const hairSizeBoost = getHairSizeBoostForFace ? getHairSizeBoostForFace(character.face) : 0;
+      const hairSizeMultiplier = 1;
+      const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
+      const faceShiftX = typeof getHairFaceXOffset === 'function' ? getHairFaceXOffset(character.face, character.hair) : 0;
+      const hairW = Math.max(1, Math.round(Math.round(pos.width * sizeScale) * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
+      const hairH = Math.max(1, Math.round(Math.round(pos.height * sizeScale) * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
+      const computedHairY = pos.y + offsetYExtra + faceLiftY + HAIR_GLOBAL_Y;
+
       result.push({
         id: `${character.id}-hair`,
         type: "lego",
         name: "Tóc",
         src: character.hair,
-        x: pos.x + (pos.width - hairW) / 2 + offsetXExtra,
-        y: pos.y + offsetYExtra + faceLiftY,
+        x: pos.x + (pos.width - hairW) / 2 + offsetXExtra + faceShiftX,
+        y: computedHairY,
         width: hairW,
         height: hairH,
         rotation: hairRotation,
@@ -362,12 +416,12 @@ export function useLegoCharacter({
               const heightAdjust = Number(hairObj?.heightAdjust || 0);
               const hairRotation = Number(hairObj?.rotation || 0);
               const hairSizeBoost = getHairSizeBoostForFace(movedChar.face);
-              const hairW = Math.max(1, pos.width * sizeScale + hairSizeBoost);
-              const hairH = Math.max(1, pos.height * sizeScale + heightAdjust + hairSizeBoost);
+              const hairW = Math.max(1, Math.round(pos.width * sizeScale) + hairSizeBoost);
+              const hairH = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust + hairSizeBoost);
               return {
                 ...sticker,
                 x: pos.x + (pos.width - hairW) / 2 + offsetXExtra,
-                y: pos.y + offsetYExtra + faceLiftY,
+                y: pos.y + offsetYExtra + faceLiftY + HAIR_GLOBAL_Y,
                 width: hairW,
                 height: hairH,
                 rotation: hairRotation,
@@ -379,8 +433,8 @@ export function useLegoCharacter({
               const widthAdjust = Number(faceObj?.widthAdjust || 0);
               const heightAdjust = Number(faceObj?.heightAdjust || 0);
               const sizeScale = Number(faceObj?.sizeScale || 1);
-              const faceWidth = Math.max(1, pos.width * sizeScale + widthAdjust);
-              const faceHeight = Math.max(1, pos.height * sizeScale + heightAdjust);
+              const faceWidth = Math.max(1, Math.round(pos.width * sizeScale) + widthAdjust);
+              const faceHeight = Math.max(1, Math.round(pos.height * sizeScale) + heightAdjust);
               const faceX = pos.x + (pos.width - faceWidth) / 2 + (Number(faceObj?.offsetXExtra || 0));
               // debug when updating existing face sticker during move
               if (sticker.src === "/images/lego/faces/faceswoman/06.png") {
@@ -576,12 +630,12 @@ export function useLegoCharacter({
         const hairHeightAdjust = Number(hairObj?.heightAdjust || 0);
         const hairRotation = Number(hairObj?.rotation || 0);
         const hairSizeBoost = getHairSizeBoostForFace(faceSrc);
-        const hairW = Math.max(1, pos.width * hairSizeScale + hairSizeBoost);
-        const hairH = Math.max(1, pos.height * hairSizeScale + hairHeightAdjust + hairSizeBoost);
+        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale) + hairSizeBoost);
+        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale) + hairHeightAdjust + hairSizeBoost);
         return {
           ...s,
           x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra,
-          y: pos.y + hairOffsetYExtra + getHairLiftOffset(faceSrc, s.src),
+          y: pos.y + hairOffsetYExtra + getHairLiftOffset(faceSrc, s.src) + HAIR_GLOBAL_Y,
           width: hairW,
           height: hairH,
           rotation: hairRotation,
@@ -631,15 +685,15 @@ export function useLegoCharacter({
         const hairHeightAdjust = Number(hairObj?.heightAdjust || 0);
         const hairRotation = Number(hairObj?.rotation || 0);
         const hairSizeBoost = getHairSizeBoostForFace(character.face);
-        const hairW = Math.max(1, pos.width * hairSizeScale + hairSizeBoost);
-        const hairH = Math.max(1, pos.height * hairSizeScale + hairHeightAdjust + hairSizeBoost);
+        const hairW = Math.max(1, Math.round(pos.width * hairSizeScale) + hairSizeBoost);
+        const hairH = Math.max(1, Math.round(pos.height * hairSizeScale) + hairHeightAdjust + hairSizeBoost);
         filtered.push({
           id: `${selectedCharacterId}-hair`,
           type: "lego",
           name: "Tóc",
           src: hairSrc,
           x: pos.x + (pos.width - hairW) / 2 + hairOffsetXExtra,
-          y: pos.y + hairOffsetYExtra + faceLiftY,
+          y: pos.y + hairOffsetYExtra + faceLiftY + HAIR_GLOBAL_Y,
           width: hairW,
           height: hairH,
           rotation: hairRotation,
@@ -679,4 +733,5 @@ export function useLegoCharacter({
     handleDeleteCharacter,
   };
 }
+
 
