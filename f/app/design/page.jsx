@@ -66,7 +66,7 @@ function DesignPageInner() {
   const [showSamples, setShowSamples] = useState(false);
   const pendingLegoRebuildRef = useRef(false);
 
-  const [selectedCategory, setSelectedCategory] = useState("characters");
+  const [selectedCategory, setSelectedCategory] = useState("lego-colors");
   const [searchQuery, setSearchQuery] = useState("");
 
   const [selectedFrame, setSelectedFrame] = useState(null);

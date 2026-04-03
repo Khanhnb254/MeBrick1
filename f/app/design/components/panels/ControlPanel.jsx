@@ -389,7 +389,11 @@ export default function ControlPanel(props) {
                       className={`mb-tab ${
                         selectedCategory === t.key ? "is-active" : ""
                       }`}
-                      onClick={() => setSelectedCategory(t.key)}>
+                      onClick={() => {
+                        setSelectedId?.(null);
+                        setActivePanel?.(null);
+                        setSelectedCategory(t.key);
+                      }}>
                       {t.label}
                     </button>
                   ))}
