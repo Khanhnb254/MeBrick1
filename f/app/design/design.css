@@ -2214,8 +2214,8 @@ html {
 .control-panel {
   flex: 3;
   min-width: 0;
-  height: 100%; /* match parent container height */
-  max-height: none; /* remove max-height constraint */
+  display: flex;
+  flex-direction: column;
   overflow-y: auto; /* allow scrolling only inside control panel */
   overflow-x: hidden;
   scrollbar-gutter: stable;
