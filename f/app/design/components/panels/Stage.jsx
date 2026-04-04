@@ -617,10 +617,21 @@ export default function Stage({
                       .filter((s) => s.characterId === char.id)
                       .sort((a, b) => (a.zIndex || 0) - (b.zIndex || 0))
                       .map((part) => {
+                        const isOutfit =
+                          part.part === "torso" && part.isBasePart;
                         return (
                           <div
                             key={part.id}
                             className="lego-part"
+                            onClick={
+                              isOutfit
+                                ? (e) => {
+                                    e.stopPropagation();
+                                    setOutfitSelectorCharId(char.id);
+                                    setShowOutfitSelector(true);
+                                  }
+                                : undefined
+                            }
                             style={{
                               left: (part.x || 0) - (char.x || 0),
                               top: (part.y || 0) - (char.y || 0),
@@ -634,8 +645,8 @@ export default function Stage({
                               backgroundRepeat: "no-repeat",
                               position: "absolute",
                               zIndex: Number(part.zIndex ?? 0),
-                              pointerEvents: "none",
-                              cursor: "default",
+                              pointerEvents: isOutfit ? "auto" : "none",
+                              cursor: isOutfit ? "pointer" : "default",
                             }}
                           />
                         );
@@ -816,6 +827,320 @@ export default function Stage({
             style={{ display: "none" }}
             onChange={handleSlotFileChange}
           />
+
+          {/* Outfit Selector Modal */}
+          {showOutfitSelector && (
+            <div
+              style={{
+                position: "fixed",
+                inset: 0,
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                zIndex: 999999,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onClick={() => setShowOutfitSelector(false)}>
+              <div
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "16px",
+                  padding: "24px",
+                  maxWidth: "500px",
+                  width: "90%",
+                  maxHeight: "80vh",
+                  overflow: "auto",
+                }}
+                onClick={(e) => e.stopPropagation()}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: "20px",
+                  }}>
+                  <h3 style={{ margin: 0, fontSize: "20px", fontWeight: 600 }}>
+                    Chọn màu áo
+                  </h3>
+                  <div style={{ display: "flex", gap: "8px" }}>
+                    <button
+                      onClick={() => {
+                        // Random outfit
+                        const outfits = LEGO_CONFIG.legoColors || [];
+                        if (outfits.length > 0) {
+                          const randomOutfit =
+                            outfits[Math.floor(Math.random() * outfits.length)];
+                          updateCharacterOutfit(
+                            randomOutfit.src,
+                            outfitSelectorCharId,
+                            randomOutfit.price,
+                          );
+                        }
+                        // Random pants
+                        const pantsList = LEGO_CONFIG.legoPantsColors || [];
+                        if (pantsList.length > 0) {
+                          const randomPants =
+                            pantsList[
+                              Math.floor(Math.random() * pantsList.length)
+                            ];
+                          updateCharacterPants(
+                            randomPants.src,
+                            outfitSelectorCharId,
+                            randomPants.price,
+                          );
+                        }
+                        setShowOutfitSelector(false);
+                      }}
+                      style={{
+                        padding: "8px 16px",
+                        backgroundColor: "#10B981",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "8px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                        fontWeight: "600",
+                        transition: "background-color 0.2s",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = "#059669";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = "#10B981";
+                      }}>
+                      🎲 Ngẫu nhiên
+                    </button>
+                    <button
+                      onClick={() => setShowOutfitSelector(false)}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        fontSize: "24px",
+                        cursor: "pointer",
+                        padding: "0",
+                        width: "32px",
+                        height: "32px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}>
+                      ×
+                    </button>
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
+                    gap: "12px",
+                  }}>
+                  {(LEGO_CONFIG.legoColors || []).map((outfit) => (
+                    <button
+                      key={outfit.id}
+                      onClick={() => {
+                        updateCharacterOutfit(
+                          outfit.src,
+                          outfitSelectorCharId,
+                          outfit.price,
+                        );
+                        setShowOutfitSelector(false);
+                        // Chuyển sang chọn quần
+                        setPantsSelectorCharId(outfitSelectorCharId);
+                        setShowPantsSelector(true);
+                      }}
+                      style={{
+                        border: "2px solid #e5e7eb",
+                        borderRadius: "12px",
+                        padding: "8px",
+                        background: "white",
+                        cursor: "pointer",
+                        transition: "all 0.2s",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "#3b82f6";
+                        e.currentTarget.style.transform = "scale(1.05)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = "#e5e7eb";
+                        e.currentTarget.style.transform = "scale(1)";
+                      }}>
+                      <img
+                        src={outfit.thumbnail}
+                        alt={outfit.name}
+                        style={{
+                          width: "60px",
+                          height: "60px",
+                          objectFit: "contain",
+                        }}
+                      />
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          textAlign: "center",
+                          color: "#374151",
+                        }}>
+                        {outfit.name}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Pants Selector Modal */}
+          {showPantsSelector && (
+            <div
+              style={{
+                position: "fixed",
+                inset: 0,
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                zIndex: 999999,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onClick={() => setShowPantsSelector(false)}>
+              <div
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "16px",
+                  padding: "24px",
+                  maxWidth: "500px",
+                  width: "90%",
+                  maxHeight: "80vh",
+                  overflow: "auto",
+                }}
+                onClick={(e) => e.stopPropagation()}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: "20px",
+                  }}>
+                  <h3 style={{ margin: 0, fontSize: "20px", fontWeight: 600 }}>
+                    Chọn màu quần
+                  </h3>
+                  <div style={{ display: "flex", gap: "8px" }}>
+                    <button
+                      onClick={() => {
+                        // Random pants only
+                        const pantsList = LEGO_CONFIG.legoPantsColors || [];
+                        if (pantsList.length > 0) {
+                          const randomPants =
+                            pantsList[
+                              Math.floor(Math.random() * pantsList.length)
+                            ];
+                          updateCharacterPants(
+                            randomPants.src,
+                            pantsSelectorCharId,
+                            randomPants.price,
+                          );
+                        }
+                        setShowPantsSelector(false);
+                      }}
+                      style={{
+                        padding: "8px 16px",
+                        backgroundColor: "#10B981",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "8px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                        fontWeight: "600",
+                        transition: "background-color 0.2s",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = "#059669";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = "#10B981";
+                      }}>
+                      🎲 Ngẫu nhiên
+                    </button>
+                    <button
+                      onClick={() => setShowPantsSelector(false)}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        fontSize: "24px",
+                        cursor: "pointer",
+                        padding: "0",
+                        width: "32px",
+                        height: "32px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}>
+                      ×
+                    </button>
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
+                    gap: "12px",
+                  }}>
+                  {(LEGO_CONFIG.legoPantsColors || []).map((pants) => (
+                    <button
+                      key={pants.id}
+                      onClick={() => {
+                        updateCharacterPants(
+                          pants.src,
+                          pantsSelectorCharId,
+                          pants.price,
+                        );
+                        setShowPantsSelector(false);
+                      }}
+                      style={{
+                        border: "2px solid #e5e7eb",
+                        borderRadius: "12px",
+                        padding: "8px",
+                        background: "white",
+                        cursor: "pointer",
+                        transition: "all 0.2s",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "#3b82f6";
+                        e.currentTarget.style.transform = "scale(1.05)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = "#e5e7eb";
+                        e.currentTarget.style.transform = "scale(1)";
+                      }}>
+                      <img
+                        src={pants.thumbnail}
+                        alt={pants.name}
+                        style={{
+                          width: "60px",
+                          height: "60px",
+                          objectFit: "contain",
+                        }}
+                      />
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          textAlign: "center",
+                          color: "#374151",
+                        }}>
+                        {pants.name}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
