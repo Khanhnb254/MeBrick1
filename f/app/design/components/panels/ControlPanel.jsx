@@ -13,6 +13,8 @@ import {
   FiType,
   FiImage,
   FiUpload,
+  FiChevronDown,
+  FiChevronUp,
 } from "react-icons/fi";
 
 import TextEditorPanel from "./TextEditorPanel";
@@ -111,6 +113,8 @@ export default function ControlPanel(props) {
 
   // ✅ State cho background categories
   const [selectedBgTab, setSelectedBgTab] = useState("Tất cả");
+  // ✅ State cho toggle print info form
+  const [showPrintInfo, setShowPrintInfo] = useState(false);
   const bgTabs = [
     "Tất cả",
     "Happy Birthday",
@@ -490,67 +494,93 @@ export default function ControlPanel(props) {
                   />
 
                   {/* ===== Print information form (Step 3) ===== */}
-                  <div style={{ marginTop: 12, marginBottom: 6 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: '#333' }}>2. NHẬP THÔNG TIN IN ẤN</div>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setPrintName?.("");
-                          setPrintTitle?.("");
-                          setPrintMessage?.("");
-                          setPrintDate?.("");
-                        }}
-                        style={{ background: "transparent", border: "none", color: "#888", cursor: "pointer" }}>
-                        XÓA TẤT CẢ
-                      </button>
-                    </div>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowPrintInfo(!showPrintInfo)}
+                    style={{
+                      width: "100%",
+                      marginTop: 12,
+                      padding: "12px 16px",
+                      background: showPrintInfo ? "#1e40af" : "#fff",
+                      color: showPrintInfo ? "#fff" : "#333",
+                      border: "1px solid #ddd",
+                      borderRadius: 8,
+                      fontSize: 13,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      transition: "all 0.2s",
+                    }}>
+                    <span>2. NHẬP THÔNG TIN IN ẤN</span>
+                    {showPrintInfo ? <FiChevronUp /> : <FiChevronDown />}
+                  </button>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 160px", gap: 8 }}>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>TÊN <span style={{ color: '#d00' }}>*</span></label>
-                      <input
-                        type="text"
-                        value={printName}
-                        onChange={(e) => setPrintName?.(e.target.value)}
-                        placeholder=""
-                        style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
-                      />
-                    </div>
+                  {showPrintInfo && (
+                    <>
+                      <div style={{ marginTop: 12, marginBottom: 6 }}>
+                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setPrintName?.("");
+                              setPrintTitle?.("");
+                              setPrintMessage?.("");
+                              setPrintDate?.("");
+                            }}
+                            style={{ background: "transparent", border: "none", color: "#888", cursor: "pointer", fontSize: 12 }}>
+                            XÓA TẤT CẢ
+                          </button>
+                        </div>
+                      </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>NGÀY</label>
-                      <input
-                        type="date"
-                        value={printDate}
-                        onChange={(e) => setPrintDate?.(e.target.value)}
-                        style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
-                      />
-                    </div>
-                  </div>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 160px", gap: 8 }}>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                          <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>TÊN <span style={{ color: '#d00' }}>*</span></label>
+                          <input
+                            type="text"
+                            value={printName}
+                            onChange={(e) => setPrintName?.(e.target.value)}
+                            placeholder=""
+                            style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
+                          />
+                        </div>
 
-                  <div style={{ marginTop: 8 }}>
-                    <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>TIÊU ĐỀ</label>
-                    <input
-                      type="text"
-                      value={printTitle}
-                      onChange={(e) => setPrintTitle?.(e.target.value)}
-                      placeholder=""
-                      style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%" }}
-                    />
-                  </div>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                          <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>NGÀY</label>
+                          <input
+                            type="date"
+                            value={printDate}
+                            onChange={(e) => setPrintDate?.(e.target.value)}
+                            style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13 }}
+                          />
+                        </div>
+                      </div>
 
-                  <div style={{ marginTop: 8 }}>
-                    <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>NGÀNH / TIÊU ĐỀ / LỜI CHÚC</label>
-                    <textarea
-                      value={printMessage}
-                      onChange={(e) => setPrintMessage?.(e.target.value)}
-                      placeholder=""
-                      rows={3}
-                      style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%", resize: "vertical" }}
-                    />
-                  </div>
+                      <div style={{ marginTop: 8 }}>
+                        <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>TIÊU ĐỀ</label>
+                        <input
+                          type="text"
+                          value={printTitle}
+                          onChange={(e) => setPrintTitle?.(e.target.value)}
+                          placeholder=""
+                          style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%" }}
+                        />
+                      </div>
+
+                      <div style={{ marginTop: 8 }}>
+                        <label style={{ fontSize: 12, color: '#666', marginBottom: 6 }}>NGÀNH / TIÊU ĐỀ / LỜI CHÚC</label>
+                        <textarea
+                          value={printMessage}
+                          onChange={(e) => setPrintMessage?.(e.target.value)}
+                          placeholder=""
+                          rows={3}
+                          style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%", resize: "vertical" }}
+                        />
+                      </div>
+                    </>
+                  )}
 
                 {selectedCharacterId && (
                   <button
