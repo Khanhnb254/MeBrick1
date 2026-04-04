@@ -76,10 +76,13 @@ export function useLegoCharacter({
       }
       const isMaleHair1 = hairSrc === "/images/lego/hair/nam/tocnam1.png";
       if (isMaleHair1 || isMaleHair9) {
-        return -4;
+        return -5;
       }
       const isMaleHairOther = String(hairSrc || "").includes("/images/lego/hair/nam/");
-      if (isFemaleHair6 || isMaleHairOther) {
+      if (isMaleHairOther) {
+        return -3;
+      }
+      if (isFemaleHair6) {
         return -2;
       }
       return -1.2;
