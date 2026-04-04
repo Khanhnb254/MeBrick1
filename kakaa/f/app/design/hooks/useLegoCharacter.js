@@ -180,6 +180,16 @@ export function useLegoCharacter({
     return 1;
   };
 
+  const getHairFaceXOffset = (faceSrc, hairSrc) => {
+    // Shift Tóc Nam 9 left 1px when with face 6
+    const isFemaleFace6 = faceSrc === "/images/lego/faces/faceswoman/matnu6.png";
+    const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
+    if (isFemaleFace6 && isMaleHair9) {
+      return -1;
+    }
+    return 0;
+  };
+
   const calculateExactPosition = (character, partType) => {
     const config = partConfig[partType];
     const assembly = assemblyConfig;
