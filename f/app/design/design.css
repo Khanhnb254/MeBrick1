@@ -2711,7 +2711,7 @@ html {
     grid-template-columns: minmax(0, 1fr) minmax(320px, 360px);
     gap: 16px;
     align-items: start;
-    height: calc(100vh - 120px);
+    min-height: calc(100vh - 120px);
   }
 
   .design-layout {
@@ -2750,8 +2750,8 @@ html {
     min-width: 0;
     max-width: 100%;
     position: relative;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
+    overflow: visible;
     display: flex;
     flex-direction: column;
   }
@@ -2759,8 +2759,8 @@ html {
   .control-panel {
     flex: 3;
     min-width: 0;
-    height: 100%;
-    overflow-y: auto;
+    min-height: 100%;
+    overflow-y: visible;
     scrollbar-gutter: stable;
   }
 
