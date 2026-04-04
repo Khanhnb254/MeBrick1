@@ -1925,7 +1925,7 @@ html {
   border: 1px solid rgba(17, 24, 39, 0.08);
   background: rgba(248, 250, 252, 0.5);
   padding: 10px;
-  max-height: 260px;
+  max-height: 340px;
   overflow: auto;
   margin-top: 16px; /* ensure it appears below the form */
 }
@@ -1933,7 +1933,7 @@ html {
   border-radius: 16px;
   border: 1px solid var(--mb-border);
   background: #fff;
-  padding: 10px;
+  padding: 14px;
   text-align: center;
   cursor: pointer;
 }
@@ -1949,14 +1949,14 @@ html {
 }
 .mb-layercard__thumb {
   width: 100%;
-  height: 52px;
+  height: 80px;
   border-radius: 12px;
   border: 1px solid rgba(17, 24, 39, 0.06);
   background: #f3f4f6;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .mb-layercard__avatar {
   font-size: 18px;
