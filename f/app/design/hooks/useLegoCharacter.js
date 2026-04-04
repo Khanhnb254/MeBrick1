@@ -377,7 +377,7 @@ export function useLegoCharacter({
       const hairW = Math.max(1, Math.round(pos.width * sizeScale * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
       const hairH = Math.max(1, Math.round(pos.height * sizeScale * hairSizeMultiplier) + heightAdjust + hairSizeBoost);
       const computedHairY = pos.y + offsetYExtra + faceLiftY + HAIR_GLOBAL_Y;
-      console.log(`[DEBUG][hair-create] src=${character.hair}, pos.y=${pos.y}, offsetYExtra=${offsetYExtra}, faceLiftY=${faceLiftY}, HAIR_GLOBAL_Y=${HAIR_GLOBAL_Y}, finalY=${computedHairY}`);
+      console.log(`[DEBUG][hair-create] hair=${character.hair}, face=${character.face}, multiplier=${hairSizeMultiplier}, faceLiftY=${faceLiftY}, widthAdjust=${hairWidthAdjust}`);
 
       result.push({
         id: `${character.id}-hair`,
