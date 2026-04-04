@@ -147,6 +147,42 @@ function DesignPageInner() {
     console.log("🎨 Design Page - productName:", productName);
   }, [selectedProductImage, productName]);
 
+  // ===== GLOBAL WHEEL PRIORITY HANDLING =====
+  // Prioritize scrolling .mb-layergrid over page scroll
+  useEffect(() => {
+    const handleGlobalWheel = (e) => {
+      try {
+        const layerGrid = document.querySelector(".mb-layergrid");
+        if (!layerGrid) return;
+
+        const { scrollHeight, clientHeight, scrollTop } = layerGrid;
+        const canScroll = scrollHeight > clientHeight;
+
+        if (!canScroll) {
+          return; // Can't scroll, allow page scroll
+        }
+
+        const isScrollingDown = e.deltaY > 0;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+        const isAtTop = scrollTop <= 0;
+
+        // If can scroll in the direction, prevent page scroll
+        if ((isScrollingDown && !isAtBottom) || (!isScrollingDown && !isAtTop)) {
+          layerGrid.scrollTop += e.deltaY;
+          e.preventDefault();
+        }
+      } catch (err) {
+        console.warn("Global wheel handler error:", err);
+      }
+    };
+
+    document.addEventListener("wheel", handleGlobalWheel, { passive: false, capture: true });
+
+    return () => {
+      document.removeEventListener("wheel", handleGlobalWheel, { capture: true });
+    };
+  }, []);
+
   function pickPositiveInt(...vals) {
     for (const v of vals) {
       const n = Number(v);
