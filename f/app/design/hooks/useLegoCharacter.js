@@ -170,14 +170,6 @@ export function useLegoCharacter({
     return 1;
   };
   const getHairFaceXOffset = (faceSrc, hairSrc) => {
-    const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
-    const isHappyFace = faceSrc === "/images/lego/faces/happy.png";
-    
-    // Shift Tóc Nam 9 left 1px when Happy Face is selected
-    if (isMaleHair9 && isHappyFace) {
-      return -1;
-    }
-    
     const isAnyHair = String(hairSrc || "").includes("/images/lego/hair/");
     if (isAnyHair) return HAIR_GLOBAL_X;
     return 0;
