@@ -87,6 +87,13 @@ export function useLegoCharacter({
       return -2;
     }
 
+    // When selected face matnu6 with male hair, shift up 2px
+    const isFemaleFace6 = faceSrc === "/images/lego/faces/faceswoman/matnu6.png";
+    const isMaleHair = String(hairSrc || "").includes("/images/lego/hair/nam/");
+    if (isFemaleFace6 && isMaleHair) {
+      return -2;
+    }
+
     // When selected face matnu6, lift ALL other hair up by 1.2px
     if (faceSrc === "/images/lego/faces/faceswoman/matnu6.png") {
       return -1.2;
