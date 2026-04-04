@@ -373,10 +373,6 @@ export function useLegoCharacter({
     setLegoCharacters((prev) => [...prev, newCharacter]);
     setSelectedCharacterId(characterId);
 
-    // ✅ Hiện outfit selector ngay khi user thêm nhân vật mới
-    if (setOutfitSelectorCharId) setOutfitSelectorCharId(characterId);
-    if (setShowOutfitSelector) setShowOutfitSelector(true);
-
     const characterStickers = createStickersFromCharacter(newCharacter);
 
     setStickers((prev) => {
