@@ -399,6 +399,59 @@ export default function ControlPanel(props) {
                   ))}
                 </div>
 
+                <div className="mb-layergrid">
+                  {(getFilteredLayers?.() || []).map((layer) => (
+                    <button
+                      key={layer.id}
+                      type="button"
+                      className={`mb-layercard${layer.layerType === "sticker" ? " mb-layercard--sticker" : ""}`}
+                      onClick={() => {
+                        setActivePanel?.(null);
+
+                        if (
+                          layer.layerType === "character" ||
+                          layer.layerType === "sticker"
+                        ) {
+                          addLegoLayer(layer);
+                          return;
+                        }
+                        if (!selectedCharacterId) {
+                          alert(
+                            "Vui lòng click chọn 1 nhân vật LEGO trong khung trước!",
+                          );
+                          return;
+                        }
+                        addLegoLayer(layer);
+                      }}>
+                      <div
+                        className="mb-layercard__thumb"
+                        style={{
+                          backgroundImage:
+                            layer.layerType !== "character" &&
+                            (layer.thumbnail || layer.src)
+                              ? `url(${layer.thumbnail || layer.src})`
+                              : "none",
+                          backgroundSize: "contain",
+                          backgroundPosition: "center",
+                          backgroundRepeat: "no-repeat",
+                        }}>
+                        {layer.layerType === "character" ? (
+                          <span className="mb-layercard__avatar">👤</span>
+                        ) : null}
+                      </div>
+
+                      <div className="mb-layercard__name">{layer.name}</div>
+                      <div className="mb-layercard__price">
+                        {layer.price > 0
+                          ? `${layer.price.toLocaleString("vi-VN")}đ`
+                          : "Miễn phí"}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                </div>
+
                 <button
                   type="button"
                   className="mb-btn mb-btn--primary mb-btn--lg mb-wfull"
@@ -500,57 +553,6 @@ export default function ControlPanel(props) {
                       style={{ padding: "10px", borderRadius: 8, border: "1px solid #ddd", fontSize: 13, width: "100%", resize: "vertical" }}
                     />
                   </div>
-
-                <div className="mb-layergrid">
-                  {(getFilteredLayers?.() || []).map((layer) => (
-                    <button
-                      key={layer.id}
-                      type="button"
-                      className={`mb-layercard${layer.layerType === "sticker" ? " mb-layercard--sticker" : ""}`}
-                      onClick={() => {
-                        setActivePanel?.(null);
-
-                        if (
-                          layer.layerType === "character" ||
-                          layer.layerType === "sticker"
-                        ) {
-                          addLegoLayer(layer);
-                          return;
-                        }
-                        if (!selectedCharacterId) {
-                          alert(
-                            "Vui lòng click chọn 1 nhân vật LEGO trong khung trước!",
-                          );
-                          return;
-                        }
-                        addLegoLayer(layer);
-                      }}>
-                      <div
-                        className="mb-layercard__thumb"
-                        style={{
-                          backgroundImage:
-                            layer.layerType !== "character" &&
-                            (layer.thumbnail || layer.src)
-                              ? `url(${layer.thumbnail || layer.src})`
-                              : "none",
-                          backgroundSize: "contain",
-                          backgroundPosition: "center",
-                          backgroundRepeat: "no-repeat",
-                        }}>
-                        {layer.layerType === "character" ? (
-                          <span className="mb-layercard__avatar">👤</span>
-                        ) : null}
-                      </div>
-
-                      <div className="mb-layercard__name">{layer.name}</div>
-                      <div className="mb-layercard__price">
-                        {layer.price > 0
-                          ? `${layer.price.toLocaleString("vi-VN")}đ`
-                          : "Miễn phí"}
-                      </div>
-                    </button>
-                  ))}
-                </div>
 
                 {selectedCharacterId && (
                   <button
