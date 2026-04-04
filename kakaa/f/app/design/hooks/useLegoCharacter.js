@@ -88,17 +88,15 @@ export function useLegoCharacter({
     }
 
     // When selected face matnu6 with male hair 1 or 9, shift up 4px (2px + 2px extra)
-    const isFemaleFace6 = faceSrc === "/images/lego/faces/faceswoman/matnu6.png";
+    const isFemaleFace6Mat = faceSrc === "/images/lego/faces/faceswoman/matnu6.png";
     const isMaleHair1 = hairSrc === "/images/lego/hair/nam/tocnam1.png";
-    const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
-    if (isFemaleFace6 && (isMaleHair1 || isMaleHair9)) {
+    if (isFemaleFace6Mat && (isMaleHair1 || isMaleHair9)) {
       return -4;
     }
 
     // When selected face matnu6 with female hair 6 or other male hair, shift up 2px
-    const isFemaleHair6 = hairSrc === "/images/lego/hair/nu/tocnu6.png";
-    const isMaleHair = String(hairSrc || "").includes("/images/lego/hair/nam/");
-    if (isFemaleFace6 && (isFemaleHair6 || isMaleHair)) {
+    const isMaleHairOther = String(hairSrc || "").includes("/images/lego/hair/nam/");
+    if (isFemaleFace6Mat && (isFemaleHair6 || isMaleHairOther)) {
       return -2;
     }
 
