@@ -172,9 +172,9 @@ export function useLegoCharacter({
   const getHairFaceXOffset = (faceSrc, hairSrc) => {
     const isMaleHair8 = hairSrc === "/images/lego/hair/nam/tocnam8.png";
     
-    // Shift Tóc Nam 8 right 2px
+    // Shift Tóc Nam 8 left 4px
     if (isMaleHair8) {
-      return 2;
+      return -4;
     }
     
     const isAnyHair = String(hairSrc || "").includes("/images/lego/hair/");
