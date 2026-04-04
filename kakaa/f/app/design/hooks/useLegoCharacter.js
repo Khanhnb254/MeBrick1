@@ -158,6 +158,14 @@ export function useLegoCharacter({
     return 0;
   };
 
+  const getHairSizeMultiplierForFace = (faceSrc, hairSrc) => {
+    // When female face 6 is selected with male hair, increase size by 5%
+    const isFemaleFace6 = faceSrc === "/images/lego/faces/faceswoman/matnu6.png";
+    const isMaleHair = String(hairSrc || "").includes("/images/lego/hair/nam/");
+    if (isFemaleFace6 && isMaleHair) return 1.05;
+    return 1;
+  };
+
   const calculateExactPosition = (character, partType) => {
     const config = partConfig[partType];
     const assembly = assemblyConfig;
@@ -297,7 +305,7 @@ export function useLegoCharacter({
       const heightAdjust = Number(hairObj?.heightAdjust || 0);
       const hairRotation = Number(hairObj?.rotation || 0);
       const hairSizeBoost = getHairSizeBoostForFace ? getHairSizeBoostForFace(character.face) : 0;
-      const hairSizeMultiplier = 1;
+      const hairSizeMultiplier = getHairSizeMultiplierForFace(character.face, character.hair);
       const hairWidthAdjust = Number(hairObj?.widthAdjust || 0);
       const faceShiftX = typeof getHairFaceXOffset === 'function' ? getHairFaceXOffset(character.face, character.hair) : 0;
       const hairW = Math.max(1, Math.round(Math.round(pos.width * sizeScale) * hairSizeMultiplier) + hairSizeBoost + hairWidthAdjust);
