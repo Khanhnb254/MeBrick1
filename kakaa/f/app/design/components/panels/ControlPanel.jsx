@@ -145,59 +145,70 @@ export default function ControlPanel(props) {
   useEffect(() => {
     const layerGrid = layerGridRef.current;
     const controlPanel = controlPanelRef.current;
-    if (!layerGrid || !controlPanel) return;
+    if (!controlPanel) return;
 
     // Handle wheel event on layer grid - Priority 1
     const handleLayerGridWheel = (e) => {
-      const { scrollHeight, clientHeight, scrollTop } = layerGrid;
-      const canScroll = scrollHeight > clientHeight;
-      
-      if (!canScroll) {
-        // Can't scroll in grid, allow to bubble to ControlPanel
-        return;
-      }
+      if (!layerGrid) return;
+      try {
+        const { scrollHeight, clientHeight, scrollTop } = layerGrid;
+        const canScroll = scrollHeight > clientHeight;
+        
+        if (!canScroll) {
+          return;
+        }
 
-      const isScrollingDown = e.deltaY > 0;
-      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
-      const isAtTop = scrollTop <= 0;
+        const isScrollingDown = e.deltaY > 0;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+        const isAtTop = scrollTop <= 0;
 
-      // If scrolling down and not at bottom, or scrolling up and not at top, prevent bubbling
-      if ((isScrollingDown && !isAtBottom) || (!isScrollingDown && !isAtTop)) {
-        e.preventDefault();
-        e.stopPropagation();
+        if ((isScrollingDown && !isAtBottom) || (!isScrollingDown && !isAtTop)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      } catch (err) {
+        console.warn('Layer grid wheel error:', err);
       }
     };
 
     // Handle wheel event on control panel - Priority 2
     const handleControlPanelWheel = (e) => {
-      // Only handle if event is directly on ControlPanel (not from layer grid)
       if (e.target.closest('.mb-layergrid')) return;
 
-      const { scrollHeight, clientHeight, scrollTop } = controlPanel;
-      const canScroll = scrollHeight > clientHeight;
-      
-      if (!canScroll) {
-        return;
-      }
+      try {
+        const { scrollHeight, clientHeight, scrollTop } = controlPanel;
+        const canScroll = scrollHeight > clientHeight;
+        
+        if (!canScroll) {
+          return;
+        }
 
-      const isScrollingDown = e.deltaY > 0;
-      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
-      const isAtTop = scrollTop <= 0;
+        const isScrollingDown = e.deltaY > 0;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+        const isAtTop = scrollTop <= 0;
 
-      if ((isScrollingDown && !isAtBottom) || (!isScrollingDown && !isAtTop)) {
-        e.preventDefault();
-        e.stopPropagation();
+        if ((isScrollingDown && !isAtBottom) || (!isScrollingDown && !isAtTop)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      } catch (err) {
+        console.warn('Control panel wheel error:', err);
       }
     };
 
-    layerGrid.addEventListener('wheel', handleLayerGridWheel, { passive: false });
+    // Only attach layerGrid listener if it exists
+    if (layerGrid) {
+      layerGrid.addEventListener('wheel', handleLayerGridWheel, { passive: false });
+    }
     controlPanel.addEventListener('wheel', handleControlPanelWheel, { passive: false });
 
     return () => {
-      layerGrid.removeEventListener('wheel', handleLayerGridWheel);
+      if (layerGrid) {
+        layerGrid.removeEventListener('wheel', handleLayerGridWheel);
+      }
       controlPanel.removeEventListener('wheel', handleControlPanelWheel);
     };
-  }, []);
+  }, [step]);
 
   return (
     <aside className="mb-panel">
