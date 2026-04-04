@@ -181,6 +181,9 @@ export function useLegoCharacter({
     
     // When female face 6 is selected with male hair, increase size by 5%
     const isFemaleFace6 = faceSrc === "/images/lego/faces/faceswoman/matnu6.png";
+    const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
+    if (isFemaleFace6 && isMaleHair9) return 1.08;
+    
     const isMaleHair = String(hairSrc || "").includes("/images/lego/hair/nam/");
     if (isFemaleFace6 && isMaleHair) return 1.05;
     
