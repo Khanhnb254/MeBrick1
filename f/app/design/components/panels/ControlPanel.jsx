@@ -450,8 +450,6 @@ export default function ControlPanel(props) {
                   ))}
                 </div>
 
-                </div>
-
                 <button
                   type="button"
                   className="mb-btn mb-btn--primary mb-btn--lg mb-wfull"
