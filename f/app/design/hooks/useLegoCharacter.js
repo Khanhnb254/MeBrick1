@@ -65,6 +65,28 @@ export function useLegoCharacter({
     const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
     const isMaleHair6 = hairSrc === "/images/lego/hair/nam/tocnam6.png";
     const isFemaleHair6 = hairSrc === "/images/lego/hair/nu/tocnu6.png";
+    const isFemaleFace6Mat = faceSrc === "/images/lego/faces/faceswoman/matnu6.png";
+    
+    // Check face matnu6 logic first before early returns
+    if (isFemaleFace6Mat) {
+      if (hairSrc === "/images/lego/hair/nu/tocnu1.png") {
+        return -3;
+      }
+      if (hairSrc === "/images/lego/hair/nu/tocnu2.png") {
+        return -2;
+      }
+      const isMaleHair1 = hairSrc === "/images/lego/hair/nam/tocnam1.png";
+      if (isMaleHair1 || isMaleHair9) {
+        return -4;
+      }
+      const isMaleHairOther = String(hairSrc || "").includes("/images/lego/hair/nam/");
+      if (isFemaleHair6 || isMaleHairOther) {
+        return -2;
+      }
+      return -1.2;
+    }
+    
+    // Early returns for non-matnu6 cases
     if (isMaleHair9) {
       return -2;
     }
@@ -79,34 +101,7 @@ export function useLegoCharacter({
       faceSrc === "/images/lego/faces/faceswoman/10.png" ||
       faceSrc === "/images/lego/faces/faceswoman/45.png";
 
-    // Specific: when selected face matnu6, lift Tóc Nữ 1 up by 3px and Tóc Nữ 2 up by 2px
-    if (faceSrc === "/images/lego/faces/faceswoman/matnu6.png" && hairSrc === "/images/lego/hair/nu/tocnu1.png") {
-      return -3;
-    }
-    if (faceSrc === "/images/lego/faces/faceswoman/matnu6.png" && hairSrc === "/images/lego/hair/nu/tocnu2.png") {
-      return -2;
-    }
-
-    // When selected face matnu6 with male hair 1 or 9, shift up 4px (2px + 2px extra)
-    const isFemaleFace6Mat = faceSrc === "/images/lego/faces/faceswoman/matnu6.png";
-    const isMaleHair1 = hairSrc === "/images/lego/hair/nam/tocnam1.png";
-    if (isFemaleFace6Mat && (isMaleHair1 || isMaleHair9)) {
-      return -4;
-    }
-
-    // When selected face matnu6 with female hair 6 or other male hair, shift up 2px
-    const isMaleHairOther = String(hairSrc || "").includes("/images/lego/hair/nam/");
-    if (isFemaleFace6Mat && (isFemaleHair6 || isMaleHairOther)) {
-      return -2;
-    }
-
-    // When selected face matnu6, lift ALL other hair up by 1.2px
-    if (faceSrc === "/images/lego/faces/faceswoman/matnu6.png") {
-      return -1.2;
-    }
-
-    // Special case: when hair is Tóc Nữ 5 and face is one of (15,34,faceswoman/10,faceswoman/45)
-    // push hair down by 0.9px to compensate visual overlap
+    // Existing hair-face adjustments (these happen after matnu6 logic)
     const isTargetFaceForTocnu5 =
       faceSrc === "/images/lego/faces/15.png" ||
       faceSrc === "/images/lego/faces/34.png" ||
