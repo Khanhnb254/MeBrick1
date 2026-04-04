@@ -497,13 +497,14 @@ export default function ControlPanel(props) {
                   <button
                     type="button"
                     onClick={() => setShowPrintInfo(!showPrintInfo)}
+                    className={showPrintInfo ? "print-info-btn active" : "print-info-btn"}
                     style={{
                       width: "100%",
                       marginTop: 12,
                       padding: "12px 16px",
-                      background: showPrintInfo ? "#1e40af" : "#fff",
-                      color: showPrintInfo ? "#fff" : "#333",
-                      border: "1px solid #ddd",
+                      background: showPrintInfo ? "#2563eb" : "#f8fafc",
+                      color: showPrintInfo ? "#ffffff" : "#1e293b",
+                      border: showPrintInfo ? "2px solid #2563eb" : "1px solid #e2e8f0",
                       borderRadius: 8,
                       fontSize: 13,
                       fontWeight: 700,
@@ -512,6 +513,7 @@ export default function ControlPanel(props) {
                       alignItems: "center",
                       justifyContent: "space-between",
                       transition: "all 0.2s",
+                      outline: "none",
                     }}>
                     <span>2. NHẬP THÔNG TIN IN ẤN</span>
                     {showPrintInfo ? <FiChevronUp /> : <FiChevronDown />}
