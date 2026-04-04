@@ -1920,12 +1920,12 @@ html {
 .mb-layergrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 12px;
   border-radius: 18px;
   border: 1px solid rgba(17, 24, 39, 0.08);
   background: rgba(248, 250, 252, 0.5);
-  padding: 10px;
-  max-height: 340px;
+  padding: 12px;
+  max-height: 480px;
   overflow: auto;
   margin-top: 16px; /* ensure it appears below the form */
 }
@@ -1933,9 +1933,12 @@ html {
   border-radius: 16px;
   border: 1px solid var(--mb-border);
   background: #fff;
-  padding: 14px;
+  padding: 16px 12px;
   text-align: center;
   cursor: pointer;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
 }
 .mb-layercard--sticker {
   border: none;
@@ -1963,15 +1966,16 @@ html {
   font-weight: 900;
 }
 .mb-layercard__name {
-  font-size: 12px;
-  font-weight: 900;
+  font-size: 13px;
+  font-weight: 700;
   color: #111827;
+  line-height: 1.3;
 }
 .mb-layercard__price {
-  font-size: 11px;
-  font-weight: 900;
+  font-size: 12px;
+  font-weight: 700;
   color: hsl(246, 100%, 70%);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 /* Bill */
