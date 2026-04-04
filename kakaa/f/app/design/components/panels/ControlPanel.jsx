@@ -138,78 +138,6 @@ export default function ControlPanel(props) {
     setAnimKey((k) => k + 1);
   }, [step]);
 
-  // ===== SCROLL PRIORITY HANDLING =====
-  const layerGridRef = useRef(null);
-  const controlPanelRef = useRef(null);
-
-  useEffect(() => {
-    const layerGrid = layerGridRef.current;
-    const controlPanel = controlPanelRef.current;
-    if (!controlPanel) return;
-
-    // Handle wheel event on layer grid - Priority 1
-    const handleLayerGridWheel = (e) => {
-      if (!layerGrid) return;
-      try {
-        const { scrollHeight, clientHeight, scrollTop } = layerGrid;
-        const canScroll = scrollHeight > clientHeight;
-        
-        if (!canScroll) {
-          return;
-        }
-
-        const isScrollingDown = e.deltaY > 0;
-        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
-        const isAtTop = scrollTop <= 0;
-
-        if ((isScrollingDown && !isAtBottom) || (!isScrollingDown && !isAtTop)) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-      } catch (err) {
-        console.warn('Layer grid wheel error:', err);
-      }
-    };
-
-    // Handle wheel event on control panel - Priority 2
-    const handleControlPanelWheel = (e) => {
-      if (e.target.closest('.mb-layergrid')) return;
-
-      try {
-        const { scrollHeight, clientHeight, scrollTop } = controlPanel;
-        const canScroll = scrollHeight > clientHeight;
-        
-        if (!canScroll) {
-          return;
-        }
-
-        const isScrollingDown = e.deltaY > 0;
-        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
-        const isAtTop = scrollTop <= 0;
-
-        if ((isScrollingDown && !isAtBottom) || (!isScrollingDown && !isAtTop)) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-      } catch (err) {
-        console.warn('Control panel wheel error:', err);
-      }
-    };
-
-    // Only attach layerGrid listener if it exists
-    if (layerGrid) {
-      layerGrid.addEventListener('wheel', handleLayerGridWheel, { passive: false });
-    }
-    controlPanel.addEventListener('wheel', handleControlPanelWheel, { passive: false });
-
-    return () => {
-      if (layerGrid) {
-        layerGrid.removeEventListener('wheel', handleLayerGridWheel);
-      }
-      controlPanel.removeEventListener('wheel', handleControlPanelWheel);
-    };
-  }, [step]);
-
   return (
     <aside className="mb-panel">
       {/* Header */}
@@ -229,7 +157,7 @@ export default function ControlPanel(props) {
       </div>
 
       {/* ✅ BODY full height, cho phép scroll nội bộ */}
-      <div ref={controlPanelRef} key={animKey} className="mb-panel__body mb-panel__body--full mb-panel__body--animated">
+      <div key={animKey} className="mb-panel__body mb-panel__body--full mb-panel__body--animated">
         {/* ===================== STEP 1 (FRAME) ===================== */}
         {step === STEPS.FRAME && (
           <section className="mb-block mb-block--fill">
@@ -472,7 +400,7 @@ export default function ControlPanel(props) {
                     : "Thêm nhân vật LEGO"}
                 </button>
 
-                <div ref={layerGridRef} className="mb-layergrid">
+                <div className="mb-layergrid">
                   {(getFilteredLayers?.() || []).map((layer) => (
                     <button
                       key={layer.id}
