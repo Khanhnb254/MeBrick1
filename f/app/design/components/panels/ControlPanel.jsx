@@ -531,24 +531,34 @@ export default function ControlPanel(props) {
 
                   {/* ===== Print information form (Step 3) ===== */}
                   <div style={{ marginTop: 24, marginBottom: 20 }}>
-                    <div style={{ display: "flex", alignItems: "center", marginBottom: 20, gap: 12 }}>
-                      <div style={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: "50%",
-                        backgroundColor: "#2563eb",
-                        color: "#fff",
+                    {/* Step title - matching style with "1 Thiết kế nhân vật" */}
+                    <div style={{ 
+                      display: "flex", 
+                      alignItems: "center", 
+                      gap: "8px", 
+                      marginBottom: "16px",
+                      padding: "8px 12px",
+                      background: "#EBF3FF",
+                      borderRadius: "8px"
+                    }}>
+                      <span style={{
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: 18,
-                        fontWeight: 700,
-                      }}>
-                        2
-                      </div>
-                      <h2 style={{ margin: 0, fontSize: 18, fontWeight: 600, color: "#1f2937" }}>
-                        Nhập Thông Tin
-                      </h2>
+                        width: "28px",
+                        height: "28px",
+                        borderRadius: "50%",
+                        background: "#4285F4",
+                        color: "white",
+                        fontWeight: "600",
+                        fontSize: "14px",
+                        flexShrink: 0
+                      }}>2</span>
+                      <span style={{ 
+                        fontSize: "15px", 
+                        fontWeight: "600", 
+                        color: "#1a1a1a" 
+                      }}>Nhập Thông Tin</span>
                     </div>
 
                     <div style={{
