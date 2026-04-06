@@ -356,23 +356,43 @@ export default function ControlPanel(props) {
               }}>Thiết kế nhân vật</span>
             </div>
 
+            {/* 3 buttons in one row */}
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "10px",
+                gridTemplateColumns: "1fr 1fr 1fr",
+                gap: "8px",
                 marginBottom: "12px",
               }}>
               <button
                 type="button"
-                className="mb-btn mb-btn--outline"
-                onClick={onAddTextClick}>
-                <FiType /> T+ Thêm chữ
+                className="mb-btn mb-btn--primary"
+                style={{ fontSize: "13px", padding: "8px 10px" }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActivePanel?.(null);
+                  setSelectedId?.(null);
+                  addCompleteLegoCharacter?.();
+                }}>
+                <FiPlus />{" "}
+                {legoCharacters.length > 0
+                  ? "Thêm NV"
+                  : "Nhân vật"}
               </button>
 
               <button
                 type="button"
                 className="mb-btn mb-btn--outline"
+                style={{ fontSize: "13px", padding: "8px 10px" }}
+                onClick={onAddTextClick}>
+                <FiType /> Chữ
+              </button>
+
+              <button
+                type="button"
+                className="mb-btn mb-btn--outline"
+                style={{ fontSize: "13px", padding: "8px 10px" }}
                 onClick={onAddImageClick}>
                 <FiImage /> Ảnh
               </button>
@@ -483,22 +503,6 @@ export default function ControlPanel(props) {
                     </button>
                   ))}
                 </div>
-
-                <button
-                  type="button"
-                  className="mb-btn mb-btn--primary mb-btn--lg mb-wfull"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setActivePanel?.(null);
-                    setSelectedId?.(null);
-                    addCompleteLegoCharacter?.();
-                  }}>
-                  <FiPlus />{" "}
-                  {legoCharacters.length > 0
-                    ? "Thêm nhân vật khác"
-                    : "Thêm nhân vật LEGO"}
-                </button>
 
                   {/* Ghi chú nhờ designer chỉnh sửa */}
                   <div style={{ margin: "10px 0 4px", color: "#555", fontSize: "12px", fontWeight: 600 }}>
