@@ -598,7 +598,7 @@ export const LEGO_CONFIG = {
       widthAdjust: 2,
       rotation: 2,
       offsetYExtra: 11.5,
-      offsetXExtra: -5,
+      offsetXExtra: -8,
     },
 
 
