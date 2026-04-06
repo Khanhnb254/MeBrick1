@@ -697,6 +697,17 @@ export default function ControlPanel(props) {
                       <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 12 }}>
                         <button
                           type="button"
+                          onClick={() => {
+                            if (!printName || !printTitle || !printMessage || !printDate) {
+                              alert("Vui lòng điền đầy đủ thông tin (Tên, Tiêu đề, Lời nhắn, Ngày)");
+                              return;
+                            }
+                            alert("✅ Thông tin đã được gửi thành công!\n\nThông tin của bạn:\n" +
+                              `📝 Tên: ${printName}\n` +
+                              `🎯 Tiêu đề: ${printTitle}\n` +
+                              `💬 Lời nhắn: ${printMessage}\n` +
+                              `📅 Ngày: ${printDate}`);
+                          }}
                           style={{
                             padding: "12px 24px",
                             backgroundColor: "#2563eb",
