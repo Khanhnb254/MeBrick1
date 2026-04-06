@@ -115,6 +115,8 @@ export default function ControlPanel(props) {
   const [selectedBgTab, setSelectedBgTab] = useState("Tất cả");
   // ✅ State cho toggle print info form
   const [showPrintInfo, setShowPrintInfo] = useState(false);
+  // ✅ State cho confirmation modal
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const bgTabs = [
     "Tất cả",
     "Happy Birthday",
@@ -702,11 +704,7 @@ export default function ControlPanel(props) {
                               alert("Vui lòng điền đầy đủ thông tin (Tên, Tiêu đề, Lời nhắn, Ngày)");
                               return;
                             }
-                            alert("✅ Thông tin đã được gửi thành công!\n\nThông tin của bạn:\n" +
-                              `📝 Tên: ${printName}\n` +
-                              `🎯 Tiêu đề: ${printTitle}\n` +
-                              `💬 Lời nhắn: ${printMessage}\n` +
-                              `📅 Ngày: ${printDate}`);
+                            setShowConfirmation(true);
                           }}
                           style={{
                             padding: "12px 24px",
@@ -902,8 +900,119 @@ export default function ControlPanel(props) {
           </>
         )}
       </div>
+
+      {/* Confirmation Modal */}
+      {showConfirmation && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 10000,
+            padding: "20px",
+          }}
+          onClick={() => setShowConfirmation(false)}
+        >
+          <div
+            style={{
+              backgroundColor: "#fff",
+              borderRadius: "12px",
+              padding: "28px",
+              maxWidth: "420px",
+              width: "100%",
+              boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Title */}
+            <h2
+              style={{
+                fontSize: "20px",
+                fontWeight: "600",
+                color: "#111",
+                marginBottom: "20px",
+                textAlign: "center",
+              }}
+            >
+              ✅ Thông tin đã được gửi thành công
+            </h2>
+
+            {/* Info Summary */}
+            <div
+              style={{
+                backgroundColor: "#f8fafc",
+                borderRadius: "8px",
+                padding: "16px",
+                marginBottom: "20px",
+                border: "1px solid #e2e8f0",
+              }}
+            >
+              <div style={{ marginBottom: "10px" }}>
+                <span style={{ fontSize: "13px", color: "#64748b", fontWeight: "500" }}>
+                  Tên:{" "}
+                </span>
+                <span style={{ fontSize: "14px", fontWeight: "600", color: "#0f172a" }}>
+                  {printName}
+                </span>
+              </div>
+
+              <div style={{ marginBottom: "10px" }}>
+                <span style={{ fontSize: "13px", color: "#64748b", fontWeight: "500" }}>
+                  Tiêu đề:{" "}
+                </span>
+                <span style={{ fontSize: "14px", fontWeight: "600", color: "#0f172a" }}>
+                  {printTitle}
+                </span>
+              </div>
+
+              <div style={{ marginBottom: "10px" }}>
+                <span style={{ fontSize: "13px", color: "#64748b", fontWeight: "500" }}>
+                  Lời nhắn:{" "}
+                </span>
+                <span style={{ fontSize: "14px", fontWeight: "600", color: "#0f172a" }}>
+                  {printMessage}
+                </span>
+              </div>
+
+              <div>
+                <span style={{ fontSize: "13px", color: "#64748b", fontWeight: "500" }}>
+                  Ngày:{" "}
+                </span>
+                <span style={{ fontSize: "14px", fontWeight: "600", color: "#0f172a" }}>
+                  {printDate}
+                </span>
+              </div>
+            </div>
+
+            {/* Close Button */}
+            <button
+              onClick={() => setShowConfirmation(false)}
+              style={{
+                width: "100%",
+                padding: "12px",
+                backgroundColor: "#2563eb",
+                color: "#fff",
+                border: "none",
+                borderRadius: "8px",
+                fontSize: "14px",
+                fontWeight: "600",
+                cursor: "pointer",
+                transition: "background-color 0.2s",
+              }}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#1d4ed8")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "#2563eb")}
+            >
+              Đóng
+            </button>
+          </div>
+        </div>
+      )}
     </aside>
   );
 }
-
-
