@@ -326,6 +326,36 @@ export default function ControlPanel(props) {
               </button>
             </div>
 
+            {/* Step title */}
+            <div style={{ 
+              display: "flex", 
+              alignItems: "center", 
+              gap: "8px", 
+              marginBottom: "16px",
+              padding: "8px 12px",
+              background: "#EBF3FF",
+              borderRadius: "8px"
+            }}>
+              <span style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "28px",
+                height: "28px",
+                borderRadius: "50%",
+                background: "#4285F4",
+                color: "white",
+                fontWeight: "600",
+                fontSize: "14px",
+                flexShrink: 0
+              }}>1</span>
+              <span style={{ 
+                fontSize: "15px", 
+                fontWeight: "600", 
+                color: "#1a1a1a" 
+              }}>Thiết kế nhân vật</span>
+            </div>
+
             <div
               style={{
                 display: "grid",
