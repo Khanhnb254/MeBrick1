@@ -197,11 +197,11 @@ export function useLegoCharacter({
       return -5;
     }
     
-    // Shift Tóc Nam 9 left 1px when with face 6
+    // Shift Tóc Nam 9 left 5px when with face 6 (total offsetXExtra: -5 + -5 = -10 from base)
     const isFemaleFace6 = faceSrc === "/images/lego/faces/faceswoman/matnu6.png";
     const isMaleHair9 = hairSrc === "/images/lego/hair/nam/tocnam9.png";
     if (isFemaleFace6 && isMaleHair9) {
-      return -1;
+      return -5;
     }
     
     const isAnyHair = String(hairSrc || "").includes("/images/lego/hair/");
