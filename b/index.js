@@ -18,28 +18,43 @@ const defaultOrigins = [
 ];
 const originAllowlist = [...new Set([...defaultOrigins, ...allowedOrigins].map(normalizeOrigin))];
 
-// CORS trước routes
+console.log("Allowed origins:", originAllowlist);
+
+// CORS configuration - must be before routes
 app.use(
   cors({
-    origin(origin, callback) {
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or Postman)
       if (!origin) return callback(null, true);
+
       const normalizedOrigin = normalizeOrigin(origin);
+      console.log(`CORS request from: ${origin} (normalized: ${normalizedOrigin})`);
+
       const isAllowed = 
         originAllowlist.includes(normalizedOrigin) || 
         /\.vercel\.app$/.test(normalizedOrigin) ||
-        /mebricks\.vn$/.test(normalizedOrigin); // Allow any mebricks.vn subdomain
-      
+        /\.mebricks\.vn$/.test(normalizedOrigin) ||
+        origin === "https://www.mebricks.vn" ||
+        origin === "https://mebricks.vn";
+
       if (isAllowed) {
-        return callback(null, true);
+        callback(null, true);
+      } else {
+        console.warn(`CORS blocked: ${origin}`);
+        callback(new Error("CORS Not Allowed"));
       }
-      console.warn(`CORS blocked origin: ${origin}`);
-      return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Content-Type"],
+    maxAge: 3600,
   })
 );
+
+// Explicitly handle preflight requests
+app.options("*", cors());
+
 
 // ✅ tăng limit để nhận base64 preview lớn
 app.use(express.json({ limit: "25mb" }));

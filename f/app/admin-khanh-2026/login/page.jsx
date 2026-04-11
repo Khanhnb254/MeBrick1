@@ -27,15 +27,21 @@ export default function LoginPage() {
 
     try {
       const loginUrl = `${API_BASE}/api/auth/login`;
-      console.log("Attempting login to:", loginUrl);
+      console.log("🔐 Attempting login to:", loginUrl);
+      console.log("📍 Frontend origin:", window.location.origin);
       
       const res = await fetch(loginUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
         body: JSON.stringify({ email, password }),
       });
 
+      console.log("📊 Response status:", res.status);
       const data = await res.json();
+      console.log("📦 Response data:", data);
 
       if (!res.ok) {
         setError(data?.message || "Đăng nhập thất bại");
@@ -45,9 +51,10 @@ export default function LoginPage() {
 
       // Save token and redirect
       setToken(data.token);
+      console.log("✅ Login successful, token saved");
       router.replace("/admin/products");
     } catch (err) {
-      console.error("Login error:", err);
+      console.error("❌ Login error:", err);
       setError("Lỗi kết nối. Vui lòng thử lại.");
       setLoading(false);
     }
@@ -58,6 +65,10 @@ export default function LoginPage() {
       <div style={styles.card}>
         <h1 style={styles.title}>Admin Login</h1>
         
+        <div style={styles.debug}>
+          🔌 API: {API_BASE || "❌ NOT SET"}
+        </div>
+
         {error && <div style={styles.error}>{error}</div>}
         
         <form onSubmit={handleLogin} style={styles.form}>
@@ -107,6 +118,16 @@ const styles = {
     fontSize: 24,
     fontWeight: 700,
     color: "#000",
+  },
+  debug: {
+    background: "#f3f4f6",
+    padding: 8,
+    borderRadius: 6,
+    fontSize: 12,
+    color: "#374151",
+    marginBottom: 12,
+    fontFamily: "monospace",
+    wordBreak: "break-all",
   },
   form: {
     display: "grid",
