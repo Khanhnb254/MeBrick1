@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getToken, setToken } from "../../../lib/admin/token";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
-
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -26,22 +24,15 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const loginUrl = `${API_BASE}/api/auth/login`;
-      console.log("🔐 Attempting login to:", loginUrl);
-      console.log("📍 Frontend origin:", window.location.origin);
-      
-      const res = await fetch(loginUrl, {
+      const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
         },
-        credentials: "include",
         body: JSON.stringify({ email, password }),
       });
 
-      console.log("📊 Response status:", res.status);
       const data = await res.json();
-      console.log("📦 Response data:", data);
 
       if (!res.ok) {
         setError(data?.message || "Đăng nhập thất bại");
@@ -51,10 +42,9 @@ export default function LoginPage() {
 
       // Save token and redirect
       setToken(data.token);
-      console.log("✅ Login successful, token saved");
       router.replace("/admin/products");
     } catch (err) {
-      console.error("❌ Login error:", err);
+      console.error("Login error:", err);
       setError("Lỗi kết nối. Vui lòng thử lại.");
       setLoading(false);
     }
@@ -66,7 +56,7 @@ export default function LoginPage() {
         <h1 style={styles.title}>Admin Login</h1>
         
         <div style={styles.debug}>
-          🔌 API: {API_BASE || "❌ NOT SET"}
+          🔌 API: same-origin proxy
         </div>
 
         {error && <div style={styles.error}>{error}</div>}

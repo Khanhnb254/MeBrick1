@@ -1,5 +1,4 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
-const API_URL = `${BASE_URL.replace(/\/$/, "")}/api/admin/stats`;
+const API_URL = "/api/admin/stats";
 
 export async function getAdminStats(token) {
   const res = await fetch(API_URL, {

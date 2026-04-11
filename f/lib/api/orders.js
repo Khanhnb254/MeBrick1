@@ -1,6 +1,5 @@
 // lib/api/orders.js
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
-const API_URL = `${BASE_URL.replace(/\/$/, "")}/api/orders`;
+const API_URL = "/api/orders";
 
 async function handle(res, hint) {
   if (!res.ok) {

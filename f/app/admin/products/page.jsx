@@ -61,7 +61,7 @@ export default function AdminProductsPage() {
   const loadCustomerImages = async () => {
     try {
       setCustomerLoading(true);
-      const res = await fetch(`${API_BASE}/api/uploads/customer-images`, {
+      const res = await fetch(`/api/uploads/customer-images`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -79,7 +79,7 @@ export default function AdminProductsPage() {
       const form = new FormData();
       form.append("file", file);
       form.append("customerName", customerUploadName || "Guest");
-      const res = await fetch(`${API_BASE}/api/uploads/customer-image`, {
+      const res = await fetch(`/api/uploads/customer-image`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: form,
@@ -98,7 +98,7 @@ export default function AdminProductsPage() {
   const deleteCustomerImage = async (id) => {
     if (!token || !window.confirm("Xoá ảnh này?")) return;
     try {
-      const res = await fetch(`${API_BASE}/api/uploads/customer-images/${id}`, {
+      const res = await fetch(`/api/uploads/customer-images/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -110,7 +110,7 @@ export default function AdminProductsPage() {
   const handleLogin = async () => {
     try {
       setLoginLoading(true);
-      const res = await fetch(`${API_BASE}/api/auth/login`, {
+      const res = await fetch(`/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -130,7 +130,7 @@ export default function AdminProductsPage() {
     try {
       const form = new FormData();
       form.append("file", file);
-      const res = await fetch(`${API_BASE}/api/uploads/product-image`, {
+      const res = await fetch(`/api/uploads/product-image`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: form,

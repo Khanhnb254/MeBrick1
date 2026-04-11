@@ -1,5 +1,4 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
-const API_URL = `${BASE_URL.replace(/\/$/, "")}/api/products`;
+const API_URL = "/api/products";
 
 // Public: fetch products for shop pages
 export async function getProducts(section) {

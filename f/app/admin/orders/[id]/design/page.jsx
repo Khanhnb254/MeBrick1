@@ -42,7 +42,7 @@ export default function AdminOrderDesignsPage() {
         setLoading(true);
 
         const res = await fetch(
-          `${baseUrl}/api/orders/${encodeURIComponent(orderId)}`,
+          `/api/orders/${encodeURIComponent(orderId)}`,
           { cache: "no-store" }
         );
 

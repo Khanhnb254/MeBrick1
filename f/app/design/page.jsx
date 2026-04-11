@@ -33,8 +33,7 @@ import { useStickerManager } from "./hooks/useStickerManager";
 import { exportImage } from "./utils/exportImage";
 
 async function uploadPreviewToBackend(dataUrl) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "";
-  const res = await fetch(`${baseUrl}/api/uploads/base64`, {
+  const res = await fetch(`/api/uploads/base64`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ dataUrl }),
@@ -834,10 +833,9 @@ function DesignPageInner() {
   const handleSaveCustomerImage = async (file) => {
     if (!file) return;
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL || "";
       const formData = new FormData();
       formData.append("file", file);
-      const res = await fetch(`${baseUrl}/api/uploads/customer-image-public`, {
+      const res = await fetch(`/api/uploads/customer-image-public`, {
         method: "POST",
         body: formData,
       });
