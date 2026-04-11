@@ -26,7 +26,10 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_BASE}/api/auth/login`, {
+      const loginUrl = `${API_BASE}/api/auth/login`;
+      console.log("Attempting login to:", loginUrl);
+      
+      const res = await fetch(loginUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -44,6 +47,7 @@ export default function LoginPage() {
       setToken(data.token);
       router.replace("/admin/products");
     } catch (err) {
+      console.error("Login error:", err);
       setError("Lỗi kết nối. Vui lòng thử lại.");
       setLoading(false);
     }

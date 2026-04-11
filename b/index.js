@@ -24,12 +24,20 @@ app.use(
     origin(origin, callback) {
       if (!origin) return callback(null, true);
       const normalizedOrigin = normalizeOrigin(origin);
-      if (originAllowlist.includes(normalizedOrigin) || /\.vercel\.app$/.test(normalizedOrigin)) {
+      const isAllowed = 
+        originAllowlist.includes(normalizedOrigin) || 
+        /\.vercel\.app$/.test(normalizedOrigin) ||
+        /mebricks\.vn$/.test(normalizedOrigin); // Allow any mebricks.vn subdomain
+      
+      if (isAllowed) {
         return callback(null, true);
       }
+      console.warn(`CORS blocked origin: ${origin}`);
       return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
