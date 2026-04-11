@@ -14,8 +14,14 @@ export default function AdminShell({ children }) {
 
   useEffect(() => {
     setMounted(true);
-    setToken(getToken()); // chỉ chạy ở client sau khi mount
-  }, []);
+    const token = getToken();
+    setToken(token);
+    
+    // Redirect to login if no token
+    if (!token) {
+      router.replace("/admin-khanh-2026/login");
+    }
+  }, [router]);
 
   const nav = [
     { href: "/admin/products", label: "Products" },
