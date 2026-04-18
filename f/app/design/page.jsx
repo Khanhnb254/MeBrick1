@@ -1047,118 +1047,134 @@ function DesignPageInner() {
 
           {/* ===== CODE GỐC CỦA BẠN ===== */}
           <div className="lego-customizer relative z-10">
-            <main
-              className={`design-layout ${showSamples ? "samples-open" : "samples-closed"}`}>
+            <main className="design-layout-modern">
+              <div className="canvas-column">
+                <div className="stepper-floating">
+                  <Stepper
+                    step={step}
+                    goStep={goStep}
+                    canGoBg={canGoBg}
+                    canGoLego={canGoLego}
+                    canGoCheckout={canGoCheckout}
+                    calculateTotal={calculateTotal}
+                  />
+                </div>
+
+                <div className="canvas-body">
+                  <Stage
+                    designAreaRef={designAreaRef}
+                    canvasSize={canvasSize}
+                    selectedSize={selectedSize}
+                    selectedBackground={selectedBackground}
+                    stickers={stickers}
+                    legoCharacters={legoCharacters}
+                    LEGO_CONFIG={LEGO_CONFIG}
+                    selectedCharacterId={selectedCharacterId}
+                    setSelectedCharacterId={setSelectedCharacterId}
+                    selectedId={selectedId}
+                    setSelectedId={setSelectedId}
+                    setStickers={setStickers}
+                    moveLegoCharacter={moveLegoCharacter}
+                    stickerRefs={stickerRefs}
+                    setStickerRef={setStickerRef}
+                    characterRefs={characterRefs}
+                    setCharacterRef={setCharacterRef}
+                    handleDeleteSticker={handleDeleteSticker}
+                    handleDesignAreaClick={handleDesignAreaClick}
+                    onReset={handleReset}
+                    updateCharacterOutfit={updateCharacterOutfit}
+                    showOutfitSelector={showOutfitSelector}
+                    setShowOutfitSelector={setShowOutfitSelector}
+                    outfitSelectorCharId={outfitSelectorCharId}
+                    setOutfitSelectorCharId={setOutfitSelectorCharId}
+                    updateCharacterPants={updateCharacterPants}
+                    showPantsSelector={showPantsSelector}
+                    setShowPantsSelector={setShowPantsSelector}
+                    pantsSelectorCharId={pantsSelectorCharId}
+                    setPantsSelectorCharId={setPantsSelectorCharId}
+                    slotImages={slotImages}
+                    onSetSlotImage={handleSetSlotImage}
+                    onClearSlotImage={handleClearSlotImage}
+                    bgTextValues={bgTextValues}
+                    onSetBgTextValue={handleSetBgTextValue}
+                  />
+
+                  <button 
+                    className="inspiration-btn" 
+                    onClick={() => setShowSamples(true)}
+                    title="Xem mẫu thiết kế gợi ý">
+                    <FiLayers /> <span>Cảm hứng</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="control-column">
+                <div className="mb-panel-glass" style={{ borderRadius: "24px", overflow: "hidden" }}>
+                  <ControlPanel
+                    step={step}
+                    STEPS={STEPS}
+                    setStep={setStep}
+                    goStep={goStep}
+                    selectedFrame={selectedFrame}
+                    setSelectedFrame={setSelectedFrame}
+                    canGoBg={canGoBg}
+                    canGoLego={canGoLego}
+                    selectedSize={selectedSize}
+                    canvasSize={canvasSize}
+                    selectedBackground={selectedBackground}
+                    SIZE_OPTIONS={SIZE_OPTIONS}
+                    BACKGROUND_OPTIONS={BACKGROUND_OPTIONS}
+                    handleSelectSize={handleSelectSize}
+                    handleSelectBackground={handleSelectBackground}
+                    selectedCategory={selectedCategory}
+                    setSelectedCategory={setSelectedCategory}
+                    searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery}
+                    getFilteredLayers={getFilteredLayers}
+                    addLegoLayer={addLegoLayer}
+                    legoCharacters={legoCharacters}
+                    selectedCharacterId={selectedCharacterId}
+                    addCompleteLegoCharacter={addCompleteLegoCharacterSafe}
+                    handleDeleteCharacter={handleDeleteCharacter}
+                    handleAddText={handleAddText}
+                    handleImageUpload={handleImageUpload}
+                    fileInputRef={fileInputRef}
+                    quantity={quantity}
+                    setQuantity={setQuantity}
+                    calculateTotal={calculateTotal}
+                    pricing={calcPricing()}
+                    handleExportImage={handleExportImage}
+                    handleOrder={handleOrder}
+                    isSaving={isSaving}
+                    designerNote={designerNote}
+                    setDesignerNote={setDesignerNote}
+                    printName={printName}
+                    setPrintName={setPrintName}
+                    printTitle={printTitle}
+                    setPrintTitle={setPrintTitle}
+                    printMessage={printMessage}
+                    setPrintMessage={setPrintMessage}
+                    printDate={printDate}
+                    setPrintDate={setPrintDate}
+                    isEditing={editCartItemIndex !== null}
+                    activePanel={activePanel}
+                    setActivePanel={setActivePanel}
+                    selectedId={selectedId}
+                    setSelectedId={setSelectedId}
+                    stickers={stickers}
+                    handleUpdateSticker={handleUpdateSticker}
+                    handleDeleteSticker={handleDeleteSticker}
+                    onSaveImage={handleSaveCustomerImage}
+                  />
+                </div>
+              </div>
+
               <SampleGallery
+                isOpen={showSamples}
+                onClose={() => setShowSamples(false)}
                 selectedProductImage={selectedProductImage}
                 productName={productName}
                 onSelectImage={setSelectedProductImage}
-              />
-              <div className="stage-workspace">
-                <Stage
-                  designAreaRef={designAreaRef}
-                  canvasSize={canvasSize}
-                  selectedSize={selectedSize}
-                  selectedBackground={selectedBackground}
-                  stickers={stickers}
-                  legoCharacters={legoCharacters}
-                  LEGO_CONFIG={LEGO_CONFIG}
-                  selectedCharacterId={selectedCharacterId}
-                  setSelectedCharacterId={setSelectedCharacterId}
-                  selectedId={selectedId}
-                  setSelectedId={setSelectedId}
-                  setStickers={setStickers}
-                  moveLegoCharacter={moveLegoCharacter}
-                  stickerRefs={stickerRefs}
-                  setStickerRef={setStickerRef}
-                  characterRefs={characterRefs}
-                  setCharacterRef={setCharacterRef}
-                  handleDeleteSticker={handleDeleteSticker}
-                  handleDesignAreaClick={handleDesignAreaClick}
-                  Stepper={Stepper}
-                  step={step}
-                  goStep={goStep}
-                  canGoBg={canGoBg}
-                  canGoLego={canGoLego}
-                  canGoCheckout={canGoCheckout}
-                  calculateTotal={calculateTotal}
-                  onReset={handleReset}
-                  updateCharacterOutfit={updateCharacterOutfit}
-                  showOutfitSelector={showOutfitSelector}
-                  setShowOutfitSelector={setShowOutfitSelector}
-                  outfitSelectorCharId={outfitSelectorCharId}
-                  setOutfitSelectorCharId={setOutfitSelectorCharId}
-                  updateCharacterPants={updateCharacterPants}
-                  showPantsSelector={showPantsSelector}
-                  setShowPantsSelector={setShowPantsSelector}
-                  pantsSelectorCharId={pantsSelectorCharId}
-                  setPantsSelectorCharId={setPantsSelectorCharId}
-                  slotImages={slotImages}
-                  onSetSlotImage={handleSetSlotImage}
-                  onClearSlotImage={handleClearSlotImage}
-                  bgTextValues={bgTextValues}
-                  onSetBgTextValue={handleSetBgTextValue}
-                />
-              </div>
-
-              <ControlPanel
-                step={step}
-                STEPS={STEPS}
-                setStep={setStep}
-                goStep={goStep}
-                selectedFrame={selectedFrame}
-                setSelectedFrame={setSelectedFrame}
-                canGoBg={canGoBg}
-                canGoLego={canGoLego}
-                selectedSize={selectedSize}
-                canvasSize={canvasSize}
-                selectedBackground={selectedBackground}
-                SIZE_OPTIONS={SIZE_OPTIONS}
-                BACKGROUND_OPTIONS={BACKGROUND_OPTIONS}
-                handleSelectSize={handleSelectSize}
-                handleSelectBackground={handleSelectBackground}
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                getFilteredLayers={getFilteredLayers}
-                addLegoLayer={addLegoLayer}
-                legoCharacters={legoCharacters}
-                selectedCharacterId={selectedCharacterId}
-                addCompleteLegoCharacter={addCompleteLegoCharacterSafe}
-                handleDeleteCharacter={handleDeleteCharacter}
-                handleAddText={handleAddText}
-                handleImageUpload={handleImageUpload}
-                fileInputRef={fileInputRef}
-                quantity={quantity}
-                setQuantity={setQuantity}
-                calculateTotal={calculateTotal}
-                pricing={calcPricing()}
-                handleExportImage={handleExportImage}
-                handleOrder={handleOrder}
-                isSaving={isSaving}
-                designerNote={designerNote}
-                setDesignerNote={setDesignerNote}
-
-                // print info props
-                printName={printName}
-                setPrintName={setPrintName}
-                printTitle={printTitle}
-                setPrintTitle={setPrintTitle}
-                printMessage={printMessage}
-                setPrintMessage={setPrintMessage}
-                printDate={printDate}
-                setPrintDate={setPrintDate}
-
-                isEditing={editCartItemIndex !== null}
-                activePanel={activePanel}
-                setActivePanel={setActivePanel}
-                selectedId={selectedId}
-                setSelectedId={setSelectedId}
-                stickers={stickers}
-                handleUpdateSticker={handleUpdateSticker}
-                handleDeleteSticker={handleDeleteSticker}
-                onSaveImage={handleSaveCustomerImage}
               />
             </main>
 
