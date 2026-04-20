@@ -3108,6 +3108,7 @@ html {
   background: transparent !important;
   border-radius: 0 !important;
   width: 100% !important;
+  max-width: none !important; /* allow full width to align with canvas */
 }
 
 /* ảnh thumbnail (chỉ ảnh) */
@@ -3305,7 +3306,7 @@ html {
 /* Thumbnail */
 .sample-thumb {
   width: 100%;
-  max-width: 120px;
+  max-width: none; /* allow thumbnail to stretch to container width */
   padding: 0;
   border: 0;
   background: transparent;
@@ -3322,10 +3323,6 @@ html {
 
 /* Mobile: Phóng to thumbnail */
 @media (max-width: 1400px) {
-  .sample-thumb {
-    max-width: 150px !important;
-  }
-
   .sample-thumb img {
     max-height: 180px !important;
   }

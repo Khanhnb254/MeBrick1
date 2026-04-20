@@ -88,6 +88,23 @@
     }
     .export-btn:hover { background: #ff6b81; }
 
+    /* Responsive: on wide screens reserve space for fixed results; on smaller screens stack results under canvas */
+    @media (min-width: 900px) {
+      .canvas-wrapper { margin-right: 340px; }
+    }
+    @media (max-width: 899px) {
+      .results {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-left: none;
+        border-top: 1px solid #1a1a4e;
+      }
+      /* prevent footer or OS taskbar from covering canvas/control panel on small screens */
+      .canvas-wrapper { margin-right: 0; padding-bottom: 80px; min-height: auto; }
+      .toolbar { position: sticky; top: 0; z-index: 120; }
+    }
+
     .tip { font-size: 11px; color: #8892b0; margin-bottom: 12px; line-height: 1.5; }
     .placeholder {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
