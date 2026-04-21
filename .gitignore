@@ -6,4 +6,5 @@ out/
 .DS_Store
 *.log
 tmpclaude-*
+b/.env
 nul
