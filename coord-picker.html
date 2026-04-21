@@ -88,7 +88,8 @@
     }
     .export-btn:hover { background: #ff6b81; }
 
-    /* Responsive: on wide screens reserve space for fixed results; on smaller screens stack results under canvas */
+    /* Responsive: reserve space for fixed results on large screens,
+       but stack results under canvas on small screens so canvas can expand */
     @media (min-width: 900px) {
       .canvas-wrapper { margin-right: 340px; }
     }
@@ -100,8 +101,7 @@
         border-left: none;
         border-top: 1px solid #1a1a4e;
       }
-      /* prevent footer or OS taskbar from covering canvas/control panel on small screens */
-      .canvas-wrapper { margin-right: 0; padding-bottom: 80px; min-height: auto; }
+      .canvas-wrapper { margin-right: 0; padding-bottom: 12px; min-height: auto; }
       .toolbar { position: sticky; top: 0; z-index: 120; }
     }
 
@@ -329,3 +329,5 @@
 </script>
 </body>
 </html>
+Windows PowerShell
+Copyright (C) Mi
