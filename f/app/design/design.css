@@ -152,11 +152,34 @@ html {
   min-height: calc(100vh - 120px);
 }
 
-@media (min-width: 1024px) {
+/* Small desktop / Laptop 15" (1024px - 1365px) */
+@media (min-width: 1024px) and (max-width: 1365px) {
   .lego-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(320px, 360px);
+    gap: var(--space-md);
+    align-items: start;
+    height: auto;
+  }
+}
+
+/* Medium desktop / 17-19" (1366px - 1679px) */
+@media (min-width: 1366px) and (max-width: 1679px) {
+  .lego-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 420px);
     gap: var(--space-lg);
+    align-items: start;
+    height: auto;
+  }
+}
+
+/* Large desktop / 24" (1680px+) */
+@media (min-width: 1680px) {
+  .lego-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 480px);
+    gap: var(--space-xl);
     align-items: start;
     height: auto;
   }
@@ -767,8 +790,10 @@ html {
 
 /* Empty canvas */
 .stage-empty {
-  width: clamp(200px, 60vw, 840px);
-  height: clamp(200px, 60vw, 840px);
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0; /* allow proper flex children clipping */
+  height: auto;
   background: rgba(255, 255, 255, 0.9);
   border-radius: clamp(1rem, 3vw, 1.5rem);
 
@@ -778,8 +803,14 @@ html {
   justify-content: center;
   text-align: center;
   padding: var(--space-lg);
-  margin: var(--space-md) auto;
+  margin: 5px 0 0 0; /* small top offset to nudge canvas down */
 }
+
+/* Ensure .stage-card allows .stage-empty to grow */
+.stage-card {
+  min-height: 0;
+}
+
 
 .stage-empty h3 {
   font-size: var(--text-lg);

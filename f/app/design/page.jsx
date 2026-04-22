@@ -87,17 +87,36 @@ function DesignPageInner() {
       const width = window.innerWidth;
       let newSize;
 
-      if (width >= CANVAS_SIZE_CONFIG.desktop.breakpoint) {
-        // Desktop
+      // Responsive canvas sizing based on screen width
+      if (width >= CANVAS_SIZE_CONFIG.desktop_large.breakpoint) {
+        // Large desktop / 24" (1680px+)
         newSize = { 
-          width: CANVAS_SIZE_CONFIG.desktop.width, 
-          height: CANVAS_SIZE_CONFIG.desktop.height 
+          width: CANVAS_SIZE_CONFIG.desktop_large.width, 
+          height: CANVAS_SIZE_CONFIG.desktop_large.height 
+        };
+      } else if (width >= CANVAS_SIZE_CONFIG.desktop_medium.breakpoint) {
+        // Medium desktop / 17-19" (1366px - 1679px)
+        newSize = { 
+          width: CANVAS_SIZE_CONFIG.desktop_medium.width, 
+          height: CANVAS_SIZE_CONFIG.desktop_medium.height 
+        };
+      } else if (width >= CANVAS_SIZE_CONFIG.desktop_small.breakpoint) {
+        // Small desktop / Laptop 15" (1024px - 1365px)
+        newSize = { 
+          width: CANVAS_SIZE_CONFIG.desktop_small.width, 
+          height: CANVAS_SIZE_CONFIG.desktop_small.height 
+        };
+      } else if (width >= CANVAS_SIZE_CONFIG.tablet.breakpoint) {
+        // Tablet (768px - 1023px)
+        newSize = { 
+          width: CANVAS_SIZE_CONFIG.tablet.width, 
+          height: CANVAS_SIZE_CONFIG.tablet.height 
         };
       } else {
-        // Mobile — dùng cùng kích thước desktop, canvasScale trong Stage tự co lại đúng tỉ lệ
+        // Mobile (< 768px)
         newSize = { 
-          width: CANVAS_SIZE_CONFIG.desktop.width, 
-          height: CANVAS_SIZE_CONFIG.desktop.height 
+          width: CANVAS_SIZE_CONFIG.mobile.width, 
+          height: CANVAS_SIZE_CONFIG.mobile.height 
         };
       }
 
