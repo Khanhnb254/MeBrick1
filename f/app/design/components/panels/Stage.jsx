@@ -538,7 +538,9 @@ export default function Stage({
       const availableH = Math.max(0, containerH - 48);
       const widthScale = availableW > 0 ? availableW / canvasSize.width : 1;
       const heightScale = availableH > 0 ? availableH / canvasSize.height : 1;
-      setCanvasScale(Math.min(1, widthScale, heightScale));
+      const isLaptopViewport = window.innerWidth >= 1024 && window.innerWidth < 1680;
+      const viewportScale = isLaptopViewport ? 0.9 : 1;
+      setCanvasScale(Math.min(1, widthScale, heightScale) * viewportScale);
     };
     const raf = requestAnimationFrame(compute);
     window.addEventListener("resize", compute);
