@@ -531,19 +531,25 @@ export default function Stage({
   useEffect(() => {
     if (!canvasSize?.width) return;
     const compute = () => {
-      const containerW = stageWrapRef.current?.getBoundingClientRect().width ?? window.innerWidth;
-      setCanvasScale(containerW > 0 && containerW < canvasSize.width ? containerW / canvasSize.width : 1);
+      const workspaceRect = stageWorkspaceRef.current?.getBoundingClientRect();
+      const containerW = workspaceRect?.width ?? window.innerWidth;
+      const containerH = workspaceRect?.height ?? window.innerHeight;
+      const availableW = Math.max(0, containerW - 48);
+      const availableH = Math.max(0, containerH - 48);
+      const widthScale = availableW > 0 ? availableW / canvasSize.width : 1;
+      const heightScale = availableH > 0 ? availableH / canvasSize.height : 1;
+      setCanvasScale(Math.min(1, widthScale, heightScale));
     };
     const raf = requestAnimationFrame(compute);
     window.addEventListener("resize", compute);
-    const ro = stageWrapRef.current ? new ResizeObserver(compute) : null;
-    if (ro && stageWrapRef.current) ro.observe(stageWrapRef.current);
+    const ro = stageWorkspaceRef.current ? new ResizeObserver(compute) : null;
+    if (ro && stageWorkspaceRef.current) ro.observe(stageWorkspaceRef.current);
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", compute);
       ro?.disconnect();
     };
-  }, [canvasSize?.width]);
+  }, [canvasSize?.width, canvasSize?.height]);
 
   return (
     <div className="stage-wrap" ref={stageWrapRef}>
