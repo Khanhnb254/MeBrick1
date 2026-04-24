@@ -738,6 +738,21 @@ html {
   overflow: hidden; /* prevent scroll at wrap level */
 }
 
+/* Mobile: allow page scrolling so user can reach canvas and controls */
+@media (max-width: 768px) {
+  .stage-wrap,
+  .stage-card {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .stage-workspace {
+    overflow: visible !important;
+  }
+  .photo-frame-studio {
+    margin-top: 8px; /* small spacing from controls */
+  }
+}
+
 .stage-card {
   background: #F8FAFC;
   border: 1px solid rgba(10, 37, 64, 0.1);
