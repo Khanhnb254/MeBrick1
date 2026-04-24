@@ -48,8 +48,8 @@ export const SIZE_OPTIONS = [
     dimensions: "23x23cm",
     price: "0",
     basePrice: 0,
-    canvasWidth: 500,
-    canvasHeight: 500,
+    canvasWidth: 550,
+    canvasHeight: 550,
   },
 ];
 
