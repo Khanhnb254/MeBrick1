@@ -3104,6 +3104,12 @@ html {
     overflow: visible;
   }
 
+  .lego-layout {
+    height: auto;
+    min-height: auto;
+    max-height: none;
+  }
+
   .stage-workspace {
     height: auto;
     min-height: auto;
