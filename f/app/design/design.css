@@ -3125,6 +3125,11 @@ html {
   .lego-footer {
     margin-top: 0;
   }
+
+  .lego-customizer {
+    zoom: 0.9;
+    transform-origin: top center;
+  }
 }
 /* DISABLED - Keep 3-column layout on all screen sizes */
 /* @media (max-width: 1400px) {
