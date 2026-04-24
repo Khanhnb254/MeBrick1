@@ -81,7 +81,8 @@ html {
   background: #0A2540;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding: var(--space-sm) var(--space-md);
+  /* reduce header vertical padding by 5px top + 5px bottom = 10px total */
+  padding: calc(var(--space-sm) - 5px) var(--space-md);
   position: sticky;
   top: 0;
   z-index: 20;
