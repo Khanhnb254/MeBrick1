@@ -615,7 +615,7 @@ export function useLegoCharacter({
     );
 
     setStickers((prev) => {
-      const filtered = prev.filter(
+      let filtered = prev.filter(
         (s) =>
           !(s.characterId === selectedCharacterId && s.layerType === "face"),
       );
@@ -770,5 +770,4 @@ export function useLegoCharacter({
     handleDeleteCharacter,
   };
 }
-
 
