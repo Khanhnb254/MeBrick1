@@ -2243,10 +2243,10 @@ html {
   display: flex;
   gap: 0px;
   min-height: calc(100vh - 80px);
-  height: calc(100vh - 80px);
-  max-height: calc(100vh - 80px);
+  height: auto;
+  max-height: none;
   align-items: stretch;
-  overflow: hidden; /* prevent any scrolling at layout level */
+  overflow: auto; /* allow scrolling */
 }
 
 .stage-workspace {
