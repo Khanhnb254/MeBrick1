@@ -56,3 +56,11 @@ html {
   /* Force column layout for design sections to work at 1024px viewport */
   /* This ensures the 2-column grid layout works properly on all devices */
 }
+
+/* Reduce entire design on laptop screens by 10% */
+@media (min-width: 1024px) and (max-width: 1600px) {
+  html {
+    /* Scale down rem-based sizes — affects typography and spacing */
+    font-size: 90%;
+  }
+}
