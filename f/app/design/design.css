@@ -425,6 +425,13 @@ html {
   margin-bottom: var(--space-md);
 }
 
+/* Move stage (steps + reset + frame canvas) up 30px toward header on laptop/desktop */
+@media (min-width: 1024px) {
+  .stage-wrap {
+    transform: translateY(-30px);
+  }
+}
+
 .step-head {
   display: flex;
   justify-content: space-between;
