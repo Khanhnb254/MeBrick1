@@ -15,6 +15,8 @@ export default function Footer() {
         backgroundColor: "#ffffff",
         color: "#001279",
         padding: "60px 20px 30px",
+        position: "relative",
+        zIndex: 0,
       }}>
       <div
         style={{

@@ -1060,7 +1060,7 @@ function DesignPageInner() {
         {/* ===== GRADIENT BACKGROUND WRAPPER ===== */}
         <div
           className="w-full relative overflow-visible"
-          style={{ minHeight: "auto" }}>
+          style={{ minHeight: "auto", position: "relative", zIndex: 10 }}>
           {/* Radial gradient background */}
           <div className="absolute inset-0 z-0 bg-white" />
           {/* Overlay nhẹ để dễ đọc chữ */}
