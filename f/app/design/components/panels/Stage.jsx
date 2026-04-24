@@ -527,10 +527,18 @@ export default function Stage({
   const stageWrapRef = useRef(null);
   const stageWorkspaceRef = useRef(null);
   const [canvasScale, setCanvasScale] = useState(1);
+  const mobileCanvasScaleRef = useRef(null);
 
   useEffect(() => {
     if (!canvasSize?.width) return;
+    mobileCanvasScaleRef.current = null;
     const compute = () => {
+      const isMobileViewport = window.innerWidth < 1024;
+      if (isMobileViewport && mobileCanvasScaleRef.current !== null) {
+        setCanvasScale(mobileCanvasScaleRef.current);
+        return;
+      }
+
       const workspaceRect = stageWorkspaceRef.current?.getBoundingClientRect();
       const containerW = workspaceRect?.width ?? window.innerWidth;
       const containerH = workspaceRect?.height ?? window.innerHeight;
@@ -539,8 +547,14 @@ export default function Stage({
       const widthScale = availableW > 0 ? availableW / canvasSize.width : 1;
       const heightScale = availableH > 0 ? availableH / canvasSize.height : 1;
       const isLaptopViewport = window.innerWidth >= 1024 && window.innerWidth < 1366;
-      const viewportScale = isLaptopViewport ? 0.8 : 1;
-      setCanvasScale(Math.min(1, widthScale, heightScale) * viewportScale);
+      const viewportScale = isLaptopViewport ? 0.5 : 1;
+      const nextScale = Math.min(1, widthScale, heightScale) * viewportScale;
+
+      if (isMobileViewport && mobileCanvasScaleRef.current === null) {
+        mobileCanvasScaleRef.current = nextScale;
+      }
+
+      setCanvasScale(nextScale);
     };
     const raf = requestAnimationFrame(compute);
     window.addEventListener("resize", compute);
