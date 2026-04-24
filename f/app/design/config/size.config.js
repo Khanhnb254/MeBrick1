@@ -2,8 +2,8 @@
 export const CANVAS_SIZE_CONFIG = {
   // Small desktop / Laptop 15" (1024px - 1365px)
   desktop_small: {
-    width: 750,
-    height: 750,
+    width: 700,
+    height: 700,
     breakpoint: 1024,
     maxWidth: 1365,
   },
