@@ -97,7 +97,8 @@ export default function DesignArea({
           height: `${canvasSize.height}px`,
           transform: `scale(${canvasScale})`,
           transformOrigin: "top left",
-          touchAction: "none",
+          // Allow vertical page scrolling on mobile while keeping canvas interactive
+          touchAction: "pan-y",
           ...getBackgroundStyle(),
         }}
         {...rest}
