@@ -2271,7 +2271,7 @@ html {
   max-width: 100%;
   position: relative;
   align-self: stretch;
-  overflow-y: visible;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -2387,7 +2387,7 @@ html {
   .sample-gallery {
     order: 1;
     max-height: none;
-    overflow-y: visible;
+    overflow-y: auto;
     border-right: none;
     border-bottom: 1px solid var(--lego-border);
     border-radius: 0;
@@ -2420,7 +2420,7 @@ html {
     min-height: unset;
     padding: 0 12px;
     margin: 0;
-    overflow-y: visible;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2586,7 +2586,7 @@ html {
     height: fit-content;
     min-height: unset;
     padding: 0 16px;
-    overflow-y: visible;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2672,7 +2672,7 @@ html {
     height: fit-content;
     min-height: unset;
     padding: 0;
-    overflow-y: visible;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
