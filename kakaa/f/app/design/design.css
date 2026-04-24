@@ -1923,6 +1923,12 @@
   text-align: center;
 }
 
+/* Outer stage column: keep steps + canvas close to header */
+.design-layout > .stage-workspace {
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
 .design-layout > .mb-panel {
   flex: 3.6;
   min-width: 0;
