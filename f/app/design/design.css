@@ -332,7 +332,7 @@ html {
 
 /* ===== Footer ===== */
 .lego-footer {
-  margin-top: var(--space-xl);
+  margin-top: 0;
   padding: var(--space-lg) 0;
   text-align: center;
   color: rgba(17, 24, 39, 0.65);
@@ -3050,6 +3050,73 @@ html {
 
   .design-layout > .mb-panel {
     max-width: 100%;
+  }
+
+  .lego-footer {
+    margin-top: 0;
+  }
+}
+
+/* Desktop hẹp / laptop nhỏ: thu gọn các cột để tránh bị che khuất khi resize Chrome */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .lego-layout {
+    padding: 0 10px;
+    gap: 12px;
+  }
+
+  .sample-sidebar {
+    flex: 1.6;
+    max-width: 240px;
+  }
+
+  .stage-workspace {
+    flex: 5.8;
+    padding: 0.35rem 0.75rem 1.25rem 0.75rem;
+  }
+
+  .design-layout > .mb-panel,
+  .control-panel {
+    flex: 2.4;
+  }
+
+  .stage-card {
+    padding: 24px;
+  }
+
+  .panel-card {
+    padding: 8px;
+  }
+
+  .stage-head {
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .photo-frame-studio {
+    padding: 0.5rem;
+  }
+
+  .design-layout {
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .stage-workspace {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .design-layout > .mb-panel,
+  .control-panel {
+    height: auto;
+    min-height: auto;
+  }
+
+  .lego-footer {
+    margin-top: 0;
   }
 }
 /* DISABLED - Keep 3-column layout on all screen sizes */
