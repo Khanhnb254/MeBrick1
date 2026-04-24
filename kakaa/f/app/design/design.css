@@ -1135,8 +1135,8 @@
   background: linear-gradient(180deg, #ffffff 0%, #c1d2ff 100%);
 }
 
-/* Scale toàn bộ layout chỉ cho màn laptop */
-@media (min-width: 1024px) and (max-width: 1600px) {
+/* Scale toàn bộ layout cho mọi màn >= 1024px */
+@media (min-width: 1024px) {
   .lego-customizer {
     zoom: 0.9;
   }
