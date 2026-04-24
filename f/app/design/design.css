@@ -3072,6 +3072,7 @@ html {
   .stage-workspace {
     flex: 5.8;
     padding: 0.35rem 0.75rem 1.25rem 0.75rem;
+    margin-top: 15px;
   }
 
   .design-layout > .mb-panel,
