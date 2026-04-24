@@ -5,14 +5,14 @@ export const CANVAS_SIZE_CONFIG = {
     width: 700,
     height: 700,
     breakpoint: 1024,
-    maxWidth: 1365,
+    maxWidth: 1440,
   },
   
   // Medium desktop / 17-19" (1366px - 1679px)
   desktop_medium: {
     width: 900,
     height: 900,
-    breakpoint: 1366,
+    breakpoint: 1441,
     maxWidth: 1679,
   },
   
