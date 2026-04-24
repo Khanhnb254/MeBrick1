@@ -769,8 +769,8 @@ html {
 .stage-wrap {
   flex: 1;
   min-width: 0;
-  height: 100%; /* ensure it respects parent height */
-  overflow: hidden; /* prevent scroll at wrap level */
+  height: auto; /* allow page to expand to fit canvas */
+  overflow: visible; /* allow page scroll to reach canvas */
 }
 
 /* Mobile: allow page scrolling so user can reach canvas and controls */
@@ -795,10 +795,10 @@ html {
   box-shadow: 0 14px 40px rgba(10, 37, 64, 0.1);
   padding: var(--space-sm);
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* prevent scrolling at this level */
+  overflow: visible; /* allow canvas to be scrolled into view */
 }
 
 /* Header */
