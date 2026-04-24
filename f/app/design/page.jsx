@@ -7,7 +7,6 @@ import { addToCart, getCart, updateCartItem } from "../../lib/cart";
 import Stepper from "./components/Stepper";
 // ✅ Site header/footer (giống trang chủ)
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import SampleGallery from "./components/SampleGallery";
 
 import { useState, useRef, useEffect, Suspense } from "react";
@@ -1188,8 +1187,7 @@ function DesignPageInner() {
         </div>
       </DndContext>
 
-      {/* SITE FOOTER */}
-      <Footer />
+      {/* SITE FOOTER hidden on design page */}
     </div>
   );
 }
