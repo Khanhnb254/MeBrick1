@@ -33,8 +33,8 @@ export const CANVAS_SIZE_CONFIG = {
   
   // Mobile (<768px)
   mobile: {
-    width: 500,
-    height: 500,
+    width: 360,
+    height: 360,
     breakpoint: 0,
     maxWidth: 767,
   },
